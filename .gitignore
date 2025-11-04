@@ -1,0 +1,71 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Storybook build outputs
+storybook-static/
+dist/
+.build/
+
+# Test coverage & artifacts
+coverage/
+*.lcov
+.nyc_output/
+test-results/
+playwright-report/
+playwright/.cache/
+playwright/.auth/
+
+# Vitest
+.vitest/
+vitest.config.ts.timestamp-*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS files
+Thumbs.db
+.DS_Store
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build & cache
+.cache/
+.parcel-cache/
+.next/
+out/
+build/
+*.tsbuildinfo
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# Reports (as per AGENTS.md spec)
+reports/
+
+# Optional: Keep package-lock.json but ignore others
+# Uncomment if you want to track package-lock.json
+# !package-lock.json
