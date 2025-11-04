@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "brandName": "WhiteLabel Default",
+    "version": "1.0.0",
+    "schemaVersion": "1.0.0",
+    "notes": "Baseline design system foundation with clean, minimal token set"
+  },
+  "palette": {
+    "brand": {
+      "primary": "#00529C",
+      "on-primary": "#FFFFFF"
+    },
+    "bg": {
+      "page": "#FFFFFF",
+      "section": "#F7F8FA"
+    },
+    "text": {
+      "primary": "#1A1A1A",
+      "muted": "#6B7280"
+    },
+    "border": "#E5E7EB",
+    "focus-ring": "#00529C",
+    "success": "#16A34A",
+    "warning": "#EAB308",
+    "danger": "#DC2626"
+  },
+  "typography": {
+    "families": {
+      "heading": "\"GT America Lt\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
+      "body": "\"GT America Rg\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif"
+    },
+    "scales": {
+      "display": {
+        "family": "heading",
+        "weight": 300,
+        "size": "72px",
+        "lineHeight": "100%",
+        "letterSpacing": "-1%"
+      },
+      "h1": {
+        "family": "heading",
+        "weight": 300,
+        "size": "48px",
+        "lineHeight": "110%",
+        "letterSpacing": "-0.5%"
+      },
+      "h2": {
+        "family": "body",
+        "weight": 400,
+        "size": "36px",
+        "lineHeight": "120%",
+        "letterSpacing": "0"
+      },
+      "h3": {
+        "family": "\"GT America Md\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
+        "weight": 500,
+        "size": "24px",
+        "lineHeight": "130%",
+        "letterSpacing": "0"
+      },
+      "body-large": {
+        "family": "body",
+        "weight": 400,
+        "size": "18px",
+        "lineHeight": "150%",
+        "letterSpacing": "0"
+      },
+      "body-small": {
+        "family": "\"GT America Md\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
+        "weight": 500,
+        "size": "16px",
+        "lineHeight": "150%",
+        "letterSpacing": "0"
+      },
+      "label": {
+        "family": "\"GT America Bd\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
+        "weight": 600,
+        "size": "14px",
+        "lineHeight": "120%",
+        "letterSpacing": "1%"
+      },
+      "small": {
+        "family": "body",
+        "weight": 400,
+        "size": "12px",
+        "lineHeight": "140%",
+        "letterSpacing": "1%"
+      }
+    }
+  },
+  "spacing": [2, 4, 8, 12, 16, 24, 32, 48],
+  "radii": {
+    "none": "0",
+    "sm": "4px",
+    "md": "8px",
+    "pill": "9999px"
+  },
+  "shadows": {
+    "sm": "0 1px 2px rgba(0,0,0,0.05)",
+    "md": "0 4px 8px rgba(0,0,0,0.08)",
+    "lg": "0 8px 16px rgba(0,0,0,0.12)"
+  },
+  "grid": {
+    "columns": 12,
+    "gutter": "24px",
+    "containerMaxWidths": {
+      "sm": "640px",
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1280px",
+      "2xl": "1440px"
+    }
+  }
+}

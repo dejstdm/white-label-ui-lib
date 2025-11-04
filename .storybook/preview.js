@@ -1,20 +1,41 @@
-/** @type { import('@storybook/react-vite').Preview } */
-const preview = {
+import '../themes/default/dist/theme.css';
+
+export default {
   parameters: {
+    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
-       color: /(background|color)$/i,
-       date: /Date$/i,
+        color: /(background|color)$/i,
+        date: /Date$/,
       },
     },
-
-    a11y: {
-      // 'todo' - show a11y violations in the test UI only
-      // 'error' - fail CI on a11y violations
-      // 'off' - skip a11y checks entirely
-      test: "todo"
-    }
+    backgrounds: {
+      default: 'light',
+      values: [
+        {
+          name: 'light',
+          value: '#FFFFFF',
+        },
+        {
+          name: 'section',
+          value: '#F7F8FA',
+        },
+      ],
+    },
+  },
+  globalTypes: {
+    theme: {
+      name: 'Theme',
+      description: 'Global theme for components',
+      defaultValue: 'default',
+      toolbar: {
+        icon: 'paintbrush',
+        items: [
+          { value: 'default', title: 'Default Theme' },
+        ],
+        showName: true,
+        dynamicTitle: true,
+      },
+    },
   },
 };
-
-export default preview;
