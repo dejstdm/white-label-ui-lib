@@ -1,0 +1,34 @@
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container--sm {
+  max-width: var(--container-sm, 640px);
+}
+
+.container--md {
+  max-width: var(--container-md, 768px);
+}
+
+.container--lg {
+  max-width: var(--container-lg, 1024px);
+}
+
+.container--xl {
+  max-width: var(--container-xl, 1280px);
+}
+
+.container--2xl {
+  max-width: var(--container-2xl, 1440px);
+}
+
+.container--full {
+  max-width: 100%;
+}
+
+.container--padded {
+  padding-left: var(--grid-gutter, 24px);
+  padding-right: var(--grid-gutter, 24px);
+}

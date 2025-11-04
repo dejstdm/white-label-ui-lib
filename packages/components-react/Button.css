@@ -1,0 +1,115 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-medium);
+  font-weight: var(--type-body-small-weight);
+  line-height: 110%;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.button--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.button__label {
+  display: inline-block;
+}
+
+.button__icon {
+  flex-shrink: 0;
+}
+
+/* Size variants */
+.button--medium {
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--type-body-large-size);
+  gap: var(--space-4);
+}
+
+.button--large {
+  padding: var(--space-5) var(--space-6);
+  font-size: 21px;
+  gap: var(--space-5);
+}
+
+/* Solid variant */
+.button--solid {
+  background: var(--color-brand-primary);
+  color: var(--color-brand-on-primary);
+  border: 2px solid var(--color-brand-primary);
+}
+
+.button--solid:hover:not(.button--disabled) {
+  background: #256BCC;
+  border-color: #256BCC;
+}
+
+.button--solid:active:not(.button--disabled) {
+  background: #00396D;
+  border-color: #00396D;
+}
+
+.button--solid.button--disabled {
+  background: #D5E7FF;
+  border-color: #D5E7FF;
+  color: #C0DBFF;
+}
+
+/* Outline variant */
+.button--outline {
+  background: transparent;
+  color: var(--color-brand-primary);
+  border: 2px solid var(--color-brand-primary);
+}
+
+.button--outline:hover:not(.button--disabled) {
+  color: #256BCC;
+  border-color: #256BCC;
+  background: rgba(46, 134, 255, 0.04);
+}
+
+.button--outline:active:not(.button--disabled) {
+  color: #00396D;
+  border-color: #00396D;
+  background: rgba(0, 57, 109, 0.08);
+}
+
+.button--outline.button--disabled {
+  color: #D5E7FF;
+  border-color: #D5E7FF;
+}
+
+/* Text variant */
+.button--text {
+  background: transparent;
+  color: var(--color-brand-primary);
+  border: 2px solid transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.button--text:hover:not(.button--disabled) {
+  color: #256BCC;
+  background: transparent;
+}
+
+.button--text:active:not(.button--disabled) {
+  color: #00396D;
+  background: transparent;
+}
+
+.button--text.button--disabled {
+  color: #C0DBFF;
+}
