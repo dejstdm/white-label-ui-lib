@@ -26,36 +26,57 @@
   },
   "typography": {
     "families": {
-      "heading": "\"GT America Lt\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
+      "heading": "\"GT America Trial Bd\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
       "body": "\"GT America Rg\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif"
     },
     "scales": {
       "display": {
-        "family": "heading",
-        "weight": 300,
-        "size": "72px",
+        "family": "\"GT America Trial Md\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
+        "weight": 500,
+        "size": "125px",
         "lineHeight": "100%",
-        "letterSpacing": "-1%"
+        "letterSpacing": "0"
       },
       "h1": {
         "family": "heading",
-        "weight": 300,
-        "size": "48px",
+        "weight": 700,
+        "size": "72px",
         "lineHeight": "110%",
-        "letterSpacing": "-0.5%"
+        "letterSpacing": "0"
       },
       "h2": {
-        "family": "body",
-        "weight": 400,
-        "size": "36px",
-        "lineHeight": "120%",
+        "family": "heading",
+        "weight": 700,
+        "size": "60px",
+        "lineHeight": "110%",
         "letterSpacing": "0"
       },
       "h3": {
-        "family": "\"GT America Md\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
-        "weight": 500,
+        "family": "heading",
+        "weight": 700,
+        "size": "48px",
+        "lineHeight": "110%",
+        "letterSpacing": "0"
+      },
+      "h4": {
+        "family": "heading",
+        "weight": 700,
+        "size": "36px",
+        "lineHeight": "125%",
+        "letterSpacing": "0"
+      },
+      "h5": {
+        "family": "heading",
+        "weight": 700,
         "size": "24px",
-        "lineHeight": "130%",
+        "lineHeight": "125%",
+        "letterSpacing": "0"
+      },
+      "h6": {
+        "family": "heading",
+        "weight": 700,
+        "size": "18px",
+        "lineHeight": "125%",
         "letterSpacing": "0"
       },
       "body-large": {
@@ -109,6 +130,37 @@
       "lg": "1024px",
       "xl": "1280px",
       "2xl": "1440px"
+    }
+  },
+  "variantsAndHooks": {
+    "Button": {
+      "variants": {
+        "button": {
+          "element": "button",
+          "roles": ["brand/primary", "brand/on-primary"],
+          "typography": "label",
+          "spacing": [2, 4],
+          "radii": "md"
+        },
+        "link": {
+          "element": "a",
+          "roles": ["brand/primary", "brand/on-primary"],
+          "typography": "label",
+          "spacing": [2, 4],
+          "radii": "md"
+        }
+      }
+    },
+    "NavBar": {
+      "variants": {
+        "default": {
+          "element": "nav",
+          "roles": ["brand/primary", "brand/on-primary"],
+          "typography": "body-large",
+          "spacing": [5, 6],
+          "radii": "none"
+        }
+      }
     }
   }
 }

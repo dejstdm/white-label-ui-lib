@@ -27,7 +27,7 @@ export const Heading = ({
 
 Heading.propTypes = {
   level: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
-  variant: PropTypes.oneOf(['display', 'h1', 'h2', 'h3']),
+  variant: PropTypes.oneOf(['display', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
 };

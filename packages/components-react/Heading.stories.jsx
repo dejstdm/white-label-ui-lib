@@ -13,7 +13,7 @@ export default {
     },
     variant: {
       control: { type: 'select' },
-      options: ['display', 'h1', 'h2', 'h3'],
+      options: ['display', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
       description: 'Visual style variant',
     },
   },
@@ -51,6 +51,30 @@ export const H3 = {
   },
 };
 
+export const H4 = {
+  args: {
+    level: 4,
+    variant: 'h4',
+    children: 'Heading Level 4',
+  },
+};
+
+export const H5 = {
+  args: {
+    level: 5,
+    variant: 'h5',
+    children: 'Heading Level 5',
+  },
+};
+
+export const H6 = {
+  args: {
+    level: 6,
+    variant: 'h6',
+    children: 'Heading Level 6',
+  },
+};
+
 export const AllVariants = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
@@ -58,6 +82,9 @@ export const AllVariants = {
       <Heading level={1} variant="h1">H1 Heading</Heading>
       <Heading level={2} variant="h2">H2 Heading</Heading>
       <Heading level={3} variant="h3">H3 Heading</Heading>
+      <Heading level={4} variant="h4">H4 Heading</Heading>
+      <Heading level={5} variant="h5">H5 Heading</Heading>
+      <Heading level={6} variant="h6">H6 Heading</Heading>
     </div>
   ),
 };

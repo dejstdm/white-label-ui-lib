@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import './Container.css';
 
 export const Container = ({ 
-  maxWidth = 'xl',
+  fluid = false,
+  breakpoint = null,
   padding = true,
   children,
   className = '',
@@ -11,7 +12,8 @@ export const Container = ({
 }) => {
   const classes = [
     'container',
-    `container--${maxWidth}`,
+    fluid ? 'container-fluid' : '',
+    breakpoint ? `container-${breakpoint}` : '',
     padding ? 'container--padded' : '',
     className
   ].filter(Boolean).join(' ');
@@ -24,7 +26,8 @@ export const Container = ({
 };
 
 Container.propTypes = {
-  maxWidth: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', '2xl', 'full']),
+  fluid: PropTypes.bool,
+  breakpoint: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl', null]),
   padding: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,

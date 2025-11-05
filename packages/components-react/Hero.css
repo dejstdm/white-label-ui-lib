@@ -1,0 +1,175 @@
+.hero {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  max-height: 100vh;
+}
+
+.hero--no-background {
+  min-height: 70vh;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 70vh;
+    max-height: none;
+  }
+}
+
+.hero__background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero__background-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  max-width: none;
+  display: block;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+}
+
+
+.hero__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  text-align: center;
+}
+
+.hero__subheadline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.hero__subheadline p {
+  font-family: "GT America Trial Bd", var(--font-heading), -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-brand-on-primary);
+  margin: 0;
+}
+
+.hero__headline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.hero__headline p {
+  font-family: "GT America Trial Bd", var(--font-heading), -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-brand-on-primary);
+  margin: 0;
+}
+
+.hero__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: min-content;
+  min-width: 100%;
+}
+
+.hero__body p {
+  font-family: "GT America Trial Lt", var(--font-body), -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-brand-on-primary);
+  margin: 0;
+}
+
+.hero__button-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Inverted button variant for hero */
+.hero__button-wrapper .button--inverted {
+  background: var(--color-brand-on-primary);
+  color: #2E86FF;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-family: "GT America Trial Md", var(--font-body), -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.1;
+  gap: 12px;
+}
+
+.hero__button-wrapper .button--inverted:hover:not(.button--disabled) {
+  background: rgba(255, 255, 255, 0.9);
+  color: #256BCC;
+}
+
+.hero__button-wrapper .button--inverted:active:not(.button--disabled) {
+  background: rgba(255, 255, 255, 0.8);
+  color: #00396D;
+}
+
+.hero__button-wrapper .button--inverted:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero__headline p {
+    font-size: 48px;
+  }
+
+  .hero__subheadline p {
+    font-size: 14px;
+  }
+
+  .hero__body p {
+    font-size: 16px;
+  }
+
+
+
+  .hero__text {
+    gap: 20px;
+  }
+}
+

@@ -9,10 +9,14 @@ export default {
   },
   tags: ['autodocs'],
   argTypes: {
-    maxWidth: {
+    fluid: {
+      control: 'boolean',
+      description: 'Full-width container (100% at all breakpoints)',
+    },
+    breakpoint: {
       control: { type: 'select' },
-      options: ['sm', 'md', 'lg', 'xl', '2xl', 'full'],
-      description: 'Maximum width of the container',
+      options: [null, 'sm', 'md', 'lg', 'xl', 'xxl'],
+      description: 'Breakpoint at which container becomes responsive (100% width until breakpoint)',
     },
     padding: {
       control: 'boolean',
@@ -23,7 +27,7 @@ export default {
 
 export const Default = {
   args: {
-    maxWidth: 'xl',
+    breakpoint: null,
     padding: true,
     children: (
       <div style={{ 
@@ -31,34 +35,72 @@ export const Default = {
         padding: 'var(--space-6)', 
         borderRadius: 'var(--radius-md)' 
       }}>
-        Container content (max-width: xl)
+        Responsive container (adapts to viewport size)
       </div>
     ),
   },
 };
 
-export const AllSizes = {
+export const Responsive = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
-      {['sm', 'md', 'lg', 'xl', '2xl', 'full'].map(size => (
-        <Container key={size} maxWidth={size} padding>
-          <div style={{ 
-            background: 'var(--color-bg-section)', 
-            padding: 'var(--space-6)', 
-            borderRadius: 'var(--radius-md)',
-            textAlign: 'center'
-          }}>
-            {size}
-          </div>
-        </Container>
-      ))}
+      <Container breakpoint={null} padding>
+        <div style={{ 
+          background: 'var(--color-bg-section)', 
+          padding: 'var(--space-6)', 
+          borderRadius: 'var(--radius-md)',
+          textAlign: 'center'
+        }}>
+          Default container (responsive at all breakpoints)
+        </div>
+      </Container>
+      <Container breakpoint="sm" padding>
+        <div style={{ 
+          background: 'var(--color-bg-section)', 
+          padding: 'var(--space-6)', 
+          borderRadius: 'var(--radius-md)',
+          textAlign: 'center'
+        }}>
+          container-sm (100% until sm, then responsive)
+        </div>
+      </Container>
+      <Container breakpoint="md" padding>
+        <div style={{ 
+          background: 'var(--color-bg-section)', 
+          padding: 'var(--space-6)', 
+          borderRadius: 'var(--radius-md)',
+          textAlign: 'center'
+        }}>
+          container-md (100% until md, then responsive)
+        </div>
+      </Container>
+      <Container breakpoint="lg" padding>
+        <div style={{ 
+          background: 'var(--color-bg-section)', 
+          padding: 'var(--space-6)', 
+          borderRadius: 'var(--radius-md)',
+          textAlign: 'center'
+        }}>
+          container-lg (100% until lg, then responsive)
+        </div>
+      </Container>
+      <Container fluid padding>
+        <div style={{ 
+          background: 'var(--color-bg-section)', 
+          padding: 'var(--space-6)', 
+          borderRadius: 'var(--radius-md)',
+          textAlign: 'center'
+        }}>
+          container-fluid (100% width at all breakpoints)
+        </div>
+      </Container>
     </div>
   ),
 };
 
 export const NoPadding = {
   args: {
-    maxWidth: 'xl',
+    breakpoint: null,
     padding: false,
     children: (
       <div style={{ 

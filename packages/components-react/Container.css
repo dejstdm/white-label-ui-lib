@@ -1,34 +1,179 @@
+/* Bootstrap-style responsive container */
 .container {
+max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Bootstrap breakpoints: sm=576px, md=768px, lg=992px, xl=1200px, xxl=1400px */
+/* Container max-widths: sm=540px, md=720px, lg=960px, xl=1140px, xxl=1320px */
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/* Fluid container - 100% width at all breakpoints */
+.container-fluid {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.container--sm {
-  max-width: var(--container-sm, 640px);
+/* Responsive containers - 100% width until breakpoint, then same as .container */
+.container-sm {
+ max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.container--md {
-  max-width: var(--container-md, 768px);
+@media (min-width: 576px) {
+  .container-sm {
+    max-width: 540px;
+  }
 }
 
-.container--lg {
-  max-width: var(--container-lg, 1024px);
+@media (min-width: 768px) {
+  .container-sm {
+    max-width: 720px;
+  }
 }
 
-.container--xl {
-  max-width: var(--container-xl, 1280px);
+@media (min-width: 992px) {
+  .container-sm {
+    max-width: 960px;
+  }
 }
 
-.container--2xl {
-  max-width: var(--container-2xl, 1440px);
+@media (min-width: 1200px) {
+  .container-sm {
+    max-width: 1140px;
+  }
 }
 
-.container--full {
-  max-width: 100%;
+@media (min-width: 1400px) {
+  .container-sm {
+    max-width: 1320px;
+  }
 }
 
-.container--padded {
+.container-md {
+ max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .container-md {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container-md {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-md {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container-md {
+    max-width: 1320px;
+  }
+}
+
+.container-lg {
+ max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 992px) {
+  .container-lg {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-lg {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container-lg {
+    max-width: 1320px;
+  }
+}
+
+.container-xl {
+ max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1200px) {
+  .container-xl {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container-xl {
+    max-width: 1320px;
+  }
+}
+
+.container-xxl {
+ max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1400px) {
+  .container-xxl {
+    max-width: 1320px;
+  }
+}
+
+/* Padding control - add padding when padding=true */
+.container--padded,
+.container-fluid.container--padded,
+.container-sm.container--padded,
+.container-md.container--padded,
+.container-lg.container--padded,
+.container-xl.container--padded,
+.container-xxl.container--padded {
   padding-left: var(--grid-gutter, 24px);
   padding-right: var(--grid-gutter, 24px);
 }

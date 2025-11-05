@@ -2,6 +2,7 @@ import React from 'react';
 
 export default {
   title: 'Foundation/Design Tokens',
+  tags: ['autodocs'],
   parameters: {
     layout: 'padded',
   },
@@ -50,7 +51,7 @@ export const Typography = {
         <TypoSample 
           name="Display" 
           style={{
-            fontFamily: 'var(--font-heading)',
+            fontFamily: 'var(--type-display-family, var(--font-heading))',
             fontSize: 'var(--type-display-size)',
             fontWeight: 'var(--type-display-weight)',
             lineHeight: 'var(--type-display-line)',
@@ -60,7 +61,7 @@ export const Typography = {
         <TypoSample 
           name="H1" 
           style={{
-            fontFamily: 'var(--font-heading)',
+            fontFamily: 'var(--type-h1-family, var(--font-heading))',
             fontSize: 'var(--type-h1-size)',
             fontWeight: 'var(--type-h1-weight)',
             lineHeight: 'var(--type-h1-line)',
@@ -70,7 +71,7 @@ export const Typography = {
         <TypoSample 
           name="H2" 
           style={{
-            fontFamily: 'var(--font-body)',
+            fontFamily: 'var(--type-h2-family, var(--font-heading))',
             fontSize: 'var(--type-h2-size)',
             fontWeight: 'var(--type-h2-weight)',
             lineHeight: 'var(--type-h2-line)',
@@ -80,7 +81,7 @@ export const Typography = {
         <TypoSample 
           name="H3" 
           style={{
-            fontFamily: 'var(--font-medium)',
+            fontFamily: 'var(--type-h3-family, var(--font-heading))',
             fontSize: 'var(--type-h3-size)',
             fontWeight: 'var(--type-h3-weight)',
             lineHeight: 'var(--type-h3-line)',
@@ -88,9 +89,39 @@ export const Typography = {
           }}
         />
         <TypoSample 
+          name="H4" 
+          style={{
+            fontFamily: 'var(--type-h4-family, var(--font-heading))',
+            fontSize: 'var(--type-h4-size)',
+            fontWeight: 'var(--type-h4-weight)',
+            lineHeight: 'var(--type-h4-line)',
+            letterSpacing: 'var(--type-h4-spacing)',
+          }}
+        />
+        <TypoSample 
+          name="H5" 
+          style={{
+            fontFamily: 'var(--type-h5-family, var(--font-heading))',
+            fontSize: 'var(--type-h5-size)',
+            fontWeight: 'var(--type-h5-weight)',
+            lineHeight: 'var(--type-h5-line)',
+            letterSpacing: 'var(--type-h5-spacing)',
+          }}
+        />
+        <TypoSample 
+          name="H6" 
+          style={{
+            fontFamily: 'var(--type-h6-family, var(--font-heading))',
+            fontSize: 'var(--type-h6-size)',
+            fontWeight: 'var(--type-h6-weight)',
+            lineHeight: 'var(--type-h6-line)',
+            letterSpacing: 'var(--type-h6-spacing)',
+          }}
+        />
+        <TypoSample 
           name="Body Large" 
           style={{
-            fontFamily: 'var(--font-body)',
+            fontFamily: 'var(--type-body-large-family, var(--font-body))',
             fontSize: 'var(--type-body-large-size)',
             fontWeight: 'var(--type-body-large-weight)',
             lineHeight: 'var(--type-body-large-line)',
@@ -100,7 +131,7 @@ export const Typography = {
         <TypoSample 
           name="Body Small" 
           style={{
-            fontFamily: 'var(--font-medium)',
+            fontFamily: 'var(--type-body-small-family, var(--font-body))',
             fontSize: 'var(--type-body-small-size)',
             fontWeight: 'var(--type-body-small-weight)',
             lineHeight: 'var(--type-body-small-line)',
@@ -110,11 +141,21 @@ export const Typography = {
         <TypoSample 
           name="Label" 
           style={{
-            fontFamily: 'var(--font-bold)',
+            fontFamily: 'var(--type-label-family, var(--font-bold))',
             fontSize: 'var(--type-label-size)',
             fontWeight: 'var(--type-label-weight)',
             lineHeight: 'var(--type-label-line)',
             letterSpacing: 'var(--type-label-spacing)',
+          }}
+        />
+        <TypoSample 
+          name="Small" 
+          style={{
+            fontFamily: 'var(--type-small-family, var(--font-body))',
+            fontSize: 'var(--type-small-size)',
+            fontWeight: 'var(--type-small-weight)',
+            lineHeight: 'var(--type-small-line)',
+            letterSpacing: 'var(--type-small-spacing)',
           }}
         />
       </div>

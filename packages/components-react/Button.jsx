@@ -21,6 +21,7 @@ export const Button = ({
   size = 'medium',
   icon = false,
   disabled = false,
+  href,
   children,
   className = '',
   ...props 
@@ -33,23 +34,47 @@ export const Button = ({
     className
   ].filter(Boolean).join(' ');
 
+  // Determine element type: use <a> if href is provided, otherwise <button>
+  const Component = href ? 'a' : 'button';
+  
+  // Prepare props based on element type
+  // Remove href from props if it exists there to avoid conflicts
+  const { href: propsHref, ...restProps } = props;
+  const componentProps = {
+    className: classes,
+    ...restProps
+  };
+
+  // Handle disabled state: for <a> tags, use aria-disabled and pointer-events
+  if (href || propsHref) {
+    const linkHref = href || propsHref;
+    // For link variant, disabled is handled via CSS and aria-disabled
+    if (disabled) {
+      componentProps['aria-disabled'] = 'true';
+      componentProps.tabIndex = -1;
+      // Don't set href when disabled to prevent navigation
+    } else {
+      componentProps.href = linkHref;
+    }
+  } else {
+    // For button variant, use native disabled attribute
+    componentProps.disabled = disabled;
+  }
+
   return (
-    <button 
-      className={classes} 
-      disabled={disabled}
-      {...props}
-    >
+    <Component {...componentProps}>
       <span className="button__label">{children}</span>
       {icon && <ArrowIcon size={size === 'large' ? 20 : 16} />}
-    </button>
+    </Component>
   );
 };
 
 Button.propTypes = {
-  variant: PropTypes.oneOf(['solid', 'outline', 'text']),
+  variant: PropTypes.oneOf(['solid', 'outline', 'text', 'inverted']),
   size: PropTypes.oneOf(['medium', 'large']),
   icon: PropTypes.bool,
   disabled: PropTypes.bool,
+  href: PropTypes.string,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
 };

@@ -1,0 +1,262 @@
+.navbar {
+  width: 100%;
+  max-width: 100%;
+  background: linear-gradient(135deg, var(--color-brand-primary) 0%, #00396D 100%);
+  color: var(--color-brand-on-primary);
+  position: relative;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  box-sizing: border-box;
+}
+
+.navbar--sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  gap: 40px; /* 40px gap between logo and links from Figma */
+  padding: 26px 0; /* 26px vertical padding from Figma */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.navbar__logo-wrapper {
+  flex-shrink: 0;
+}
+
+.navbar__logo {
+  width: 187px; /* Desktop logo width from Figma */
+  height: 54px; /* Desktop logo height from Figma */
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 50px; /* 50px gap between links from Figma */
+  flex: 1;
+  justify-content: center;
+}
+
+.navbar__link {
+  font-family: var(--type-body-large-family);
+  font-size: var(--type-body-large-size);
+  line-height: var(--type-body-large-line);
+  color: var(--color-brand-on-primary);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.navbar__link--first {
+  font-weight: 500; /* GT America Trial Md from Figma */
+  font-family: "GT America Trial Md", var(--type-body-large-family), -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
+}
+
+.navbar__link:not(.navbar__link--first) {
+  font-weight: 300; /* GT America Trial Lt from Figma */
+  font-family: "GT America Trial Lt", var(--type-body-large-family), -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
+}
+
+.navbar__link:hover {
+  opacity: 0.8;
+}
+
+.navbar__link:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.navbar__link--active {
+  opacity: 1;
+  font-weight: 500;
+}
+
+.navbar__spacer {
+  flex: 1;
+  flex-shrink: 0;
+  width: 187px; /* Match logo width for balance */
+}
+
+.navbar__menu-button {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-brand-on-primary);
+  flex-shrink: 0;
+  width: 25px; /* 25px from Figma */
+  height: 25px; /* 25px from Figma */
+}
+
+.navbar__menu-button:hover {
+  opacity: 0.8;
+}
+
+.navbar__menu-button:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Hamburger icon - using spans like Bootstrap/Tailwind pattern */
+.navbar__burger-icon {
+  width: 25px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.navbar__burger-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 1px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Transform hamburger lines to X when menu is open */
+.navbar__burger-line--open:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.navbar__burger-line--open:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.navbar__burger-line--open:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.navbar__logo-img {
+  height: 100%;
+  width: auto;
+  display: block;
+}
+
+/* Mobile menu - collapsible like Bootstrap pattern */
+.navbar__mobile-menu {
+  display: none;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  background: linear-gradient(135deg, var(--color-brand-primary) 0%, #00396D 100%);
+}
+
+.navbar__mobile-menu--open {
+  max-height: 100vh;
+  opacity: 1;
+  overflow-y: auto;
+}
+
+.navbar__mobile-menu-content {
+  padding: var(--space-4) var(--space-3);
+  background: linear-gradient(135deg, var(--color-brand-primary) 0%, #00396D 100%);
+}
+
+.navbar__mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.navbar__mobile-link {
+  font-family: var(--type-body-large-family);
+  font-size: var(--type-body-large-size);
+  line-height: var(--type-body-large-line);
+  color: var(--color-brand-on-primary);
+  text-decoration: none;
+  padding: var(--space-4) var(--space-3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+.navbar__mobile-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  opacity: 1;
+}
+
+.navbar__mobile-link:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.navbar__mobile-link--active {
+  opacity: 1;
+  font-weight: 500;
+}
+
+/* Responsive: Mobile styles */
+@media (max-width: 768px) {
+  .navbar__container {
+    padding: 20px 15px; /* 20px vertical, 15px horizontal from Figma */
+    justify-content: space-between;
+    gap: 0;
+    max-width: 100%;
+  }
+
+  .navbar__logo {
+    width: 100px !important; /* 100px width from Figma */
+    height: 36px !important; /* 36px height from Figma */
+    max-width: 100px;
+    flex-shrink: 0;
+  }
+
+  .navbar__logo svg {
+    width: 100px !important;
+    height: 36px !important;
+    max-width: 100px;
+  }
+
+  .navbar__logo--mobile {
+    width: 100px;
+    height: 36px;
+  }
+
+  .navbar__links {
+    display: none; /* Hide desktop links on mobile */
+  }
+
+  .navbar__spacer {
+    display: none; /* Hide spacer on mobile */
+  }
+
+  .navbar__menu-button {
+    display: flex; /* Show burger menu on mobile */
+    flex-shrink: 0;
+  }
+
+  .navbar__mobile-menu {
+    display: block; /* Show mobile menu overlay */
+  }
+
+}

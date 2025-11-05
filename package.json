@@ -1,6 +1,7 @@
 {
   "name": "white-label-ui-lib",
   "version": "1.0.0",
+  "type": "module",
   "description": "Unified theming system for WhiteLabel Drupal projects using a single Theme Manifest shared across Storybook, React components, and Drupal themes.",
   "main": "index.js",
   "devDependencies": {
@@ -18,8 +19,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "compile-themes": "node scripts/compile-theme.js",
+    "storybook": "npm run compile-themes && storybook dev -p 6006",
+    "build-storybook": "npm run compile-themes && storybook build"
   },
   "keywords": [],
   "author": "",

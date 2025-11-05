@@ -73,7 +73,15 @@ Validated JSON describing brand theming.
 6. **shadows** — none | sm | md | lg  
 7. **componentSizing** — per component (e.g., Hero modes)  
 8. **mediaPolicy** — allowed ratios per component  
-9. **variantsAndHooks** — which roles each component uses  
+9. **variantsAndHooks** — component variants with element types and theming hooks  
+   Each component defines variants (e.g., "button", "link") with:  
+   - `element`: HTML element type ("button", "a", "div", "span")  
+   - `roles`: Array of color role references (e.g., ["brand/primary", "brand/on-primary"])  
+   - `typography`: Typography scale reference (e.g., "label")  
+   - `spacing`: Array of spacing step indices (e.g., [2, 4])  
+   - `radii`: Border radius key (e.g., "md")  
+   Note: Element type is determined by component props (e.g., `href` prop → `<a>`, otherwise `<button>`).  
+   Both variants share the same CSS classes since they use identical theme tokens.  
 10. **a11y** — contrast pairs, focus-ring role, motion policy
 
 ### Hero Sizing Modes

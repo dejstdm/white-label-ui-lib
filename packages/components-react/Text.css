@@ -12,7 +12,7 @@
 }
 
 .text--small {
-  font-family: var(--font-medium);
+  font-family: var(--type-body-small-family, var(--font-body));
   font-size: var(--type-body-small-size);
   font-weight: var(--type-body-small-weight);
   line-height: var(--type-body-small-line);
@@ -20,7 +20,7 @@
 }
 
 .text--label {
-  font-family: var(--font-bold);
+  font-family: var(--type-label-family, var(--font-bold));
   font-size: var(--type-label-size);
   font-weight: var(--type-label-weight);
   line-height: var(--type-label-line);

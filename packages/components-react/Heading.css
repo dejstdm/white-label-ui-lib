@@ -5,7 +5,7 @@
 }
 
 .heading--display {
-  font-family: var(--font-heading);
+  font-family: var(--type-display-family, var(--font-heading));
   font-size: var(--type-display-size);
   font-weight: var(--type-display-weight);
   line-height: var(--type-display-line);
@@ -13,7 +13,7 @@
 }
 
 .heading--h1 {
-  font-family: var(--font-heading);
+  font-family: var(--type-h1-family, var(--font-heading));
   font-size: var(--type-h1-size);
   font-weight: var(--type-h1-weight);
   line-height: var(--type-h1-line);
@@ -21,7 +21,7 @@
 }
 
 .heading--h2 {
-  font-family: var(--font-body);
+  font-family: var(--type-h2-family, var(--font-heading));
   font-size: var(--type-h2-size);
   font-weight: var(--type-h2-weight);
   line-height: var(--type-h2-line);
@@ -29,23 +29,63 @@
 }
 
 .heading--h3 {
-  font-family: var(--font-medium);
+  font-family: var(--type-h3-family, var(--font-heading));
   font-size: var(--type-h3-size);
   font-weight: var(--type-h3-weight);
   line-height: var(--type-h3-line);
   letter-spacing: var(--type-h3-spacing);
 }
 
+.heading--h4 {
+  font-family: var(--type-h4-family, var(--font-heading));
+  font-size: var(--type-h4-size);
+  font-weight: var(--type-h4-weight);
+  line-height: var(--type-h4-line);
+  letter-spacing: var(--type-h4-spacing);
+}
+
+.heading--h5 {
+  font-family: var(--type-h5-family, var(--font-heading));
+  font-size: var(--type-h5-size);
+  font-weight: var(--type-h5-weight);
+  line-height: var(--type-h5-line);
+  letter-spacing: var(--type-h5-spacing);
+}
+
+.heading--h6 {
+  font-family: var(--type-h6-family, var(--font-heading));
+  font-size: var(--type-h6-size);
+  font-weight: var(--type-h6-weight);
+  line-height: var(--type-h6-line);
+  letter-spacing: var(--type-h6-spacing);
+}
+
 @media (max-width: 768px) {
   .heading--display {
-    font-size: calc(var(--type-display-size) * 0.6);
+    font-size: 58px; /* Mobile: 58px from Figma */
   }
   
   .heading--h1 {
-    font-size: calc(var(--type-h1-size) * 0.75);
+    font-size: 48px; /* Mobile: 48px from Figma */
   }
   
   .heading--h2 {
-    font-size: calc(var(--type-h2-size) * 0.8);
+    font-size: 36px; /* Mobile: 36px from Figma */
+  }
+  
+  .heading--h3 {
+    font-size: 24px; /* Mobile: 24px from Figma */
+  }
+  
+  .heading--h4 {
+    font-size: 21px; /* Mobile: 21px from Figma */
+  }
+  
+  .heading--h5 {
+    font-size: 18px; /* Mobile: 18px from Figma */
+  }
+  
+  .heading--h6 {
+    font-size: 16px; /* Mobile: 16px (sensible default, not in Figma) */
   }
 }

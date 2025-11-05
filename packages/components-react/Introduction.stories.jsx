@@ -15,7 +15,7 @@ export const Welcome = {
   render: () => (
     <div style={{ maxWidth: '800px', margin: '0 auto', padding: 'var(--space-8)' }}>
       <h1 style={{ 
-        fontFamily: 'var(--font-heading)',
+        fontFamily: 'var(--type-display-family, var(--font-heading))',
         fontSize: 'var(--type-display-size)',
         fontWeight: 'var(--type-display-weight)',
         lineHeight: 'var(--type-display-line)',
@@ -25,6 +25,7 @@ export const Welcome = {
       </h1>
       
       <p style={{
+        fontFamily: 'var(--font-body)',
         fontSize: 'var(--type-body-large-size)',
         lineHeight: 'var(--type-body-large-line)',
         color: 'var(--color-text-muted)',
@@ -36,13 +37,16 @@ export const Welcome = {
 
       <section style={{ marginBottom: 'var(--space-8)' }}>
         <h2 style={{
+          fontFamily: 'var(--type-h2-family, var(--font-heading))',
           fontSize: 'var(--type-h2-size)',
+          fontWeight: 'var(--type-h2-weight)',
           lineHeight: 'var(--type-h2-line)',
           marginBottom: 'var(--space-5)',
         }}>
           🎯 Goals
         </h2>
         <ul style={{ 
+          fontFamily: 'var(--font-body)',
           fontSize: 'var(--type-body-large-size)',
           lineHeight: 'var(--type-body-large-line)',
         }}>
@@ -56,7 +60,9 @@ export const Welcome = {
 
       <section style={{ marginBottom: 'var(--space-8)' }}>
         <h2 style={{
+          fontFamily: 'var(--type-h2-family, var(--font-heading))',
           fontSize: 'var(--type-h2-size)',
+          fontWeight: 'var(--type-h2-weight)',
           lineHeight: 'var(--type-h2-line)',
           marginBottom: 'var(--space-5)',
         }}>
@@ -88,13 +94,16 @@ export const Welcome = {
 
       <section style={{ marginBottom: 'var(--space-8)' }}>
         <h2 style={{
+          fontFamily: 'var(--type-h2-family, var(--font-heading))',
           fontSize: 'var(--type-h2-size)',
+          fontWeight: 'var(--type-h2-weight)',
           lineHeight: 'var(--type-h2-line)',
           marginBottom: 'var(--space-5)',
         }}>
           🚀 Quick Start
         </h2>
         <ol style={{ 
+          fontFamily: 'var(--font-body)',
           fontSize: 'var(--type-body-large-size)',
           lineHeight: 'var(--type-body-large-line)',
         }}>
@@ -107,13 +116,16 @@ export const Welcome = {
 
       <section>
         <h2 style={{
+          fontFamily: 'var(--type-h2-family, var(--font-heading))',
           fontSize: 'var(--type-h2-size)',
+          fontWeight: 'var(--type-h2-weight)',
           lineHeight: 'var(--type-h2-line)',
           marginBottom: 'var(--space-5)',
         }}>
           📚 Documentation
         </h2>
         <ul style={{ 
+          fontFamily: 'var(--font-body)',
           fontSize: 'var(--type-body-large-size)',
           lineHeight: 'var(--type-body-large-line)',
         }}>
@@ -136,13 +148,16 @@ const Card = ({ title, description }) => (
     border: '1px solid var(--color-border)',
   }}>
     <h3 style={{
+      fontFamily: 'var(--type-h3-family, var(--font-heading))',
       fontSize: 'var(--type-h3-size)',
       fontWeight: 'var(--type-h3-weight)',
+      lineHeight: 'var(--type-h3-line)',
       marginBottom: 'var(--space-3)',
     }}>
       {title}
     </h3>
     <p style={{
+      fontFamily: 'var(--type-body-small-family, var(--font-body))',
       fontSize: 'var(--type-body-small-size)',
       color: 'var(--color-text-muted)',
       margin: 0,

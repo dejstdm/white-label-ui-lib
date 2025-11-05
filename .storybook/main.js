@@ -3,6 +3,7 @@ export default {
     '../packages/components-react/**/*.stories.@(js|jsx|ts|tsx)',
     '../stories/**/*.stories.@(js|jsx|ts|tsx)',
   ],
+  staticDirs: ['../stories/assets'],
   addons: [
     '@storybook/addon-docs',
     '@chromatic-com/storybook',
