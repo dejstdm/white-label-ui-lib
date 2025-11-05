@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import './Hero.css';
 import { Button } from './Button';
 import { Container } from './Container';
+import { Heading } from './Heading';
+import { WysiwygContent } from './WysiwygContent';
 
 export const Hero = ({
   backgroundImage,
@@ -39,17 +41,19 @@ export const Hero = ({
           <div className="hero__text">
             {subheadline && (
               <div className="hero__subheadline">
-                <p>{subheadline}</p>
+                <WysiwygContent content={subheadline} />
               </div>
             )}
             {headline && (
               <div className="hero__headline">
-                <p>{headline}</p>
+                <Heading level={1} variant="h1">
+                  {headline}
+                </Heading>
               </div>
             )}
             {body && (
               <div className="hero__body">
-                <p>{body}</p>
+                <WysiwygContent content={body} />
               </div>
             )}
             {buttonLabel && (
@@ -72,11 +76,11 @@ export const Hero = ({
 
 Hero.propTypes = {
   backgroundImage: PropTypes.string,
-  subheadline: PropTypes.string,
-  headline: PropTypes.string,
-  body: PropTypes.string,
-  buttonLabel: PropTypes.string,
-  buttonHref: PropTypes.string,
+  subheadline: PropTypes.string, // HTML string from CMS rich text editor
+  headline: PropTypes.string, // Plain text field - not from CMS
+  body: PropTypes.string, // HTML string from CMS rich text editor
+  buttonLabel: PropTypes.string, // Plain text field for link text
+  buttonHref: PropTypes.string, // Plain text field for link URL
   buttonOnClick: PropTypes.func,
   containerBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl', null]),
   className: PropTypes.string,

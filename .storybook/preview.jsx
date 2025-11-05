@@ -1,5 +1,6 @@
 import React from 'react';
 import '../themes/default/dist/theme.css';
+import '../packages/components-react/wysiwyg-content.css';
 
 export default {
   parameters: {

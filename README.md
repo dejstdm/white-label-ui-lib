@@ -1,19 +1,18 @@
 # WhiteLabel UI Library
 
-Unified theming system for WhiteLabel Drupal projects using a single Theme Manifest shared across Storybook, React components, and Drupal themes.
+A Storybook component library with a role-based theming system. Components use theme manifests that compile to CSS variables, enabling rapid brand customization through configuration rather than code changes.
 
 ## Project Structure
 
 ```
 /
-├── src/
-│   ├── components/         # React component library
-│   ├── stories/            # Storybook stories
-│   └── styles/             # Global CSS styles
-├── .storybook/             # Storybook configuration
-├── themes/
-│   └── <brand>/           # Brand-specific theme manifests (to be implemented)
-└── docs/                   # Documentation templates
+├── packages/
+│   └── components-react/  # React component library
+├── stories/               # Storybook example stories
+├── themes/               # Brand-specific theme manifests
+│   └── <brand>/          # Theme manifests and compiled CSS
+├── .storybook/           # Storybook configuration
+└── docs/                 # Documentation templates
 ```
 
 ## Getting Started
@@ -57,18 +56,11 @@ Components use CSS variables scoped to `[data-theme="brand-x"]` selectors. Theme
 
 ### Default Theme
 
-A default theme with fallback CSS variables is included. When theme compiler is implemented, themes will be loaded from `/themes/<brand>/dist/theme.css`.
+A default theme with fallback CSS variables is included. Themes are compiled from manifest files and loaded from `/themes/<brand>/dist/theme.css`.
 
 ## Documentation
 
 - Component capability sheet template: `/docs/capability-sheet-template.md`
 - Product Requirements: `PRD.md`
 - Agent Specifications: `AGENTS.md`
-
-## Next Steps
-
-1. Implement Theme Compiler Agent (Agent 1)
-2. Implement Theme Schema package
-3. Create example theme manifest
-4. Set up Drupal theme integration (Agent 3)
 

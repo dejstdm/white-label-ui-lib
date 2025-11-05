@@ -1,18 +1,17 @@
 # WhiteLabel Theming System — Product Requirements Document (PRD)
 
 ## 0. Purpose
-Create a unified, automated theming workflow for **WhiteLabel Drupal projects** using a single **Theme Manifest** shared across:
+Create a unified, automated theming workflow for **WhiteLabel component library** using a single **Theme Manifest** that drives:
 - Storybook (component documentation + preview)
 - React component library (for Storybook)
-- Drupal base theme (Twig + CSS variables)
 
-The system must let a new brand/site be themed quickly **without writing new CSS**, only by editing a manifest.
+The system must let a new brand be themed quickly **without writing new CSS**, only by editing a manifest.
 
 ---
 
 ## 1. Problem Statement
-Current theming for WhiteLabel sites is manual and slow.  
-Although components exist in Drupal modules, every new brand requires re-styling (colors, typography, spacing).  
+Current theming for WhiteLabel components is manual and slow.  
+Every new brand requires re-styling (colors, typography, spacing).  
 No stable contract exists between design and code → inconsistencies + high cost.
 
 ---
@@ -22,7 +21,7 @@ Deliver a **role-based theming architecture** that:
 
 1. Stores all theme data in a single `theme.manifest.json`.  
 2. Compiles that manifest into reusable CSS variables (`theme.css`).  
-3. Drives Storybook previews and Drupal output from the same source.  
+3. Drives Storybook previews from the compiled theme source.  
 4. Enforces accessibility and design-system constraints automatically.
 
 ---
@@ -42,14 +41,11 @@ Deliver a **role-based theming architecture** that:
 ## 4. Core Architecture
 
 ### Structure
-- /packages
-- /theme-schema # JSON schema + CLI to compile manifest → CSS
-- /components-react # React components for Storybook
-- /drupal-theme # Drupal base theme (Twig + CSS vars)
-- /apps
-- /storybook # Docs + visual test bed
-- /theme-editor # (later) GUI editor for theme.manifest.json
-
+- `/packages/components-react` - React components for Storybook
+- `/themes/<brand>/` - Theme manifests and compiled CSS
+- `/.storybook/` - Storybook configuration (docs + visual test bed)
+- `/scripts/` - Theme compiler and build scripts
+- `/docs/` - Documentation templates
 
 ### Mount selector
 `[data-theme="brand-x"]`
@@ -121,9 +117,8 @@ Each component documented with:
 2. `theme.manifest.json` authored.  
 3. CLI validates + compiles → `theme.css`.  
 4. Storybook loads both for preview + docs.  
-5. Drupal theme imports compiled CSS variables.  
-6. CMS validates images against allowed ratios.  
-7. CI enforces schema + contrast + version checks.
+5. Components use compiled CSS variables for styling.  
+6. CI enforces schema + contrast + version checks.
 
 ---
 
@@ -178,12 +173,11 @@ Migration notes required on MAJOR.
 ---
 
 ## 13. Deliverables
-1. `theme-schema` package (validator + compiler)  
+1. Theme compiler script (validator + CSS generator)  
 2. `theme.manifest.json` (default theme)  
 3. `theme.css` output  
 4. Storybook demo (5 components + docs)  
-5. Drupal base theme using `theme.css`  
-6. Automated tests + CI config
+5. Automated tests + CI config
 
 ---
 
@@ -196,7 +190,7 @@ Migration notes required on MAJOR.
 ---
 
 ## ✅ Acceptance Criteria
-- One manifest → identical output in Storybook & Drupal  
+- One manifest → theme-driven components in Storybook  
 - All components use role-based CSS vars  
 - AA contrast verified  
 - 0 manual CSS overrides  

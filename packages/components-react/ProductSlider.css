@@ -1,0 +1,228 @@
+.product-slider {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: var(--color-bg-page, #FFFFFF);
+}
+
+.product-slider__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 30px;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.product-slider__headline {
+  width: 100%;
+  max-width: 866px;
+}
+
+.product-slider__subheadline {
+  width: 100%;
+  max-width: 866px;
+}
+
+.product-slider__wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.product-slider__swiper {
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+/* Ensure Swiper wrapper stretches slides to equal height */
+.product-slider__swiper :global(.swiper-wrapper) {
+  display: flex;
+  align-items: stretch;
+}
+
+.product-slider__slide {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.product-slider__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 413px;
+  height: 100%;
+}
+
+.product-slider__image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.product-slider__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.product-slider__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  width: 100%;
+  flex: 1;
+}
+
+.product-slider__title {
+  width: 100%;
+}
+
+.product-slider__description {
+  width: 100%;
+}
+
+/* WYSIWYG content in product slider description and subheadline - centered text */
+.product-slider__description .wysiwyg-content,
+.product-slider__subheadline.wysiwyg-content {
+  text-align: center;
+}
+
+.product-slider__button-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Navigation buttons */
+.product-slider__nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-brand-primary, #2E86FF);
+  z-index: 10;
+  padding: 0;
+  transition: opacity 0.2s ease;
+}
+
+.product-slider__nav-button:hover:not(:disabled) {
+  opacity: 0.7;
+}
+
+.product-slider__nav-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.product-slider__nav-button:focus-visible {
+  outline: 2px solid var(--color-focus-ring, #2E86FF);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.product-slider__button-prev {
+  left: -25px;
+}
+
+.product-slider__button-next {
+  right: -25px;
+}
+
+.product-slider__nav-button svg {
+  width: 20px;
+  height: auto;
+  display: block;
+}
+
+/* Swiper navigation button overrides */
+.product-slider__swiper :global(.swiper-button-disabled) {
+  opacity: 0.3;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .product-slider {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+
+  .product-slider__header {
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .product-slider__card {
+    gap: 50px;
+  }
+
+  .product-slider__image-wrapper {
+    width: 350px;
+    height: 350px;
+    padding-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .product-slider__button-prev {
+    left: -50px;
+  }
+
+  .product-slider__button-next {
+    right: -50px;
+  }
+}
+
+
+@media (min-width: 992px) {
+  .product-slider {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
+/* Mobile adjustments for navigation buttons */
+@media (max-width: 767px) {
+  .product-slider__button-prev,
+  .product-slider__button-next {
+    width: 40px;
+    height: 40px;
+  }
+
+  .product-slider__button-prev {
+    left: -10px;
+  }
+
+  .product-slider__button-next {
+    right: -10px;
+  }
+
+  .product-slider__nav-button svg {
+    width: 7px;
+    height: 12px;
+  }
+}
+

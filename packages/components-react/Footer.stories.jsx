@@ -77,7 +77,16 @@ export const Default = {
 
 export const WithCustomLogo = {
   args: {
-    logo: logoImage,
+    logo: (
+      <div style={{ 
+        color: 'white', 
+        fontSize: '24px', 
+        fontWeight: 'bold',
+        padding: '10px'
+      }}>
+        CUSTOM LOGO
+      </div>
+    ),
     socialLinks: defaultSocialLinks,
     links: defaultLinks,
     copyrightYear: '2022',
@@ -113,7 +122,8 @@ export const WithoutLinks = {
 export const Minimal = {
   args: {
     logo: logoImage,
-    socialLinks: defaultSocialLinks,
+    socialLinks: [],
+    links: [],
     copyrightYear: '2022',
   },
 };

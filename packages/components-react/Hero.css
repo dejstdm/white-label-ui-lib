@@ -74,14 +74,32 @@
   width: 100%;
 }
 
-.hero__subheadline p {
-  font-family: "GT America Trial Bd", var(--font-heading), -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.1;
+/* Style WYSIWYG content in subheadline */
+.hero__subheadline .wysiwyg-content {
+  font-family: var(--type-label-family, var(--font-bold));
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  line-height: var(--type-label-line);
+  letter-spacing: var(--type-label-spacing);
   text-transform: uppercase;
   color: var(--color-brand-on-primary);
+}
+
+.hero__subheadline .wysiwyg-content p {
   margin: 0;
+  color: var(--color-brand-on-primary);
+}
+
+.hero__subheadline .wysiwyg-content h1,
+.hero__subheadline .wysiwyg-content h2,
+.hero__subheadline .wysiwyg-content h3,
+.hero__subheadline .wysiwyg-content h4,
+.hero__subheadline .wysiwyg-content h5,
+.hero__subheadline .wysiwyg-content h6,
+.hero__subheadline .wysiwyg-content strong,
+.hero__subheadline .wysiwyg-content em,
+.hero__subheadline .wysiwyg-content a {
+  color: var(--color-brand-on-primary);
 }
 
 .hero__headline {
@@ -91,7 +109,8 @@
   width: 100%;
 }
 
-.hero__headline p {
+/* Style Heading component in headline */
+.hero__headline .heading {
   font-family: "GT America Trial Bd", var(--font-heading), -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
   font-size: 72px;
   font-weight: 700;
@@ -108,13 +127,30 @@
   min-width: 100%;
 }
 
-.hero__body p {
+/* Style WYSIWYG content in body */
+.hero__body .wysiwyg-content {
   font-family: "GT America Trial Lt", var(--font-body), -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
   font-size: 18px;
   font-weight: 300;
   line-height: 1.5;
   color: var(--color-brand-on-primary);
+}
+
+.hero__body .wysiwyg-content p {
   margin: 0;
+  color: var(--color-brand-on-primary);
+}
+
+.hero__body .wysiwyg-content h1,
+.hero__body .wysiwyg-content h2,
+.hero__body .wysiwyg-content h3,
+.hero__body .wysiwyg-content h4,
+.hero__body .wysiwyg-content h5,
+.hero__body .wysiwyg-content h6,
+.hero__body .wysiwyg-content strong,
+.hero__body .wysiwyg-content em,
+.hero__body .wysiwyg-content a {
+  color: var(--color-brand-on-primary);
 }
 
 .hero__button-wrapper {
@@ -154,19 +190,17 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .hero__headline p {
+  .hero__headline .heading {
     font-size: 48px;
   }
 
-  .hero__subheadline p {
+  .hero__subheadline .wysiwyg-content {
     font-size: 14px;
   }
 
-  .hero__body p {
+  .hero__body .wysiwyg-content {
     font-size: 16px;
   }
-
-
 
   .hero__text {
     gap: 20px;

@@ -3,11 +3,11 @@
 ---
 
 ## Agent 1 – Theme Compiler Agent
-**Goal:** Validate and compile `theme.manifest.json` → `theme.css`.
+**Goal:** Validate and compile `theme.manifest.json` → `theme.css` for Storybook themes.
 
 ### Inputs
 - `/themes/<brand>/theme.manifest.json`
-- `/packages/theme-schema/schema.json`
+- Theme schema (inline or external schema.json)
 
 ### Outputs
 - `/themes/<brand>/dist/theme.css`
@@ -18,7 +18,7 @@
 1. Validate manifest against schema.  
 2. Verify all required roles exist.  
 3. Compute contrast ratios for declared pairs → AA minimum.  
-4. Generate CSS variables scoped to `[data-theme="brand-x"]`.  
+4. Generate CSS variables scoped to `[data-theme="brand-x"]` for Storybook.  
 5. Emit `@font-face`, spacing, radii, shadow variables.  
 6. Minify and save `theme.css`.  
 7. Fail build if:  
@@ -50,33 +50,13 @@
 
 ---
 
-## Agent 3 – Drupal Packager Agent
-**Goal:** Package compiled theme for Drupal base theme.
-
-### Inputs
-- `/themes/<brand>/dist/theme.css`
-- `/packages/drupal-theme/**`
-
-### Outputs
-- `/packages/drupal-theme/brands/<brand>/theme.css`
-- `/packages/drupal-theme/brands/<brand>/manifest.json`
-
-### Tasks
-1. Copy compiled CSS into Drupal theme structure.  
-2. Update `libraries.yml` and `info.yml` entries.  
-3. Validate Twig templates use only CSS vars (not hardcoded colors).  
-4. Run AA check against key templates.  
-5. Report status to CI summary.
-
----
-
-## Agent 4 – Schema Governance Agent
+## Agent 3 – Schema Governance Agent
 **Goal:** Enforce versioning and migration rules.
 
 ### Inputs
 - `package.json` (versions)  
 - `CHANGELOG.md` entries  
-- `/packages/theme-schema/schema.json`
+- Theme schema (if defined)
 
 ### Outputs
 - Validation report  
@@ -90,7 +70,7 @@
 
 ---
 
-## Agent 5 – CI Validator Agent
+## Agent 4 – CI Validator Agent
 **Goal:** Run end-to-end checks before merge.
 
 ### Tasks
@@ -99,6 +79,7 @@
 - Run Storybook Docs Agent.  
 - Verify contrast AA pass.  
 - Run visual snapshot diff for 5 MVP components.  
+- Build Storybook static site.  
 - Fail pipeline on any error.
 
 ---
@@ -109,6 +90,8 @@
 - Reject changes that break AA accessibility.  
 - Log outputs to `/reports/agents/` directory.
 
+**Note:** Component development rules and standards (including BEM methodology, mobile-first responsive design, Container usage, CMS content handling, and HTML tag styling rules) are documented in `/packages/components-react/AGENTS.md`.
+
 ---
 
 ## Expected Workflow in Cursor
@@ -116,9 +99,8 @@
 1. Developer edits `theme.manifest.json`.  
 2. **Theme Compiler Agent** runs → `theme.css`.  
 3. **Storybook Docs Agent** refreshes docs + previews.  
-4. **Drupal Packager Agent** updates base theme.  
-5. **Schema Governance Agent** checks versions.  
-6. **CI Validator Agent** runs everything on PR.
+4. **Schema Governance Agent** checks versions.  
+5. **CI Validator Agent** runs everything on PR.
 
 **Result:**  
-One manifest → same visuals in Storybook and Drupal, fully validated, no manual CSS.
+One manifest → theme-driven components in Storybook, fully validated, no manual CSS.

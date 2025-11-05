@@ -1,0 +1,250 @@
+/* Global WYSIWYG Content Styles
+ * Styles for rich text editor output from CMS (Drupal)
+ * All components using rich text editor content should wrap it in a div with class "wysiwyg-content"
+ */
+
+.wysiwyg-content {
+  width: 100%;
+}
+
+/* Headings */
+.wysiwyg-content h1,
+.wysiwyg-content h2,
+.wysiwyg-content h3,
+.wysiwyg-content h4,
+.wysiwyg-content h5,
+.wysiwyg-content h6 {
+  margin: 0;
+}
+
+.wysiwyg-content h1 {
+  font-family: var(--type-h1-family, var(--font-heading));
+  font-size: var(--type-h1-size);
+  font-weight: var(--type-h1-weight);
+  line-height: var(--type-h1-line);
+  letter-spacing: var(--type-h1-spacing);
+}
+
+.wysiwyg-content h2 {
+  font-family: var(--type-h2-family, var(--font-heading));
+  font-size: var(--type-h2-size);
+  font-weight: var(--type-h2-weight);
+  line-height: var(--type-h2-line);
+  letter-spacing: var(--type-h2-spacing);
+}
+
+.wysiwyg-content h3 {
+  font-family: var(--type-h3-family, var(--font-heading));
+  font-size: var(--type-h3-size);
+  font-weight: var(--type-h3-weight);
+  line-height: var(--type-h3-line);
+  letter-spacing: var(--type-h3-spacing);
+}
+
+.wysiwyg-content h4 {
+  font-family: var(--type-h4-family, var(--font-heading));
+  font-size: var(--type-h4-size);
+  font-weight: var(--type-h4-weight);
+  line-height: var(--type-h4-line);
+  letter-spacing: var(--type-h4-spacing);
+}
+
+.wysiwyg-content h5 {
+  font-family: var(--type-h5-family, var(--font-heading));
+  font-size: var(--type-h5-size);
+  font-weight: var(--type-h5-weight);
+  line-height: var(--type-h5-line);
+  letter-spacing: var(--type-h5-spacing);
+}
+
+.wysiwyg-content h6 {
+  font-family: var(--type-h6-family, var(--font-heading));
+  font-size: var(--type-h6-size);
+  font-weight: var(--type-h6-weight);
+  line-height: var(--type-h6-line);
+  letter-spacing: var(--type-h6-spacing);
+}
+
+/* Paragraphs */
+.wysiwyg-content p {
+  font-family: var(--font-body);
+  font-size: var(--type-body-large-size);
+  font-weight: var(--type-body-large-weight);
+  line-height: var(--type-body-large-line);
+  letter-spacing: var(--type-body-large-spacing);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.wysiwyg-content p + p {
+  margin-top: 1em;
+}
+
+/* Lists */
+.wysiwyg-content ul,
+.wysiwyg-content ol {
+  font-family: var(--font-body);
+  font-size: var(--type-body-large-size);
+  font-weight: var(--type-body-large-weight);
+  line-height: var(--type-body-large-line);
+  color: var(--color-text-primary);
+  margin: 0;
+  padding-left: 1.5em;
+}
+
+.wysiwyg-content li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.wysiwyg-content ul {
+  list-style-type: disc;
+}
+
+.wysiwyg-content ol {
+  list-style-type: decimal;
+}
+
+.wysiwyg-content ul ul,
+.wysiwyg-content ol ol,
+.wysiwyg-content ul ol,
+.wysiwyg-content ol ul {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Links */
+.wysiwyg-content a {
+  color: var(--color-brand-primary);
+  text-decoration: underline;
+  transition: color 0.15s ease;
+}
+
+.wysiwyg-content a:hover {
+  color: #256BCC;
+  text-decoration: underline;
+}
+
+.wysiwyg-content a:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Text formatting */
+.wysiwyg-content strong,
+.wysiwyg-content b {
+  font-weight: 700;
+}
+
+.wysiwyg-content em,
+.wysiwyg-content i {
+  font-style: italic;
+}
+
+.wysiwyg-content u {
+  text-decoration: underline;
+}
+
+.wysiwyg-content code {
+  font-family: monospace;
+  font-size: 0.9em;
+  background: var(--color-bg-section, #F7F8FA);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+.wysiwyg-content pre {
+  font-family: monospace;
+  font-size: 0.9em;
+  background: var(--color-bg-section, #F7F8FA);
+  padding: 1em;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 1em 0;
+}
+
+.wysiwyg-content pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Blockquote */
+.wysiwyg-content blockquote {
+  margin: 1em 0;
+  padding-left: 1em;
+  border-left: 3px solid var(--color-brand-primary);
+  font-style: italic;
+  color: var(--color-text-muted, #6B7280);
+}
+
+/* Horizontal rule */
+.wysiwyg-content hr {
+  border: none;
+  border-top: 1px solid var(--color-border, #E5E7EB);
+  margin: 1.5em 0;
+}
+
+/* Images */
+.wysiwyg-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em 0;
+}
+
+/* Tables */
+.wysiwyg-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.wysiwyg-content th,
+.wysiwyg-content td {
+  padding: 0.5em;
+  border: 1px solid var(--color-border, #E5E7EB);
+  text-align: left;
+}
+
+.wysiwyg-content th {
+  font-weight: 600;
+  background: var(--color-bg-section, #F7F8FA);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .wysiwyg-content h1 {
+    font-size: 48px;
+  }
+
+  .wysiwyg-content h2 {
+    font-size: 36px;
+  }
+
+  .wysiwyg-content h3 {
+    font-size: 24px;
+  }
+
+  .wysiwyg-content h4 {
+    font-size: 21px;
+  }
+
+  .wysiwyg-content h5 {
+    font-size: 18px;
+  }
+
+  .wysiwyg-content h6 {
+    font-size: 16px;
+  }
+
+  .wysiwyg-content p {
+    font-size: 16px;
+  }
+
+  .wysiwyg-content ul,
+  .wysiwyg-content ol {
+    font-size: 16px;
+  }
+}
+
