@@ -1,0 +1,140 @@
+.faq {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: var(--color-bg-page, #FFFFFF);
+}
+
+.faq .wl-sec__header {
+  margin-bottom: 50px;
+  gap: 30px;
+}
+
+.faq .wl-sec__headline,
+.faq .wl-sec__subheadline {
+  max-width: 866px;
+}
+
+.faq .wl-sec__subheadline.wysiwyg-content {
+  text-align: center;
+}
+
+.faq__accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 866px;
+  margin: 0 auto;
+}
+
+.faq__item {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faq__button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.faq__button:hover {
+  background-color: var(--color-bg-hover, rgba(46, 134, 255, 0.05));
+}
+
+.faq__button:focus-visible {
+  outline: 2px solid var(--color-focus-ring, #2E86FF);
+  outline-offset: 2px;
+}
+
+.faq__question {
+  flex: 1;
+  font-family: var(--font-family-base, 'GT America Trial', sans-serif);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-brand-primary, #2E86FF);
+  min-width: 0;
+}
+
+.faq__icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-brand-primary, #2E86FF);
+  transition: transform 0.35s ease;
+}
+
+.faq__button--open .faq__icon {
+  transform: rotate(180deg);
+}
+
+.faq__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.faq__collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.faq__collapse--show {
+  max-height: 2000px;
+}
+
+.faq__content {
+  padding-bottom: 0;
+}
+
+.faq__content .wysiwyg-content {
+  margin: 0;
+}
+
+.faq__divider {
+  height: 1px;
+  background-color: var(--color-border, rgba(0, 0, 0, 0.1));
+  margin-top: 0;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .faq__icon,
+  .faq__collapse {
+    transition: none;
+  }
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .faq {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+
+  .faq .wl-sec__header {
+    margin-bottom: 75px;
+  }
+}
+
+@media (min-width: 992px) {
+  .faq {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Footer } from './Footer';
 
-// Import assets directly
+// Import assets directly (white versions for footer)
 import logoImage from '../../stories/assets/pepsicolabs_logo_inv.svg';
 import facebookIcon from '../../stories/assets/facebook.svg';
 import instagramIcon from '../../stories/assets/instagram.svg';
-import whatsappIcon from '../../stories/assets/WhatsApp.svg';
+import xTwitterIcon from '../../stories/assets/x-twitter.svg';
 
 // Social media icon component
 const SocialIcon = ({ src, alt }) => (
@@ -52,9 +52,9 @@ const defaultSocialLinks = [
     icon: <SocialIcon src={instagramIcon} alt="Instagram" />,
   },
   {
-    name: 'whatsapp',
-    href: '#whatsapp',
-    icon: <SocialIcon src={whatsappIcon} alt="WhatsApp" />,
+    name: 'x-twitter',
+    href: '#x-twitter',
+    icon: <SocialIcon src={xTwitterIcon} alt="X (Twitter)" />,
   },
 ];
 
