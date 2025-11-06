@@ -179,7 +179,22 @@ All components must be built mobile-first with responsive breakpoints:
 
 **Breakpoints:** Use standard breakpoints: 576px (sm), 768px (md), 992px (lg), 1200px (xl), 1400px (xxl)
 
-#### 4. Never Style HTML Tags Directly
+#### 4. Section Wrapper & Header Patterns
+
+- Top-level structural sections must include the shared `.wl-sec` utility class in addition to their component block class (e.g., `<section class="product-slider wl-sec">`).
+- Reuse the `SectionHeader` component for shared headline/subheadline patterns instead of duplicating wrapper markup.
+- `SectionHeader` allows you to set the semantic heading level with `headlineLevel` (defaults to `2`) while always rendering with the shared `h2` visual style, keeping typography consistent across components. Pass `align` (`left`, `center`, `right`) to control alignment without custom markup.
+- Keep header-specific spacing tweaks component-scoped (e.g., `.product-slider .wl-sec__header { margin-bottom: 50px; }`).
+
+#### 5. Slider / Carousel Navigation Rules
+
+When building slider-style components (e.g., product carousels) follow these rules:
+- Navigation controls must only render when there are more items than can be displayed at the current breakpoint. Hide arrows and disable sliding for 1 item on mobile, ≤2 items on tablet, and ≤3 items on desktop.
+- When navigation is disabled, slides must remain centered within the wrapper so the layout does not collapse to the left.
+- Keep touch/drag interactions disabled when navigation is hidden to avoid “dead” gestures.
+- Use responsive logic that derives the visible slide count from breakpoints so themes do not need to duplicate this behaviour.
+
+#### 6. Never Style HTML Tags Directly
 
 **CRITICAL:** Never style Text Formatting and Content Grouping HTML tags directly. Only add classes on wrappers and style inner tags via selectors.
 
@@ -213,7 +228,7 @@ img { max-width: 100%; }
 
 **For CMS content:** Use `WysiwygContent` component which applies global `.wysiwyg-content` styles. Component-specific overrides should target `.component-name__wrapper .wysiwyg-content h1`, etc.
 
-#### 5. Storybook Field Type Documentation
+#### 7. Storybook Field Type Documentation
 
 Document field types in PropTypes and Storybook args:
 

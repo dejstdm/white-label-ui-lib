@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './NavBar.css';
+import { Container } from './Container';
 
 const BurgerIcon = ({ isOpen }) => (
   <span className="navbar__burger-icon" aria-hidden="true">
@@ -90,7 +91,7 @@ export const NavBar = ({
   return (
     <>
       <nav className={classes} role="navigation" aria-label="Main navigation" {...props}>
-        <div className="navbar__container">
+        <Container className="navbar__inner" breakpoint={null} padding>
           <div className="navbar__logo-wrapper">
             {typeof displayLogo === 'string' ? (
               <img src={displayLogo} alt="" className="navbar__logo-img" />
@@ -149,7 +150,7 @@ export const NavBar = ({
 
           {/* Desktop spacer */}
           <div className="navbar__spacer" />
-        </div>
+        </Container>
 
         {/* Mobile menu - collapsible content */}
         <div 

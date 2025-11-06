@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Hero.css';
+import './SectionLayout.css';
 import { Button } from './Button';
 import { Container } from './Container';
 import { Heading } from './Heading';
@@ -20,6 +21,7 @@ export const Hero = ({
 }) => {
   const classes = [
     'hero',
+    'wl-sec',
     !backgroundImage ? 'hero--no-background' : '',
     className
   ].filter(Boolean).join(' ');
@@ -85,4 +87,3 @@ Hero.propTypes = {
   containerBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl', null]),
   className: PropTypes.string,
 };
-

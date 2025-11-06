@@ -6,18 +6,11 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  max-height: 100vh;
+  min-height: 70vh;
 }
 
 .hero--no-background {
   min-height: 70vh;
-}
-
-@media (max-width: 768px) {
-  .hero {
-    min-height: 70vh;
-    max-height: none;
-  }
 }
 
 .hero__background {
@@ -62,7 +55,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: var(--space-5, 20px);
   width: 100%;
   text-align: center;
 }
@@ -77,7 +70,7 @@
 /* Style WYSIWYG content in subheadline */
 .hero__subheadline .wysiwyg-content {
   font-family: var(--type-label-family, var(--font-bold));
-  font-size: var(--type-label-size);
+  font-size: clamp(0.875rem, 2.5vw, var(--type-label-size, 1rem));
   font-weight: var(--type-label-weight);
   line-height: var(--type-label-line);
   letter-spacing: var(--type-label-spacing);
@@ -85,20 +78,7 @@
   color: var(--color-brand-on-primary);
 }
 
-.hero__subheadline .wysiwyg-content p {
-  margin: 0;
-  color: var(--color-brand-on-primary);
-}
-
-.hero__subheadline .wysiwyg-content h1,
-.hero__subheadline .wysiwyg-content h2,
-.hero__subheadline .wysiwyg-content h3,
-.hero__subheadline .wysiwyg-content h4,
-.hero__subheadline .wysiwyg-content h5,
-.hero__subheadline .wysiwyg-content h6,
-.hero__subheadline .wysiwyg-content strong,
-.hero__subheadline .wysiwyg-content em,
-.hero__subheadline .wysiwyg-content a {
+.hero__subheadline .wysiwyg-content * {
   color: var(--color-brand-on-primary);
 }
 
@@ -111,11 +91,11 @@
 
 /* Style Heading component in headline */
 .hero__headline .heading {
-  font-family: "GT America Trial Bd", var(--font-heading), -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
-  font-size: 72px;
-  font-weight: 700;
-  line-height: 1.1;
   color: var(--color-brand-on-primary);
+  font-family: var(--type-h1-family, var(--font-heading));
+  font-size: clamp(3rem, 6vw, var(--type-display-size, 4.5rem));
+  font-weight: var(--type-h1-weight, 700);
+  line-height: var(--type-h1-line, 1.1);
   margin: 0;
 }
 
@@ -127,29 +107,15 @@
   min-width: 100%;
 }
 
-/* Style WYSIWYG content in body */
 .hero__body .wysiwyg-content {
-  font-family: "GT America Trial Lt", var(--font-body), -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.5;
+  font-family: var(--type-body-large-family, var(--font-body));
+  font-size: clamp(1rem, 2.8vw, var(--type-body-large-size, 1.125rem));
+  font-weight: var(--type-body-large-weight, 400);
+  line-height: var(--type-body-large-line, 1.5);
   color: var(--color-brand-on-primary);
 }
 
-.hero__body .wysiwyg-content p {
-  margin: 0;
-  color: var(--color-brand-on-primary);
-}
-
-.hero__body .wysiwyg-content h1,
-.hero__body .wysiwyg-content h2,
-.hero__body .wysiwyg-content h3,
-.hero__body .wysiwyg-content h4,
-.hero__body .wysiwyg-content h5,
-.hero__body .wysiwyg-content h6,
-.hero__body .wysiwyg-content strong,
-.hero__body .wysiwyg-content em,
-.hero__body .wysiwyg-content a {
+.hero__body .wysiwyg-content * {
   color: var(--color-brand-on-primary);
 }
 
@@ -159,51 +125,17 @@
   width: 100%;
 }
 
-/* Inverted button variant for hero */
-.hero__button-wrapper .button--inverted {
-  background: var(--color-brand-on-primary);
-  color: #2E86FF;
-  border: 2px solid transparent;
-  border-radius: 5px;
-  padding: 12px 20px;
-  font-family: "GT America Trial Md", var(--font-body), -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.1;
-  gap: 12px;
-}
-
-.hero__button-wrapper .button--inverted:hover:not(.button--disabled) {
-  background: rgba(255, 255, 255, 0.9);
-  color: #256BCC;
-}
-
-.hero__button-wrapper .button--inverted:active:not(.button--disabled) {
-  background: rgba(255, 255, 255, 0.8);
-  color: #00396D;
-}
-
-.hero__button-wrapper .button--inverted:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-}
-
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
+  .hero {
+    max-height: 100vh;
+  }
+
   .hero__headline .heading {
-    font-size: 48px;
-  }
-
-  .hero__subheadline .wysiwyg-content {
-    font-size: 14px;
-  }
-
-  .hero__body .wysiwyg-content {
-    font-size: 16px;
+    font-size: var(--type-display-size, 4.5rem);
   }
 
   .hero__text {
-    gap: 20px;
+    gap: var(--space-6, 24px);
   }
 }
-

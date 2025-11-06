@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Footer.css';
+import { Container } from './Container';
 
 const DefaultLogo = () => (
   <div className="footer__logo">
@@ -84,7 +85,7 @@ export const Footer = ({
 
   return (
     <footer className={classes} role="contentinfo" {...props}>
-      <div className="footer__container">
+      <Container className="footer__inner" breakpoint={null} padding>
         {/* Logo */}
         <div className="footer__logo-wrapper">
           {typeof displayLogo === 'string' ? (
@@ -163,7 +164,7 @@ export const Footer = ({
             <span className="footer__copyright-text">{displayCopyright}</span>
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 };

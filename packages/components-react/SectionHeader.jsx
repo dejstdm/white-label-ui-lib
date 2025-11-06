@@ -1,0 +1,55 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import './SectionLayout.css';
+import './SectionHeader.css';
+import { Heading } from './Heading';
+import { WysiwygContent } from './WysiwygContent';
+
+export const SectionHeader = ({
+  headline,
+  headlineLevel = 2,
+  subheadline,
+  align = 'center',
+  className = '',
+  ...props
+}) => {
+  if (!headline && !subheadline) {
+    return null;
+  }
+
+  const classes = [
+    'wl-sec__header',
+    align ? `wl-sec__header--${align}` : '',
+    className
+  ].filter(Boolean).join(' ');
+
+  const headingLevel = Math.min(Math.max(headlineLevel, 1), 6);
+
+  return (
+    <div className={classes} {...props}>
+      {headline && (
+        <Heading
+          level={headingLevel}
+          variant="h2"
+          className="wl-sec__headline"
+        >
+          {headline}
+        </Heading>
+      )}
+      {subheadline && (
+        <WysiwygContent
+          content={subheadline}
+          className="wl-sec__subheadline"
+        />
+      )}
+    </div>
+  );
+};
+
+SectionHeader.propTypes = {
+  headline: PropTypes.string, // Plain text field - not from CMS
+  headlineLevel: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
+  subheadline: PropTypes.string, // HTML string from CMS rich text editor
+  align: PropTypes.oneOf(['left', 'center', 'right']),
+  className: PropTypes.string,
+};

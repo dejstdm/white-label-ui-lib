@@ -5,24 +5,18 @@
   background: var(--color-bg-page, #FFFFFF);
 }
 
-.product-slider__header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 30px;
+.product-slider .wl-sec__header {
   margin-bottom: 50px;
-  width: 100%;
+  gap: 30px;
 }
 
-.product-slider__headline {
-  width: 100%;
+.product-slider .wl-sec__headline,
+.product-slider .wl-sec__subheadline {
   max-width: 866px;
 }
 
-.product-slider__subheadline {
-  width: 100%;
-  max-width: 866px;
+.product-slider .wl-sec__subheadline.wysiwyg-content {
+  text-align: center;
 }
 
 .product-slider__wrapper {
@@ -30,13 +24,21 @@
   width: 100%;
 }
 
+.product-slider__wrapper--static .product-slider__swiper .swiper-wrapper {
+  justify-content: center;
+}
+
 .product-slider__swiper {
   width: 100%;
   padding-bottom: 20px;
 }
 
+.product-slider__swiper--static {
+  cursor: default;
+}
+
 /* Ensure Swiper wrapper stretches slides to equal height */
-.product-slider__swiper :global(.swiper-wrapper) {
+.product-slider__swiper .swiper-wrapper {
   display: flex;
   align-items: stretch;
 }
@@ -116,8 +118,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,21 +148,21 @@
 }
 
 .product-slider__button-prev {
-  left: -25px;
+  left: -10px;
 }
 
 .product-slider__button-next {
-  right: -25px;
+  right: -10px;
 }
 
 .product-slider__nav-button svg {
-  width: 20px;
-  height: auto;
+  width: 7px;
+  height: 12px;
   display: block;
 }
 
 /* Swiper navigation button overrides */
-.product-slider__swiper :global(.swiper-button-disabled) {
+.product-slider__swiper .swiper-button-disabled {
   opacity: 0.3;
 }
 
@@ -187,12 +189,22 @@
     flex-shrink: 0;
   }
 
+  .product-slider__nav-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .product-slider__nav-button svg {
+    width: 20px;
+    height: auto;
+  }
+
   .product-slider__button-prev {
-    left: -50px;
+    left: -25px;
   }
 
   .product-slider__button-next {
-    right: -50px;
+    right: -25px;
   }
 }
 
@@ -202,27 +214,13 @@
     padding-top: 100px;
     padding-bottom: 100px;
   }
-}
-
-/* Mobile adjustments for navigation buttons */
-@media (max-width: 767px) {
-  .product-slider__button-prev,
-  .product-slider__button-next {
-    width: 40px;
-    height: 40px;
-  }
 
   .product-slider__button-prev {
-    left: -10px;
+    left: -50px;
   }
 
   .product-slider__button-next {
-    right: -10px;
-  }
-
-  .product-slider__nav-button svg {
-    width: 7px;
-    height: 12px;
+    right: -50px;
   }
 }
 

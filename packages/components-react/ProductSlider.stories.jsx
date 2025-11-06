@@ -105,6 +105,18 @@ export default {
         },
       },
     },
+    headlineLevel: {
+      description: 'Semantic heading level for the headline (visual style remains H2)',
+      control: { type: 'select' },
+      options: [1, 2, 3, 4, 5, 6],
+      table: {
+        type: {
+          summary: 'number',
+          detail: 'Heading level rendered as <h{n}>; default 2.',
+        },
+        defaultValue: { summary: 2 },
+      },
+    },
     subheadline: {
       description: 'HTML string from CMS rich text editor',
       control: 'text',
@@ -155,11 +167,19 @@ export const CustomHeadline = {
   },
 };
 
-export const FewProducts = {
+export const ThreeProducts = {
   args: {
     headline: 'Our Products',
     subheadline: '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p>',
     products: allProducts.slice(0, 3),
+  },
+};
+
+export const TwoProducts = {
+  args: {
+    headline: 'Our Products',
+    subheadline: '<p>Perfectly sized selection for smaller ranges</p>',
+    products: allProducts.slice(0, 2),
   },
 };
 
@@ -174,6 +194,15 @@ export const SingleProduct = {
     headline: 'Featured Product',
     subheadline: '<p>Check out our latest addition</p>',
     products: [allProducts[0]],
+  },
+};
+
+export const PrimaryHeroPlacement = {
+  args: {
+    headline: 'Welcome to Pepsi Lab',
+    headlineLevel: 1,
+    subheadline: '<p>Powered by flavor innovation and zero sugar breakthroughs.</p>',
+    products: allProducts.slice(0, 4),
   },
 };
 

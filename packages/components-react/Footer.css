@@ -6,16 +6,17 @@
   box-sizing: border-box;
 }
 
-.footer__container {
+.footer__inner {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 26px 0; /* 26px vertical padding from Figma */
-  gap: 30px; /* 30px gap between logo and icons, and icons and content */
+  padding-top: var(--space-6, 24px);
+  padding-bottom: var(--space-6, 24px);
+  padding-left: var(--space-5, 20px);
+  padding-right: var(--space-5, 20px);
+  gap: var(--space-5, 20px);
   box-sizing: border-box;
 }
 
@@ -24,8 +25,8 @@
 }
 
 .footer__logo {
-  width: 222px; /* 222.222px from Figma */
-  height: 80px; /* 80px from Figma */
+  width: 150px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,8 +39,8 @@
 
 .footer__logo-img {
   width: auto;
-  height: 80px;
-  max-width: 222px;
+  height: 54px;
+  max-width: 150px;
   display: block;
 }
 
@@ -47,7 +48,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px; /* 30px gap between social icons from Figma */
+  gap: var(--space-5, 20px);
   flex-shrink: 0;
 }
 
@@ -55,9 +56,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 25px; /* 25px from Figma */
-  height: 25px; /* 25px from Figma */
-  border-radius: 4px; /* 4px from Figma */
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
   color: var(--color-brand-on-primary);
   text-decoration: none;
   transition: opacity 0.15s ease;
@@ -86,9 +87,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px; /* 20px gap within content section from Figma */
+  gap: 20px;
   width: 100%;
-  max-width: 1320px; /* 1320px max width for content from Figma */
   flex-shrink: 0;
 }
 
@@ -96,15 +96,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 50px; /* 50px gap between links from Figma */
+  gap: var(--space-5, 20px);
   flex-wrap: wrap;
 }
 
 .footer__link {
-  font-family: "GT America Trial Md", var(--type-body-large-family), -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
-  font-size: 18px; /* 18px from Figma */
-  font-weight: 500; /* GT America Trial Md from Figma */
-  line-height: 1.5; /* 1.5 line-height from Figma */
+  font-family: var(--type-body-small-family, var(--font-body));
+  font-size: var(--type-body-small-size, 14px);
+  font-weight: var(--type-body-small-weight, 400);
+  line-height: var(--type-body-small-line, 1.5);
   color: var(--color-brand-on-primary);
   text-decoration: none;
   white-space: nowrap;
@@ -124,9 +124,8 @@
 
 .footer__separator {
   width: 100%;
-  max-width: 1440px; /* 1440px max width for line from Figma */
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.2); /* Subtle white line */
+  background-color: rgba(255, 255, 255, 0.2);
   flex-shrink: 0;
 }
 
@@ -134,58 +133,62 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* 10px gap between icon and text from Figma */
+  gap: 10px;
   flex-shrink: 0;
 }
 
 .footer__copyright-icon {
-  width: 18px; /* 18px from Figma */
-  height: 18px; /* 18px from Figma */
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
   color: var(--color-brand-on-primary);
 }
 
 .footer__copyright-text {
-  font-family: "GT America Trial Rg", var(--font-body), -apple-system, "Segoe UI", Roboto, Helvetica, sans-serif;
-  font-size: 16px; /* 16px from Figma */
-  font-weight: 400; /* GT America Trial Rg from Figma */
-  line-height: 1.6; /* 1.6 line-height from Figma */
+  font-family: var(--type-body-small-family, var(--font-body));
+  font-size: var(--type-body-small-size, 14px);
+  font-weight: var(--type-body-small-weight, 400);
+  line-height: var(--type-body-small-line, 1.6);
   color: var(--color-brand-on-primary);
   white-space: nowrap;
 }
 
-/* Responsive: Mobile styles */
-@media (max-width: 768px) {
-  .footer__container {
-    padding: 26px 20px; /* Add horizontal padding on mobile */
+@media (min-width: 768px) {
+  .footer__inner {
+    padding-top: var(--space-7, 28px);
+    padding-bottom: var(--space-7, 28px);
+    padding-left: 0;
+    padding-right: 0;
+    gap: var(--space-6, 24px);
   }
 
   .footer__logo {
-    width: 150px; /* Smaller logo on mobile */
-    height: 54px;
+    width: 222px;
+    height: 80px;
   }
 
   .footer__logo-img {
-    height: 54px;
-    max-width: 150px;
+    height: 80px;
+    max-width: 222px;
   }
 
   .footer__social {
-    gap: 24px; /* Slightly smaller gap on mobile */
+    gap: var(--space-7, 28px);
   }
 
   .footer__links {
-    gap: 24px; /* Smaller gap between links on mobile */
-    flex-direction: column;
-    align-items: center;
+    gap: var(--space-8, 32px);
   }
 
   .footer__link {
-    font-size: 16px; /* Slightly smaller font on mobile */
+    font-family: var(--type-body-large-family, var(--font-body));
+    font-size: var(--type-body-large-size, 18px);
+    font-weight: var(--type-body-large-weight, 500);
+    line-height: var(--type-body-large-line, 1.5);
   }
 
   .footer__content {
-    max-width: 100%;
+    max-width: 1320px;
   }
 }
 

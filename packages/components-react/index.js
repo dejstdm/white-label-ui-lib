@@ -6,3 +6,4 @@ export { NavBar } from './NavBar';
 export { Hero } from './Hero';
 export { ProductSlider } from './ProductSlider';
 export { WysiwygContent } from './WysiwygContent';
+export { SectionHeader } from './SectionHeader';
