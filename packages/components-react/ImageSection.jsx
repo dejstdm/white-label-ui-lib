@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -37,23 +37,6 @@ export const ImageSection = ({
   className = '',
   ...props
 }) => {
-  const isClient = typeof window !== 'undefined';
-  const [viewportWidth, setViewportWidth] = useState(() => (
-    isClient ? window.innerWidth : 0
-  ));
-
-  useEffect(() => {
-    if (!isClient) {
-      return undefined;
-    }
-
-    const handleResize = () => setViewportWidth(window.innerWidth);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, [isClient]);
-
   const shouldEnableNavigation = images.length > 1;
 
   const classes = [
