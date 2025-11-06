@@ -1,5 +1,6 @@
 import React from 'react';
 import '../themes/default/dist/theme.css';
+import '../themes/7up/dist/theme.css';
 import '../packages/components-react/wysiwyg-content.css';
 
 export default {
@@ -33,6 +34,7 @@ export default {
         icon: 'paintbrush',
         items: [
           { value: 'default', title: 'Default Theme' },
+          { value: '7up', title: '7UP Theme' },
         ],
         showName: true,
         dynamicTitle: true,

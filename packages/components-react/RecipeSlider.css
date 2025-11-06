@@ -12,11 +12,6 @@
   margin-bottom: 50px;
 }
 
-.recipe-slider .wl-sec__header {
-  margin-bottom: 0;
-  gap: 30px;
-}
-
 .recipe-slider .wl-sec__headline,
 .recipe-slider .wl-sec__subheadline {
   max-width: 866px;

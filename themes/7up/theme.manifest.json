@@ -1,0 +1,167 @@
+{
+  "meta": {
+    "brandName": "7UP",
+    "version": "1.0.0",
+    "schemaVersion": "1.0.0",
+    "notes": "7UP brand theme with vibrant lime green colors and League Gothic/PT Sans typography"
+  },
+  "palette": {
+    "brand": {
+      "primary": "#00C853",
+      "on-primary": "#FFFFFF"
+    },
+    "bg": {
+      "page": "#FFFFFF",
+      "section": "#F7F8FA"
+    },
+    "text": {
+      "primary": "#1A1A1A",
+      "muted": "#6B7280"
+    },
+    "border": "#E5E7EB",
+    "focus-ring": "#00C853",
+    "success": "#00C853",
+    "warning": "#EAB308",
+    "danger": "#DC2626"
+  },
+  "typography": {
+    "families": {
+      "heading": "\"League Gothic\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
+      "body": "\"PT Sans\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif"
+    },
+    "scales": {
+      "display": {
+        "family": "\"League Gothic\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
+        "weight": 400,
+        "size": "125px",
+        "lineHeight": "100%",
+        "letterSpacing": "0"
+      },
+      "h1": {
+        "family": "heading",
+        "weight": 400,
+        "size": "72px",
+        "lineHeight": "110%",
+        "letterSpacing": "0"
+      },
+      "h2": {
+        "family": "heading",
+        "weight": 400,
+        "size": "60px",
+        "lineHeight": "110%",
+        "letterSpacing": "0"
+      },
+      "h3": {
+        "family": "heading",
+        "weight": 400,
+        "size": "48px",
+        "lineHeight": "110%",
+        "letterSpacing": "0"
+      },
+      "h4": {
+        "family": "heading",
+        "weight": 400,
+        "size": "36px",
+        "lineHeight": "125%",
+        "letterSpacing": "0"
+      },
+      "h5": {
+        "family": "heading",
+        "weight": 400,
+        "size": "24px",
+        "lineHeight": "125%",
+        "letterSpacing": "0"
+      },
+      "h6": {
+        "family": "heading",
+        "weight": 400,
+        "size": "18px",
+        "lineHeight": "125%",
+        "letterSpacing": "0"
+      },
+      "body-large": {
+        "family": "body",
+        "weight": 400,
+        "size": "18px",
+        "lineHeight": "150%",
+        "letterSpacing": "0"
+      },
+      "body-small": {
+        "family": "body",
+        "weight": 400,
+        "size": "16px",
+        "lineHeight": "150%",
+        "letterSpacing": "0"
+      },
+      "label": {
+        "family": "body",
+        "weight": 700,
+        "size": "14px",
+        "lineHeight": "120%",
+        "letterSpacing": "1%"
+      },
+      "small": {
+        "family": "body",
+        "weight": 400,
+        "size": "12px",
+        "lineHeight": "140%",
+        "letterSpacing": "1%"
+      }
+    }
+  },
+  "spacing": [2, 4, 8, 12, 16, 24, 32, 48],
+  "radii": {
+    "none": "0",
+    "sm": "4px",
+    "md": "8px",
+    "pill": "9999px"
+  },
+  "shadows": {
+    "sm": "0 1px 2px rgba(0,0,0,0.05)",
+    "md": "0 4px 8px rgba(0,0,0,0.08)",
+    "lg": "0 8px 16px rgba(0,0,0,0.12)"
+  },
+  "grid": {
+    "columns": 12,
+    "gutter": "24px",
+    "containerMaxWidths": {
+      "sm": "640px",
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1280px",
+      "2xl": "1440px"
+    }
+  },
+  "variantsAndHooks": {
+    "Button": {
+      "variants": {
+        "button": {
+          "element": "button",
+          "roles": ["brand/primary", "brand/on-primary"],
+          "typography": "label",
+          "spacing": [2, 4],
+          "radii": "md"
+        },
+        "link": {
+          "element": "a",
+          "roles": ["brand/primary", "brand/on-primary"],
+          "typography": "label",
+          "spacing": [2, 4],
+          "radii": "md"
+        }
+      }
+    },
+    "NavBar": {
+      "variants": {
+        "default": {
+          "element": "nav",
+          "roles": ["brand/primary", "brand/on-primary"],
+          "typography": "body-large",
+          "spacing": [5, 6],
+          "radii": "none"
+        }
+      }
+    }
+  }
+}
+

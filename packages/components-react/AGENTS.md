@@ -184,7 +184,7 @@ All components must be built mobile-first with responsive breakpoints:
 - Top-level structural sections must include the shared `.wl-sec` utility class in addition to their component block class (e.g., `<section class="product-slider wl-sec">`).
 - Reuse the `SectionHeader` component for shared headline/subheadline patterns instead of duplicating wrapper markup.
 - `SectionHeader` allows you to set the semantic heading level with `headlineLevel` (defaults to `2`) while always rendering with the shared `h2` visual style, keeping typography consistent across components. Pass `align` (`left`, `center`, `right`) to control alignment without custom markup.
-- Keep header-specific spacing tweaks component-scoped (e.g., `.product-slider .wl-sec__header { margin-bottom: 50px; }`).
+- **CRITICAL:** `.wl-sec__header` must only be styled globally in `SectionHeader.css`. Never add component-scoped overrides for `.wl-sec__header` in individual component CSS files.
 
 #### 5. Slider / Carousel Navigation Rules
 

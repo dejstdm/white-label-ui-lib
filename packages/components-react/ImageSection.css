@@ -4,9 +4,6 @@
   background: var(--color-bg-page, #FFFFFF);
 }
 
-.image-section .wl-sec__header {
-  margin-bottom: 50px;
-}
 .image-section__wrapper{
 	position: relative;
 }
@@ -151,10 +148,6 @@
   .image-section {
     padding-top: 75px;
     padding-bottom: 75px;
-  }
-
-  .image-section .wl-sec__header {
-    margin-bottom: 75px;
   }
 
   .image-section__nav-button {

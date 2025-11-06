@@ -4,11 +4,6 @@
   background: var(--color-bg-page, #FFFFFF);
 }
 
-.faq .wl-sec__header {
-  margin-bottom: 50px;
-  gap: 30px;
-}
-
 .faq .wl-sec__headline,
 .faq .wl-sec__subheadline {
   max-width: 866px;
@@ -124,10 +119,6 @@
   .faq {
     padding-top: 75px;
     padding-bottom: 75px;
-  }
-
-  .faq .wl-sec__header {
-    margin-bottom: 75px;
   }
 }
 

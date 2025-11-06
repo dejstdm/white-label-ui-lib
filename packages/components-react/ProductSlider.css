@@ -4,11 +4,6 @@
   background: var(--color-bg-page, #FFFFFF);
 }
 
-.product-slider .wl-sec__header {
-  margin-bottom: 50px;
-  gap: 30px;
-}
-
 .product-slider .wl-sec__headline,
 .product-slider .wl-sec__subheadline {
   max-width: 866px;

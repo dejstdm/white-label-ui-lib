@@ -137,5 +137,6 @@
 
   .hero__text {
     gap: var(--space-6, 24px);
+    padding: var(--hero-text-padding-y, 100px) 0;
   }
 }
