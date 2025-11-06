@@ -111,6 +111,7 @@ SocialIcon.propTypes = {
 export const SocialMediaFeed = ({
   headline = 'Get Social',
   subheadline,
+  headlineLevel = 2,
   followText = 'Follow lorem ipsum',
   items = [],
   socialLinks = [],
@@ -169,6 +170,7 @@ export const SocialMediaFeed = ({
         {headline && (
           <SectionHeader
             headline={headline}
+            headlineLevel={headlineLevel}
             subheadline={subheadline}
             align="center"
             className="social-media-feed__header"
@@ -261,6 +263,7 @@ export const SocialMediaFeed = ({
 
 SocialMediaFeed.propTypes = {
   headline: PropTypes.string, // Plain text field - not from CMS
+  headlineLevel: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
   subheadline: PropTypes.string, // HTML string from CMS rich text editor
   followText: PropTypes.string, // Plain text field
   items: PropTypes.arrayOf(

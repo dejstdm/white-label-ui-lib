@@ -34,6 +34,18 @@ export default {
       control: 'text',
       description: 'Plain text field - not from CMS',
     },
+    headlineLevel: {
+      description: 'Semantic heading level for the headline (visual style remains H2)',
+      control: { type: 'select' },
+      options: [1, 2, 3, 4, 5, 6],
+      table: {
+        type: {
+          summary: 'number',
+          detail: 'Heading level rendered as <h{n}>; default 2.',
+        },
+        defaultValue: { summary: 2 },
+      },
+    },
     subheadline: {
       control: 'text',
       description: 'HTML string from CMS rich text editor',

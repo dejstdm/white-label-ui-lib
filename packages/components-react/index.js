@@ -8,3 +8,5 @@ export { ProductSlider } from './ProductSlider';
 export { RecipeSlider } from './RecipeSlider';
 export { WysiwygContent } from './WysiwygContent';
 export { SectionHeader } from './SectionHeader';
+export { TextSection } from './TextSection';
+export { ImageSection } from './ImageSection';
