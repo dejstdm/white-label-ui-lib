@@ -5,5 +5,6 @@ export { Button } from './Button';
 export { NavBar } from './NavBar';
 export { Hero } from './Hero';
 export { ProductSlider } from './ProductSlider';
+export { RecipeSlider } from './RecipeSlider';
 export { WysiwygContent } from './WysiwygContent';
 export { SectionHeader } from './SectionHeader';
