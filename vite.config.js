@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { resolve, dirname } from 'path';
+import { resolve, dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -36,8 +36,38 @@ function bundleDefaultTheme() {
   };
 }
 
+// Plugin to copy meta files to dist/meta
+function copyMetaFiles() {
+  return {
+    name: 'copy-meta-files',
+    writeBundle(options) {
+      const metaSourceDir = resolve(__dirname, 'meta');
+      const metaDestDir = resolve(options.dir, 'meta');
+      
+      // Create dist/meta directory
+      mkdirSync(metaDestDir, { recursive: true });
+      
+      // Read all files in meta directory
+      const files = readdirSync(metaSourceDir);
+      
+      files.forEach(file => {
+        if (file.endsWith('.meta.ts')) {
+          const sourcePath = join(metaSourceDir, file);
+          const destFileName = file.replace(/\.ts$/, '.js');
+          const destPath = join(metaDestDir, destFileName);
+          
+          // Copy file content and rename .ts to .js
+          // Meta files are already valid JS, just with .ts extension
+          const content = readFileSync(sourcePath, 'utf-8');
+          writeFileSync(destPath, content, 'utf-8');
+        }
+      });
+    }
+  };
+}
+
 export default defineConfig({
-  plugins: [react(), bundleDefaultTheme()],
+  plugins: [react(), bundleDefaultTheme(), copyMetaFiles()],
   build: {
     lib: {
       entry: resolve(__dirname, 'packages/components-react/index.js'),
