@@ -9,6 +9,7 @@
   "files": [
     "index.js",
     "dist",
+    "themes",
     "README.md",
     "LICENSE"
   ],

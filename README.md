@@ -104,12 +104,36 @@ import { Button } from '@dejstdm/white-label-ui';
 
 ### Importing Styles
 
-**Required:** Import the component styles CSS file in your application:
+**Required:** Import the component styles CSS file in your application. The **default theme is automatically included** and works out of the box:
 
 ```javascript
 // In your main app file (e.g., app/layout.tsx for Next.js, or index.js for Create React App)
 import '@dejstdm/white-label-ui/dist/style.css';
 ```
+
+**That's it!** Components will work immediately with the default theme. No additional setup needed.
+
+### Using Other Themes
+
+If you want to use a different theme (e.g., `7up`), import the theme CSS and apply it using the `data-theme` attribute:
+
+```javascript
+// Import the theme CSS
+import '@dejstdm/white-label-ui/themes/7up/dist/theme.css';
+
+// Apply the theme to your app
+export default function RootLayout({ children }) {
+  return (
+    <html data-theme="7up">
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+**Available themes:**
+- `default` - Automatically included, no import needed
+- `7up` - Import from `@dejstdm/white-label-ui/themes/7up/dist/theme.css`
 
 ### Swiper CSS (Required for Slider Components)
 
@@ -123,10 +147,22 @@ import 'swiper/css/pagination';  // For pagination dots (used in RecipeSlider)
 
 ### Complete Usage Example
 
+**Basic usage (default theme):**
+
 ```javascript
-// app/page.js (Next.js example)
-import { Button, Hero, NavBar } from '@dejstdm/white-label-ui';
+// app/layout.tsx (Next.js App Router)
 import '@dejstdm/white-label-ui/dist/style.css';
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>{children}</body>
+    </html>
+  );
+}
+
+// app/page.tsx
+import { Button, Hero, NavBar } from '@dejstdm/white-label-ui';
 import 'swiper/css';  // If using slider components
 import 'swiper/css/navigation';
 
@@ -136,7 +172,7 @@ export default function HomePage() {
       <NavBar />
       <Hero 
         headline="Welcome"
-        body="This is a hero section"
+        body="<p>This is a hero section</p>"
       />
       <Button variant="solid" size="large">
         Click Me
@@ -146,14 +182,32 @@ export default function HomePage() {
 }
 ```
 
+**Using a different theme:**
+
+```javascript
+// app/layout.tsx
+import '@dejstdm/white-label-ui/dist/style.css';
+import '@dejstdm/white-label-ui/themes/7up/dist/theme.css';
+
+export default function RootLayout({ children }) {
+  return (
+    <html data-theme="7up">
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
 ### Builder.io Integration
 
 This package is designed to work with Builder.io and other visual page builders. Components are pre-built and ready to use:
 
 1. Install the package and peer dependencies
-2. Import components in your Builder.io component registry
-3. Import the CSS file in your application root
-4. Components will work out of the box
+2. Import the CSS file in your application root (e.g., `app/layout.tsx`)
+3. Import components in your Builder.io component registry
+4. Components will work out of the box with the default theme
+
+**No additional theme setup required** - the default theme is automatically included and applied at the root level.
 
 ## Components
 
