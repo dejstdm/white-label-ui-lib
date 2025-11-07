@@ -4,7 +4,8 @@
   "private": false,
   "type": "module",
   "description": "A Storybook component library with a role-based theming system. Components use theme manifests that compile to CSS variables, enabling rapid brand customization through configuration rather than code changes.",
-  "main": "index.js",
+  "main": "dist/white-label-ui.js",
+  "module": "dist/white-label-ui.js",
   "files": [
     "index.js",
     "dist",
@@ -16,7 +17,8 @@
   },
   "peerDependencies": {
     "react": ">=18",
-    "react-dom": ">=18"
+    "react-dom": ">=18",
+    "swiper": "^12.0.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.2",
@@ -24,15 +26,19 @@
     "@storybook/addon-docs": "^10.0.3",
     "@storybook/addon-vitest": "^10.0.3",
     "@storybook/react-vite": "^10.0.3",
+    "@vitejs/plugin-react": "^4.2.0",
     "prop-types": "^15.8.1",
     "storybook": "^10.0.3",
     "swiper": "^12.0.3",
+    "vite": "^5.0.0",
     "vitest": "^4.0.6",
     "playwright": "^1.56.1",
     "@vitest/browser-playwright": "^4.0.6",
     "@vitest/coverage-v8": "^4.0.6"
   },
   "scripts": {
+    "build": "vite build",
+    "prepublishOnly": "npm run build",
     "compile-themes": "node scripts/compile-theme.js",
     "storybook": "npm run compile-themes && storybook dev -p 6006",
     "build-storybook": "npm run compile-themes && storybook build"

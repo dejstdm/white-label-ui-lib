@@ -1,3 +1,3 @@
-// Re-export all components from the components-react package
-export * from './packages/components-react/index.js';
+// Re-export all components from the built dist package
+export * from './dist/white-label-ui.js';
 
