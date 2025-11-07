@@ -93,14 +93,17 @@ npm install react react-dom swiper
 Import components from the package:
 
 ```javascript
-import { Button, Hero, NavBar, Container, Heading, Text } from '@dejstdm/white-label-ui';
+import { NavBar, Hero, Footer, TextSection, ImageSection, ProductSlider, RecipeSlider, FAQ, SocialMediaFeed } from '@dejstdm/white-label-ui';
 ```
 
 You can import individual components for better tree-shaking:
 
 ```javascript
-import { Button } from '@dejstdm/white-label-ui';
+import { NavBar } from '@dejstdm/white-label-ui';
+import { Hero } from '@dejstdm/white-label-ui';
 ```
+
+**Note:** Only standalone page-level components are exported. Internal building blocks like `Container`, `Button`, `Heading`, and `Text` are not exported as they are used internally by the exported components.
 
 ### Importing Styles
 
@@ -162,22 +165,43 @@ export default function RootLayout({ children }) {
 }
 
 // app/page.tsx
-import { Button, Hero, NavBar } from '@dejstdm/white-label-ui';
+import { Hero, NavBar, TextSection } from '@dejstdm/white-label-ui';
 import 'swiper/css';  // If using slider components
 import 'swiper/css/navigation';
 
 export default function HomePage() {
+  // Navigation items array
+  const navItems = [
+    { label: 'Home', href: '/', active: true },
+    { label: 'Products', href: '/products' },
+    { label: 'About', href: '/about' },
+    { label: 'Contact', href: '/contact' },
+  ];
+
   return (
-    <div>
-      <NavBar />
-      <Hero 
-        headline="Welcome"
-        body="<p>This is a hero section</p>"
+    <>
+      {/* NavBar - sticky navigation with items */}
+      <NavBar 
+        items={navItems}
+        sticky={true}
       />
-      <Button variant="solid" size="large">
-        Click Me
-      </Button>
-    </div>
+      
+      {/* Hero section - each component manages its own Container internally */}
+      <Hero 
+        backgroundImage="/path/to/hero-image.jpg"
+        subheadline="<p>Welcome to our site</p>"
+        headline="Amazing Products for Everyone"
+        body="<p>Discover our collection of high-quality products designed to make your life better.</p>"
+        buttonLabel="Shop Now"
+        buttonHref="/products"
+      />
+      
+      {/* TextSection - also has Container built-in, no need to wrap */}
+      <TextSection 
+        headline="About Us"
+        content="<p>We are a company dedicated to excellence...</p>"
+      />
+    </>
   );
 }
 ```
@@ -209,35 +233,40 @@ This package is designed to work with Builder.io and other visual page builders.
 
 **No additional theme setup required** - the default theme is automatically included and applied at the root level.
 
+**Important:** Components are designed to be used as standalone page-level sections. Each component manages its own internal layout using the `Container` component internally. Do not wrap components with `Container` - it's handled automatically.
+
 ## Components
 
-The following components are available in the library:
+The following components are available in the library. All components are standalone page-level components that manage their own internal layout and styling:
 
-### Core Components
-- **Container** - Layout container component
-- **Heading** - Typography heading component
-- **Text** - Typography text component
-- **Button** - Button component with variants
+### Navigation & Layout
+- **NavBar** - Navigation bar component with sticky option, menu items, and mobile-responsive burger menu
+- **Footer** - Footer component with logo, links, and content sections
 
-### Layout Components
-- **NavBar** - Navigation bar component
-- **Hero** - Hero section component
-- **Footer** - Footer component
-- **SectionHeader** - Section header component
-- **SectionLayout** - Section layout component
+### Hero Section
+- **Hero** - Full-width hero section with background image, headline, body content, and optional button
 
-### Content Components
-- **TextSection** - Text content section
-- **ImageSection** - Image content section
-- **WysiwygContent** - WYSIWYG content renderer
+### Content Sections
+- **TextSection** - Text content section with headline and WYSIWYG content
+- **ImageSection** - Image gallery section with optional slider/carousel functionality
 
 ### Feature Components
-- **ProductSlider** - Product carousel/slider
-- **RecipeSlider** - Recipe carousel/slider
-- **FAQ** - FAQ accordion component
+- **ProductSlider** - Product carousel/slider with navigation controls
+- **RecipeSlider** - Recipe carousel/slider with navigation and pagination
+- **FAQ** - FAQ accordion component with expandable questions/answers
 - **SocialMediaFeed** - Social media feed component
 
-All components include Storybook stories and are exported from the built package. Source files are in `packages/components-react/`.
+### Internal Components (Not Exported)
+
+The following components are used internally and are not part of the public API:
+- **Container** - Layout container (used internally by all section components)
+- **Heading** - Typography heading (used internally by Hero and sections)
+- **Text** - Typography text component (internal primitive)
+- **Button** - Button component (used internally by Hero, sliders, and social feed)
+- **WysiwygContent** - WYSIWYG content renderer (used internally for CMS content)
+- **SectionHeader** - Section header component (used internally by section components)
+
+All components include Storybook stories. Source files are in `packages/components-react/`.
 
 ## Theming System
 
