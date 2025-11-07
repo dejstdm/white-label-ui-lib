@@ -49,6 +49,8 @@ Thumbs.db
 .env.test.local
 .env.production.local
 
+.npmrc
+
 # Build & cache
 .cache/
 .parcel-cache/
