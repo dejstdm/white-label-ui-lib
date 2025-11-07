@@ -10,6 +10,7 @@
     "index.js",
     "dist",
     "themes",
+    "meta",
     "README.md",
     "LICENSE"
   ],

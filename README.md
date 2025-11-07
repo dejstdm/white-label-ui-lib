@@ -233,7 +233,80 @@ This package is designed to work with Builder.io and other visual page builders.
 
 **No additional theme setup required** - the default theme is automatically included and applied at the root level.
 
-**Important:** Components are designed to be used as standalone page-level sections. Each component manages its own internal layout using the `Container` component internally. Do not wrap components with `Container` - it's handled automatically.
+### Builder.io Fusion Integration
+
+This package includes metadata files for Builder.io Fusion, enabling AI-powered page generation using your components.
+
+#### Setup
+
+1. **Install the package:**
+```bash
+npm install @dejstdm/white-label-ui
+```
+
+2. **Create `fusion.config.ts` in your project root** (not in the package, in your consuming project):
+```typescript
+import { defineAgent } from '@builder.io/fusion';
+
+export default defineAgent({
+  name: 'white-label-ui-agent',
+  designSystem: {
+    path: './node_modules/@dejstdm/white-label-ui',
+    components: './node_modules/@dejstdm/white-label-ui/dist',
+    metadata: './node_modules/@dejstdm/white-label-ui/meta/*.meta.ts',
+  },
+  constraints: { 
+    maxDepth: 6, 
+    allowedCategories: ['layout', 'display', 'navigation'],
+    disallowRawHtml: true 
+  },
+  guidance: {
+    brandVoice: 'clean, modern, minimal',
+    layoutGoals: ['balanced whitespace', 'clear hierarchy'],
+    a11yGoals: ['focus-visible', 'sufficient contrast', 'semantic headings']
+  }
+});
+```
+
+3. **Import CSS in your app root:**
+```javascript
+// app/layout.tsx (Next.js)
+import '@dejstdm/white-label-ui/dist/style.css';
+import 'swiper/css';  // If using slider components
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+```
+
+4. **Register components in Builder.io:**
+```javascript
+// Register components with Builder.io
+import { 
+  NavBar, Hero, Footer, TextSection, ImageSection,
+  ProductSlider, RecipeSlider, FAQ, SocialMediaFeed 
+} from '@dejstdm/white-label-ui';
+
+// Add to Builder.io component registry
+Builder.registerComponent(NavBar, { name: 'NavBar', ... });
+// ... register other components
+```
+
+#### Component Categories
+
+- **Navigation**: `NavBar`, `Footer`
+- **Layout**: `Hero`
+- **Display**: `TextSection`, `ImageSection`, `ProductSlider`, `RecipeSlider`, `FAQ`, `SocialMediaFeed`
+
+#### Metadata Maintenance
+
+**Important:** When creating new components or updating existing component props:
+
+1. **Create/Update metadata file**: Create a new `*.meta.ts` file in the `meta/` directory (or update existing one)
+2. **Match PropTypes**: Ensure metadata props match component PropTypes exactly
+3. **Update exports**: Add component to `packages/components-react/index.js` exports
+4. **Rebuild**: Run `npm run build` to include changes
+5. **Test**: Verify metadata loads correctly in Fusion
+
+Metadata files use the Builder.io Fusion `defineComponentMeta` format and must be kept in sync with component PropTypes.
 
 ## Components
 
