@@ -71,3 +71,5 @@ reports/
 # Optional: Keep package-lock.json but ignore others
 # Uncomment if you want to track package-lock.json
 # !package-lock.json
+
+*:Zone.Identifier
