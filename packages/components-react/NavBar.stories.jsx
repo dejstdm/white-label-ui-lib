@@ -52,7 +52,7 @@ export const Default = {
 export const WithActiveLink = {
   render: Template,
   args: {
-    logoSrc: pepsicoLogo,
+    logoSrc: "/packages/components-react/assets/lays-logo.png",
     logoAlt: 'PepsiCo Labs logo',
     items: [
       { label: 'Link1', href: '#link1', active: true },

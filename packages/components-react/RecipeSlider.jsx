@@ -112,7 +112,9 @@ export const RecipeSlider = ({
             )}
           </div>
         )}
-        
+        </Container>
+        <div className="recipe-slider__container">
+        <Container breakpoint={containerBreakpoint} padding>
         {recipes.length > 0 && (
           <div className={wrapperClasses}>
             <Swiper
@@ -209,6 +211,7 @@ export const RecipeSlider = ({
           </div>
         )}
       </Container>
+      </div>
     </section>
   );
 };

@@ -137,7 +137,7 @@ export const ProductSlider = ({
                       {product.buttonLabel && (
                         <div className="product-slider__button-wrapper">
                           <Button
-                            variant="outline"
+                            variant="solid"
                             href={product.buttonHref}
                             onClick={product.buttonOnClick}
                           >
@@ -151,7 +151,7 @@ export const ProductSlider = ({
               ))}
             </Swiper>
             {shouldEnableNavigation && (
-              <>
+              <div className="product-slider__nav-buttons">
                 <button
                   className="product-slider__button-prev product-slider__nav-button"
                   aria-label="Previous products"
@@ -194,7 +194,7 @@ export const ProductSlider = ({
                     />
                   </svg>
                 </button>
-              </>
+              </div>
             )}
           </div>
         )}

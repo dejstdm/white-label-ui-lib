@@ -8,7 +8,11 @@
   "palette": {
     "brand": {
       "primary": "#FDD20A",
-      "on-primary": "#1A1A1A"
+      "primary-hover": "#F4C20A",
+      "primary-active": "#DAA505",
+      "primary-disabled": "#FBE88F",
+      "on-primary": "#1A1A1A",
+      "on-primary-disabled": "#8C6A00"
     },
     "bg": {
       "page": "#FFF9E6",
