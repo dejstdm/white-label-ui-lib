@@ -1,6 +1,6 @@
 {
   "name": "@dejstdm/white-label-ui",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": false,
   "type": "module",
   "description": "A Storybook component library with a role-based theming system. Components use theme manifests that compile to CSS variables, enabling rapid brand customization through configuration rather than code changes.",
