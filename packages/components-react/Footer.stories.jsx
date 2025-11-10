@@ -1,8 +1,5 @@
 import React from 'react';
 import { Footer } from './Footer';
-
-// Import assets directly (white versions for footer)
-import logoImage from '../../stories/assets/pepsicolabs_logo_inv.svg';
 import facebookIcon from '../../stories/assets/facebook.svg';
 import instagramIcon from '../../stories/assets/instagram.svg';
 import xTwitterIcon from '../../stories/assets/x-twitter.svg';
@@ -21,6 +18,10 @@ export default {
       control: false,
       description: 'Logo component or image URL',
     },
+    brand: {
+      control: false,
+      description: 'Brand key used to resolve default logo',
+    },
     socialLinks: {
       control: 'object',
       description: 'Array of social media link objects with name, href, and icon',
@@ -38,6 +39,13 @@ export default {
       description: 'Copyright year (used if copyright prop is not provided)',
     },
   },
+};
+
+const Template = (args, { globals }) => {
+  const theme = globals?.theme || 'default';
+  const brand = args.brand ?? theme;
+
+  return <Footer {...args} brand={brand} />;
 };
 
 const defaultSocialLinks = [
@@ -67,8 +75,8 @@ const defaultLinks = [
 ];
 
 export const Default = {
+  render: Template,
   args: {
-    logo: logoImage,
     socialLinks: defaultSocialLinks,
     links: defaultLinks,
     copyrightYear: '2022',
@@ -76,6 +84,7 @@ export const Default = {
 };
 
 export const WithCustomLogo = {
+  render: Template,
   args: {
     logo: (
       <div style={{ 
@@ -94,8 +103,8 @@ export const WithCustomLogo = {
 };
 
 export const WithCustomCopyright = {
+  render: Template,
   args: {
-    logo: logoImage,
     socialLinks: defaultSocialLinks,
     links: defaultLinks,
     copyright: '2024 All Rights Reserved',
@@ -103,8 +112,8 @@ export const WithCustomCopyright = {
 };
 
 export const WithoutSocialLinks = {
+  render: Template,
   args: {
-    logo: logoImage,
     socialLinks: [],
     links: defaultLinks,
     copyrightYear: '2022',
@@ -112,16 +121,16 @@ export const WithoutSocialLinks = {
 };
 
 export const WithoutLinks = {
+  render: Template,
   args: {
-    logo: logoImage,
     socialLinks: defaultSocialLinks,
     copyrightYear: '2022',
   },
 };
 
 export const Minimal = {
+  render: Template,
   args: {
-    logo: logoImage,
     socialLinks: [],
     links: [],
     copyrightYear: '2022',

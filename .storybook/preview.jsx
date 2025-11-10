@@ -1,6 +1,7 @@
 import React from 'react';
 import '../themes/default/dist/theme.css';
 import '../themes/7up/dist/theme.css';
+import '../themes/lays/dist/theme.css';
 import '../packages/components-react/wysiwyg-content.css';
 
 export default {
@@ -35,6 +36,7 @@ export default {
         items: [
           { value: 'default', title: 'Default Theme' },
           { value: '7up', title: '7UP Theme' },
+          { value: 'lays', title: "Lay's Theme" },
         ],
         showName: true,
         dynamicTitle: true,

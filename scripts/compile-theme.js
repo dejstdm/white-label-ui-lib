@@ -16,10 +16,52 @@ function hexToRgb(hex) {
     : null;
 }
 
+function isGradient(value) {
+  return typeof value === 'string' && /gradient\(/i.test(value);
+}
+
+function normalizeBackgroundEntry(value, roleName, warnings) {
+  if (!value) {
+    warnings.push(`Background role "${roleName}" is empty or undefined.`);
+    return { fill: null, fallback: null };
+  }
+
+  if (typeof value === 'string') {
+    const fill = value;
+    const fallback = isGradient(fill) ? null : fill;
+    if (isGradient(fill) && !fallback) {
+      warnings.push(`Background role "${roleName}" uses a gradient without a fallback color.`);
+    }
+    return { fill, fallback };
+  }
+
+  if (typeof value === 'object') {
+    const fill = value.fill ?? value.value ?? value.background ?? null;
+    const fallback =
+      value.fallback ??
+      (fill && !isGradient(fill) ? fill : null);
+
+    if (!fill) {
+      warnings.push(`Background role "${roleName}" is missing a "fill" value.`);
+      return { fill: null, fallback: null };
+    }
+
+    if (isGradient(fill) && !fallback) {
+      warnings.push(`Background role "${roleName}" uses a gradient without a fallback color.`);
+    }
+
+    return { fill, fallback };
+  }
+
+  warnings.push(`Background role "${roleName}" has an unsupported value type.`);
+  return { fill: null, fallback: null };
+}
+
 function generateCSS(manifest) {
   // Get theme name from directory name (e.g., "default" from "themes/default")
   const themePath = manifest.__filepath || '';
   const themeName = path.basename(themePath) || 'default';
+  const warnings = [];
   
   let css = `/* Theme: ${manifest.meta.brandName} */
 /* Generated from theme.manifest.json */
@@ -41,8 +83,16 @@ function generateCSS(manifest) {
   // Background colors
   if (manifest.palette.bg) {
     Object.entries(manifest.palette.bg).forEach(([key, value]) => {
-      css += `  --color-bg-${key}: ${value};\n`;
-      const rgb = hexToRgb(value);
+      const { fill, fallback } = normalizeBackgroundEntry(value, `bg/${key}`, warnings);
+      if (!fill) {
+        return;
+      }
+      css += `  --color-bg-${key}: ${fill};\n`;
+      if (fallback) {
+        css += `  --color-bg-${key}-fallback: ${fallback};\n`;
+      }
+      const rgbSource = fallback || fill;
+      const rgb = hexToRgb(rgbSource);
       if (rgb) {
         css += `  --color-bg-${key}-rgb: ${rgb.r}, ${rgb.g}, ${rgb.b};\n`;
       }
@@ -182,6 +232,11 @@ function generateCSS(manifest) {
   }
 
   css += `}\n`;
+
+  if (warnings.length > 0) {
+    console.warn('\n⚠ Theme compilation warnings:');
+    warnings.forEach((warning) => console.warn(`  - ${warning}`));
+  }
 
   return css;
 }

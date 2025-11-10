@@ -68,6 +68,18 @@ Storybook will open at `http://localhost:6006`
 - `npm run build-storybook` - Build static Storybook site (compiles themes automatically)
 - `npm run compile-themes` - Compile all theme manifests to CSS
 
+### Publishing to npm
+
+Follow this flow when you want to release a new version to GitHub Packages:
+
+1. Ensure your git worktree is clean: `git status`
+2. Bump the version and generate a tag: `npm version patch` (or `minor`/`major`)
+3. (Optional) Refresh dependencies: `npm install --ignore-scripts`
+4. Compile themes so `themes/*/dist/theme.css` are current: `npm run compile-themes`
+5. Build the library: `npm run build`
+6. Publish: `npm publish` (your `.npmrc` already points `@dejstdm` to GitHub Packages)
+7. Push commit and tag: `git push && git push --tags`
+
 ## Using the Package in Your Project
 
 ### Installation
@@ -137,6 +149,13 @@ export default function RootLayout({ children }) {
 **Available themes:**
 - `default` - Automatically included, no import needed
 - `7up` - Import from `@dejstdm/white-label-ui/themes/7up/dist/theme.css`
+- `lays` - Import from `@dejstdm/white-label-ui/themes/lays/dist/theme.css`
+
+### Brand Logos
+
+- `NavBar` and `Footer` accept an optional `brand` prop (defaults to `default`) that selects the right logo without having to pass image URLs.
+- The `BrandLogo` helper resolves the same assets and can be used anywhere you need to render a theme-specific mark.
+- Logo assets live under `packages/components-react/assets/` to keep stories and runtime imports aligned with the published package.
 
 ### Swiper CSS (Required for Slider Components)
 
@@ -315,6 +334,7 @@ The following components are available in the library. All components are standa
 ### Navigation & Layout
 - **NavBar** - Navigation bar component with sticky option, menu items, and mobile-responsive burger menu
 - **Footer** - Footer component with logo, links, and content sections
+- **BrandLogo** - Theme-aware brand mark helper that resolves the correct logo asset based on `brand` or `data-theme`
 
 ### Hero Section
 - **Hero** - Full-width hero section with background image, headline, body content, and optional button
@@ -356,6 +376,18 @@ Each theme in `/themes/<brand>/` contains:
 The manifest includes:
 - **Meta**: Brand name, version, schema version
 - **Palette**: Brand colors, backgrounds, text colors, semantic colors
+- Background roles accept either a string (solid color or gradient) or an object with `fill` (gradient/string) and `fallback` (solid color used for contrast + legacy support). The compiler emits `--color-bg-*-fallback` only when a fallback is provided.
+- Example:
+  ```json
+  "palette": {
+    "bg": {
+      "hero": {
+        "fill": "linear-gradient(135deg, #102542 0%, #2B748E 100%)",
+        "fallback": "#1E4865"
+      }
+    }
+  }
+  ```
 - **Typography**: Font families and scales (display, h1-h6, body, label, small)
 - **Spacing**: Spacing scale array
 - **Radii**: Border radius values

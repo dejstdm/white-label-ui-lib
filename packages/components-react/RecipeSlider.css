@@ -4,6 +4,10 @@
   background: var(--color-bg-page, #FFFFFF);
 }
 
+[data-theme="lays"] .recipe-slider {
+  background: none;
+}
+
 .recipe-slider__header-wrapper {
   display: flex;
   flex-direction: column;

@@ -4,6 +4,10 @@
   background: var(--color-bg-page, #FFFFFF);
 }
 
+[data-theme="lays"] .image-section {
+  background: none;
+}
+
 .image-section__wrapper{
 	position: relative;
 }

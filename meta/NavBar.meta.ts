@@ -11,6 +11,12 @@ export default defineComponentMeta({
       description: 'Logo component or image URL. Defaults to PEPSICO LABS logo if not provided.',
       required: false,
     },
+    brand: {
+      type: 'string',
+      description: 'Brand key used to resolve packaged logo assets (e.g. "default", "7up", "lays"). Only used when logo prop is not provided.',
+      required: false,
+      defaultValue: 'default',
+    },
     items: {
       type: 'array',
       description: 'Array of navigation items',

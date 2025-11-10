@@ -15,6 +15,7 @@ export const Hero = ({
   buttonLabel,
   buttonHref,
   buttonOnClick,
+  align = 'left',
   containerBreakpoint = null,
   className = '',
   ...props
@@ -23,6 +24,7 @@ export const Hero = ({
     'hero',
     'wl-sec',
     !backgroundImage ? 'hero--no-background' : '',
+    `hero--align-${align}`,
     className
   ].filter(Boolean).join(' ');
 
@@ -61,7 +63,6 @@ export const Hero = ({
             {buttonLabel && (
               <div className="hero__button-wrapper">
                 <Button
-                  variant="inverted"
                   href={buttonHref}
                   onClick={buttonOnClick}
                 >
@@ -85,5 +86,6 @@ Hero.propTypes = {
   buttonHref: PropTypes.string, // Plain text field for link URL
   buttonOnClick: PropTypes.func,
   containerBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl', null]),
+  align: PropTypes.oneOf(['left', 'center']),
   className: PropTypes.string,
 };

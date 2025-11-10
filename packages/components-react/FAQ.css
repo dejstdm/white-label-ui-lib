@@ -4,6 +4,10 @@
   background: var(--color-bg-page, #FFFFFF);
 }
 
+[data-theme="lays"] .faq {
+  background: none;
+}
+
 .faq .wl-sec__headline,
 .faq .wl-sec__subheadline {
   max-width: 866px;

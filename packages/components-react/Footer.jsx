@@ -2,40 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Footer.css';
 import { Container } from './Container';
-
-const DefaultLogo = () => (
-  <div className="footer__logo">
-    <svg
-      width="222"
-      height="80"
-      viewBox="0 0 222 80"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="PEPSICO LABS"
-    >
-      <text
-        x="0"
-        y="30"
-        fontFamily="Arial, sans-serif"
-        fontSize="20"
-        fontWeight="bold"
-        fill="currentColor"
-      >
-        PEPSICO
-      </text>
-      <text
-        x="0"
-        y="55"
-        fontFamily="Arial, sans-serif"
-        fontSize="16"
-        fontWeight="bold"
-        fill="currentColor"
-      >
-        LABS
-      </text>
-    </svg>
-  </div>
-);
+import { BrandLogo } from './BrandLogo';
 
 const SocialIcon = ({ name, href, icon, ...props }) => {
   if (href) {
@@ -67,6 +34,7 @@ SocialIcon.propTypes = {
 
 export const Footer = ({
   logo,
+  brand = 'default',
   socialLinks = [],
   links = [],
   copyright = '2022 PEPSICO',
@@ -79,7 +47,13 @@ export const Footer = ({
     className
   ].filter(Boolean).join(' ');
 
-  const displayLogo = logo || <DefaultLogo />;
+  const displayLogo =
+    logo ||
+    (
+      <div className="footer__logo">
+        <BrandLogo brand={brand} className="footer__logo-img" />
+      </div>
+    );
 
   const displayCopyright = copyright || `${copyrightYear} PEPSICO`;
 
@@ -171,6 +145,7 @@ export const Footer = ({
 
 Footer.propTypes = {
   logo: PropTypes.node,
+  brand: PropTypes.string,
   socialLinks: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,

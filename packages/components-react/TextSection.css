@@ -4,6 +4,10 @@
   background: var(--color-bg-page, #FFFFFF);
 }
 
+[data-theme="lays"] .text-section {
+  background: none;
+}
+
 .text-section__content {
   width: 100%;
   max-width: 866px;

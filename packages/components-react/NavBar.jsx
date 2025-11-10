@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './NavBar.css';
 import { Container } from './Container';
+import { BrandLogo } from './BrandLogo';
 
 const BurgerIcon = ({ isOpen }) => (
   <span className="navbar__burger-icon" aria-hidden="true">
@@ -11,42 +12,9 @@ const BurgerIcon = ({ isOpen }) => (
   </span>
 );
 
-const DefaultLogo = () => (
-  <div className="navbar__logo">
-    <svg
-      width="187"
-      height="54"
-      viewBox="0 0 148 54"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="PEPSICO LABS"
-    >
-      <text
-        x="0"
-        y="20"
-        fontFamily="Arial, sans-serif"
-        fontSize="14"
-        fontWeight="bold"
-        fill="currentColor"
-      >
-        PEPSICO
-      </text>
-      <text
-        x="0"
-        y="35"
-        fontFamily="Arial, sans-serif"
-        fontSize="12"
-        fontWeight="bold"
-        fill="currentColor"
-      >
-        LABS
-      </text>
-    </svg>
-  </div>
-);
-
 export const NavBar = ({
   logo,
+  brand = 'default',
   items = [],
   sticky = false,
   className = '',
@@ -86,7 +54,13 @@ export const NavBar = ({
     className
   ].filter(Boolean).join(' ');
 
-  const displayLogo = logo || <DefaultLogo />;
+  const displayLogo =
+    logo ||
+    (
+      <div className="navbar__logo">
+        <BrandLogo brand={brand} className="navbar__logo-img" />
+      </div>
+    );
 
   return (
     <>
@@ -201,6 +175,7 @@ export const NavBar = ({
 
 NavBar.propTypes = {
   logo: PropTypes.node,
+  brand: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,

@@ -4,6 +4,10 @@
   background: var(--color-bg-page, #FFFFFF);
 }
 
+[data-theme="lays"] .product-slider {
+  background: none;
+}
+
 .product-slider .wl-sec__headline,
 .product-slider .wl-sec__subheadline {
   max-width: 866px;
