@@ -1,24 +1,29 @@
 .product-slider {
+  background-color: var(--color-brand-primary);
   padding-top: 50px;
   padding-bottom: 50px;
-  background: var(--color-bg-page, #FFFFFF);
+  position: relative;
+  position: relative;
+  /* background: var(--color-bg-page, #FFFFFF); */
 }
 
-[data-theme="lays"] .product-slider {
+/* [data-theme="lays"] .product-slider {
   background: none;
-}
+} */
 
 .product-slider .wl-sec__headline,
 .product-slider .wl-sec__subheadline {
   max-width: 866px;
 }
-
+.product-slider .heading {
+  color: var(--color-danger);
+}
 .product-slider .wl-sec__subheadline.wysiwyg-content {
   text-align: center;
 }
 
 .product-slider__wrapper {
-  position: relative;
+  /* position: relative; */
 }
 
 .product-slider__wrapper--static .product-slider__swiper .swiper-wrapper {
@@ -97,24 +102,35 @@
   justify-content: center;
   margin-top: auto;
 }
-
+.product-slider__button-wrapper .button{
+  background-color: var(--color-danger);
+  color: white;
+  font-weight: 700;
+}
+.product-slider__button-wrapper .button:hover{
+  background-color: #d31b0d;
+}
 /* Navigation buttons */
+.product-slider__nav-buttons{
+
+}
 .product-slider__nav-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
   border: none;
   cursor: pointer;
-  color: var(--color-brand-primary, #2E86FF);
+  color: white;
   z-index: 10;
   padding: 0;
   transition: opacity 0.2s ease;
+  background-color:  var(--color-danger);
 }
 
 .product-slider__nav-button:hover:not(:disabled) {
@@ -181,16 +197,16 @@
   }
 
   .product-slider__nav-button svg {
-    width: 20px;
+    width: 12px;
     height: auto;
   }
 
   .product-slider__button-prev {
-    left: calc(-1 * var(--space-3, 12px));
+    left: 0;
   }
 
   .product-slider__button-next {
-    right: calc(-1 * var(--space-3, 12px));
+    right: 0;
   }
 }
 
@@ -202,11 +218,11 @@
   }
 
   .product-slider__button-prev {
-    left: calc(-1 * var(--space-4, 16px));
+    left: 0;
   }
 
   .product-slider__button-next {
-    right: calc(-1 * var(--space-4, 16px));
+    right: 0;
   }
 }
 

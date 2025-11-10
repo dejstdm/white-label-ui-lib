@@ -84,12 +84,13 @@ export const NavBar = ({
                 if (item.href) {
                   return (
                     <a
+                     
                       key={index}
                       href={item.href}
                       className={linkClasses}
                       aria-current={item.active ? 'page' : undefined}
                     >
-                      {item.label}
+                      <span  data-text={item.label} className="navbar__link-text">{item.label}</span>
                     </a>
                   );
                 }

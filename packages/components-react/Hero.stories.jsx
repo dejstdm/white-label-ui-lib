@@ -1,8 +1,6 @@
 import React from 'react';
 import { Hero } from './Hero';
-
-// Image from Figma - using the localhost URL provided by Figma MCP
-const heroBackgroundImage = 'http://localhost:3845/assets/8fb9639b4efbbec4a0d7d0e7c6e8e40c840bbbff.png';
+import laysHeroBackground from '../../stories/assets/theme-lays/lays-de-header-desktop.jpg';
 
 export default {
   title: 'Components/Hero',
@@ -73,7 +71,7 @@ export default {
 
 export const Default = {
   args: {
-    backgroundImage: heroBackgroundImage,
+    backgroundImage: laysHeroBackground,
     subheadline: '<p>Sed ut perspiciatis unde omnis</p>', // HTML from CMS
     headline: 'Lorem ipsum dolor sit amet, consectetur adipi scing elit', // Plain text
     body: '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>', // HTML from CMS
@@ -84,7 +82,7 @@ export const Default = {
 
 export const WithoutButton = {
   args: {
-    backgroundImage: heroBackgroundImage,
+    backgroundImage: laysHeroBackground,
     subheadline: '<p>Sed ut perspiciatis unde omnis</p>', // HTML from CMS
     headline: 'Lorem ipsum dolor sit amet, consectetur adipi scing elit', // Plain text
     body: '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>', // HTML from CMS
@@ -93,7 +91,7 @@ export const WithoutButton = {
 
 export const Minimal = {
   args: {
-    backgroundImage: heroBackgroundImage,
+    backgroundImage: laysHeroBackground,
     headline: 'Lorem ipsum dolor sit amet', // Plain text
   },
 };
