@@ -15,6 +15,7 @@ export const Hero = ({
   buttonLabel,
   buttonHref,
   buttonOnClick,
+  buttonVariant = 'auto',
   align = 'left',
   containerBreakpoint = null,
   className = '',
@@ -63,6 +64,10 @@ export const Hero = ({
             {buttonLabel && (
               <div className="hero__button-wrapper">
                 <Button
+                  variant={buttonVariant === 'auto'
+                    ? (backgroundImage ? 'inverted' : 'solid')
+                    : buttonVariant
+                  }
                   href={buttonHref}
                   onClick={buttonOnClick}
                 >
@@ -85,6 +90,7 @@ Hero.propTypes = {
   buttonLabel: PropTypes.string, // Plain text field for link text
   buttonHref: PropTypes.string, // Plain text field for link URL
   buttonOnClick: PropTypes.func,
+  buttonVariant: PropTypes.oneOf(['auto', 'solid', 'outline', 'text', 'inverted']),
   containerBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl', null]),
   align: PropTypes.oneOf(['left', 'center']),
   className: PropTypes.string,

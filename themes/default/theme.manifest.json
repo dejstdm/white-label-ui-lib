@@ -81,7 +81,7 @@
       },
       "body-large": {
         "family": "body",
-        "weight": 400,
+        "weight": 300,
         "size": "18px",
         "lineHeight": "150%",
         "letterSpacing": "0"
@@ -94,11 +94,11 @@
         "letterSpacing": "0"
       },
       "label": {
-        "family": "\"GT America Bd\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
-        "weight": 600,
-        "size": "14px",
-        "lineHeight": "120%",
-        "letterSpacing": "1%"
+        "family": "heading",
+        "weight": 700,
+        "size": "16px",
+        "lineHeight": "110%",
+        "letterSpacing": "0"
       },
       "small": {
         "family": "body",

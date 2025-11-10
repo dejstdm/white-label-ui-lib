@@ -78,7 +78,7 @@ Follow this flow when you want to release a new version to GitHub Packages:
 4. Compile themes so `themes/*/dist/theme.css` are current: `npm run compile-themes`
 5. Build the library: `npm run build`
 6. Publish: `npm publish` (your `.npmrc` already points `@dejstdm` to GitHub Packages)
-7. Push commit and tag: `git push && git push --tags`
+7. Push commit and tag: `git push && git push --tags` (first push: `git push --set-upstream origin main && git push --tags`)
 
 ## Using the Package in Your Project
 
