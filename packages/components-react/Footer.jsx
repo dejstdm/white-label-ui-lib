@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Footer.css';
 import { Container } from './Container';
-import { BrandLogo } from './BrandLogo';
+import { resolveDefaultLogo } from './assets/defaultLogos';
 
 const SocialIcon = ({ name, href, icon, ...props }) => {
   if (href) {
@@ -33,7 +33,8 @@ SocialIcon.propTypes = {
 };
 
 export const Footer = ({
-  logo,
+  logoSrc,
+  logoAlt = '',
   brand = 'default',
   socialLinks = [],
   links = [],
@@ -47,13 +48,17 @@ export const Footer = ({
     className
   ].filter(Boolean).join(' ');
 
-  const displayLogo =
-    logo ||
-    (
-      <div className="footer__logo">
-        <BrandLogo brand={brand} className="footer__logo-img" />
-      </div>
-    );
+  const fallbackLogo = resolveDefaultLogo(brand);
+  const displayLogo = (logoSrc ?? fallbackLogo?.src) ? (
+    <div className="footer__logo">
+      <img
+        src={logoSrc ?? fallbackLogo?.src}
+        alt={logoAlt || fallbackLogo?.alt || ''}
+        className="footer__logo-img"
+        loading="lazy"
+      />
+    </div>
+  ) : null;
 
   const displayCopyright = copyright || `${copyrightYear} PEPSICO`;
 
@@ -61,13 +66,7 @@ export const Footer = ({
     <footer className={classes} role="contentinfo" {...props}>
       <Container className="footer__inner" breakpoint={null} padding>
         {/* Logo */}
-        <div className="footer__logo-wrapper">
-          {typeof displayLogo === 'string' ? (
-            <img src={displayLogo} alt="" className="footer__logo-img" />
-          ) : (
-            displayLogo
-          )}
-        </div>
+        <div className="footer__logo-wrapper">{displayLogo}</div>
 
         {/* Social Media Icons */}
         {socialLinks.length > 0 && (
@@ -144,7 +143,8 @@ export const Footer = ({
 };
 
 Footer.propTypes = {
-  logo: PropTypes.node,
+  logoSrc: PropTypes.string,
+  logoAlt: PropTypes.string,
   brand: PropTypes.string,
   socialLinks: PropTypes.arrayOf(
     PropTypes.shape({

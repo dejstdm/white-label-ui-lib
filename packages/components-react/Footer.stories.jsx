@@ -14,13 +14,20 @@ export default {
   component: Footer,
   tags: ['autodocs'],
   argTypes: {
-    logo: {
-      control: false,
-      description: 'Logo component or image URL',
+    logoSrc: {
+      control: 'text',
+      description: 'Image URL displayed in the footer logo block.',
+    },
+    logoAlt: {
+      control: 'text',
+      description: 'Accessible alternate text for the footer logo image.',
     },
     brand: {
-      control: false,
-      description: 'Brand key used to resolve default logo',
+      control: {
+        type: 'select',
+      },
+      options: ['default', '7up', 'lays'],
+      description: 'Theme key used to load the built-in fallback logo.',
     },
     socialLinks: {
       control: 'object',
@@ -41,12 +48,7 @@ export default {
   },
 };
 
-const Template = (args, { globals }) => {
-  const theme = globals?.theme || 'default';
-  const brand = args.brand ?? theme;
-
-  return <Footer {...args} brand={brand} />;
-};
+const Template = (args) => <Footer {...args} />;
 
 const defaultSocialLinks = [
   {
@@ -77,25 +79,19 @@ const defaultLinks = [
 export const Default = {
   render: Template,
   args: {
+    brand: 'default',
     socialLinks: defaultSocialLinks,
     links: defaultLinks,
     copyrightYear: '2022',
   },
 };
 
-export const WithCustomLogo = {
+export const WithCustomLogoImage = {
   render: Template,
   args: {
-    logo: (
-      <div style={{ 
-        color: 'white', 
-        fontSize: '24px', 
-        fontWeight: 'bold',
-        padding: '10px'
-      }}>
-        CUSTOM LOGO
-      </div>
-    ),
+    logoSrc: 'https://via.placeholder.com/180x54?text=Custom+Logo',
+    logoAlt: 'Custom brand logo',
+    brand: undefined,
     socialLinks: defaultSocialLinks,
     links: defaultLinks,
     copyrightYear: '2022',
@@ -105,6 +101,7 @@ export const WithCustomLogo = {
 export const WithCustomCopyright = {
   render: Template,
   args: {
+    brand: 'default',
     socialLinks: defaultSocialLinks,
     links: defaultLinks,
     copyright: '2024 All Rights Reserved',
@@ -114,6 +111,7 @@ export const WithCustomCopyright = {
 export const WithoutSocialLinks = {
   render: Template,
   args: {
+    brand: 'default',
     socialLinks: [],
     links: defaultLinks,
     copyrightYear: '2022',
@@ -123,6 +121,7 @@ export const WithoutSocialLinks = {
 export const WithoutLinks = {
   render: Template,
   args: {
+    brand: 'default',
     socialLinks: defaultSocialLinks,
     copyrightYear: '2022',
   },
@@ -131,8 +130,29 @@ export const WithoutLinks = {
 export const Minimal = {
   render: Template,
   args: {
+    brand: 'default',
     socialLinks: [],
     links: [],
+    copyrightYear: '2022',
+  },
+};
+
+export const LaysTheme = {
+  render: Template,
+  args: {
+    brand: 'lays',
+    socialLinks: defaultSocialLinks,
+    links: defaultLinks,
+    copyrightYear: '2022',
+  },
+};
+
+export const SevenUpTheme = {
+  render: Template,
+  args: {
+    brand: '7up',
+    socialLinks: defaultSocialLinks,
+    links: defaultLinks,
     copyrightYear: '2022',
   },
 };

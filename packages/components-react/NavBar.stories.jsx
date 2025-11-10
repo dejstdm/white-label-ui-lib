@@ -6,6 +6,21 @@ export default {
   component: NavBar,
   tags: ['autodocs'],
   argTypes: {
+    logoSrc: {
+      control: 'text',
+      description: 'Image URL for the navigation logo.',
+    },
+    logoAlt: {
+      control: 'text',
+      description: 'Accessible alternate text for the logo image.',
+    },
+    brand: {
+      control: {
+        type: 'select',
+      },
+      options: ['default', '7up', 'lays'],
+      description: 'Theme key used to load the built-in fallback logo.',
+    },
     items: {
       control: 'object',
       description: 'Array of navigation items',
@@ -14,18 +29,10 @@ export default {
       control: 'boolean',
       description: 'Make NavBar sticky/fixed at top',
     },
-    brand: {
-      control: false,
-      description: 'Brand key used to resolve default logo',
-    },
   },
 };
 
-const Template = (args, { globals }) => {
-  const theme = globals?.theme || 'default';
-
-  return <NavBar {...args} brand={args.brand ?? theme} />;
-};
+const Template = (args) => <NavBar {...args} />;
 
 const defaultItems = [
   { label: 'Link1', href: '#link1' },
@@ -38,6 +45,7 @@ const defaultItems = [
 export const Default = {
   render: Template,
   args: {
+    brand: 'default',
     items: defaultItems,
     sticky: false,
   },
@@ -46,6 +54,7 @@ export const Default = {
 export const WithActiveLink = {
   render: Template,
   args: {
+    brand: 'default',
     items: [
       { label: 'Link1', href: '#link1', active: true },
       { label: 'Link2', href: '#link2' },
@@ -60,32 +69,25 @@ export const WithActiveLink = {
 export const Sticky = {
   render: Template,
   args: {
+    brand: 'default',
     items: defaultItems,
     sticky: true,
   },
 };
 
-export const WithCustomLogo = {
+export const WithCustomLogoImage = {
   render: Template,
   args: {
+    logoSrc: 'https://via.placeholder.com/160x48?text=Custom+Logo',
+    logoAlt: 'Custom brand logo',
+    brand: undefined,
     items: defaultItems,
-    logo: (
-      <div style={{ 
-        color: 'white', 
-        fontSize: '18px', 
-        fontWeight: 'bold',
-        padding: '10px'
-      }}>
-        CUSTOM LOGO
-      </div>
-    ),
     sticky: false,
   },
 };
 
 export const ResponsiveDemo = {
-  render: (args, { globals }) => {
-    const theme = globals?.theme || 'default';
+  render: (args) => {
     return (
       <div
         style={{
@@ -117,7 +119,7 @@ export const ResponsiveDemo = {
           </p>
         </div>
 
-        <NavBar {...args} brand={theme} items={defaultItems} sticky />
+        <NavBar {...args} items={defaultItems} sticky />
 
         <div
           style={{
@@ -159,6 +161,25 @@ export const MobileView = {
     },
   },
   args: {
+    brand: 'default',
+    items: defaultItems,
+    sticky: false,
+  },
+};
+
+export const LaysTheme = {
+  render: Template,
+  args: {
+    brand: 'lays',
+    items: defaultItems,
+    sticky: false,
+  },
+};
+
+export const SevenUpTheme = {
+  render: Template,
+  args: {
+    brand: '7up',
     items: defaultItems,
     sticky: false,
   },

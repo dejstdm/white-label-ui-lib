@@ -8,16 +8,20 @@ export default defineComponentMeta({
     'Footer with brand logo, social accounts, navigation links, and legal copy.',
 
   props: {
-    logo: {
-      type: 'node',
-      description:
-        'React node or image URL for the brand mark. Defaults to the PEPSICO LABS lockup when omitted.',
+    logoSrc: {
+      type: 'string',
+      description: 'Image URL for the footer logo. When omitted a theme-based default is used.',
       required: false,
+    },
+    logoAlt: {
+      type: 'string',
+      description: 'Accessible alternate text for the footer logo image (defaults to the theme logo alt).',
+      required: false,
+      defaultValue: '',
     },
     brand: {
       type: 'string',
-      description:
-        'Brand key used to resolve the packaged logo assets (e.g. "default", "7up", "lays"). Only used when logo prop is not provided.',
+      description: 'Theme key used to select the built-in default logo (e.g. "default", "7up", "lays").',
       required: false,
       defaultValue: 'default',
     },
