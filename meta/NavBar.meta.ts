@@ -6,16 +6,16 @@ export default defineComponentMeta({
   displayName: 'Navigation Bar',
   description: 'Navigation bar component with sticky option, menu items, and mobile-responsive burger menu.',
   props: {
-    logo: {
-      type: 'node',
-      description: 'Logo component or image URL. Defaults to PEPSICO LABS logo if not provided.',
+    logoSrc: {
+      type: 'string',
+      description: 'Image URL for the navigation logo. When omitted, no logo is rendered.',
       required: false,
     },
-    brand: {
+    logoAlt: {
       type: 'string',
-      description: 'Brand key used to resolve packaged logo assets (e.g. "default", "7up", "lays"). Only used when logo prop is not provided.',
+      description: 'Accessible alternate text for the navigation logo image.',
       required: false,
-      defaultValue: 'default',
+      defaultValue: '',
     },
     items: {
       type: 'array',

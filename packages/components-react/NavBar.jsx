@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './NavBar.css';
 import { Container } from './Container';
-import { BrandLogo } from './BrandLogo';
 
 const BurgerIcon = ({ isOpen }) => (
   <span className="navbar__burger-icon" aria-hidden="true">
@@ -13,8 +12,8 @@ const BurgerIcon = ({ isOpen }) => (
 );
 
 export const NavBar = ({
-  logo,
-  brand = 'default',
+  logoSrc,
+  logoAlt = '',
   items = [],
   sticky = false,
   className = '',
@@ -54,25 +53,22 @@ export const NavBar = ({
     className
   ].filter(Boolean).join(' ');
 
-  const displayLogo =
-    logo ||
-    (
-      <div className="navbar__logo">
-        <BrandLogo brand={brand} className="navbar__logo-img" />
-      </div>
-    );
+  const displayLogo = logoSrc ? (
+    <div className="navbar__logo">
+      <img
+        src={logoSrc}
+        alt={logoAlt}
+        className="navbar__logo-img"
+        loading="lazy"
+      />
+    </div>
+  ) : null;
 
   return (
     <>
       <nav className={classes} role="navigation" aria-label="Main navigation" {...props}>
         <Container className="navbar__inner" breakpoint={null} padding>
-          <div className="navbar__logo-wrapper">
-            {typeof displayLogo === 'string' ? (
-              <img src={displayLogo} alt="" className="navbar__logo-img" />
-            ) : (
-              displayLogo
-            )}
-          </div>
+          {displayLogo && <div className="navbar__logo-wrapper">{displayLogo}</div>}
 
           {/* Desktop navigation links */}
           {items.length > 0 && (
@@ -174,8 +170,8 @@ export const NavBar = ({
 };
 
 NavBar.propTypes = {
-  logo: PropTypes.node,
-  brand: PropTypes.string,
+  logoSrc: PropTypes.string,
+  logoAlt: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,

@@ -153,9 +153,9 @@ export default function RootLayout({ children }) {
 
 ### Brand Logos
 
-- `NavBar` and `Footer` accept an optional `brand` prop (defaults to `default`) that selects the right logo without having to pass image URLs.
-- The `BrandLogo` helper resolves the same assets and can be used anywhere you need to render a theme-specific mark.
-- Logo assets live under `packages/components-react/assets/` to keep stories and runtime imports aligned with the published package.
+- `NavBar` and `Footer` expose simple `logoSrc` and `logoAlt` props for dropping in any brand mark.
+- Provide whatever image URL your integration needs; the components render it inside `.navbar__logo` and `.footer__logo` using a native `<img>` tag.
+- Omit `logoSrc` when you want to hide the brand mark entirely. No fallback logo is rendered automatically.
 
 ### Swiper CSS (Required for Slider Components)
 
@@ -334,7 +334,6 @@ The following components are available in the library. All components are standa
 ### Navigation & Layout
 - **NavBar** - Navigation bar component with sticky option, menu items, and mobile-responsive burger menu
 - **Footer** - Footer component with logo, links, and content sections
-- **BrandLogo** - Theme-aware brand mark helper that resolves the correct logo asset based on `brand` or `data-theme`
 
 ### Hero Section
 - **Hero** - Full-width hero section with background image, headline, body content, and optional button

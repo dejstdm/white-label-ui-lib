@@ -3,6 +3,9 @@ import { Footer } from './Footer';
 import facebookIcon from '../../stories/assets/facebook.svg';
 import instagramIcon from '../../stories/assets/instagram.svg';
 import xTwitterIcon from '../../stories/assets/x-twitter.svg';
+import pepsicoLogo from './assets/pepsicolabs_logo.png';
+import laysLogo from './assets/lays-logo.png';
+import sevenUpLogo from './assets/logo-7up.png';
 
 // Social media icon component
 const SocialIcon = ({ src, alt }) => (
@@ -14,13 +17,13 @@ export default {
   component: Footer,
   tags: ['autodocs'],
   argTypes: {
-    logo: {
-      control: false,
-      description: 'Logo component or image URL',
+    logoSrc: {
+      control: 'text',
+      description: 'Image URL displayed in the footer logo block.',
     },
-    brand: {
-      control: false,
-      description: 'Brand key used to resolve default logo',
+    logoAlt: {
+      control: 'text',
+      description: 'Accessible alternate text for the footer logo image.',
     },
     socialLinks: {
       control: 'object',
@@ -41,12 +44,7 @@ export default {
   },
 };
 
-const Template = (args, { globals }) => {
-  const theme = globals?.theme || 'default';
-  const brand = args.brand ?? theme;
-
-  return <Footer {...args} brand={brand} />;
-};
+const Template = (args) => <Footer {...args} />;
 
 const defaultSocialLinks = [
   {
@@ -77,25 +75,8 @@ const defaultLinks = [
 export const Default = {
   render: Template,
   args: {
-    socialLinks: defaultSocialLinks,
-    links: defaultLinks,
-    copyrightYear: '2022',
-  },
-};
-
-export const WithCustomLogo = {
-  render: Template,
-  args: {
-    logo: (
-      <div style={{ 
-        color: 'white', 
-        fontSize: '24px', 
-        fontWeight: 'bold',
-        padding: '10px'
-      }}>
-        CUSTOM LOGO
-      </div>
-    ),
+    logoSrc: pepsicoLogo,
+    logoAlt: 'PepsiCo Labs logo',
     socialLinks: defaultSocialLinks,
     links: defaultLinks,
     copyrightYear: '2022',
@@ -105,6 +86,8 @@ export const WithCustomLogo = {
 export const WithCustomCopyright = {
   render: Template,
   args: {
+    logoSrc: pepsicoLogo,
+    logoAlt: 'PepsiCo Labs logo',
     socialLinks: defaultSocialLinks,
     links: defaultLinks,
     copyright: '2024 All Rights Reserved',
@@ -114,6 +97,8 @@ export const WithCustomCopyright = {
 export const WithoutSocialLinks = {
   render: Template,
   args: {
+    logoSrc: pepsicoLogo,
+    logoAlt: 'PepsiCo Labs logo',
     socialLinks: [],
     links: defaultLinks,
     copyrightYear: '2022',
@@ -123,6 +108,8 @@ export const WithoutSocialLinks = {
 export const WithoutLinks = {
   render: Template,
   args: {
+    logoSrc: pepsicoLogo,
+    logoAlt: 'PepsiCo Labs logo',
     socialLinks: defaultSocialLinks,
     copyrightYear: '2022',
   },
@@ -131,8 +118,43 @@ export const WithoutLinks = {
 export const Minimal = {
   render: Template,
   args: {
+    logoSrc: pepsicoLogo,
+    logoAlt: 'PepsiCo Labs logo',
     socialLinks: [],
     links: [],
+    copyrightYear: '2022',
+  },
+};
+
+export const LaysTheme = {
+  render: Template,
+  args: {
+    logoSrc: laysLogo,
+    logoAlt: "Lay's logo",
+    socialLinks: defaultSocialLinks,
+    links: defaultLinks,
+    copyrightYear: '2022',
+  },
+};
+
+export const SevenUpTheme = {
+  render: Template,
+  args: {
+    logoSrc: sevenUpLogo,
+    logoAlt: '7UP logo',
+    socialLinks: defaultSocialLinks,
+    links: defaultLinks,
+    copyrightYear: '2022',
+  },
+};
+
+export const WithoutLogo = {
+  render: Template,
+  args: {
+    logoSrc: undefined,
+    logoAlt: '',
+    socialLinks: defaultSocialLinks,
+    links: defaultLinks,
     copyrightYear: '2022',
   },
 };

@@ -1,11 +1,23 @@
 import React from 'react';
 import { NavBar } from './NavBar';
+import pepsicoLogo from './assets/pepsicolabs_logo-white.png';
+import pepsicoColorLogo from './assets/pepsicolabs_logo.png';
+import laysLogo from './assets/lays-logo.png';
+import sevenUpLogo from './assets/logo-7up.png';
 
 export default {
   title: 'Components/NavBar',
   component: NavBar,
   tags: ['autodocs'],
   argTypes: {
+    logoSrc: {
+      control: 'text',
+      description: 'Image URL for the navigation logo.',
+    },
+    logoAlt: {
+      control: 'text',
+      description: 'Accessible alternate text for the logo image.',
+    },
     items: {
       control: 'object',
       description: 'Array of navigation items',
@@ -14,18 +26,10 @@ export default {
       control: 'boolean',
       description: 'Make NavBar sticky/fixed at top',
     },
-    brand: {
-      control: false,
-      description: 'Brand key used to resolve default logo',
-    },
   },
 };
 
-const Template = (args, { globals }) => {
-  const theme = globals?.theme || 'default';
-
-  return <NavBar {...args} brand={args.brand ?? theme} />;
-};
+const Template = (args) => <NavBar {...args} />;
 
 const defaultItems = [
   { label: 'Link1', href: '#link1' },
@@ -38,6 +42,8 @@ const defaultItems = [
 export const Default = {
   render: Template,
   args: {
+    logoSrc: pepsicoLogo,
+    logoAlt: 'PepsiCo Labs logo',
     items: defaultItems,
     sticky: false,
   },
@@ -46,6 +52,8 @@ export const Default = {
 export const WithActiveLink = {
   render: Template,
   args: {
+    logoSrc: pepsicoLogo,
+    logoAlt: 'PepsiCo Labs logo',
     items: [
       { label: 'Link1', href: '#link1', active: true },
       { label: 'Link2', href: '#link2' },
@@ -60,105 +68,38 @@ export const WithActiveLink = {
 export const Sticky = {
   render: Template,
   args: {
+    logoSrc: pepsicoColorLogo,
+    logoAlt: 'PepsiCo Labs logo',
     items: defaultItems,
     sticky: true,
   },
 };
 
-export const WithCustomLogo = {
+export const LaysTheme = {
   render: Template,
   args: {
+    logoSrc: laysLogo,
+    logoAlt: "Lay's logo",
     items: defaultItems,
-    logo: (
-      <div style={{ 
-        color: 'white', 
-        fontSize: '18px', 
-        fontWeight: 'bold',
-        padding: '10px'
-      }}>
-        CUSTOM LOGO
-      </div>
-    ),
     sticky: false,
   },
 };
 
-export const ResponsiveDemo = {
-  render: (args, { globals }) => {
-    const theme = globals?.theme || 'default';
-    return (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 'var(--space-8)',
-          minHeight: '200vh',
-        }}
-      >
-        <div style={{ marginBottom: 'var(--space-4)' }}>
-          <h3
-            style={{
-              marginBottom: 'var(--space-4)',
-              color: 'var(--color-text-primary)',
-              fontFamily: 'var(--font-heading)',
-            }}
-          >
-            Responsive NavBar
-          </h3>
-          <p
-            style={{
-              color: 'var(--color-text-muted)',
-              marginBottom: 'var(--space-6)',
-            }}
-          >
-            Resize the browser window to see the responsive behavior. On mobile (≤768px), the navigation
-            links are hidden and a burger menu appears. Click the burger menu to open the mobile
-            navigation overlay.
-          </p>
-        </div>
-
-        <NavBar {...args} brand={theme} items={defaultItems} sticky />
-
-        <div
-          style={{
-            padding: 'var(--space-8)',
-            background: 'var(--color-bg-section)',
-            borderRadius: 'var(--radius-md)',
-          }}
-        >
-          <h4
-            style={{
-              fontFamily: 'var(--font-heading)',
-              marginBottom: 'var(--space-4)',
-              color: 'var(--color-text-primary)',
-            }}
-          >
-            Scroll down to test sticky behavior
-          </h4>
-          <p
-            style={{
-              color: 'var(--color-text-muted)',
-              lineHeight: '1.6',
-            }}
-          >
-            The NavBar should stick to the top when scrolling. On mobile devices, clicking the burger menu
-            will open a full-screen overlay menu with all navigation links. The menu can be closed by
-            clicking the X icon, pressing Escape, or clicking outside the menu.
-          </p>
-        </div>
-      </div>
-  );
+export const SevenUpTheme = {
+  render: Template,
+  args: {
+    logoSrc: sevenUpLogo,
+    logoAlt: '7UP logo',
+    items: defaultItems,
+    sticky: false,
   },
 };
 
-export const MobileView = {
+export const WithoutLogo = {
   render: Template,
-  parameters: {
-    viewport: {
-      defaultViewport: 'mobile1',
-    },
-  },
   args: {
+    logoSrc: undefined,
+    logoAlt: '',
     items: defaultItems,
     sticky: false,
   },

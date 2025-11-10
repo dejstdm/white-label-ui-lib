@@ -3,7 +3,6 @@
 // Navigation & Layout
 export { NavBar } from './NavBar';
 export { Footer } from './Footer';
-export { BrandLogo } from './BrandLogo';
 
 // Hero Section
 export { Hero } from './Hero';
