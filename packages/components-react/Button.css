@@ -79,7 +79,7 @@
 .button--outline:hover:not(.button--disabled) {
   color: var(--color-brand-primary-hover, #256BCC);
   border-color: var(--color-brand-primary-hover, #256BCC);
-  background: color-mix(in srgb, var(--color-brand-primary, #2E86FF) 4%, transparent);
+  background: color-mix(in srgb, var(--color-brand-primary, #2E86FF) 10%, transparent);
 }
 
 .button--outline:active:not(.button--disabled) {
@@ -104,6 +104,7 @@
 
 .button--text:hover:not(.button--disabled) {
   color: var(--color-brand-primary-hover, #256BCC);
+  color: color-mix(in srgb, var(--color-brand-primary-hover, #2E86FF) 80%, #333);
   background: transparent;
 }
 
