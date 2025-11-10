@@ -155,7 +155,7 @@ export default function RootLayout({ children }) {
 
 - `NavBar` and `Footer` expose simple `logoSrc` and `logoAlt` props for dropping in any brand mark.
 - Provide whatever image URL your integration needs; the components render it inside `.navbar__logo` and `.footer__logo` using a native `<img>` tag.
-- Skip `logoSrc` to fall back to the packaged theme logos: PepsiCo Labs for the `default` theme, 7UP for the `7up` theme, and Lay's for the `lays` theme (extendable via the optional `brand` prop).
+- Omit `logoSrc` when you want to hide the brand mark entirely. No fallback logo is rendered automatically.
 
 ### Swiper CSS (Required for Slider Components)
 

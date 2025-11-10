@@ -8,20 +8,14 @@ export default defineComponentMeta({
   props: {
     logoSrc: {
       type: 'string',
-      description: 'Image URL for the navigation logo. When omitted a theme-based default is used.',
+      description: 'Image URL for the navigation logo. When omitted, no logo is rendered.',
       required: false,
     },
     logoAlt: {
       type: 'string',
-      description: 'Accessible alternate text for the navigation logo image (defaults to the theme logo alt).',
+      description: 'Accessible alternate text for the navigation logo image.',
       required: false,
       defaultValue: '',
-    },
-    brand: {
-      type: 'string',
-      description: 'Theme key used to pick the built-in default logo (e.g. "default", "7up", "lays").',
-      required: false,
-      defaultValue: 'default',
     },
     items: {
       type: 'array',

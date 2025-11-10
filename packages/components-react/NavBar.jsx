@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './NavBar.css';
 import { Container } from './Container';
-import { resolveDefaultLogo } from './assets/defaultLogos';
 
 const BurgerIcon = ({ isOpen }) => (
   <span className="navbar__burger-icon" aria-hidden="true">
@@ -15,7 +14,6 @@ const BurgerIcon = ({ isOpen }) => (
 export const NavBar = ({
   logoSrc,
   logoAlt = '',
-  brand = 'default',
   items = [],
   sticky = false,
   className = '',
@@ -55,12 +53,11 @@ export const NavBar = ({
     className
   ].filter(Boolean).join(' ');
 
-  const fallbackLogo = resolveDefaultLogo(brand);
-  const displayLogo = (logoSrc ?? fallbackLogo?.src) ? (
+  const displayLogo = logoSrc ? (
     <div className="navbar__logo">
       <img
-        src={logoSrc ?? fallbackLogo?.src}
-        alt={logoAlt || fallbackLogo?.alt || ''}
+        src={logoSrc}
+        alt={logoAlt}
         className="navbar__logo-img"
         loading="lazy"
       />
@@ -71,7 +68,7 @@ export const NavBar = ({
     <>
       <nav className={classes} role="navigation" aria-label="Main navigation" {...props}>
         <Container className="navbar__inner" breakpoint={null} padding>
-          <div className="navbar__logo-wrapper">{displayLogo}</div>
+          {displayLogo && <div className="navbar__logo-wrapper">{displayLogo}</div>}
 
           {/* Desktop navigation links */}
           {items.length > 0 && (
@@ -175,7 +172,6 @@ export const NavBar = ({
 NavBar.propTypes = {
   logoSrc: PropTypes.string,
   logoAlt: PropTypes.string,
-  brand: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,

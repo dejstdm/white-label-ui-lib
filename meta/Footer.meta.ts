@@ -10,20 +10,14 @@ export default defineComponentMeta({
   props: {
     logoSrc: {
       type: 'string',
-      description: 'Image URL for the footer logo. When omitted a theme-based default is used.',
+      description: 'Image URL for the footer logo. When omitted, the logo block is hidden.',
       required: false,
     },
     logoAlt: {
       type: 'string',
-      description: 'Accessible alternate text for the footer logo image (defaults to the theme logo alt).',
+      description: 'Accessible alternate text for the footer logo image.',
       required: false,
       defaultValue: '',
-    },
-    brand: {
-      type: 'string',
-      description: 'Theme key used to select the built-in default logo (e.g. "default", "7up", "lays").',
-      required: false,
-      defaultValue: 'default',
     },
     socialLinks: {
       type: 'array',
