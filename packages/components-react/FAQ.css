@@ -1,12 +1,24 @@
 .faq {
+  background-color: var(--color-brand-primary);
   padding-top: 50px;
   padding-bottom: 50px;
-  background: var(--color-bg-page, #FFFFFF);
+  /* background: var(--color-bg-page, #FFFFFF); */
+  --faq-surface: var(--color-bg-section, #FFFFFF);
+  --faq-border-color: var(--color-border, rgba(0, 0, 0, 0.1));
+  --faq-hover-color: rgba(var(--color-brand-primary-rgb, 46, 134, 255), 0.12);
+  --faq-open-color: rgba(var(--color-brand-primary-rgb, 46, 134, 255), 0.18);
+  --faq-question-color: var(--color-text-primary, #1A1A1A);
+  --faq-icon-color: var(--color-brand-primary, #2E86FF);
 }
 
-[data-theme="lays"] .faq {
-  background: none;
+@supports (color-mix(in srgb, #000 50%, #fff)) {
+  .faq {
+    --faq-hover-color: color-mix(in srgb, var(--color-brand-primary, #2E86FF) 12%, var(--faq-surface));
+    --faq-open-color: color-mix(in srgb, var(--color-brand-primary, #2E86FF) 18%, var(--faq-surface));
+  }
 }
+
+
 
 .faq .wl-sec__headline,
 .faq .wl-sec__subheadline {
@@ -26,9 +38,9 @@
 }
 
 .faq__item {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  display: block;
+  /* flex-direction: column;
+  gap: 15px; */
 }
 
 .faq__button {
@@ -36,32 +48,38 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 12px 0;
+  padding: var(--space-3, 12px);
   background: transparent;
   border: none;
+  /* background: var(--faq-surface);
+  border: 1px solid var(--faq-border-color); */
   cursor: pointer;
   text-align: left;
   width: 100%;
-  border-radius: 5px;
-  transition: background-color 0.2s ease;
+  
+  border-radius: var(--radius-sm, 5px);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .faq__button:hover {
-  background-color: var(--color-bg-hover, rgba(46, 134, 255, 0.05));
+  background-color: var(--faq-hover-color);
+  border-color: color-mix(in srgb, var(--color-brand-primary, #2E86FF) 18%, var(--faq-border-color));
 }
 
 .faq__button:focus-visible {
-  outline: 2px solid var(--color-focus-ring, #2E86FF);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--color-bg-page, #FFFFFF),
+    0 0 0 4px var(--color-focus-ring, #2E86FF);
 }
 
 .faq__question {
   flex: 1;
-  font-family: var(--font-family-base, 'GT America Trial', sans-serif);
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--color-brand-primary, #2E86FF);
+  font-family: var(--font-body, 'GT America Trial', sans-serif);
+  font-size: var(--type-body-large-size, 18px);
+  font-weight: var(--type-label-weight, 500);
+  line-height: var(--type-body-large-line, 1.5);
+  color: var(--color-danger); 
   min-width: 0;
 }
 
@@ -72,12 +90,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-brand-primary, #2E86FF);
-  transition: transform 0.35s ease;
+  color: var(--color-danger);
+  transition: transform 0.35s ease, color 0.2s ease;
 }
 
 .faq__button--open .faq__icon {
   transform: rotate(180deg);
+  color: var(--color-brand-primary-active, var(--faq-icon-color));
+}
+
+.faq__button--open {
+  background-color: var(--faq-open-color);
+  border-color: color-mix(in srgb, var(--color-brand-primary, #2E86FF) 30%, var(--faq-border-color));
 }
 
 .faq__icon svg {
@@ -98,6 +122,7 @@
 
 .faq__content {
   padding-bottom: 0;
+  padding: 12px 12px  12px 32px;
 }
 
 .faq__content .wysiwyg-content {
@@ -106,7 +131,7 @@
 
 .faq__divider {
   height: 1px;
-  background-color: var(--color-border, rgba(0, 0, 0, 0.1));
+  background-color: #1d1d1b37;
   margin-top: 0;
 }
 

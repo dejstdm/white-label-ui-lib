@@ -1,9 +1,10 @@
 .footer {
   width: 100%;
   max-width: 100%;
-  background-color: var(--color-brand-primary);
-  color: var(--color-brand-on-primary);
+  background-color: var(--color-text-primary);
+  color: white;
   box-sizing: border-box;
+  
 }
 
 .footer__inner {
@@ -56,8 +57,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
   border-radius: 4px;
   color: var(--color-brand-on-primary);
   text-decoration: none;
@@ -103,9 +104,9 @@
 .footer__link {
   font-family: var(--type-body-small-family, var(--font-body));
   font-size: var(--type-body-small-size, 14px);
-  font-weight: var(--type-body-small-weight, 400);
+  font-weight: var(--type-label-weight, 700); 
   line-height: var(--type-body-small-line, 1.5);
-  color: var(--color-brand-on-primary);
+  color: white;
   text-decoration: none;
   white-space: nowrap;
   transition: opacity 0.15s ease;
@@ -113,7 +114,8 @@
 }
 
 .footer__link:hover {
-  opacity: 0.8;
+  /* opacity: 0.8; */
+  color: var(--color-brand-primary);
 }
 
 .footer__link:focus-visible {
@@ -141,7 +143,7 @@
   width: 18px;
   height: 18px;
   flex-shrink: 0;
-  color: var(--color-brand-on-primary);
+  color: white;
 }
 
 .footer__copyright-text {
@@ -149,7 +151,7 @@
   font-size: var(--type-body-small-size, 14px);
   font-weight: var(--type-body-small-weight, 400);
   line-height: var(--type-body-small-line, 1.6);
-  color: var(--color-brand-on-primary);
+
   white-space: nowrap;
 }
 
@@ -173,7 +175,7 @@
   }
 
   .footer__social {
-    gap: var(--space-7, 28px);
+    gap: var(--space-4, 16px);
   }
 
   .footer__links {
@@ -181,10 +183,10 @@
   }
 
   .footer__link {
-    font-family: var(--type-body-large-family, var(--font-body));
+    /* font-family: var(--type-body-large-family, var(--font-body));
     font-size: var(--type-body-large-size, 18px);
     font-weight: var(--type-body-large-weight, 500);
-    line-height: var(--type-body-large-line, 1.5);
+    line-height: var(--type-body-large-line, 1.5); */
   }
 
   .footer__content {
