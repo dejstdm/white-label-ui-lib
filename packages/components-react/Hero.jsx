@@ -54,6 +54,7 @@ export const Hero = ({
                 <Heading level={1} variant="h1">
                   {headline}
                 </Heading>
+                <h1>{headline}</h1>
               </div>
             )}
             {body && (
