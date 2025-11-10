@@ -79,14 +79,7 @@ export default defineComponentMeta({
     },
   },
 
-  design: {
-    tokens: ['surface', 'fg.default', 'fg.subtle', 'border'],
-    a11y: ['contentinfo role', 'focus-visible states on links', 'icon contrast AA'],
-    responsive: true,
-    minWidth: 320,
-    maxWidth: 1920,
-  },
-
+  
   intents: ['navigation', 'legal', 'social'],
 
   constraints: {
