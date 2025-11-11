@@ -113,19 +113,6 @@ color: white;
 .hero__button-wrapper .button {
   font-weight: var(--type-label-weight, 700);
 }
-.hero--align-left .hero__text {
-  /* justify-items: start; */
-  text-align: center; 
-}
-
-.hero--align-left .hero__headline .heading {
- 
-}
-
-.hero--align-left .hero__button-wrapper {
-  justify-content: center;
-}
-
 /* Responsive adjustments */
 @media (min-width: 768px) {
   .hero {
