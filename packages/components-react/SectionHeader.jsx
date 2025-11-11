@@ -9,7 +9,6 @@ export const SectionHeader = ({
   headline,
   headlineLevel = 2,
   subheadline,
-  align = 'center',
   className = '',
   ...props
 }) => {
@@ -19,7 +18,6 @@ export const SectionHeader = ({
 
   const classes = [
     'wl-sec__header',
-    align ? `wl-sec__header--${align}` : '',
     className
   ].filter(Boolean).join(' ');
 
@@ -50,6 +48,5 @@ SectionHeader.propTypes = {
   headline: PropTypes.string, // Plain text field - not from CMS
   headlineLevel: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
   subheadline: PropTypes.string, // HTML string from CMS rich text editor
-  align: PropTypes.oneOf(['left', 'center', 'right']),
   className: PropTypes.string,
 };

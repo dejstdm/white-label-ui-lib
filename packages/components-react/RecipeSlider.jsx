@@ -96,7 +96,6 @@ export const RecipeSlider = ({
                 headline={headline}
                 headlineLevel={headlineLevel}
                 subheadline={subheadline}
-                align="center"
               />
             )}
             {headerButtonLabel && (

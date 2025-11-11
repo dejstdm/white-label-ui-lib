@@ -29,7 +29,6 @@ export const TextSection = ({
             headline={headline}
             headlineLevel={headlineLevel}
             subheadline={subheadline}
-            align="center"
           />
         )}
 

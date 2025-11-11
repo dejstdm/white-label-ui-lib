@@ -102,7 +102,6 @@ export const ImageSection = ({
             headline={headline}
             headlineLevel={headlineLevel}
             subheadline={subheadline}
-            align="center"
           />
         )}
 

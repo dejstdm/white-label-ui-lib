@@ -239,7 +239,6 @@ export const SocialMediaFeed = ({
             headline={headline}
             headlineLevel={headlineLevel}
             subheadline={subheadline}
-            align="center"
             className="social-media-feed__header"
           />
         )}

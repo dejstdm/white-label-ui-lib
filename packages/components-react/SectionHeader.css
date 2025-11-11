@@ -4,21 +4,8 @@
   gap: var(--space-5, 20px);
   width: 100%;
   margin-bottom: var(--space-5, 24px);
-}
-
-.wl-sec__header--left {
-  align-items: flex-start;
-  text-align: left;
-}
-
-.wl-sec__header--center {
   align-items: center;
   text-align: center;
-}
-
-.wl-sec__header--right {
-  align-items: flex-end;
-  text-align: right;
 }
 
 .wl-sec__headline {

@@ -92,7 +92,6 @@ export const ProductSlider = ({
             headline={headline}
             headlineLevel={headlineLevel}
             subheadline={subheadline}
-            align="center"
           />
         )}
         

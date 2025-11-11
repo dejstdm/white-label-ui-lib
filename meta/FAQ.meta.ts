@@ -47,6 +47,13 @@ export default defineComponentMeta({
       required: false,
       defaultValue: '',
     },
+    collapseMode: {
+      type: 'string',
+      description: 'Accordion behaviour. Use "single" to keep one item open, "multiple" to allow several expanded at once.',
+      required: false,
+      defaultValue: 'single',
+      enum: ['single', 'multiple'],
+    },
   },
   constraints: {
     maxDepth: 1,

@@ -84,6 +84,17 @@ export default {
         },
       },
     },
+    collapseMode: {
+      description: 'Accordion behaviour: "single" keeps only one item open, "multiple" allows several to stay expanded',
+      control: { type: 'radio' },
+      options: ['single', 'multiple'],
+      table: {
+        type: {
+          summary: '"single" | "multiple"',
+        },
+        defaultValue: { summary: 'single' },
+      },
+    },
   },
 };
 
@@ -146,6 +157,15 @@ export const LongContent = {
         answer: '<p>Yes, we ship to over 50 countries worldwide. Shipping costs and delivery times vary by location. You can view available shipping options and costs during checkout.</p>',
       },
     ],
+  },
+};
+
+export const MultipleOpen = {
+  args: {
+    headline: 'FAQ',
+    subheadline: '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p>',
+    items: defaultItems,
+    collapseMode: 'multiple',
   },
 };
 
