@@ -17,6 +17,8 @@ export { RecipeSlider } from './RecipeSlider';
 export { FAQ } from './FAQ';
 export { SocialMediaFeed } from './SocialMediaFeed';
 
+// Icons
+export * from './icons/index.js';
 // Internal building blocks - NOT exported:
 // - Container (used internally by all sections)
 // - Heading (used internally by Hero, SectionHeader)

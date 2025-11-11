@@ -1,12 +1,10 @@
 .image-section {
   padding-top: 50px;
   padding-bottom: 50px;
-  background: var(--color-bg-page, #FFFFFF);
+  background-color: var(--color-brand-primary);
 }
 
-[data-theme="lays"] .image-section {
-  background: none;
-}
+
 
 .image-section__wrapper{
 	position: relative;

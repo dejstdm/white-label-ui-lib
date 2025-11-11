@@ -5,6 +5,7 @@ import './SectionLayout.css';
 import { Container } from './Container';
 import { SectionHeader } from './SectionHeader';
 import { Button } from './Button';
+import { FacebookIcon, InstagramIcon, XTwitterIcon } from './icons';
 
 const ExternalLinkDialog = ({ isOpen, image, imageAlt, onStay, onLeave }) => {
   useEffect(() => {
@@ -80,7 +81,73 @@ ExternalLinkDialog.propTypes = {
   onLeave: PropTypes.func.isRequired,
 };
 
+const SOCIAL_ICON_COMPONENTS = {
+  facebook: FacebookIcon,
+  instagram: InstagramIcon,
+  'x-twitter': XTwitterIcon,
+};
+
+const resolveIconKey = (value) => {
+  if (!value || typeof value !== 'string') return null;
+  const normalized = value.toLowerCase();
+
+  if (normalized.includes('facebook')) {
+    return 'facebook';
+  }
+
+  if (normalized.includes('instagram')) {
+    return 'instagram';
+  }
+
+  if (
+    normalized === 'x' ||
+    normalized.includes('x-twitter') ||
+    normalized.includes('x.com') ||
+    normalized.includes('twitter')
+  ) {
+    return 'x-twitter';
+  }
+
+  return null;
+};
+
+const createDefaultIcon = (value, size) => {
+  const key = resolveIconKey(value);
+  if (!key) return null;
+
+  const IconComponent = SOCIAL_ICON_COMPONENTS[key];
+  if (!IconComponent) return null;
+
+  return (
+    <IconComponent
+      size={size}
+      aria-hidden="true"
+      focusable="false"
+      color="currentColor"
+    />
+  );
+};
+
+const renderPlatformBadge = (platformIcon, platform) => {
+  const badgeIcon = platformIcon || createDefaultIcon(platform, 30);
+
+  if (!badgeIcon) return null;
+
+  return (
+    <div className={`social-media-feed__platform social-media-feed__platform--${platform || 'default'}`}>
+      {badgeIcon}
+    </div>
+  );
+};
+
 const SocialIcon = ({ name, href, icon, ...props }) => {
+  const defaultIcon = createDefaultIcon(name, 40);
+  const iconNode = icon ?? defaultIcon;
+  const fallbackLetter = name ? name.charAt(0).toUpperCase() : '?';
+  const content = iconNode || (
+    <span aria-hidden="true">{fallbackLetter}</span>
+  );
+
   if (href) {
     return (
       <a
@@ -91,13 +158,13 @@ const SocialIcon = ({ name, href, icon, ...props }) => {
         rel="noopener noreferrer"
         {...props}
       >
-        {icon}
+        {content}
       </a>
     );
   }
   return (
     <div className={`social-media-feed__social-link social-media-feed__social-link--${name}`} {...props}>
-      {icon}
+      {content}
     </div>
   );
 };
@@ -105,7 +172,7 @@ const SocialIcon = ({ name, href, icon, ...props }) => {
 SocialIcon.propTypes = {
   name: PropTypes.string.isRequired,
   href: PropTypes.string,
-  icon: PropTypes.node.isRequired,
+  icon: PropTypes.node,
 };
 
 export const SocialMediaFeed = ({
@@ -203,11 +270,7 @@ export const SocialMediaFeed = ({
                           alt={item.alt || ''}
                           className="social-media-feed__image"
                         />
-                        {item.platformIcon && (
-                          <div className={`social-media-feed__platform social-media-feed__platform--${item.platform || 'default'}`}>
-                            {item.platformIcon}
-                          </div>
-                        )}
+                        {renderPlatformBadge(item.platformIcon, item.platform)}
                       </div>
                     </a>
                   ) : (
@@ -217,11 +280,7 @@ export const SocialMediaFeed = ({
                         alt={item.alt || ''}
                         className="social-media-feed__image"
                       />
-                      {item.platformIcon && (
-                        <div className={`social-media-feed__platform social-media-feed__platform--${item.platform || 'default'}`}>
-                          {item.platformIcon}
-                        </div>
-                      )}
+                      {renderPlatformBadge(item.platformIcon, item.platform)}
                     </div>
                   )}
                 </div>
@@ -272,14 +331,14 @@ SocialMediaFeed.propTypes = {
       alt: PropTypes.string,
       url: PropTypes.string,
       platform: PropTypes.string, // 'instagram', 'facebook', 'pinterest', etc.
-      platformIcon: PropTypes.node, // Icon component or image for platform badge
+      platformIcon: PropTypes.node, // Optional custom badge (defaults to built-in icon when platform is known)
     })
   ).isRequired,
   socialLinks: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
       href: PropTypes.string,
-      icon: PropTypes.node.isRequired,
+      icon: PropTypes.node, // Optional custom icon (defaults to built-in icon when name is recognized)
     })
   ),
   confirmExternalLinks: PropTypes.bool,

@@ -5,6 +5,44 @@
     "schemaVersion": "1.0.0",
     "notes": "Lay's brand theme with warm yellow primary, bold red accents, and Montserrat/Open Sans typography"
   },
+  "fonts": [
+    {
+      "family": "Raleway",
+      "style": "normal",
+      "weight": 400,
+      "display": "swap",
+      "sources": [
+        {
+          "src": "../assets/fonts/raleway-v28-latin-ext_latin-regular.woff2",
+          "format": "woff2"
+        }
+      ]
+    },
+    {
+      "family": "Raleway",
+      "style": "normal",
+      "weight": 700,
+      "display": "swap",
+      "sources": [
+        {
+          "src": "../assets/fonts/raleway-v28-latin-ext_latin-700.woff2",
+          "format": "woff2"
+        }
+      ]
+    },
+    {
+      "family": "Raleway",
+      "style": "normal",
+      "weight": 900,
+      "display": "swap",
+      "sources": [
+        {
+          "src": "../assets/fonts/raleway-v28-latin-ext_latin-900.woff2",
+          "format": "woff2"
+        }
+      ]
+    }
+  ],
   "palette": {
     "brand": {
       "primary": "#FDD20A",
@@ -30,12 +68,12 @@
   },
   "typography": {
     "families": {
-      "heading": "\"Montserrat\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
-      "body": "\"Open Sans\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif"
+      "heading": "\"Raleway\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
+      "body": "\"Raleway\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif"
     },
     "scales": {
       "display": {
-        "family": "\"Montserrat\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
+        "family": "\"Raleway\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
         "weight": 700,
         "size": "120px",
         "lineHeight": "100%",
@@ -98,7 +136,7 @@
         "letterSpacing": "0"
       },
       "label": {
-        "family": "\"Montserrat\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
+        "family": "\"Raleway\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif",
         "weight": 700,
         "size": "14px",
         "lineHeight": "120%",

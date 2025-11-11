@@ -57,6 +57,44 @@ function normalizeBackgroundEntry(value, roleName, warnings) {
   return { fill: null, fallback: null };
 }
 
+function buildFontFace(font, warnings) {
+  if (!font || !font.family) {
+    warnings.push('Font entry missing required "family" property.');
+    return '';
+  }
+
+  if (!Array.isArray(font.sources) || font.sources.length === 0) {
+    warnings.push(`Font "${font.family}" is missing sources.`);
+    return '';
+  }
+
+  const srcEntries = font.sources
+    .map((source) => {
+      if (!source.src) {
+        warnings.push(`Font "${font.family}" has a source without "src" path.`);
+        return null;
+      }
+      const format = source.format ? ` format("${source.format}")` : '';
+      return `url("${source.src}")${format}`;
+    })
+    .filter(Boolean);
+
+  if (srcEntries.length === 0) {
+    warnings.push(`Font "${font.family}" has no valid sources.`);
+    return '';
+  }
+
+  const descriptors = [
+    `font-family: ${font.family.includes('"') || font.family.includes("'") ? font.family : `'${font.family}'`};`,
+    `font-style: ${font.style || 'normal'};`,
+    `font-weight: ${font.weight || 400};`,
+    `font-display: ${font.display || 'swap'};`,
+    `src: ${srcEntries.join(', ')};`
+  ];
+
+  return `@font-face {\n  ${descriptors.join('\n  ')}\n}\n\n`;
+}
+
 function generateCSS(manifest) {
   // Get theme name from directory name (e.g., "default" from "themes/default")
   const themePath = manifest.__filepath || '';
@@ -65,7 +103,15 @@ function generateCSS(manifest) {
   
   let css = `/* Theme: ${manifest.meta.brandName} */
 /* Generated from theme.manifest.json */
-[data-theme="${themeName}"] {
+`;
+
+  if (Array.isArray(manifest.fonts) && manifest.fonts.length > 0) {
+    manifest.fonts.forEach((font) => {
+      css += buildFontFace(font, warnings);
+    });
+  }
+
+  css += `[data-theme="${themeName}"] {
   /* Palette */
 `;
 

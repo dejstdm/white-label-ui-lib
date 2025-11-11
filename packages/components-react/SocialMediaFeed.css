@@ -4,6 +4,7 @@
   box-sizing: border-box;
   padding-top: var(--space-10, 100px);
   padding-bottom: var(--space-10, 100px);
+  background-color: var(--color-brand-primary);
 }
 
 .social-media-feed__header {

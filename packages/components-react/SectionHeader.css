@@ -35,6 +35,12 @@
   margin: 0;
 }
 
+[data-theme="lays"] .wl-sec__header .heading {
+  color: var(--color-danger);
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
 @media (min-width: 768px) {
   .wl-sec__header {
     gap: var(--space-6, 24px);
