@@ -108,6 +108,7 @@ padding: 100px 0;
 [data-theme="lays"] .hero__headline .heading {
   color: var(--color-danger);
   font-weight: 900;
+  text-transform: uppercase;
 }
 
 [data-theme="lays"] .hero__subheadline  .wysiwyg-content *{
