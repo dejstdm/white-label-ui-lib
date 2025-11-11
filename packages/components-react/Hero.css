@@ -51,16 +51,13 @@ padding: 100px 0;
 }
 
 .hero__text {
-  /* display: grid;
-  justify-items: center;
-  gap: clamp(24px, 3vw, 30px);
-  width: min(100%, 1094px);
-  text-align: center; */
+  text-align: center;
   color: white;
 }
 
 .hero__subheadline {
   width: 100%;
+
 }
 
 .hero__subheadline .wysiwyg-content {
@@ -80,16 +77,19 @@ padding: 100px 0;
 .hero__headline {
   width: 100%;
   margin-bottom: var(--space-6, 24px);
+
 }
 
 .hero__headline .heading {
-color: white;
   text-align: center;
 }
 
 .hero__body {
   min-width: 100%;
   margin-bottom: var(--space-6, 24px);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero__body .wysiwyg-content {
@@ -103,6 +103,28 @@ color: white;
 .hero__subheadline .wysiwyg-content * ,
 .hero__body .wysiwyg-content * {
   color: white;
+}
+
+[data-theme="lays"] .hero__headline .heading {
+  color: var(--color-danger);
+  font-weight: 900;
+}
+
+[data-theme="lays"] .hero__subheadline  .wysiwyg-content *{
+  /* color: var(--color-danger); */
+  font-weight: 700;
+}
+
+[data-theme="lays"] .hero__button-wrapper .button {
+  background-color: var(--color-danger);
+  border-color: var(--color-danger);
+  color: white;
+  font-weight: 700;
+}
+
+[data-theme="lays"] .hero__button-wrapper .button:hover:not(.button--disabled) {
+  background-color: #d31b0d;
+  border-color: #d31b0d;
 }
 
 .hero__button-wrapper {
