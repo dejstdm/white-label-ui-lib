@@ -41,11 +41,12 @@ Deliver a **role-based theming architecture** that:
 ## 4. Core Architecture
 
 ### Structure
-- `/packages/components-react` - React components for Storybook
-- `/themes/<brand>/` - Theme manifests and compiled CSS
-- `/.storybook/` - Storybook configuration (docs + visual test bed)
-- `/scripts/` - Theme compiler and build scripts
-- `/docs/` - Documentation templates
+- `/packages/components-react` – React components plus the MDX/TSX stories Storybook uses for documentation
+- `/stories/` – Additional Storybook examples (legacy starter kit kept for reference)
+- `/themes/<brand>/` – Theme manifests and compiled CSS (default, 7up, lays)
+- `/.storybook/` – Storybook configuration (docs + visual test bed)
+- `/scripts/` – Theme compiler and build scripts (e.g., `scripts/compile-theme.js`)
+- `/reports/` – Manual engineering reviews such as `ts-review.md`
 
 ### Mount selector
 `[data-theme="brand-x"]`
@@ -92,22 +93,18 @@ Validated JSON describing brand theming.
 
 ## 6. Component Docs (Capability Sheets)
 
-Each component documented with:
-- Purpose  
-- Fields / props  
-- Variants  
-- Theming hooks  
-- Accessibility rules  
-- Responsive behavior  
-- CMS guidance  
-- QA checklist  
+Component documentation currently lives inside the Storybook stories that ship with the repo:
+- `packages/components-react/*.stories.tsx` cover every exported component with controls and notes.
+- `/stories/*.stories.(ts|js)x` contains the legacy starter kit pages that still mirror the latest tokens.
 
-**MVP components**
-1. Nav Bar  
-2. Hero Section  
-3. Product Single  
-4. FAQ  
-5. Footer
+Each story must continue to call out:
+- Purpose and primary use case
+- Fields / props (documented through TypeScript definitions + Storybook argTypes)
+- Variants + theming hooks sourced from the active manifest
+- Accessibility rules and CMS guidance baked into the stories and notes
+- QA checklist items inline with the story controls
+
+**MVP components under documentation:** Nav Bar, Hero Section, Product Single, FAQ, Footer (all located in `packages/components-react`).
 
 ---
 
@@ -164,20 +161,20 @@ Migration notes required on MAJOR.
 ---
 
 ## 12. CI Gates
-- Schema validation  
-- Contrast AA check  
-- Storybook snapshot diffs (5 MVP components)  
-- Version bump verification  
-- No undeclared roles/scales
+- `npm run compile-themes` to verify every `theme.manifest.json` compiles without warnings
+- `npm run typecheck` for the library code
+- `npm run typecheck:stories` so Storybook examples stay in sync
+- `npm run build` to ensure the package bundles cleanly
+- `npm run build-storybook` to verify the docs site renders (visual diffs are manual for now)
 
 ---
 
 ## 13. Deliverables
-1. Theme compiler script (validator + CSS generator)  
-2. `theme.manifest.json` (default theme)  
-3. `theme.css` output  
-4. Storybook demo (5 components + docs)  
-5. Automated tests + CI config
+1. Theme compiler script (`scripts/compile-theme.js`) that validates manifests and outputs CSS  
+2. Theme manifests + compiled CSS for `default`, `7up`, and `lays`  
+3. Storybook stories for every exported component (with controls + docs)  
+4. Dist bundle + TypeScript declarations produced by `vite build`  
+5. `reports/ts-review.md` capturing the current TypeScript migration status
 
 ---
 

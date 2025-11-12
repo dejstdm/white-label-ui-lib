@@ -20,7 +20,11 @@ A Storybook component library with a role-based theming system. Components use t
 │   │   ├── theme.manifest.json
 │   │   └── dist/
 │   │       └── theme.css
-│   └── 7up/              # 7up brand theme
+│   ├── 7up/              # 7up brand theme
+│   │   ├── theme.manifest.json
+│   │   └── dist/
+│   │       └── theme.css
+│   └── lays/             # Lays brand theme
 │       ├── theme.manifest.json
 │       └── dist/
 │           └── theme.css
@@ -31,6 +35,8 @@ A Storybook component library with a role-based theming system. Components use t
 │   ├── preview.jsx       # Storybook preview setup
 │   └── vitest.setup.js   # Vitest test setup
 ├── templates/            # Template files
+├── reports/              # Engineering audits and manual reviews
+│   └── ts-review.md      # Current TypeScript migration audit
 ├── PRD.md                # Product Requirements Document
 └── AGENTS.md             # Agent specifications for theming system
 ```
@@ -67,6 +73,7 @@ Storybook will open at `http://localhost:6006`
 - `npm run storybook` - Start Storybook dev server (compiles themes automatically)
 - `npm run build-storybook` - Build static Storybook site (compiles themes automatically)
 - `npm run typecheck` - Run TypeScript type checking
+- `npm run typecheck:stories` - Type-check Storybook stories with `tsconfig.stories.json`
 - `npm run compile-themes` - Compile all theme manifests to CSS
 
 ### Publishing to npm

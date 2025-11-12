@@ -7,24 +7,19 @@
 
 ### Inputs
 - `/themes/<brand>/theme.manifest.json`
-- Theme schema (inline or external schema.json)
+- `scripts/compile-theme.js` (current validator/generator)
 
 ### Outputs
 - `/themes/<brand>/dist/theme.css`
-- `/themes/<brand>/dist/theme-report.json` (contrast + validation)
-- Build status (pass/fail)
+- Console warnings/errors from the compiler run (used as the “report”)
 
 ### Tasks
-1. Validate manifest against schema.  
-2. Verify all required roles exist.  
-3. Compute contrast ratios for declared pairs → AA minimum.  
-4. Generate CSS variables scoped to `[data-theme="brand-x"]` for Storybook.  
-5. Emit `@font-face`, spacing, radii, shadow variables.  
-6. Minify and save `theme.css`.  
-7. Fail build if:  
-   - Missing roles  
-   - Contrast < AA  
-   - Invalid scale value  
+1. Run `node scripts/compile-theme.js` so every manifest is parsed.  
+2. Verify required palette, typography, spacing, radii, shadows, and grid roles exist; the script already enforces this and logs warnings when data is missing.  
+3. Validate `variantsAndHooks` references (done inline inside the compiler).  
+4. Generate CSS variables scoped to `[data-theme="<brand>"]`, including fonts, spacing, radii, shadows, and grid tokens.  
+5. Write the CSS to `/themes/<brand>/dist/theme.css`. (The output is readable CSS; any minification happens downstream in the consumer build.)  
+6. Fail the build only if manifest files are missing or `variantsAndHooks` validation errors are thrown. AA contrast checks are manual today.
 
 ---
 
@@ -32,21 +27,21 @@
 **Goal:** Keep component documentation in sync with schema and manifest.
 
 ### Inputs
-- `/packages/components-react/**`
-- `/docs/capability-sheet-template.md`
+- `packages/components-react/*.stories.tsx`
+- `/stories/**/*` (legacy starter kit still rendered in Storybook)
 - `/themes/<brand>/theme.manifest.json`
 
 ### Outputs
-- Generated MDX docs per component  
-- Updated Storybook controls for theme roles  
-- Screenshot diff reports (optional)
+- Updated Storybook stories + MDX notes (Hero, Nav Bar, etc.)
+- Controls/argTypes that mirror the latest manifest roles
+- Optional screenshots or Chromatic links when regressions are found
 
 ### Tasks
-1. Parse component metadata (name, props, variants).  
-2. Generate MDX Capability Sheet with theming hooks from manifest.  
-3. Inject AA badges (contrast status).  
-4. Ensure 5 MVP components (Nav Bar, Hero, Product Single, FAQ, Footer) are documented.  
-5. Re-build Storybook when manifest or schema changes.
+1. Keep each component’s `.stories.tsx` file in sync with the component props/TypeScript types.  
+2. Surface theming hooks and AA guidance directly inside the story docs/argTypes.  
+3. Ensure the 5 MVP components (Nav Bar, Hero, Product Single, FAQ, Footer) always have current stories.  
+4. Re-run `npm run compile-themes && npm run storybook` whenever a manifest or schema field changes so docs pick up the new tokens.  
+5. Capture visual diffs manually (Chromatic optional) when large styling changes ship—there is no automated screenshot gate yet.
 
 ---
 
@@ -54,19 +49,19 @@
 **Goal:** Enforce versioning and migration rules.
 
 ### Inputs
-- `package.json` (versions)  
-- `CHANGELOG.md` entries  
-- Theme schema (if defined)
+- `package.json` (source of truth for the published version)  
+- `PRD.md` (defines contract + constraints)  
+- `reports/ts-review.md` (tracks migration status and open items)
 
 ### Outputs
-- Validation report  
-- Required migration mapping file (if MAJOR)
+- Updated entry inside `reports/ts-review.md` describing schema/component changes  
+- Release notes summary for PRs when a version bump occurs
 
 ### Tasks
-1. Detect schema changes → determine PATCH / MINOR / MAJOR.  
-2. Verify changelog contains migration notes for MAJOR.  
-3. Lock component + schema versions in CI.  
-4. Generate summary for release PR.
+1. Detect schema or API changes and assign the appropriate SemVer bump (PATCH/MINOR/MAJOR) directly in `package.json`.  
+2. Record any breaking change or migration guidance in `reports/ts-review.md` so it is easy to reference later.  
+3. Keep PR descriptions up to date with the version change summary (there is no standalone `CHANGELOG.md`).  
+4. Ensure CI jobs pin the component + schema versions by consuming the committed `package-lock.json`.
 
 ---
 
@@ -74,21 +69,19 @@
 **Goal:** Run end-to-end checks before merge.
 
 ### Tasks
-- Validate schema & manifest structure.  
-- Run Theme Compiler Agent.  
-- Run Storybook Docs Agent.  
-- Verify contrast AA pass.  
-- Run visual snapshot diff for 5 MVP components.  
-- Build Storybook static site.  
-- Fail pipeline on any error.
+- Run `npm run compile-themes` to ensure every manifest still compiles.  
+- Run `npm run typecheck` for the library and `npm run typecheck:stories` for Storybook coverage.  
+- Build the package (`npm run build`) and Storybook (`npm run build-storybook`).  
+- Surface console warnings for AA/contrast issues so they can be reviewed manually (no automated contrast gate yet).  
+- Treat any failure from the commands above as a blocking error.
 
 ---
 
 ## Shared Rules for All Agents
-- Never introduce new roles/scales outside schema.  
-- Respect SemVer rules from `Versioning Rules.md`.  
-- Reject changes that break AA accessibility.  
-- Log outputs to `/reports/agents/` directory.
+- Never introduce new roles or scales beyond what the active manifest + `PRD.md` describe.  
+- Follow SemVer expectations defined in `PRD.md` and enforced via `package.json`.  
+- Reject any change that knowingly breaks AA accessibility (contrast reviews happen manually in Storybook).  
+- Log findings in `reports/ts-review.md` or in the PR description so the history stays searchable.
 
 **Note:** Component development rules and standards (including BEM methodology, mobile-first responsive design, Container usage, CMS content handling, and HTML tag styling rules) are documented in `/packages/components-react/AGENTS.md`.
 
