@@ -1,15 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, type HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 import './NavBar.css';
 import { Container } from './Container';
 
-const BurgerIcon = ({ isOpen }) => (
+export type NavBarItem = {
+  label: string;
+  href?: string;
+  active?: boolean;
+};
+
+type BurgerIconProps = {
+  isOpen: boolean;
+};
+
+const BurgerIcon = ({ isOpen }: BurgerIconProps) => (
   <span className="navbar__burger-icon" aria-hidden="true">
     <span className={`navbar__burger-line ${isOpen ? 'navbar__burger-line--open' : ''}`} />
     <span className={`navbar__burger-line ${isOpen ? 'navbar__burger-line--open' : ''}`} />
     <span className={`navbar__burger-line ${isOpen ? 'navbar__burger-line--open' : ''}`} />
   </span>
 );
+
+export interface NavBarProps extends HTMLAttributes<HTMLElement> {
+  logoSrc?: string;
+  logoAlt?: string;
+  items?: NavBarItem[];
+  sticky?: boolean;
+  className?: string;
+}
 
 export const NavBar = ({
   logoSrc,
@@ -18,23 +36,23 @@ export const NavBar = ({
   sticky = false,
   className = '',
   ...props
-}) => {
+}: NavBarProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Close mobile menu when clicking outside or on escape key
   useEffect(() => {
-    const handleEscape = (e) => {
+    const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isMobileMenuOpen) {
         setIsMobileMenuOpen(false);
       }
     };
 
     if (isMobileMenuOpen) {
-      document.addEventListener('keydown', handleEscape);
+      document.addEventListener('keydown', handleEscape as EventListener);
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener('keydown', handleEscape as EventListener);
     };
   }, [isMobileMenuOpen]);
 

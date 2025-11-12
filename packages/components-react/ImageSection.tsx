@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -6,11 +6,22 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import './ImageSection.css';
 import './SectionLayout.css';
-import { Container } from './Container';
+import { Container, type ContainerBreakpoint } from './Container';
 import { SectionHeader } from './SectionHeader';
 
+export type ImageItem = {
+  id?: string | number;
+  src: string;
+  alt?: string;
+  href?: string;
+};
+
+type LinkIconProps = {
+  className?: string;
+};
+
 // Link icon SVG component (inline for styling)
-const LinkIcon = ({ className = '' }) => (
+const LinkIcon = ({ className = '' }: LinkIconProps) => (
   <svg
     className={className}
     xmlns="http://www.w3.org/2000/svg"
@@ -28,6 +39,15 @@ LinkIcon.propTypes = {
   className: PropTypes.string,
 };
 
+export interface ImageSectionProps extends HTMLAttributes<HTMLElement> {
+  headline?: string;
+  subheadline?: string;
+  headlineLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  images?: ImageItem[];
+  containerBreakpoint?: ContainerBreakpoint;
+  className?: string;
+}
+
 export const ImageSection = ({
   headline,
   subheadline,
@@ -36,7 +56,7 @@ export const ImageSection = ({
   containerBreakpoint = null,
   className = '',
   ...props
-}) => {
+}: ImageSectionProps) => {
   const shouldEnableNavigation = images.length > 1;
 
   const classes = [
@@ -55,7 +75,7 @@ export const ImageSection = ({
     shouldEnableNavigation ? '' : 'image-section__swiper--static'
   ].filter(Boolean).join(' ');
 
-  const renderImage = (image, index) => {
+  const renderImage = (image: ImageItem, index: number) => {
     const imageElement = (
       <div className="image-section__image-wrapper">
         <img

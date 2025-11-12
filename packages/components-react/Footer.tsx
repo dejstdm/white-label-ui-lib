@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { type HTMLAttributes, type ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import './Footer.css';
 import { Container } from './Container';
 
-const SocialIcon = ({ name, href, icon, ...props }) => {
+export type FooterSocialLink = {
+  name?: string;
+  href?: string;
+  icon: ReactNode;
+};
+
+export type FooterLink = {
+  label: string;
+  href?: string;
+};
+
+type SocialIconProps = {
+  name: string;
+  href?: string;
+  icon: ReactNode;
+} & HTMLAttributes<HTMLAnchorElement | HTMLDivElement>;
+
+const SocialIcon = ({ name, href, icon, ...props }: SocialIconProps) => {
   if (href) {
     return (
       <a
@@ -31,6 +48,16 @@ SocialIcon.propTypes = {
   icon: PropTypes.node.isRequired,
 };
 
+export interface FooterProps extends HTMLAttributes<HTMLElement> {
+  logoSrc?: string;
+  logoAlt?: string;
+  socialLinks?: FooterSocialLink[];
+  links?: FooterLink[];
+  copyright?: string;
+  copyrightYear?: string;
+  className?: string;
+}
+
 export const Footer = ({
   logoSrc,
   logoAlt = '',
@@ -40,7 +67,7 @@ export const Footer = ({
   copyrightYear = '2022',
   className = '',
   ...props
-}) => {
+}: FooterProps) => {
   const classes = [
     'footer',
     className

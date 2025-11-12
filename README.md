@@ -8,10 +8,10 @@ A Storybook component library with a role-based theming system. Components use t
 /
 ├── packages/
 │   └── components-react/  # React component library
-│       ├── *.jsx          # Component implementations
+│       ├── *.tsx          # Component implementations (TypeScript)
 │       ├── *.css          # Component styles
-│       ├── *.stories.jsx  # Storybook stories
-│       ├── index.js       # Component exports
+│       ├── *.stories.tsx  # Storybook stories
+│       ├── index.ts       # Component exports
 │       └── AGENTS.md      # Component development rules
 ├── stories/               # Additional Storybook example stories
 │   └── assets/           # Story assets (images, SVGs)
@@ -66,6 +66,7 @@ Storybook will open at `http://localhost:6006`
 - `npm run prepublishOnly` - Automatically runs build before publishing
 - `npm run storybook` - Start Storybook dev server (compiles themes automatically)
 - `npm run build-storybook` - Build static Storybook site (compiles themes automatically)
+- `npm run typecheck` - Run TypeScript type checking
 - `npm run compile-themes` - Compile all theme manifests to CSS
 
 ### Publishing to npm

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, type HTMLAttributes, type ReactNode, type MouseEvent } from 'react';
 import PropTypes from 'prop-types';
 import './SocialMediaFeed.css';
 import './SectionLayout.css';
@@ -7,21 +7,43 @@ import { SectionHeader } from './SectionHeader';
 import { Button } from './Button';
 import { FacebookIcon, InstagramIcon, XTwitterIcon } from './icons';
 
-const ExternalLinkDialog = ({ isOpen, image, imageAlt, onStay, onLeave }) => {
+export type SocialMediaFeedItem = {
+  image: string;
+  alt?: string;
+  url?: string;
+  platform?: string;
+  platformIcon?: ReactNode;
+};
+
+export type SocialMediaFeedSocialLink = {
+  name?: string;
+  href?: string;
+  icon?: ReactNode;
+};
+
+type ExternalLinkDialogProps = {
+  isOpen: boolean;
+  image?: string | null;
+  imageAlt?: string;
+  onStay: () => void;
+  onLeave: () => void;
+};
+
+const ExternalLinkDialog = ({ isOpen, image, imageAlt, onStay, onLeave }: ExternalLinkDialogProps) => {
   useEffect(() => {
-    const handleEscape = (e) => {
+    const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) {
         onStay();
       }
     };
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
+      document.addEventListener('keydown', handleEscape as EventListener);
       document.body.style.overflow = 'hidden';
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener('keydown', handleEscape as EventListener);
       document.body.style.overflow = '';
     };
   }, [isOpen, onStay]);
@@ -87,7 +109,7 @@ const SOCIAL_ICON_COMPONENTS = {
   'x-twitter': XTwitterIcon,
 };
 
-const resolveIconKey = (value) => {
+const resolveIconKey = (value: string | null | undefined): 'facebook' | 'instagram' | 'x-twitter' | null => {
   if (!value || typeof value !== 'string') return null;
   const normalized = value.toLowerCase();
 
@@ -111,7 +133,7 @@ const resolveIconKey = (value) => {
   return null;
 };
 
-const createDefaultIcon = (value, size) => {
+const createDefaultIcon = (value: string | null | undefined, size: number): ReactNode => {
   const key = resolveIconKey(value);
   if (!key) return null;
 
@@ -128,7 +150,7 @@ const createDefaultIcon = (value, size) => {
   );
 };
 
-const renderPlatformBadge = (platformIcon, platform) => {
+const renderPlatformBadge = (platformIcon: ReactNode | undefined, platform: string | undefined): ReactNode => {
   const badgeIcon = platformIcon || createDefaultIcon(platform, 30);
 
   if (!badgeIcon) return null;
@@ -140,7 +162,19 @@ const renderPlatformBadge = (platformIcon, platform) => {
   );
 };
 
-const SocialIcon = ({ name, href, icon, ...props }) => {
+type SocialIconProps =
+  | ({
+      name: string;
+      href: string;
+      icon?: ReactNode;
+    } & Omit<HTMLAttributes<HTMLAnchorElement>, 'href' | 'children'>)
+  | ({
+      name: string;
+      href?: undefined;
+      icon?: ReactNode;
+    } & HTMLAttributes<HTMLDivElement>);
+
+const SocialIcon = ({ name, href, icon, ...props }: SocialIconProps) => {
   const defaultIcon = createDefaultIcon(name, 40);
   const iconNode = icon ?? defaultIcon;
   const fallbackLetter = name ? name.charAt(0).toUpperCase() : '?';
@@ -149,6 +183,7 @@ const SocialIcon = ({ name, href, icon, ...props }) => {
   );
 
   if (href) {
+    const anchorProps = props as Omit<HTMLAttributes<HTMLAnchorElement>, 'href' | 'children'>;
     return (
       <a
         href={href}
@@ -156,14 +191,15 @@ const SocialIcon = ({ name, href, icon, ...props }) => {
         aria-label={`Follow us on ${name}`}
         target="_blank"
         rel="noopener noreferrer"
-        {...props}
+        {...anchorProps}
       >
         {content}
       </a>
     );
   }
+  const divProps = props as HTMLAttributes<HTMLDivElement>;
   return (
-    <div className={`social-media-feed__social-link social-media-feed__social-link--${name}`} {...props}>
+    <div className={`social-media-feed__social-link social-media-feed__social-link--${name}`} {...divProps}>
       {content}
     </div>
   );
@@ -173,6 +209,24 @@ SocialIcon.propTypes = {
   name: PropTypes.string.isRequired,
   href: PropTypes.string,
   icon: PropTypes.node,
+};
+
+export interface SocialMediaFeedProps extends HTMLAttributes<HTMLElement> {
+  headline?: string;
+  subheadline?: string;
+  headlineLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  followText?: string;
+  items?: SocialMediaFeedItem[];
+  socialLinks?: SocialMediaFeedSocialLink[];
+  confirmExternalLinks?: boolean;
+  className?: string;
+}
+
+type DialogState = {
+  isOpen: boolean;
+  image: string | null;
+  imageAlt: string;
+  targetUrl: string | null;
 };
 
 export const SocialMediaFeed = ({
@@ -185,15 +239,15 @@ export const SocialMediaFeed = ({
   confirmExternalLinks = false,
   className = '',
   ...props
-}) => {
-  const [dialogState, setDialogState] = useState({
+}: SocialMediaFeedProps) => {
+  const [dialogState, setDialogState] = useState<DialogState>({
     isOpen: false,
     image: null,
     imageAlt: '',
     targetUrl: null,
   });
 
-  const handleImageClick = (e, item) => {
+  const handleImageClick = (e: MouseEvent<HTMLAnchorElement>, item: SocialMediaFeedItem) => {
     if (!item.url) return;
 
     const isExternal = item.url && (item.url.startsWith('http://') || item.url.startsWith('https://'));
@@ -324,6 +378,7 @@ SocialMediaFeed.propTypes = {
   headlineLevel: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
   subheadline: PropTypes.string, // HTML string from CMS rich text editor
   followText: PropTypes.string, // Plain text field
+  // Note: items is optional in TypeScript with default [], so PropTypes should not be required
   items: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string.isRequired,
@@ -332,7 +387,7 @@ SocialMediaFeed.propTypes = {
       platform: PropTypes.string, // 'instagram', 'facebook', 'pinterest', etc.
       platformIcon: PropTypes.node, // Optional custom badge (defaults to built-in icon when platform is known)
     })
-  ).isRequired,
+  ),
   socialLinks: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,

@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { type ComponentPropsWithoutRef, type ElementType, type ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import './Text.css';
 
-export const Text = ({ 
+export type TextSize = 'large' | 'small' | 'label';
+
+export type TextProps<T extends ElementType = 'p'> = {
+  size?: TextSize;
+  muted?: boolean;
+  as?: T;
+  children: ReactNode;
+} & ComponentPropsWithoutRef<T>;
+
+export const Text = <T extends ElementType = 'p'>({ 
   size = 'large',
   muted = false,
-  as = 'p',
+  as,
   children,
   className = '',
   ...props 
-}) => {
-  const Tag = as;
+}: TextProps<T>) => {
+  const Tag = (as ?? 'p') as ElementType;
   
   const classes = [
     'text',

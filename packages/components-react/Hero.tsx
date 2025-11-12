@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { type HTMLAttributes, type MouseEventHandler } from 'react';
 import PropTypes from 'prop-types';
 import './Hero.css';
 import './SectionLayout.css';
 import { Button } from './Button';
-import { Container } from './Container';
+import { Container, type ContainerBreakpoint } from './Container';
 import { Heading } from './Heading';
 import { WysiwygContent } from './WysiwygContent';
+
+export interface HeroProps extends HTMLAttributes<HTMLElement> {
+  backgroundImage?: string;
+  subheadline?: string;
+  headline?: string;
+  body?: string;
+  buttonLabel?: string;
+  buttonHref?: string;
+  buttonOnClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+  containerBreakpoint?: ContainerBreakpoint;
+  className?: string;
+}
 
 export const Hero = ({
   backgroundImage,
@@ -18,7 +30,7 @@ export const Hero = ({
   containerBreakpoint = null,
   className = '',
   ...props
-}) => {
+}: HeroProps) => {
   const classes = [
     'hero',
     'wl-sec',

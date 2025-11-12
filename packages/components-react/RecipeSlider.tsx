@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, type HTMLAttributes, type MouseEventHandler } from 'react';
 import PropTypes from 'prop-types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -7,9 +7,28 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './RecipeSlider.css';
 import './SectionLayout.css';
-import { Container } from './Container';
+import { Container, type ContainerBreakpoint } from './Container';
 import { Button } from './Button';
 import { SectionHeader } from './SectionHeader';
+
+export type RecipeItem = {
+  id?: string | number;
+  image?: string;
+  imageAlt?: string;
+  href?: string;
+};
+
+export interface RecipeSliderProps extends HTMLAttributes<HTMLElement> {
+  headline?: string;
+  subheadline?: string;
+  headlineLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  recipes?: RecipeItem[];
+  headerButtonLabel?: string;
+  headerButtonHref?: string;
+  headerButtonOnClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+  containerBreakpoint?: ContainerBreakpoint;
+  className?: string;
+}
 
 export const RecipeSlider = ({
   headline,
@@ -22,7 +41,7 @@ export const RecipeSlider = ({
   containerBreakpoint = null,
   className = '',
   ...props
-}) => {
+}: RecipeSliderProps) => {
   const isClient = typeof window !== 'undefined';
   const [viewportWidth, setViewportWidth] = useState(() => (
     isClient ? window.innerWidth : 0
@@ -40,7 +59,7 @@ export const RecipeSlider = ({
     return () => window.removeEventListener('resize', handleResize);
   }, [isClient]);
 
-  const getSlidesPerViewForWidth = (width) => {
+  const getSlidesPerViewForWidth = (width: number) => {
     if (width >= 992) {
       return 3;
     }

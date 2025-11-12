@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { type SVGProps } from 'react';
 
-const FacebookIcon = React.forwardRef(function FacebookIcon(
+type FacebookIconProps = SVGProps<SVGSVGElement> & {
+  title?: string;
+  color?: string;
+  size?: number;
+};
+
+const FacebookIcon = React.forwardRef<SVGSVGElement, FacebookIconProps>(function FacebookIcon(
   { title = 'Facebook', color = 'currentColor', size = 24, ...props },
   ref,
 ) {

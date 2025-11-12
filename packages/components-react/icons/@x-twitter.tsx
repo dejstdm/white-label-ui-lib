@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { type SVGProps } from 'react';
 
-const XTwitterIcon = React.forwardRef(function XTwitterIcon(
+type XTwitterIconProps = SVGProps<SVGSVGElement> & {
+  title?: string;
+  color?: string;
+  size?: number;
+};
+
+const XTwitterIcon = React.forwardRef<SVGSVGElement, XTwitterIconProps>(function XTwitterIcon(
   { title = 'X (Twitter)', color = 'currentColor', size = 24, ...props },
   ref,
 ) {

@@ -1,5 +1,7 @@
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
+import type { OutputBundle, OutputOptions } from 'rollup';
 import react from '@vitejs/plugin-react';
+import dts from 'vite-plugin-dts';
 import { resolve, dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'fs';
@@ -7,13 +9,13 @@ import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'fs';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Plugin to bundle default theme at :root level
-function bundleDefaultTheme() {
+function bundleDefaultTheme(): Plugin {
   return {
     name: 'bundle-default-theme',
-    writeBundle(options, bundle) {
+    writeBundle(options: OutputOptions, bundle: OutputBundle) {
       // Find the CSS file in the bundle
       const cssFile = Object.keys(bundle).find(file => file.endsWith('.css'));
-      if (!cssFile) return;
+      if (!cssFile || !options.dir) return;
 
       const cssPath = resolve(options.dir, cssFile);
       
@@ -37,12 +39,15 @@ function bundleDefaultTheme() {
 }
 
 // Plugin to copy meta files to dist/meta
-function copyMetaFiles() {
+function copyMetaFiles(): Plugin {
   return {
     name: 'copy-meta-files',
-    writeBundle(options) {
+    writeBundle(options: OutputOptions) {
+      if (!options.dir) return;
+      
+      const outputDir = options.dir; // Type narrowing
       const metaSourceDir = resolve(__dirname, 'meta');
-      const metaDestDir = resolve(options.dir, 'meta');
+      const metaDestDir = resolve(outputDir, 'meta');
       
       // Create dist/meta directory
       mkdirSync(metaDestDir, { recursive: true });
@@ -67,10 +72,20 @@ function copyMetaFiles() {
 }
 
 export default defineConfig({
-  plugins: [react(), bundleDefaultTheme(), copyMetaFiles()],
+  plugins: [
+    react(),
+    dts({
+      include: ['packages/components-react/**/*.ts', 'packages/components-react/**/*.tsx'],
+      exclude: ['**/*.stories.tsx', '**/*.test.ts', '**/*.test.tsx'],
+      outDir: 'dist',
+      rollupTypes: true,
+    }),
+    bundleDefaultTheme(),
+    copyMetaFiles()
+  ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'packages/components-react/index.js'),
+      entry: resolve(__dirname, 'packages/components-react/index.ts'),
       name: 'WhiteLabelUI',
       fileName: 'white-label-ui',
       formats: ['es']

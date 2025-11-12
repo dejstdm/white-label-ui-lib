@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { type SVGProps } from 'react';
 
-const InstagramIcon = React.forwardRef(function InstagramIcon(
+type InstagramIconProps = SVGProps<SVGSVGElement> & {
+  title?: string;
+  color?: string;
+  size?: number;
+};
+
+const InstagramIcon = React.forwardRef<SVGSVGElement, InstagramIconProps>(function InstagramIcon(
   { title = 'Instagram', color = 'currentColor', size = 24, ...props },
   ref,
 ) {

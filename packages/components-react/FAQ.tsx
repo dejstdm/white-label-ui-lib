@@ -1,11 +1,27 @@
-import React, { useMemo } from 'react';
+import { useMemo, type HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 import './FAQ.css';
 import './SectionLayout.css';
 import { Container } from './Container';
 import { SectionHeader } from './SectionHeader';
 import { WysiwygContent } from './WysiwygContent';
-import { Accordion } from './Accordion';
+import { Accordion, type AccordionItemData } from './Accordion';
+
+export type FAQItem = {
+  id?: string | number;
+  question: string;
+  answer: string;
+};
+
+export interface FAQProps extends HTMLAttributes<HTMLElement> {
+  headline?: string;
+  subheadline?: string;
+  headlineLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  items?: FAQItem[];
+  collapseMode?: 'single' | 'multiple';
+  containerBreakpoint?: import('./Container').ContainerBreakpoint;
+  className?: string;
+}
 
 export const FAQ = ({
   headline,
@@ -16,7 +32,7 @@ export const FAQ = ({
   containerBreakpoint = null,
   className = '',
   ...props
-}) => {
+}: FAQProps) => {
   const classes = [
     'faq',
     'wl-sec',
@@ -25,7 +41,7 @@ export const FAQ = ({
 
   const accordionItems = useMemo(
     () =>
-      items.map((item, index) => ({
+      items.map((item, index): AccordionItemData => ({
         id: item.id ?? index,
         trigger: () => (
           <>

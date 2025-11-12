@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { type HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 import './SectionLayout.css';
 import './SectionHeader.css';
 import { Heading } from './Heading';
 import { WysiwygContent } from './WysiwygContent';
+
+export interface SectionHeaderProps extends HTMLAttributes<HTMLDivElement> {
+  headline?: string;
+  headlineLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  subheadline?: string;
+  className?: string;
+}
 
 export const SectionHeader = ({
   headline,
@@ -11,7 +18,7 @@ export const SectionHeader = ({
   subheadline,
   className = '',
   ...props
-}) => {
+}: SectionHeaderProps) => {
   if (!headline && !subheadline) {
     return null;
   }
@@ -21,7 +28,7 @@ export const SectionHeader = ({
     className
   ].filter(Boolean).join(' ');
 
-  const headingLevel = Math.min(Math.max(headlineLevel, 1), 6);
+  const headingLevel = Math.min(Math.max(headlineLevel, 1), 6) as 1 | 2 | 3 | 4 | 5 | 6;
 
   return (
     <div className={classes} {...props}>

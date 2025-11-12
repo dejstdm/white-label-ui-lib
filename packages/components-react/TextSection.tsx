@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { type HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 import './TextSection.css';
 import './SectionLayout.css';
-import { Container } from './Container';
+import { Container, type ContainerBreakpoint } from './Container';
 import { SectionHeader } from './SectionHeader';
 import { WysiwygContent } from './WysiwygContent';
+
+export interface TextSectionProps extends HTMLAttributes<HTMLElement> {
+  headline?: string;
+  subheadline?: string;
+  headlineLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  text?: string;
+  containerBreakpoint?: ContainerBreakpoint;
+  className?: string;
+}
 
 export const TextSection = ({
   headline,
@@ -14,7 +23,7 @@ export const TextSection = ({
   containerBreakpoint = null,
   className = '',
   ...props
-}) => {
+}: TextSectionProps) => {
   const classes = [
     'text-section',
     'wl-sec',

@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "types": ["react", "node"],
+    "typeRoots": ["node_modules/@types", "types"],
+    "baseUrl": ".",
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true
+  },
+  "include": [
+    "packages/components-react/**/*.ts",
+    "packages/components-react/**/*.tsx",
+    "meta/**/*.ts",
+    "scripts/**/*.ts",
+    "scripts/**/*.tsx",
+    "vite.config.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "index.ts",
+    "stories"
+  ]
+}

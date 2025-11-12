@@ -1,6 +1,15 @@
-import React from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import './Container.css';
+
+export type ContainerBreakpoint = 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | null;
+
+export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
+  fluid?: boolean;
+  breakpoint?: ContainerBreakpoint;
+  padding?: boolean;
+  children?: ReactNode;
+}
 
 export const Container = ({ 
   fluid = false,
@@ -9,7 +18,7 @@ export const Container = ({
   children,
   className = '',
   ...props 
-}) => {
+}: ContainerProps) => {
   const classes = [
     'container',
     fluid ? 'container-fluid' : '',

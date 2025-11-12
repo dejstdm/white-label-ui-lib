@@ -1,8 +1,40 @@
-import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  type HTMLAttributes,
+  type ReactNode,
+  type TransitionEvent
+} from 'react';
 import PropTypes from 'prop-types';
 import './Accordion.css';
 
 const TRANSITION_DURATION_MS = 300;
+
+type AccordionTriggerRender = (context: { isOpen: boolean; allowMultiple: boolean }) => ReactNode;
+
+export type AccordionItemData = {
+  id?: string | number;
+  trigger: ReactNode | AccordionTriggerRender;
+  content: ReactNode;
+};
+
+type AccordionItemProps = {
+  index: number;
+  item: AccordionItemData;
+  isOpen: boolean;
+  allowMultiple: boolean;
+  onToggle: (index: number) => void;
+  onAnimationStart?: (index: number) => void;
+  onAnimationEnd?: (index: number) => void;
+  itemClassName?: string;
+  headerClassName?: string;
+  bodyClassName?: string;
+  bodyInnerClassName?: string;
+};
 
 const AccordionItem = ({
   index,
@@ -16,8 +48,8 @@ const AccordionItem = ({
   headerClassName,
   bodyClassName,
   bodyInnerClassName,
-}) => {
-  const bodyRef = useRef(null);
+}: AccordionItemProps) => {
+  const bodyRef = useRef<HTMLDivElement | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const baseId = useId();
   const headerId = `${baseId}-header`;
@@ -70,7 +102,7 @@ const AccordionItem = ({
       return;
     }
 
-    const content = body.firstElementChild;
+    const content = body.firstElementChild as HTMLElement | null;
     if (!content) {
       return;
     }
@@ -91,7 +123,7 @@ const AccordionItem = ({
       onAnimationStart(index);
     }
 
-    const runAnimationFrame = (callback) => {
+    const runAnimationFrame = (callback: () => void) => {
       if (typeof window === 'undefined') return;
       window.requestAnimationFrame(() => {
         window.requestAnimationFrame(callback);
@@ -115,7 +147,7 @@ const AccordionItem = ({
       });
     }
 
-    const handleTransitionEnd = (event) => {
+    const handleTransitionEnd = (event: TransitionEvent<HTMLDivElement> | { target: EventTarget | null; propertyName?: string }) => {
       if (event.target !== body || event.propertyName !== 'height') {
         return;
       }
@@ -126,14 +158,14 @@ const AccordionItem = ({
       }
 
       setIsTransitioning(false);
-      body.removeEventListener('transitionend', handleTransitionEnd);
+      body.removeEventListener('transitionend', handleTransitionEnd as EventListener);
 
       if (typeof onAnimationEnd === 'function') {
         onAnimationEnd(index);
       }
     };
 
-    body.addEventListener('transitionend', handleTransitionEnd);
+    body.addEventListener('transitionend', handleTransitionEnd as EventListener);
 
     const timeoutId =
       typeof window !== 'undefined'
@@ -149,7 +181,7 @@ const AccordionItem = ({
       if (typeof window !== 'undefined' && timeoutId) {
         window.clearTimeout(timeoutId);
       }
-      body.removeEventListener('transitionend', handleTransitionEnd);
+      body.removeEventListener('transitionend', handleTransitionEnd as EventListener);
     };
   }, [index, isOpen, onAnimationEnd, onAnimationStart]);
 
@@ -204,6 +236,16 @@ AccordionItem.propTypes = {
   bodyInnerClassName: PropTypes.string,
 };
 
+export type AccordionProps = {
+  items?: AccordionItemData[];
+  allowMultiple?: boolean;
+  className?: string;
+  itemClassName?: string;
+  headerClassName?: string;
+  bodyClassName?: string;
+  bodyInnerClassName?: string;
+} & HTMLAttributes<HTMLDivElement>;
+
 export const Accordion = ({
   items = [],
   allowMultiple = false,
@@ -213,8 +255,8 @@ export const Accordion = ({
   bodyClassName = '',
   bodyInnerClassName = '',
   ...rest
-}) => {
-  const [openItems, setOpenItems] = useState([]);
+}: AccordionProps) => {
+  const [openItems, setOpenItems] = useState<number[]>([]);
   const animationCountRef = useRef(0);
   const isAnimatingRef = useRef(false);
 
@@ -241,7 +283,7 @@ export const Accordion = ({
   );
 
   const handleToggle = useCallback(
-    (index) => {
+    (index: number) => {
       if (isAnimatingRef.current) {
         return;
       }

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, type HTMLAttributes, type MouseEventHandler } from 'react';
 import PropTypes from 'prop-types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -6,11 +6,31 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import './ProductSlider.css';
 import './SectionLayout.css';
-import { Container } from './Container';
+import { Container, type ContainerBreakpoint } from './Container';
 import { Heading } from './Heading';
 import { WysiwygContent } from './WysiwygContent';
 import { Button } from './Button';
 import { SectionHeader } from './SectionHeader';
+
+export type ProductItem = {
+  id?: string | number;
+  image?: string;
+  imageAlt?: string;
+  title?: string;
+  description?: string;
+  buttonLabel?: string;
+  buttonHref?: string;
+  buttonOnClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+};
+
+export interface ProductSliderProps extends HTMLAttributes<HTMLElement> {
+  headline?: string;
+  subheadline?: string;
+  headlineLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  products?: ProductItem[];
+  containerBreakpoint?: ContainerBreakpoint;
+  className?: string;
+}
 
 export const ProductSlider = ({
   headline,
@@ -20,7 +40,7 @@ export const ProductSlider = ({
   containerBreakpoint = null,
   className = '',
   ...props
-}) => {
+}: ProductSliderProps) => {
   const isClient = typeof window !== 'undefined';
   const [viewportWidth, setViewportWidth] = useState(() => (
     isClient ? window.innerWidth : 0
@@ -38,7 +58,7 @@ export const ProductSlider = ({
     return () => window.removeEventListener('resize', handleResize);
   }, [isClient]);
 
-  const getSlidesPerViewForWidth = (width) => {
+  const getSlidesPerViewForWidth = (width: number) => {
     if (width >= 992) {
       return 3;
     }

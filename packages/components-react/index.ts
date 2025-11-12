@@ -18,7 +18,7 @@ export { FAQ } from './FAQ';
 export { SocialMediaFeed } from './SocialMediaFeed';
 
 // Icons
-export * from './icons/index.js';
+export * from './icons/index';
 // Internal building blocks - NOT exported:
 // - Container (used internally by all sections)
 // - Heading (used internally by Hero, SectionHeader)
