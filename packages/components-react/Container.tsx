@@ -1,5 +1,4 @@
 import type { HTMLAttributes, ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import './Container.css';
 
 export type ContainerBreakpoint = 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | null;
@@ -32,12 +31,4 @@ export const Container = ({
       {children}
     </div>
   );
-};
-
-Container.propTypes = {
-  fluid: PropTypes.bool,
-  breakpoint: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl', null]),
-  padding: PropTypes.bool,
-  children: PropTypes.node,
-  className: PropTypes.string,
 };

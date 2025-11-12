@@ -31,7 +31,7 @@ export default {
   },
 };
 
-const Template = (args) => (
+const Template = (args: React.ComponentProps<typeof SectionHeader>) => (
   <section className="wl-sec" style={{ maxWidth: '860px', margin: '0 auto' }}>
     <SectionHeader {...args} />
   </section>

@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState, type HTMLAttributes, type MouseEventHandler } from 'react';
-import PropTypes from 'prop-types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -232,24 +231,5 @@ export const RecipeSlider = ({
       </div>
     </section>
   );
-};
-
-RecipeSlider.propTypes = {
-  headline: PropTypes.string, // Plain text field
-  headlineLevel: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
-  subheadline: PropTypes.string, // HTML string from CMS rich text editor
-  recipes: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      image: PropTypes.string,
-      imageAlt: PropTypes.string,
-      href: PropTypes.string, // Plain text field for recipe link URL
-    })
-  ),
-  headerButtonLabel: PropTypes.string, // Plain text field for header button text
-  headerButtonHref: PropTypes.string, // Plain text field for header button URL
-  headerButtonOnClick: PropTypes.func,
-  containerBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl', null]),
-  className: PropTypes.string,
 };
 

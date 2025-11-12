@@ -1,5 +1,4 @@
 import React, { type HTMLAttributes, type ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import './Footer.css';
 import { Container } from './Container';
 
@@ -14,14 +13,23 @@ export type FooterLink = {
   href?: string;
 };
 
-type SocialIconProps = {
-  name: string;
-  href?: string;
-  icon: ReactNode;
-} & HTMLAttributes<HTMLAnchorElement | HTMLDivElement>;
+type SocialIconProps =
+  | ({
+      name: string;
+      href: string;
+      icon: ReactNode;
+    } & Omit<HTMLAttributes<HTMLAnchorElement>, 'href' | 'children'>)
+  | ({
+      name: string;
+      href?: undefined;
+      icon: ReactNode;
+    } & HTMLAttributes<HTMLDivElement>);
 
-const SocialIcon = ({ name, href, icon, ...props }: SocialIconProps) => {
-  if (href) {
+const SocialIcon = (props: SocialIconProps) => {
+  const { name, href, icon, ...restProps } = props;
+  
+  if (href != null) {
+    const anchorProps = restProps as Omit<HTMLAttributes<HTMLAnchorElement>, 'href' | 'children'>;
     return (
       <a
         href={href}
@@ -29,23 +37,18 @@ const SocialIcon = ({ name, href, icon, ...props }: SocialIconProps) => {
         aria-label={`Follow us on ${name}`}
         target="_blank"
         rel="noopener noreferrer"
-        {...props}
+        {...anchorProps}
       >
         {icon}
       </a>
     );
   }
+  const divProps = restProps as HTMLAttributes<HTMLDivElement>;
   return (
-    <div className={`footer__social-link footer__social-link--${name}`} {...props}>
+    <div className={`footer__social-link footer__social-link--${name}`} {...divProps}>
       {icon}
     </div>
   );
-};
-
-SocialIcon.propTypes = {
-  name: PropTypes.string.isRequired,
-  href: PropTypes.string,
-  icon: PropTypes.node.isRequired,
 };
 
 export interface FooterProps extends HTMLAttributes<HTMLElement> {
@@ -164,26 +167,5 @@ export const Footer = ({
       </Container>
     </footer>
   );
-};
-
-Footer.propTypes = {
-  logoSrc: PropTypes.string,
-  logoAlt: PropTypes.string,
-  socialLinks: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      href: PropTypes.string,
-      icon: PropTypes.node.isRequired,
-    })
-  ),
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      href: PropTypes.string,
-    })
-  ),
-  copyright: PropTypes.string,
-  copyrightYear: PropTypes.string,
-  className: PropTypes.string,
 };
 

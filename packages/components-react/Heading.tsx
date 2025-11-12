@@ -1,5 +1,4 @@
 import type { HTMLAttributes, ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import './Heading.css';
 
 export type HeadingVariant = 'display' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -58,13 +57,4 @@ export const Heading = ({
     default:
       return <h1 {...headingProps}>{children}</h1>;
   }
-};
-
-Heading.propTypes = {
-  level: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
-  // Note: PropTypes doesn't support null directly, but TypeScript allows variant?: HeadingVariant | null
-  // This matches the TypeScript type where variant can be null
-  variant: PropTypes.oneOf(['display', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', null]),
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
 };

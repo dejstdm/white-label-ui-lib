@@ -1,5 +1,4 @@
 import React, { useState, useEffect, type HTMLAttributes, type ReactNode, type MouseEvent } from 'react';
-import PropTypes from 'prop-types';
 import './SocialMediaFeed.css';
 import './SectionLayout.css';
 import { Container } from './Container';
@@ -95,14 +94,6 @@ const ExternalLinkDialog = ({ isOpen, image, imageAlt, onStay, onLeave }: Extern
   );
 };
 
-ExternalLinkDialog.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  image: PropTypes.string,
-  imageAlt: PropTypes.string,
-  onStay: PropTypes.func.isRequired,
-  onLeave: PropTypes.func.isRequired,
-};
-
 const SOCIAL_ICON_COMPONENTS = {
   facebook: FacebookIcon,
   instagram: InstagramIcon,
@@ -182,7 +173,7 @@ const SocialIcon = ({ name, href, icon, ...props }: SocialIconProps) => {
     <span aria-hidden="true">{fallbackLetter}</span>
   );
 
-  if (href) {
+  if (href != null) {
     const anchorProps = props as Omit<HTMLAttributes<HTMLAnchorElement>, 'href' | 'children'>;
     return (
       <a
@@ -203,12 +194,6 @@ const SocialIcon = ({ name, href, icon, ...props }: SocialIconProps) => {
       {content}
     </div>
   );
-};
-
-SocialIcon.propTypes = {
-  name: PropTypes.string.isRequired,
-  href: PropTypes.string,
-  icon: PropTypes.node,
 };
 
 export interface SocialMediaFeedProps extends HTMLAttributes<HTMLElement> {
@@ -371,31 +356,5 @@ export const SocialMediaFeed = ({
       </Container>
     </section>
   );
-};
-
-SocialMediaFeed.propTypes = {
-  headline: PropTypes.string, // Plain text field - not from CMS
-  headlineLevel: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
-  subheadline: PropTypes.string, // HTML string from CMS rich text editor
-  followText: PropTypes.string, // Plain text field
-  // Note: items is optional in TypeScript with default [], so PropTypes should not be required
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      image: PropTypes.string.isRequired,
-      alt: PropTypes.string,
-      url: PropTypes.string,
-      platform: PropTypes.string, // 'instagram', 'facebook', 'pinterest', etc.
-      platformIcon: PropTypes.node, // Optional custom badge (defaults to built-in icon when platform is known)
-    })
-  ),
-  socialLinks: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      href: PropTypes.string,
-      icon: PropTypes.node, // Optional custom icon (defaults to built-in icon when name is recognized)
-    })
-  ),
-  confirmExternalLinks: PropTypes.bool,
-  className: PropTypes.string,
 };
 

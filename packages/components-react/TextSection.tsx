@@ -1,5 +1,4 @@
 import React, { type HTMLAttributes } from 'react';
-import PropTypes from 'prop-types';
 import './TextSection.css';
 import './SectionLayout.css';
 import { Container, type ContainerBreakpoint } from './Container';
@@ -49,14 +48,5 @@ export const TextSection = ({
       </Container>
     </section>
   );
-};
-
-TextSection.propTypes = {
-  headline: PropTypes.string, // Plain text field - not from CMS
-  headlineLevel: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
-  subheadline: PropTypes.string, // HTML string from CMS rich text editor
-  text: PropTypes.string, // HTML string from CMS rich text editor
-  containerBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl', null]),
-  className: PropTypes.string,
 };
 

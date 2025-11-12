@@ -40,7 +40,7 @@ export default {
   },
 };
 
-const Template = (args) => (
+const Template = (args: React.ComponentProps<typeof WysiwygContent>) => (
   <div style={{ background: 'var(--color-bg-section)', padding: 'var(--space-6)', borderRadius: 'var(--radius-md)', maxWidth: '640px' }}>
     <WysiwygContent {...args} />
   </div>

@@ -1,5 +1,4 @@
 import React, { type HTMLAttributes, type MouseEventHandler } from 'react';
-import PropTypes from 'prop-types';
 import './Hero.css';
 import './SectionLayout.css';
 import { Button } from './Button';
@@ -86,16 +85,4 @@ export const Hero = ({
       </div>
     </section>
   );
-};
-
-Hero.propTypes = {
-  backgroundImage: PropTypes.string,
-  subheadline: PropTypes.string, // HTML string from CMS rich text editor
-  headline: PropTypes.string, // Plain text field - not from CMS
-  body: PropTypes.string, // HTML string from CMS rich text editor
-  buttonLabel: PropTypes.string, // Plain text field for link text
-  buttonHref: PropTypes.string, // Plain text field for link URL
-  buttonOnClick: PropTypes.func,
-  containerBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl', null]),
-  className: PropTypes.string,
 };

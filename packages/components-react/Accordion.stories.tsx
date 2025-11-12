@@ -5,7 +5,7 @@ import { WysiwygContent } from './WysiwygContent';
 const sampleItems = [
   {
     id: 'item-1',
-    trigger: ({ isOpen }) => (
+    trigger: ({ isOpen }: { isOpen: boolean }) => (
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
         <span style={{ fontWeight: 600 }}>Accordion header 1</span>
         <span style={{ color: 'var(--color-text-tertiary)' }}>{isOpen ? 'Open' : 'Closed'}</span>
@@ -19,7 +19,7 @@ const sampleItems = [
   },
   {
     id: 'item-2',
-    trigger: ({ isOpen }) => (
+    trigger: ({ isOpen }: { isOpen: boolean }) => (
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
         <span style={{ fontWeight: 600 }}>Accordion header 2</span>
         <span style={{ color: 'var(--color-text-tertiary)' }}>{isOpen ? 'Open' : 'Closed'}</span>
@@ -33,7 +33,7 @@ const sampleItems = [
   },
   {
     id: 'item-3',
-    trigger: ({ isOpen }) => (
+    trigger: ({ isOpen }: { isOpen: boolean }) => (
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
         <span style={{ fontWeight: 600 }}>Accordion header 3</span>
         <span style={{ color: 'var(--color-text-tertiary)' }}>{isOpen ? 'Open' : 'Closed'}</span>

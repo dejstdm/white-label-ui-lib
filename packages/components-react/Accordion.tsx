@@ -9,7 +9,6 @@ import {
   type ReactNode,
   type TransitionEvent
 } from 'react';
-import PropTypes from 'prop-types';
 import './Accordion.css';
 
 const TRANSITION_DURATION_MS = 300;
@@ -218,24 +217,6 @@ const AccordionItem = ({
   );
 };
 
-AccordionItem.propTypes = {
-  index: PropTypes.number.isRequired,
-  item: PropTypes.shape({
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    trigger: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
-    content: PropTypes.node.isRequired,
-  }).isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  allowMultiple: PropTypes.bool.isRequired,
-  onToggle: PropTypes.func.isRequired,
-  onAnimationStart: PropTypes.func,
-  onAnimationEnd: PropTypes.func,
-  itemClassName: PropTypes.string,
-  headerClassName: PropTypes.string,
-  bodyClassName: PropTypes.string,
-  bodyInnerClassName: PropTypes.string,
-};
-
 export type AccordionProps = {
   items?: AccordionItemData[];
   allowMultiple?: boolean;
@@ -340,21 +321,5 @@ export const Accordion = ({
       })}
     </div>
   );
-};
-
-Accordion.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      trigger: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired,
-      content: PropTypes.node.isRequired,
-    }),
-  ),
-  allowMultiple: PropTypes.bool,
-  className: PropTypes.string,
-  itemClassName: PropTypes.string,
-  headerClassName: PropTypes.string,
-  bodyClassName: PropTypes.string,
-  bodyInnerClassName: PropTypes.string,
 };
 

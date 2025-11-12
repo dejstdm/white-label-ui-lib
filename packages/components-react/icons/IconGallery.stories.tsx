@@ -21,7 +21,7 @@ export default {
   },
 };
 
-const IconTile = ({ name, Component }) => (
+const IconTile = ({ name, Component }: { name: string; Component: React.ComponentType<any> }) => (
   <div
     style={{
       display: 'flex',

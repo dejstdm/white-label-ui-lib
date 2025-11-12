@@ -140,7 +140,7 @@ export const Welcome = {
   ),
 };
 
-const Card = ({ title, description }) => (
+const Card = ({ title, description }: { title: string; description: string }) => (
   <div style={{
     padding: 'var(--space-6)',
     background: 'var(--color-bg-section)',

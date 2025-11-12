@@ -8,7 +8,7 @@ import laysLogo from './assets/lays-logo.png';
 import sevenUpLogo from './assets/logo-7up.png';
 
 // Social media icon component
-const SocialIcon = ({ src, alt }) => (
+const SocialIcon = ({ src, alt }: { src: string; alt: string }) => (
   <img src={src} alt={alt} width="25" height="25" />
 );
 
@@ -44,7 +44,7 @@ export default {
   },
 };
 
-const Template = (args) => <Footer {...args} />;
+const Template = (args: React.ComponentProps<typeof Footer>) => <Footer {...args} />;
 
 const defaultSocialLinks = [
   {

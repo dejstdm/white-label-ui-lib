@@ -29,7 +29,7 @@ export default {
   },
 };
 
-const Template = (args) => <NavBar {...args} />;
+const Template = (args: React.ComponentProps<typeof NavBar>) => <NavBar {...args} />;
 
 const defaultItems = [
   { label: 'Link1', href: '#link1' },

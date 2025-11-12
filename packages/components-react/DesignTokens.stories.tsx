@@ -203,7 +203,7 @@ export const Shadows = {
   ),
 };
 
-const ColorSwatch = ({ name, value }) => (
+const ColorSwatch = ({ name, value }: { name: string; value: string }) => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
     <div 
       style={{ 
@@ -221,7 +221,7 @@ const ColorSwatch = ({ name, value }) => (
   </div>
 );
 
-const TypoSample = ({ name, style }) => (
+const TypoSample = ({ name, style }: { name: string; style: React.CSSProperties }) => (
   <div>
     <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', marginBottom: 'var(--space-2)' }}>
       {name}
@@ -232,7 +232,7 @@ const TypoSample = ({ name, style }) => (
   </div>
 );
 
-const SpacingSample = ({ step }) => (
+const SpacingSample = ({ step }: { step: number }) => (
   <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-5)' }}>
     <div style={{ width: '100px', fontSize: '14px', fontWeight: 600 }}>
       --space-{step}
@@ -251,7 +251,7 @@ const SpacingSample = ({ step }) => (
   </div>
 );
 
-const RadiusSample = ({ name, value }) => (
+const RadiusSample = ({ name, value }: { name: string; value: string }) => (
   <div style={{ textAlign: 'center' }}>
     <div 
       style={{ 
@@ -267,7 +267,7 @@ const RadiusSample = ({ name, value }) => (
   </div>
 );
 
-const ShadowSample = ({ name, value }) => (
+const ShadowSample = ({ name, value }: { name: string; value: string }) => (
   <div style={{ textAlign: 'center' }}>
     <div 
       style={{ 

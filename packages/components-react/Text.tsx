@@ -1,5 +1,4 @@
 import React, { type ComponentPropsWithoutRef, type ElementType, type ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import './Text.css';
 
 export type TextSize = 'large' | 'small' | 'label';
@@ -33,12 +32,4 @@ export const Text = <T extends ElementType = 'p'>({
       {children}
     </Tag>
   );
-};
-
-Text.propTypes = {
-  size: PropTypes.oneOf(['large', 'small', 'label']),
-  muted: PropTypes.bool,
-  as: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
 };

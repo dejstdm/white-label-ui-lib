@@ -1,5 +1,4 @@
 import { useMemo, type HTMLAttributes } from 'react';
-import PropTypes from 'prop-types';
 import './FAQ.css';
 import './SectionLayout.css';
 import { Container } from './Container';
@@ -101,21 +100,5 @@ export const FAQ = ({
       </Container>
     </section>
   );
-};
-
-FAQ.propTypes = {
-  headline: PropTypes.string, // Plain text field - not from CMS
-  headlineLevel: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
-  subheadline: PropTypes.string, // HTML string from CMS rich text editor
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      question: PropTypes.string.isRequired, // Plain text field - not from CMS
-      answer: PropTypes.string.isRequired, // HTML string from CMS rich text editor
-    })
-  ),
-  collapseMode: PropTypes.oneOf(['single', 'multiple']), // "single" keeps one item open, "multiple" allows several
-  containerBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl', null]),
-  className: PropTypes.string,
 };
 

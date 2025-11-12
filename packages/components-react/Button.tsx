@@ -4,7 +4,6 @@ import type {
   DetailedHTMLProps,
   ReactNode
 } from 'react';
-import PropTypes from 'prop-types';
 import './Button.css';
 
 type ButtonVariant = 'solid' | 'outline' | 'text' | 'inverted';
@@ -65,7 +64,7 @@ export const Button = (props: ButtonProps) => {
   ].filter(Boolean).join(' ');
 
   // Handle props based on element type
-  if (href) {
+  if ('href' in props && props.href != null) {
     // Anchor variant
     const { type: _, ...anchorProps } = props as { href: string } & CommonButtonProps & Omit<AnchorProps, 'href' | 'children'>;
     const componentProps: AnchorHTMLAttributes<HTMLAnchorElement> = {
@@ -99,14 +98,4 @@ export const Button = (props: ButtonProps) => {
       </button>
     );
   }
-};
-
-Button.propTypes = {
-  variant: PropTypes.oneOf(['solid', 'outline', 'text', 'inverted']),
-  size: PropTypes.oneOf(['medium', 'large']),
-  icon: PropTypes.bool,
-  disabled: PropTypes.bool,
-  href: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
 };

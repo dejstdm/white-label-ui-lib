@@ -1,5 +1,4 @@
 import React, { useState, useEffect, type HTMLAttributes } from 'react';
-import PropTypes from 'prop-types';
 import './NavBar.css';
 import { Container } from './Container';
 
@@ -186,18 +185,4 @@ export const NavBar = ({
       </nav>
     </>
   );
-};
-
-NavBar.propTypes = {
-  logoSrc: PropTypes.string,
-  logoAlt: PropTypes.string,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      href: PropTypes.string,
-      active: PropTypes.bool,
-    })
-  ),
-  sticky: PropTypes.bool,
-  className: PropTypes.string,
 };

@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState, type HTMLAttributes, type MouseEventHandler } from 'react';
-import PropTypes from 'prop-types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -220,25 +219,5 @@ export const ProductSlider = ({
       </Container>
     </section>
   );
-};
-
-ProductSlider.propTypes = {
-  headline: PropTypes.string, // Plain text field
-  headlineLevel: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
-  subheadline: PropTypes.string, // HTML string from CMS rich text editor
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      image: PropTypes.string,
-      imageAlt: PropTypes.string,
-      title: PropTypes.string, // Plain text field
-      description: PropTypes.string, // HTML string from CMS rich text editor (e.g., "<p>Description text</p>")
-      buttonLabel: PropTypes.string, // Plain text field for link text
-      buttonHref: PropTypes.string, // Plain text field for link URL
-      buttonOnClick: PropTypes.func,
-    })
-  ),
-  containerBreakpoint: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'xxl', null]),
-  className: PropTypes.string,
 };
 
