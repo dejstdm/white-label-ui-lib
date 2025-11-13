@@ -1,0 +1,12 @@
+{
+  "font": {
+    "family": {
+      "heading": {
+        "value": "\"League Gothic\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif"
+      },
+      "body": {
+        "value": "\"PT Sans\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif"
+      }
+    }
+  }
+}

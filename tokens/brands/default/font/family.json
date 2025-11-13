@@ -1,0 +1,12 @@
+{
+  "font": {
+    "family": {
+      "heading": {
+        "value": "\"GT America Trial Bd\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif"
+      },
+      "body": {
+        "value": "\"GT America Rg\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif"
+      }
+    }
+  }
+}

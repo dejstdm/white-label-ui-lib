@@ -1,0 +1,24 @@
+{
+  "color": {
+    "brand": {
+      "primary": {
+        "value": "#FDD20A"
+      },
+      "primary-hover": {
+        "value": "#F4C20A"
+      },
+      "primary-active": {
+        "value": "#DAA505"
+      },
+      "primary-disabled": {
+        "value": "#FBE88F"
+      },
+      "on-primary": {
+        "value": "#1A1A1A"
+      },
+      "on-primary-disabled": {
+        "value": "#8C6A00"
+      }
+    }
+  }
+}

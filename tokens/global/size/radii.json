@@ -1,0 +1,18 @@
+{
+  "size": {
+    "radius": {
+      "none": {
+        "value": "0"
+      },
+      "sm": {
+        "value": "4px"
+      },
+      "md": {
+        "value": "8px"
+      },
+      "pill": {
+        "value": "9999px"
+      }
+    }
+  }
+}
