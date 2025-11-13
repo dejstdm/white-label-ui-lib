@@ -1,0 +1,193 @@
+{
+  "font": {
+    "scale": {
+      "display": {
+        "family": {
+          "value": "\"Raleway\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif"
+        },
+        "weight": {
+          "value": 700
+        },
+        "size": {
+          "value": "120px"
+        },
+        "lineHeight": {
+          "value": "100%"
+        },
+        "letterSpacing": {
+          "value": "0"
+        }
+      },
+      "h1": {
+        "family": {
+          "value": "{font.family.heading}"
+        },
+        "weight": {
+          "value": 700
+        },
+        "size": {
+          "value": "68px"
+        },
+        "lineHeight": {
+          "value": "110%"
+        },
+        "letterSpacing": {
+          "value": "0"
+        }
+      },
+      "h2": {
+        "family": {
+          "value": "{font.family.heading}"
+        },
+        "weight": {
+          "value": 700
+        },
+        "size": {
+          "value": "56px"
+        },
+        "lineHeight": {
+          "value": "110%"
+        },
+        "letterSpacing": {
+          "value": "0"
+        }
+      },
+      "h3": {
+        "family": {
+          "value": "{font.family.heading}"
+        },
+        "weight": {
+          "value": 600
+        },
+        "size": {
+          "value": "44px"
+        },
+        "lineHeight": {
+          "value": "115%"
+        },
+        "letterSpacing": {
+          "value": "0"
+        }
+      },
+      "h4": {
+        "family": {
+          "value": "{font.family.heading}"
+        },
+        "weight": {
+          "value": 600
+        },
+        "size": {
+          "value": "32px"
+        },
+        "lineHeight": {
+          "value": "120%"
+        },
+        "letterSpacing": {
+          "value": "0"
+        }
+      },
+      "h5": {
+        "family": {
+          "value": "{font.family.heading}"
+        },
+        "weight": {
+          "value": 600
+        },
+        "size": {
+          "value": "24px"
+        },
+        "lineHeight": {
+          "value": "125%"
+        },
+        "letterSpacing": {
+          "value": "0"
+        }
+      },
+      "h6": {
+        "family": {
+          "value": "{font.family.heading}"
+        },
+        "weight": {
+          "value": 600
+        },
+        "size": {
+          "value": "18px"
+        },
+        "lineHeight": {
+          "value": "125%"
+        },
+        "letterSpacing": {
+          "value": "0"
+        }
+      },
+      "body-large": {
+        "family": {
+          "value": "{font.family.body}"
+        },
+        "weight": {
+          "value": 400
+        },
+        "size": {
+          "value": "18px"
+        },
+        "lineHeight": {
+          "value": "155%"
+        },
+        "letterSpacing": {
+          "value": "0"
+        }
+      },
+      "body-small": {
+        "family": {
+          "value": "{font.family.body}"
+        },
+        "weight": {
+          "value": 400
+        },
+        "size": {
+          "value": "16px"
+        },
+        "lineHeight": {
+          "value": "155%"
+        },
+        "letterSpacing": {
+          "value": "0"
+        }
+      },
+      "label": {
+        "family": {
+          "value": "\"Raleway\", -apple-system, \"Segoe UI\", Roboto, Helvetica, sans-serif"
+        },
+        "weight": {
+          "value": 700
+        },
+        "size": {
+          "value": "14px"
+        },
+        "lineHeight": {
+          "value": "120%"
+        },
+        "letterSpacing": {
+          "value": "1%"
+        }
+      },
+      "small": {
+        "family": {
+          "value": "{font.family.body}"
+        },
+        "weight": {
+          "value": 400
+        },
+        "size": {
+          "value": "12px"
+        },
+        "lineHeight": {
+          "value": "140%"
+        },
+        "letterSpacing": {
+          "value": "1%"
+        }
+      }
+    }
+  }
+}

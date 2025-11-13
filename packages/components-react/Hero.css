@@ -70,9 +70,6 @@ padding: 100px 0;
  
 }
 
-.hero__subheadline .wysiwyg-content * {
-  
-}
 
 .hero__headline {
   width: 100%;
@@ -111,7 +108,7 @@ padding: 100px 0;
   text-transform: uppercase;
 }
 
-[data-theme="lays"] .hero__subheadline  .wysiwyg-content *{
+[data-theme="lays"] .hero__subheadline  .wysiwyg-content * {
   /* color: var(--color-danger); */
   font-weight: 700;
 }
@@ -142,11 +139,4 @@ padding: 100px 0;
     max-height: 100vh;
   }
 
-  .hero__headline .heading {
-
-  }
-
-  /* .hero__text {
-    gap: clamp(24px, 2.5vw, 30px);
-  } */
 }

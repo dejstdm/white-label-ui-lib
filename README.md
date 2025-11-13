@@ -1,6 +1,24 @@
 # WhiteLabel UI Library
 
-A Storybook component library with a role-based theming system. Components use theme manifests that compile to CSS variables, enabling rapid brand customization through configuration rather than code changes.
+A Storybook component library with a role-based theming system. Components use design tokens (compiled via Style Dictionary) and theme manifests that compile to CSS variables, enabling rapid brand customization through configuration rather than code changes.
+
+## About This Project
+
+### Problem Statement
+
+Current theming for WhiteLabel components is manual and slow. Every new brand requires re-styling (colors, typography, spacing). No stable contract exists between design and code, leading to inconsistencies and high maintenance costs.
+
+### Success Criteria
+
+The project aims to achieve the following goals (aspirational targets):
+
+| Metric | Target |
+|--------|--------|
+| Time to apply new brand | ≤ 2 hours |
+| Manual CSS edits per site | 0 |
+| Contrast accessibility compliance | 100% AA |
+| Components using role-based tokens | 100% |
+| Version conflicts | None after CI validation |
 
 ## Project Structure
 
@@ -8,10 +26,10 @@ A Storybook component library with a role-based theming system. Components use t
 /
 ├── packages/
 │   └── components-react/  # React component library
-│       ├── *.jsx          # Component implementations
+│       ├── *.tsx          # Component implementations (TypeScript)
 │       ├── *.css          # Component styles
-│       ├── *.stories.jsx  # Storybook stories
-│       ├── index.js       # Component exports
+│       ├── *.stories.tsx  # Storybook stories
+│       ├── index.ts       # Component exports
 │       └── AGENTS.md      # Component development rules
 ├── stories/               # Additional Storybook example stories
 │   └── assets/           # Story assets (images, SVGs)
@@ -19,19 +37,41 @@ A Storybook component library with a role-based theming system. Components use t
 │   ├── default/          # Default theme
 │   │   ├── theme.manifest.json
 │   │   └── dist/
-│   │       └── theme.css
-│   └── 7up/              # 7up brand theme
+│   │       ├── theme.css
+│   │       └── tokens.json
+│   ├── 7up/              # 7up brand theme
+│   │   ├── theme.manifest.json
+│   │   └── dist/
+│   │       ├── theme.css
+│   │       └── tokens.json
+│   └── lays/             # Lays brand theme
 │       ├── theme.manifest.json
 │       └── dist/
-│           └── theme.css
+│           ├── theme.css
+│           └── tokens.json
+├── tokens/               # Design tokens (Style Dictionary source)
+│   ├── global/           # Shared tokens across all brands
+│   │   ├── size/         # Spacing, radii
+│   │   ├── shadow/       # Shadow definitions
+│   │   └── grid/         # Grid system
+│   └── brands/           # Brand-specific token overrides
+│       ├── default/
+│       ├── 7up/
+│       └── lays/
 ├── scripts/
-│   └── compile-theme.js  # Theme compilation script
+│   ├── compile-theme.js       # Legacy manifest compiler
+│   ├── compile-themes-sd.js   # Style Dictionary compiler
+│   └── style-dictionary/      # Custom transforms and formats
+├── style-dictionary.config.js # Style Dictionary configuration
 ├── .storybook/           # Storybook configuration
 │   ├── main.js           # Storybook config
 │   ├── preview.jsx       # Storybook preview setup
 │   └── vitest.setup.js   # Vitest test setup
 ├── templates/            # Template files
-├── PRD.md                # Product Requirements Document
+├── reports/              # Engineering audits and manual reviews
+│   └── ts-review.md      # Current TypeScript migration audit
+├── ARCHITECTURE.md       # Architecture, constraints, data contracts
+├── ROADMAP.md            # Future plans and research items
 └── AGENTS.md             # Agent specifications for theming system
 ```
 
@@ -66,7 +106,11 @@ Storybook will open at `http://localhost:6006`
 - `npm run prepublishOnly` - Automatically runs build before publishing
 - `npm run storybook` - Start Storybook dev server (compiles themes automatically)
 - `npm run build-storybook` - Build static Storybook site (compiles themes automatically)
-- `npm run compile-themes` - Compile all theme manifests to CSS
+- `npm run typecheck` - Run TypeScript type checking
+- `npm run typecheck:stories` - Type-check Storybook stories with `tsconfig.stories.json`
+- `npm run compile-themes` - Compile all theme manifests to CSS (legacy compiler)
+- `npm run compile-themes:sd` - Compile all themes using Style Dictionary (recommended)
+- `npm run compile-themes:watch` - Watch mode for Style Dictionary compilation (development)
 
 ### Publishing to npm
 
@@ -75,7 +119,7 @@ Follow this flow when you want to release a new version to GitHub Packages:
 1. Ensure your git worktree is clean: `git status`
 2. Bump the version and generate a tag: `npm version patch` (or `minor`/`major`)
 3. (Optional) Refresh dependencies: `npm install --ignore-scripts`
-4. Compile themes so `themes/*/dist/theme.css` are current: `npm run compile-themes`
+4. Compile themes so `themes/*/dist/theme.css` are current: `npm run compile-themes:sd`
 5. Build the library: `npm run build`
 6. Publish: `npm publish` (your `.npmrc` already points `@dejstdm` to GitHub Packages)
 7. Push commit and tag: `git push && git push --tags` (first push: `git push --set-upstream origin main && git push --tags`)
@@ -362,42 +406,69 @@ All components include Storybook stories. Source files are in `packages/componen
 
 ## Theming System
 
-The theming system uses role-based design tokens stored in `theme.manifest.json` files that compile to CSS variables.
+The theming system uses [Style Dictionary](https://styledictionary.com/) to compile design tokens from CTI-structured JSON files into CSS variables. The system supports both token-based compilation (recommended) and legacy manifest-based compilation.
+
+### Token Structure
+
+Design tokens are organized using the CTI (Category/Type/Item) naming convention:
+
+- **Global tokens** (`tokens/global/`) - Shared across all brands (spacing, radii, shadows, grid)
+- **Brand tokens** (`tokens/brands/<brand>/`) - Brand-specific overrides (colors, typography)
+
+Tokens follow a hierarchical structure:
+```
+tokens/
+├── global/              # Shared tokens
+│   ├── size/
+│   │   ├── spacing.json
+│   │   └── radii.json
+│   ├── shadow/
+│   │   └── base.json
+│   └── grid/
+│       └── system.json
+└── brands/              # Brand-specific tokens
+    ├── default/
+    │   ├── color/
+    │   └── font/
+    ├── 7up/
+    └── lays/
+```
 
 ### Theme Structure
 
 Each theme in `/themes/<brand>/` contains:
-- `theme.manifest.json` - Theme configuration (colors, typography, spacing, etc.)
-- `dist/theme.css` - Compiled CSS variables (generated)
+- `theme.manifest.json` - Theme configuration and component metadata (`variantsAndHooks`)
+- `dist/theme.css` - Compiled CSS variables (generated from tokens)
+- `dist/tokens.json` - JSON token export (generated, for documentation/tooling)
 
-### Theme Manifest
+### Token Files
 
-The manifest includes:
-- **Meta**: Brand name, version, schema version
-- **Palette**: Brand colors, backgrounds, text colors, semantic colors
-- Background roles accept either a string (solid color or gradient) or an object with `fill` (gradient/string) and `fallback` (solid color used for contrast + legacy support). The compiler emits `--color-bg-*-fallback` only when a fallback is provided.
-- Example:
-  ```json
-  "palette": {
-    "bg": {
-      "hero": {
-        "fill": "linear-gradient(135deg, #102542 0%, #2B748E 100%)",
-        "fallback": "#1E4865"
+Token files use CTI structure and support references:
+```json
+{
+  "color": {
+    "brand": {
+      "primary": {
+        "value": "#00529C"
+      }
+    }
+  },
+  "font": {
+    "scale": {
+      "h1": {
+        "family": {
+          "value": "{font.family.heading}"
+        }
       }
     }
   }
-  ```
-- **Typography**: Font families and scales (display, h1-h6, body, label, small)
-- **Spacing**: Spacing scale array
-- **Radii**: Border radius values
-- **Shadows**: Box shadow definitions
-- **Grid**: Grid system configuration
-- **VariantsAndHooks**: Component variant definitions (optional)
+}
+```
 
 ### CSS Variables
 
 Themes compile to CSS variables scoped to `[data-theme="brand-x"]` selectors:
-- Colors: `--color-brand-*`, `--color-bg-*`, `--color-text-*`
+- Colors: `--color-brand-*`, `--color-bg-*`, `--color-text-*` (with `-rgb` variants)
 - Typography: `--font-*`, `--type-*-*`
 - Spacing: `--space-*`
 - Radii: `--radius-*`
@@ -408,14 +479,26 @@ Themes compile to CSS variables scoped to `[data-theme="brand-x"]` selectors:
 
 - **default** - Baseline design system foundation
 - **7up** - 7up brand theme
+- **lays** - Lays brand theme
 
 ### Theme Compilation
 
-Themes are automatically compiled when running Storybook or build commands. The compilation script:
-1. Validates theme manifests
-2. Generates CSS variables from manifest data
-3. Outputs `theme.css` to `dist/` directory
-4. Validates component variants and hooks (if defined)
+**Style Dictionary (Recommended):**
+- Compiles tokens from `tokens/global/` and `tokens/brands/<brand>/`
+- Generates CSS variables and JSON token exports
+- Supports watch mode for development
+- Run: `npm run compile-themes:sd`
+
+**Legacy Manifest Compiler:**
+- Compiles from `theme.manifest.json` files
+- Maintained for backward compatibility
+- Run: `npm run compile-themes`
+
+Themes are automatically compiled when running Storybook or build commands.
+
+### Documentation
+
+For detailed information on working with tokens, see [`docs/STYLE_DICTIONARY.md`](docs/STYLE_DICTIONARY.md).
 
 ## Testing
 
@@ -423,8 +506,10 @@ The project uses Vitest for testing. Test configuration is in `vitest.config.js`
 
 ## Documentation
 
-- **Product Requirements**: `PRD.md` - Product requirements document
+- **Architecture**: `ARCHITECTURE.md` - Current architecture, constraints, data contracts, versioning policy
+- **Roadmap**: `ROADMAP.md` - Future plans and research items
 - **Agent Specifications**: `AGENTS.md` - Automated agent specifications for theming workflow
+- **Style Dictionary Guide**: `docs/STYLE_DICTIONARY.md` - Guide for working with design tokens
 - **Component Development Rules**: `packages/components-react/AGENTS.md` - Rules for component development (BEM, mobile-first, etc.)
 
 ## Component Development

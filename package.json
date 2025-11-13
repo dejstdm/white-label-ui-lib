@@ -1,11 +1,12 @@
 {
   "name": "@dejstdm/white-label-ui",
-  "version": "0.1.17",
+  "version": "0.2.0",
   "private": false,
   "type": "module",
   "description": "A Storybook component library with a role-based theming system. Components use theme manifests that compile to CSS variables, enabling rapid brand customization through configuration rather than code changes.",
   "main": "dist/white-label-ui.js",
   "module": "dist/white-label-ui.js",
+  "types": "dist/index.d.ts",
   "files": [
     "index.js",
     "dist",
@@ -28,22 +29,31 @@
     "@storybook/addon-docs": "^10.0.3",
     "@storybook/addon-vitest": "^10.0.3",
     "@storybook/react-vite": "^10.0.3",
+    "@types/node": "^22.7.4",
+    "@types/react": "^18.3.4",
+    "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.2.0",
-    "prop-types": "^15.8.1",
-    "storybook": "^10.0.3",
-    "swiper": "^12.0.3",
-    "vite": "^5.0.0",
-    "vitest": "^4.0.6",
-    "playwright": "^1.56.1",
     "@vitest/browser-playwright": "^4.0.6",
-    "@vitest/coverage-v8": "^4.0.6"
+    "@vitest/coverage-v8": "^4.0.6",
+    "playwright": "^1.56.1",
+    "storybook": "^10.0.3",
+    "style-dictionary": "^5.1.1",
+    "swiper": "^12.0.3",
+    "typescript": "^5.5.4",
+    "vite": "^5.0.0",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^4.0.6"
   },
   "scripts": {
     "build": "vite build",
     "prepublishOnly": "npm run build",
     "compile-themes": "node scripts/compile-theme.js",
+    "compile-themes:sd": "node scripts/compile-themes-sd.js",
+    "compile-themes:watch": "node scripts/compile-themes-sd.js --watch",
     "storybook": "npm run compile-themes && storybook dev -p 6006",
-    "build-storybook": "npm run compile-themes && storybook build"
+    "build-storybook": "npm run compile-themes && storybook build",
+    "typecheck": "tsc --noEmit",
+    "typecheck:stories": "tsc -p tsconfig.stories.json --noEmit"
   },
   "license": "ISC"
 }

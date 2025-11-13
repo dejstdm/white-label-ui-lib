@@ -1,0 +1,40 @@
+{
+  "fonts": [
+    {
+      "family": "Raleway",
+      "style": "normal",
+      "weight": 400,
+      "display": "swap",
+      "sources": [
+        {
+          "src": "../assets/fonts/raleway-v28-latin-ext_latin-regular.woff2",
+          "format": "woff2"
+        }
+      ]
+    },
+    {
+      "family": "Raleway",
+      "style": "normal",
+      "weight": 700,
+      "display": "swap",
+      "sources": [
+        {
+          "src": "../assets/fonts/raleway-v28-latin-ext_latin-700.woff2",
+          "format": "woff2"
+        }
+      ]
+    },
+    {
+      "family": "Raleway",
+      "style": "normal",
+      "weight": 900,
+      "display": "swap",
+      "sources": [
+        {
+          "src": "../assets/fonts/raleway-v28-latin-ext_latin-900.woff2",
+          "format": "woff2"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "color": {
+    "brand": {
+      "primary": {
+        "value": "#00C853"
+      },
+      "on-primary": {
+        "value": "#FFFFFF"
+      }
+    }
+  }
+}

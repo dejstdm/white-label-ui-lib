@@ -51,13 +51,13 @@
    }
    ```
 
-3. **PropTypes should document HTML strings:**
-   ```jsx
-   PropTypes.shape({
-     headline: PropTypes.string, // HTML string from CMS rich text editor
-     description: PropTypes.string, // HTML string from CMS (e.g., "<p>Description text</p>")
-     buttonHtml: PropTypes.string, // HTML string from CMS (e.g., "<a href='#'>link</a>")
-   })
+3. **TypeScript props should label HTML strings explicitly:**
+   ```ts
+   export type HeroCopy = {
+     headline?: string;      // HTML string from CMS rich text editor
+     description?: string;   // HTML string (e.g., "<p>Description</p>")
+     ctaMarkup?: string;     // HTML string (e.g., "<a href='#'>Learn more</a>")
+   };
    ```
 
 #### WysiwygContent Component
@@ -91,7 +91,7 @@ The `WysiwygContent` component:
 2. Accept HTML strings as props for CMS content fields.  
 3. Global `.wysiwyg-content` styles are automatically applied (imported in Storybook preview).  
 4. Add component-specific CSS overrides only when needed.  
-5. Document HTML string format in PropTypes comments.  
+5. Document HTML string format in TypeScript interfaces (JSDoc) and Storybook argTypes.  
 6. Test with real CMS HTML output in Storybook stories.
 
 ---
@@ -230,16 +230,16 @@ img { max-width: 100%; }
 
 #### 7. Storybook Field Type Documentation
 
-Document field types in PropTypes and Storybook args:
+Document field types in TypeScript + Storybook args:
 
-```jsx
-ProductSlider.propTypes = {
-  headline: PropTypes.string, // Plain text field
-  subheadline: PropTypes.string, // HTML string from CMS rich text editor
-  description: PropTypes.string, // HTML string from CMS rich text editor
+```ts
+export type ProductSliderProps = {
+  headline?: string;     // Plain text field (internal copy)
+  subheadline?: string;  // HTML string from the CMS rich text editor
+  description?: string;  // HTML string from the CMS rich text editor
 };
 
-// In Storybook stories, use argTypes to document field types
+// In Storybook stories, use argTypes to reinforce the guidance
 export default {
   component: ProductSlider,
   argTypes: {
@@ -252,11 +252,11 @@ export default {
       control: 'text',
     },
   },
-};
+} satisfies Meta<typeof ProductSlider>;
 ```
 
 **Note:** Storybook can track field types through:
-- PropTypes comments (documentation)
+- TypeScript doc comments / inline prop descriptions
 - `argTypes` configuration (controls and descriptions)
 - Story examples showing HTML strings vs plain text
 

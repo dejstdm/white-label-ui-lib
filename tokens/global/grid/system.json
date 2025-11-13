@@ -1,0 +1,29 @@
+{
+  "grid": {
+    "system": {
+      "columns": {
+        "value": 12
+      },
+      "gutter": {
+        "value": "24px"
+      },
+      "container": {
+        "sm": {
+          "value": "640px"
+        },
+        "md": {
+          "value": "768px"
+        },
+        "lg": {
+          "value": "1024px"
+        },
+        "xl": {
+          "value": "1280px"
+        },
+        "2xl": {
+          "value": "1440px"
+        }
+      }
+    }
+  }
+}
