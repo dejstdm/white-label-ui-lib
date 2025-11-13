@@ -20,6 +20,21 @@ This document tracks planned work, research items, and future enhancements for t
   - Status: Needs research
   - Consider: Industry best practices, token naming conventions, optimal token count for maintainability
 
+### Image Components
+- **Responsive Image Component** - Picture tag component that accepts 2 images (mobile and desktop)
+  - Status: Needs implementation
+  - Requirements:
+    - At least one image is required (mobile or desktop)
+    - If only one image is provided, use it for both mobile and desktop
+    - Always include `width` and `height` attributes on fallback/mobile image
+    - Always add CSS `aspect-ratio` with matching media queries
+  - After creation: Update all existing components to use this component properly
+
+- **Image Component** - Standard image component with required props
+  - Status: Needs implementation
+  - Required props: `src`, `alt`, `width`, `height`
+  - After creation: Update all existing components to use this component properly
+
 ## Future Enhancements
 
 - **Theme Editor GUI** – Visual interface for creating and editing themes

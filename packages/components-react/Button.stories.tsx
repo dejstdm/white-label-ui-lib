@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from './Button';
 
 export default {
-  title: 'Components/Button',
+  title: 'Internal/Button',
   component: Button,
   tags: ['autodocs'],
   argTypes: {
@@ -128,3 +128,4 @@ export const AllVariants = {
     </div>
   ),
 };
+

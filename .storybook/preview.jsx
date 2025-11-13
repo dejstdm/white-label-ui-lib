@@ -13,19 +13,20 @@ export default {
       },
     },
     backgrounds: {
-      default: 'light',
-      values: [
-        {
+      options: {
+        light: {
           name: 'light',
           value: '#FFFFFF',
         },
-        {
+
+        section: {
           name: 'section',
           value: '#F7F8FA',
-        },
-      ],
+        }
+      }
     },
   },
+
   globalTypes: {
     theme: {
       name: 'Theme',
@@ -43,6 +44,7 @@ export default {
       },
     },
   },
+
   decorators: [
     (Story, context) => {
       const theme = context.globals.theme || 'default';
@@ -53,5 +55,13 @@ export default {
       );
     },
   ],
+
+  initialGlobals: {
+    backgrounds: {
+      value: 'light'
+    }
+  },
+
+  tags: ['autodocs']
 };
 
