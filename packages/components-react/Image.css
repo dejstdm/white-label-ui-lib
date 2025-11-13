@@ -1,0 +1,15 @@
+/* Image component styles */
+.image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.image__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+

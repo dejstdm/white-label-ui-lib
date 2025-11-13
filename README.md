@@ -401,6 +401,8 @@ The following components are used internally and are not part of the public API:
 - **Button** - Button component (used internally by Hero, sliders, and social feed)
 - **WysiwygContent** - WYSIWYG content renderer (used internally for CMS content)
 - **SectionHeader** - Section header component (used internally by section components)
+- **Image** - Standard image component with required width/height attributes
+- **ResponsiveImage** - Picture tag component for responsive images (mobile/desktop variants)
 
 All components include Storybook stories. Source files are in `packages/components-react/`.
 

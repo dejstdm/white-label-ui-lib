@@ -26,3 +26,5 @@ export * from './icons/index';
 // - Button (used internally by Hero, ProductSlider, RecipeSlider, SocialMediaFeed)
 // - WysiwygContent (used internally for CMS content)
 // - SectionHeader (used internally by section components)
+// - Image (standard image component with required width/height)
+// - ResponsiveImage (picture tag component for mobile/desktop images)

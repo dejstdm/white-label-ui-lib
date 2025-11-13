@@ -22,18 +22,20 @@ This document tracks planned work, research items, and future enhancements for t
 
 ### Image Components
 - **Responsive Image Component** - Picture tag component that accepts 2 images (mobile and desktop)
-  - Status: Needs implementation
+  - Status: ✅ Completed
   - Requirements:
     - At least one image is required (mobile or desktop)
     - If only one image is provided, use it for both mobile and desktop
     - Always include `width` and `height` attributes on fallback/mobile image
     - Always add CSS `aspect-ratio` with matching media queries
   - After creation: Update all existing components to use this component properly
+    - Status: Pending - Components created, migration to existing components pending
 
 - **Image Component** - Standard image component with required props
-  - Status: Needs implementation
+  - Status: ✅ Completed
   - Required props: `src`, `alt`, `width`, `height`
   - After creation: Update all existing components to use this component properly
+    - Status: Pending - Components created, migration to existing components pending
 
 ## Future Enhancements
 
