@@ -5,9 +5,7 @@ import type {
   ReactNode
 } from 'react';
 import './Button.css';
-
-type ButtonVariant = 'solid' | 'outline' | 'text' | 'inverted';
-type ButtonSize = 'medium' | 'large';
+import type { ButtonVariant, ButtonSize } from './types';
 
 type AnchorProps = DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>;
 type NativeButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;

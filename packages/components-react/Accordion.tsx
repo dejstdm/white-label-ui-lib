@@ -10,16 +10,12 @@ import {
   type TransitionEvent
 } from 'react';
 import './Accordion.css';
+import type { AccordionTriggerRender, AccordionItemData } from './types';
+
+// Re-export for components that use Accordion
+export type { AccordionItemData } from './types';
 
 const TRANSITION_DURATION_MS = 300;
-
-type AccordionTriggerRender = (context: { isOpen: boolean; allowMultiple: boolean }) => ReactNode;
-
-export type AccordionItemData = {
-  id?: string | number;
-  trigger: ReactNode | AccordionTriggerRender;
-  content: ReactNode;
-};
 
 type AccordionItemProps = {
   index: number;

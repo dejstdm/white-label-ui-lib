@@ -1,8 +1,10 @@
 import React, { type HTMLAttributes } from 'react';
 import './wysiwyg-content.css';
+import type { HtmlString } from './types';
 
 export interface WysiwygContentProps extends HTMLAttributes<HTMLDivElement> {
-  content?: string;
+  /** HTML string from CMS rich text editor - MUST use this component to render safely */
+  content?: HtmlString | string;
   className?: string;
 }
 

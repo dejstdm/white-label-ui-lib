@@ -8,13 +8,13 @@ export default defineComponentMeta({
   props: {
     headline: {
       type: 'string',
-      description: 'Plain text headline',
+      description: 'PlainText: Plain text headline (not from CMS, safe to render directly)',
       required: false,
       defaultValue: 'Get Social',
     },
     subheadline: {
       type: 'string',
-      description: 'HTML string for subheadline (from CMS rich text editor)',
+      description: 'HtmlString: HTML string for subheadline (from CMS rich text editor, must use WysiwygContent)',
       required: false,
     },
     headlineLevel: {
@@ -26,7 +26,7 @@ export default defineComponentMeta({
     },
     followText: {
       type: 'string',
-      description: 'Follow text below gallery',
+      description: 'PlainText: Follow text below gallery (not from CMS, safe to render directly)',
       required: false,
       defaultValue: 'Follow lorem ipsum',
     },
@@ -48,9 +48,21 @@ export default defineComponentMeta({
       required: false,
       defaultValue: [],
       itemType: {
-        name: { type: 'string', required: false },
-        href: { type: 'string', required: false },
-        icon: { type: 'node', required: true },
+        name: { 
+          type: 'string', 
+          required: false,
+          description: 'Name of the social media platform',
+        },
+        href: { 
+          type: 'string', 
+          required: false,
+          description: 'URL to the social media profile',
+        },
+        icon: { 
+          type: 'node', 
+          required: false,
+          description: 'Custom icon component (optional)',
+        },
       },
     },
     confirmExternalLinks: {

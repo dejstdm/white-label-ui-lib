@@ -248,6 +248,12 @@ export const formatCssThemeVariables = {
       output += `  ${gutterToken.name}: ${gutterToken.value};\n`;
     }
     
+    // container breakpoint
+    const breakpointToken = gridTokens.find(t => t.path[2] === 'breakpoint');
+    if (breakpointToken) {
+      output += `  ${breakpointToken.name}: ${breakpointToken.value};\n`;
+    }
+    
     // container max widths
     const containerTokens = gridTokens.filter(t => t.path[2] === 'container');
     containerTokens.forEach(token => {

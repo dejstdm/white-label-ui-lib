@@ -8,12 +8,12 @@ export default defineComponentMeta({
   props: {
     headline: {
       type: 'string',
-      description: 'Plain text headline',
+      description: 'PlainText: Plain text headline (not from CMS, safe to render directly)',
       required: false,
     },
     subheadline: {
       type: 'string',
-      description: 'HTML string for subheadline (from CMS rich text editor)',
+      description: 'HtmlString: HTML string for subheadline (from CMS rich text editor, must use WysiwygContent)',
       required: false,
     },
     headlineLevel: {
@@ -32,19 +32,12 @@ export default defineComponentMeta({
         id: { type: 'string|number', required: false },
         image: { type: 'string', required: false },
         imageAlt: { type: 'string', required: false },
-        title: { type: 'string', required: false },
-        description: { type: 'string', description: 'HTML string from CMS', required: false },
-        buttonLabel: { type: 'string', required: false },
+        title: { type: 'string', description: 'PlainText: Product title (not from CMS, safe to render directly)', required: false },
+        description: { type: 'string', description: 'HtmlString: Product description (HTML from CMS rich text editor, must use WysiwygContent)', required: false },
+        buttonLabel: { type: 'string', description: 'PlainText: Button label (not from CMS, safe to render directly)', required: false },
         buttonHref: { type: 'string', required: false },
         buttonOnClick: { type: 'function', required: false },
       },
-    },
-    containerBreakpoint: {
-      type: 'string',
-      description: 'Container max-width breakpoint',
-      required: false,
-      defaultValue: null,
-      enum: ['sm', 'md', 'lg', 'xl', 'xxl', null],
     },
     className: {
       type: 'string',

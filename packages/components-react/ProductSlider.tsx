@@ -5,29 +5,21 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import './ProductSlider.css';
 import './SectionLayout.css';
-import { Container, type ContainerBreakpoint } from './Container';
+import { Container } from './Container';
 import { Heading } from './Heading';
 import { WysiwygContent } from './WysiwygContent';
 import { Button } from './Button';
 import { SectionHeader } from './SectionHeader';
-
-export type ProductItem = {
-  id?: string | number;
-  image?: string;
-  imageAlt?: string;
-  title?: string;
-  description?: string;
-  buttonLabel?: string;
-  buttonHref?: string;
-  buttonOnClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
-};
+import type { ProductItem, PlainText, HtmlString, HeadingLevel } from './types';
 
 export interface ProductSliderProps extends HTMLAttributes<HTMLElement> {
-  headline?: string;
-  subheadline?: string;
-  headlineLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  /** Plain text headline (not from CMS) - rendered via Heading component */
+  headline?: PlainText;
+  /** HTML string from CMS rich text editor - rendered via WysiwygContent component */
+  subheadline?: HtmlString;
+  /** Semantic heading level (1-6) - defaults to 2 */
+  headlineLevel?: HeadingLevel;
   products?: ProductItem[];
-  containerBreakpoint?: ContainerBreakpoint;
   className?: string;
 }
 
@@ -36,7 +28,6 @@ export const ProductSlider = ({
   subheadline,
   headlineLevel = 2,
   products = [],
-  containerBreakpoint = null,
   className = '',
   ...props
 }: ProductSliderProps) => {
@@ -105,7 +96,7 @@ export const ProductSlider = ({
 
   return (
     <section className={classes} {...props}>
-      <Container breakpoint={containerBreakpoint} padding>
+      <Container padding>
         {(headline || subheadline) && (
           <SectionHeader
             headline={headline}

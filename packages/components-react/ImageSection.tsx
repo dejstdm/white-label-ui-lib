@@ -5,15 +5,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import './ImageSection.css';
 import './SectionLayout.css';
-import { Container, type ContainerBreakpoint } from './Container';
+import { Container } from './Container';
 import { SectionHeader } from './SectionHeader';
-
-export type ImageItem = {
-  id?: string | number;
-  src: string;
-  alt?: string;
-  href?: string;
-};
+import type { ImageItem, PlainText, HtmlString, HeadingLevel } from './types';
 
 type LinkIconProps = {
   className?: string;
@@ -35,11 +29,13 @@ const LinkIcon = ({ className = '' }: LinkIconProps) => (
 );
 
 export interface ImageSectionProps extends HTMLAttributes<HTMLElement> {
-  headline?: string;
-  subheadline?: string;
-  headlineLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  /** Plain text headline (not from CMS) - rendered via Heading component */
+  headline?: PlainText;
+  /** HTML string from CMS rich text editor - rendered via WysiwygContent component */
+  subheadline?: HtmlString;
+  /** Semantic heading level (1-6) - defaults to 2 */
+  headlineLevel?: HeadingLevel;
   images?: ImageItem[];
-  containerBreakpoint?: ContainerBreakpoint;
   className?: string;
 }
 
@@ -48,7 +44,6 @@ export const ImageSection = ({
   subheadline,
   headlineLevel = 2,
   images = [],
-  containerBreakpoint = null,
   className = '',
   ...props
 }: ImageSectionProps) => {
@@ -111,7 +106,7 @@ export const ImageSection = ({
 
   return (
     <section className={classes} {...props}>
-      <Container breakpoint={containerBreakpoint} padding>
+      <Container padding>
         {(headline || subheadline) && (
           <SectionHeader
             headline={headline}

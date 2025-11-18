@@ -23,9 +23,21 @@ export default defineComponentMeta({
       required: false,
       defaultValue: [],
       itemType: {
-        label: { type: 'string', required: true },
-        href: { type: 'string', required: false },
-        active: { type: 'boolean', required: false },
+        label: { 
+          type: 'string', 
+          required: true,
+          description: 'PlainText: Display label for the navigation item (not from CMS, safe to render directly).',
+        },
+        href: { 
+          type: 'string', 
+          required: false,
+          description: 'URL for the navigation link.',
+        },
+        active: { 
+          type: 'boolean', 
+          required: false,
+          description: 'Whether this item is currently active/selected.',
+        },
       },
     },
     sticky: {

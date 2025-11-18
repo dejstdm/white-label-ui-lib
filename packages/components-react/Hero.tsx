@@ -2,19 +2,23 @@ import React, { type HTMLAttributes, type MouseEventHandler } from 'react';
 import './Hero.css';
 import './SectionLayout.css';
 import { Button } from './Button';
-import { Container, type ContainerBreakpoint } from './Container';
+import { Container } from './Container';
 import { Heading } from './Heading';
 import { WysiwygContent } from './WysiwygContent';
+import type { PlainText, HtmlString } from './types';
 
 export interface HeroProps extends HTMLAttributes<HTMLElement> {
   backgroundImage?: string;
-  subheadline?: string;
-  headline?: string;
-  body?: string;
-  buttonLabel?: string;
+  /** HTML string from CMS rich text editor - rendered via WysiwygContent component */
+  subheadline?: HtmlString;
+  /** Plain text headline (not from CMS) - rendered via Heading component */
+  headline?: PlainText;
+  /** HTML string from CMS rich text editor - rendered via WysiwygContent component */
+  body?: HtmlString;
+  /** Plain text button label (not from CMS) */
+  buttonLabel?: PlainText;
   buttonHref?: string;
   buttonOnClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
-  containerBreakpoint?: ContainerBreakpoint;
   className?: string;
 }
 
@@ -26,7 +30,6 @@ export const Hero = ({
   buttonLabel,
   buttonHref,
   buttonOnClick,
-  containerBreakpoint = null,
   className = '',
   ...props
 }: HeroProps) => {
@@ -50,7 +53,7 @@ export const Hero = ({
         </div>
       )}
       <div className="hero__content">
-        <Container breakpoint={containerBreakpoint} padding>
+        <Container padding>
           <div className="hero__text">
             {subheadline && (
               <div className="hero__subheadline">

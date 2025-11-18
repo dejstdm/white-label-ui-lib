@@ -5,20 +5,7 @@ import { Container } from './Container';
 import { SectionHeader } from './SectionHeader';
 import { Button } from './Button';
 import { FacebookIcon, InstagramIcon, XTwitterIcon } from './icons';
-
-export type SocialMediaFeedItem = {
-  image: string;
-  alt?: string;
-  url?: string;
-  platform?: string;
-  platformIcon?: ReactNode;
-};
-
-export type SocialMediaFeedSocialLink = {
-  name?: string;
-  href?: string;
-  icon?: ReactNode;
-};
+import type { SocialMediaFeedItem, SocialMediaFeedSocialLink, PlainText, HtmlString, HeadingLevel } from './types';
 
 type ExternalLinkDialogProps = {
   isOpen: boolean;
@@ -197,10 +184,14 @@ const SocialIcon = ({ name, href, icon, ...props }: SocialIconProps) => {
 };
 
 export interface SocialMediaFeedProps extends HTMLAttributes<HTMLElement> {
-  headline?: string;
-  subheadline?: string;
-  headlineLevel?: 1 | 2 | 3 | 4 | 5 | 6;
-  followText?: string;
+  /** Plain text headline (not from CMS) - rendered via Heading component */
+  headline?: PlainText;
+  /** HTML string from CMS rich text editor - rendered via WysiwygContent component */
+  subheadline?: HtmlString;
+  /** Semantic heading level (1-6) - defaults to 2 */
+  headlineLevel?: HeadingLevel;
+  /** Plain text follow button label (not from CMS) */
+  followText?: PlainText;
   items?: SocialMediaFeedItem[];
   socialLinks?: SocialMediaFeedSocialLink[];
   confirmExternalLinks?: boolean;
@@ -272,7 +263,7 @@ export const SocialMediaFeed = ({
 
   return (
     <section className={classes} {...props}>
-      <Container breakpoint={null} padding>
+      <Container padding>
         {headline && (
           <SectionHeader
             headline={headline}

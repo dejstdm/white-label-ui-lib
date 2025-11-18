@@ -25,16 +25,30 @@ export default defineComponentMeta({
       required: false,
       defaultValue: [],
       itemType: {
-        name: { type: 'string', required: false, description: 'Accessible network name, e.g. "LinkedIn".' },
+        name: { 
+          type: 'string', 
+          required: false, 
+          description: 'Name of the social media platform (e.g. "Facebook", "Instagram"). Auto-detected if not provided.' 
+        },
         href: {
           type: 'string',
           required: false,
-          description: 'Destination URL. When omitted the icon renders as a static element.',
+          description: 'URL to the social media profile. When omitted the icon renders as a static element.',
         },
         icon: {
           type: 'node',
-          required: true,
-          description: 'React node for the network icon (SVG, icon component, etc.).',
+          required: false,
+          description: 'Custom icon component (optional). If not provided, icon is auto-detected from name.',
+        },
+        iconSize: {
+          type: 'number',
+          required: false,
+          description: 'Icon size in pixels. Defaults to 25 if not provided.',
+        },
+        iconColor: {
+          type: 'string',
+          required: false,
+          description: 'Icon color (CSS color value). Defaults to "currentColor" if not provided.',
         },
       },
     },
@@ -47,7 +61,7 @@ export default defineComponentMeta({
         label: {
           type: 'string',
           required: true,
-          description: 'Visible link label (plain text from CMS or config).',
+          description: 'PlainText: Visible link label (not from CMS, safe to render directly).',
         },
         href: {
           type: 'string',

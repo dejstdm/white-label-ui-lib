@@ -8,12 +8,12 @@ export default defineComponentMeta({
   props: {
     headline: {
       type: 'string',
-      description: 'Plain text headline',
+      description: 'PlainText: Plain text headline (not from CMS, safe to render directly)',
       required: false,
     },
     subheadline: {
       type: 'string',
-      description: 'HTML string for subheadline (from CMS rich text editor)',
+      description: 'HtmlString: HTML string for subheadline (from CMS rich text editor, must use WysiwygContent)',
       required: false,
     },
     headlineLevel: {
@@ -37,7 +37,7 @@ export default defineComponentMeta({
     },
     headerButtonLabel: {
       type: 'string',
-      description: 'Header button text',
+      description: 'PlainText: Header button text (not from CMS, safe to render directly)',
       required: false,
     },
     headerButtonHref: {
@@ -49,13 +49,6 @@ export default defineComponentMeta({
       type: 'function',
       description: 'Header button click handler',
       required: false,
-    },
-    containerBreakpoint: {
-      type: 'string',
-      description: 'Container max-width breakpoint',
-      required: false,
-      defaultValue: null,
-      enum: ['sm', 'md', 'lg', 'xl', 'xxl', null],
     },
     className: {
       type: 'string',

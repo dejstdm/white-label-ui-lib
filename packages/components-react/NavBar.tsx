@@ -1,12 +1,7 @@
 import React, { useState, useEffect, type HTMLAttributes } from 'react';
 import './NavBar.css';
 import { Container } from './Container';
-
-export type NavBarItem = {
-  label: string;
-  href?: string;
-  active?: boolean;
-};
+import type { NavBarItem } from './types';
 
 type BurgerIconProps = {
   isOpen: boolean;
@@ -84,7 +79,7 @@ export const NavBar = ({
   return (
     <>
       <nav className={classes} role="navigation" aria-label="Main navigation" {...props}>
-        <Container className="navbar__inner" breakpoint={null} padding>
+        <Container className="navbar__inner" padding>
           {displayLogo && <div className="navbar__logo-wrapper">{displayLogo}</div>}
 
           {/* Desktop navigation links */}

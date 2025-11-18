@@ -19,6 +19,49 @@ export { SocialMediaFeed } from './SocialMediaFeed';
 
 // Icons
 export * from './icons/index';
+
+// Types - export for consumers
+export type {
+  // Primitive types
+  // NOTE: ContainerBreakpoint is NOT exported - it's a global CSS variable setting, not a component prop
+  HeadingLevel,
+  HeadingVariant,
+  TextSize,
+  ButtonVariant,
+  ButtonSize,
+  CollapseMode,
+  // Content types
+  PlainText,
+  HtmlString,
+  // Navigation types
+  NavBarItem,
+  FooterLink,
+  FooterSocialLink,
+  // Media types
+  ImageItem,
+  // Slider types
+  ProductItem,
+  RecipeItem,
+  SocialMediaFeedItem,
+  SocialMediaFeedSocialLink,
+  // Accordion types
+  AccordionTriggerRender,
+  AccordionItemData,
+  // FAQ types
+  FAQItem,
+} from './types';
+
+// Component props for advanced usage
+export type { HeroProps } from './Hero';
+export type { ProductSliderProps } from './ProductSlider';
+export type { RecipeSliderProps } from './RecipeSlider';
+export type { FAQProps } from './FAQ';
+export type { TextSectionProps } from './TextSection';
+export type { ImageSectionProps } from './ImageSection';
+export type { SocialMediaFeedProps } from './SocialMediaFeed';
+export type { NavBarProps } from './NavBar';
+export type { FooterProps } from './Footer';
+
 // Internal building blocks - NOT exported:
 // - Container (used internally by all sections)
 // - Heading (used internally by Hero, SectionHeader)

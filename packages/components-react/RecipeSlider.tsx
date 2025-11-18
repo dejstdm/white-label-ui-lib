@@ -6,26 +6,23 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './RecipeSlider.css';
 import './SectionLayout.css';
-import { Container, type ContainerBreakpoint } from './Container';
+import { Container } from './Container';
 import { Button } from './Button';
 import { SectionHeader } from './SectionHeader';
-
-export type RecipeItem = {
-  id?: string | number;
-  image?: string;
-  imageAlt?: string;
-  href?: string;
-};
+import type { RecipeItem, PlainText, HtmlString, HeadingLevel } from './types';
 
 export interface RecipeSliderProps extends HTMLAttributes<HTMLElement> {
-  headline?: string;
-  subheadline?: string;
-  headlineLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  /** Plain text headline (not from CMS) - rendered via Heading component */
+  headline?: PlainText;
+  /** HTML string from CMS rich text editor - rendered via WysiwygContent component */
+  subheadline?: HtmlString;
+  /** Semantic heading level (1-6) - defaults to 2 */
+  headlineLevel?: HeadingLevel;
   recipes?: RecipeItem[];
-  headerButtonLabel?: string;
+  /** Plain text button label (not from CMS) */
+  headerButtonLabel?: PlainText;
   headerButtonHref?: string;
   headerButtonOnClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
-  containerBreakpoint?: ContainerBreakpoint;
   className?: string;
 }
 
@@ -37,7 +34,6 @@ export const RecipeSlider = ({
   headerButtonLabel,
   headerButtonHref,
   headerButtonOnClick,
-  containerBreakpoint = null,
   className = '',
   ...props
 }: RecipeSliderProps) => {
@@ -106,7 +102,7 @@ export const RecipeSlider = ({
 
   return (
     <section className={classes} {...props}>
-      <Container breakpoint={containerBreakpoint} padding>
+      <Container padding>
         {(headline || subheadline || headerButtonLabel) && (
           <div className="recipe-slider__header-wrapper">
             {(headline || subheadline) && (
@@ -131,7 +127,7 @@ export const RecipeSlider = ({
         )}
         </Container>
         <div className="recipe-slider__container">
-        <Container breakpoint={containerBreakpoint} padding>
+        <Container padding>
         {recipes.length > 0 && (
           <div className={wrapperClasses}>
             <Swiper

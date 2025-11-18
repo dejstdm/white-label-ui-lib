@@ -7,6 +7,9 @@
       "gutter": {
         "value": "24px"
       },
+      "breakpoint": {
+        "value": null
+      },
       "container": {
         "sm": {
           "value": "640px"

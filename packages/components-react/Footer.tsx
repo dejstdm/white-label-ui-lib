@@ -2,19 +2,7 @@ import React, { type HTMLAttributes, type ReactNode } from 'react';
 import './Footer.css';
 import { Container } from './Container';
 import { FacebookIcon, InstagramIcon, XTwitterIcon } from './icons';
-
-export type FooterSocialLink = {
-  name?: string;
-  href?: string;
-  icon?: ReactNode;
-  iconSize?: number;
-  iconColor?: string;
-};
-
-export type FooterLink = {
-  label: string;
-  href?: string;
-};
+import type { FooterSocialLink, FooterLink } from './types';
 
 const SOCIAL_ICON_COMPONENTS = {
   facebook: FacebookIcon,
@@ -151,7 +139,7 @@ export const Footer = ({
 
   return (
     <footer className={classes} role="contentinfo" {...props}>
-      <Container className="footer__inner" breakpoint={null} padding>
+      <Container className="footer__inner" padding>
         {/* Logo */}
         {displayLogo && <div className="footer__logo-wrapper">{displayLogo}</div>}
 

@@ -1,7 +1,6 @@
 import React, { type ComponentPropsWithoutRef, type ElementType, type ReactNode } from 'react';
 import './Text.css';
-
-export type TextSize = 'large' | 'small' | 'label';
+import type { TextSize } from './types';
 
 export type TextProps<T extends ElementType = 'p'> = {
   size?: TextSize;

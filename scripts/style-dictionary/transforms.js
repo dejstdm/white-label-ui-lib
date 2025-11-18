@@ -117,6 +117,8 @@ export const transformNameCssVariable = {
         return '--grid-columns';
       } else if (path[2] === 'gutter') {
         return '--grid-gutter';
+      } else if (path[2] === 'breakpoint') {
+        return '--container-breakpoint';
       } else if (path[2] === 'container') {
         // grid.system.container.sm -> --grid-container-sm
         return `--grid-container-${path[3]}`;

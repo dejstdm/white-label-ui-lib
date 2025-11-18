@@ -13,22 +13,22 @@ export default defineComponentMeta({
     },
     subheadline: {
       type: 'string',
-      description: 'HTML string for subheadline (from CMS rich text editor)',
+      description: 'HtmlString: HTML string for subheadline (from CMS rich text editor, must use WysiwygContent)',
       required: false,
     },
     headline: {
       type: 'string',
-      description: 'Plain text headline',
+      description: 'PlainText: Plain text headline (not from CMS, safe to render directly)',
       required: false,
     },
     body: {
       type: 'string',
-      description: 'HTML string for body content (from CMS rich text editor)',
+      description: 'HtmlString: HTML string for body content (from CMS rich text editor, must use WysiwygContent)',
       required: false,
     },
     buttonLabel: {
       type: 'string',
-      description: 'Button text label',
+      description: 'PlainText: Button text label (not from CMS, safe to render directly)',
       required: false,
     },
     buttonHref: {
@@ -40,13 +40,6 @@ export default defineComponentMeta({
       type: 'function',
       description: 'Button click handler',
       required: false,
-    },
-    containerBreakpoint: {
-      type: 'string',
-      description: 'Container max-width breakpoint',
-      required: false,
-      defaultValue: null,
-      enum: ['sm', 'md', 'lg', 'xl', 'xxl', null],
     },
     className: {
       type: 'string',

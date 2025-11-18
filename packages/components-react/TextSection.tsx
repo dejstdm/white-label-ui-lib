@@ -1,16 +1,20 @@
 import React, { type HTMLAttributes } from 'react';
 import './TextSection.css';
 import './SectionLayout.css';
-import { Container, type ContainerBreakpoint } from './Container';
+import { Container } from './Container';
 import { SectionHeader } from './SectionHeader';
 import { WysiwygContent } from './WysiwygContent';
+import type { PlainText, HtmlString, HeadingLevel } from './types';
 
 export interface TextSectionProps extends HTMLAttributes<HTMLElement> {
-  headline?: string;
-  subheadline?: string;
-  headlineLevel?: 1 | 2 | 3 | 4 | 5 | 6;
-  text?: string;
-  containerBreakpoint?: ContainerBreakpoint;
+  /** Plain text headline (not from CMS) - rendered via Heading component */
+  headline?: PlainText;
+  /** HTML string from CMS rich text editor - rendered via WysiwygContent component */
+  subheadline?: HtmlString;
+  /** Semantic heading level (1-6) - defaults to 2 */
+  headlineLevel?: HeadingLevel;
+  /** HTML string from CMS rich text editor - rendered via WysiwygContent component */
+  text?: HtmlString;
   className?: string;
 }
 
@@ -19,7 +23,6 @@ export const TextSection = ({
   subheadline,
   headlineLevel = 2,
   text,
-  containerBreakpoint = null,
   className = '',
   ...props
 }: TextSectionProps) => {
@@ -31,7 +34,7 @@ export const TextSection = ({
 
   return (
     <section className={classes} {...props}>
-      <Container breakpoint={containerBreakpoint} padding>
+      <Container padding>
         {(headline || subheadline) && (
           <SectionHeader
             headline={headline}

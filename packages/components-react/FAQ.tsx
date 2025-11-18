@@ -5,20 +5,17 @@ import { Container } from './Container';
 import { SectionHeader } from './SectionHeader';
 import { WysiwygContent } from './WysiwygContent';
 import { Accordion, type AccordionItemData } from './Accordion';
-
-export type FAQItem = {
-  id?: string | number;
-  question: string;
-  answer: string;
-};
+import type { FAQItem, PlainText, HtmlString, HeadingLevel, CollapseMode } from './types';
 
 export interface FAQProps extends HTMLAttributes<HTMLElement> {
-  headline?: string;
-  subheadline?: string;
-  headlineLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  /** Plain text headline (not from CMS) - rendered via Heading component */
+  headline?: PlainText;
+  /** HTML string from CMS rich text editor - rendered via WysiwygContent component */
+  subheadline?: HtmlString;
+  /** Semantic heading level (1-6) - defaults to 2 */
+  headlineLevel?: HeadingLevel;
   items?: FAQItem[];
-  collapseMode?: 'single' | 'multiple';
-  containerBreakpoint?: import('./Container').ContainerBreakpoint;
+  collapseMode?: CollapseMode;
   className?: string;
 }
 
@@ -28,7 +25,6 @@ export const FAQ = ({
   headlineLevel = 2,
   items = [],
   collapseMode = 'single',
-  containerBreakpoint = null,
   className = '',
   ...props
 }: FAQProps) => {
@@ -75,7 +71,7 @@ export const FAQ = ({
 
   return (
     <section className={classes} {...props}>
-      <Container breakpoint={containerBreakpoint} padding>
+      <Container padding>
         {(headline || subheadline) && (
           <SectionHeader
             headline={headline}

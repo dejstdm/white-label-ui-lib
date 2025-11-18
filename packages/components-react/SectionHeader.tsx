@@ -3,11 +3,15 @@ import './SectionLayout.css';
 import './SectionHeader.css';
 import { Heading } from './Heading';
 import { WysiwygContent } from './WysiwygContent';
+import type { PlainText, HtmlString, HeadingLevel } from './types';
 
 export interface SectionHeaderProps extends HTMLAttributes<HTMLDivElement> {
-  headline?: string;
-  headlineLevel?: 1 | 2 | 3 | 4 | 5 | 6;
-  subheadline?: string;
+  /** Plain text headline (not from CMS) - rendered via Heading component */
+  headline?: PlainText;
+  /** Semantic heading level (1-6) - defaults to 2 */
+  headlineLevel?: HeadingLevel;
+  /** HTML string from CMS rich text editor - rendered via WysiwygContent component */
+  subheadline?: HtmlString;
   className?: string;
 }
 

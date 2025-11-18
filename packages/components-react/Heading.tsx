@@ -1,10 +1,9 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import './Heading.css';
-
-export type HeadingVariant = 'display' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+import type { HeadingVariant, HeadingLevel } from './types';
 
 export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
-  level?: 1 | 2 | 3 | 4 | 5 | 6;
+  level?: HeadingLevel;
   variant?: HeadingVariant | null;
   children: ReactNode;
 }
