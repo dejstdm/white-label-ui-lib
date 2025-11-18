@@ -1,16 +1,8 @@
 import React from 'react';
 import { Footer } from './Footer';
-import facebookIcon from '../../stories/assets/facebook.svg';
-import instagramIcon from '../../stories/assets/instagram.svg';
-import xTwitterIcon from '../../stories/assets/x-twitter.svg';
 import pepsicoLogo from './assets/pepsicolabs_logo.png';
 import laysLogo from './assets/lays-logo.png';
 import sevenUpLogo from './assets/logo-7up.png';
-
-// Social media icon component
-const SocialIcon = ({ src, alt }: { src: string; alt: string }) => (
-  <img src={src} alt={alt} width="25" height="25" />
-);
 
 export default {
   title: 'Components/Footer',
@@ -46,21 +38,22 @@ export default {
 
 const Template = (args: React.ComponentProps<typeof Footer>) => <Footer {...args} />;
 
+// Icons are automatically resolved from name, but can also be explicitly provided
 const defaultSocialLinks = [
   {
     name: 'facebook',
     href: '#facebook',
-    icon: <SocialIcon src={facebookIcon} alt="Facebook" />,
+    // icon will be automatically resolved from name
   },
   {
     name: 'instagram',
     href: '#instagram',
-    icon: <SocialIcon src={instagramIcon} alt="Instagram" />,
+    // icon will be automatically resolved from name
   },
   {
     name: 'x-twitter',
     href: '#x-twitter',
-    icon: <SocialIcon src={xTwitterIcon} alt="X (Twitter)" />,
+    // icon will be automatically resolved from name
   },
 ];
 
@@ -154,6 +147,33 @@ export const WithoutLogo = {
     logoSrc: undefined,
     logoAlt: '',
     socialLinks: defaultSocialLinks,
+    links: defaultLinks,
+    copyrightYear: '2022',
+  },
+};
+
+export const WithCustomIconSize = {
+  render: Template,
+  args: {
+    logoSrc: pepsicoLogo,
+    logoAlt: 'PepsiCo Labs logo',
+    socialLinks: [
+      {
+        name: 'facebook',
+        href: '#facebook',
+        iconSize: 30, // Custom size
+      },
+      {
+        name: 'instagram',
+        href: '#instagram',
+        iconSize: 30, // Custom size
+      },
+      {
+        name: 'x-twitter',
+        href: '#x-twitter',
+        iconSize: 30, // Custom size
+      },
+    ],
     links: defaultLinks,
     copyrightYear: '2022',
   },

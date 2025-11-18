@@ -1,11 +1,14 @@
 import React, { type HTMLAttributes, type ReactNode } from 'react';
 import './Footer.css';
 import { Container } from './Container';
+import { FacebookIcon, InstagramIcon, XTwitterIcon } from './icons';
 
 export type FooterSocialLink = {
   name?: string;
   href?: string;
-  icon: ReactNode;
+  icon?: ReactNode;
+  iconSize?: number;
+  iconColor?: string;
 };
 
 export type FooterLink = {
@@ -13,20 +16,77 @@ export type FooterLink = {
   href?: string;
 };
 
+const SOCIAL_ICON_COMPONENTS = {
+  facebook: FacebookIcon,
+  instagram: InstagramIcon,
+  'x-twitter': XTwitterIcon,
+} as const;
+
+const resolveIconKey = (value: string | null | undefined): 'facebook' | 'instagram' | 'x-twitter' | null => {
+  if (!value || typeof value !== 'string') return null;
+  const normalized = value.toLowerCase();
+
+  if (normalized.includes('facebook')) {
+    return 'facebook';
+  }
+
+  if (normalized.includes('instagram')) {
+    return 'instagram';
+  }
+
+  if (
+    normalized === 'x' ||
+    normalized.includes('x-twitter') ||
+    normalized.includes('x.com') ||
+    normalized.includes('twitter')
+  ) {
+    return 'x-twitter';
+  }
+
+  return null;
+};
+
 type SocialIconProps =
   | ({
       name: string;
       href: string;
-      icon: ReactNode;
+      icon?: ReactNode;
+      iconSize?: number;
+      iconColor?: string;
     } & Omit<HTMLAttributes<HTMLAnchorElement>, 'href' | 'children'>)
   | ({
       name: string;
       href?: undefined;
-      icon: ReactNode;
+      icon?: ReactNode;
+      iconSize?: number;
+      iconColor?: string;
     } & HTMLAttributes<HTMLDivElement>);
 
 const SocialIcon = (props: SocialIconProps) => {
-  const { name, href, icon, ...restProps } = props;
+  const { name, href, icon, iconSize = 25, iconColor, ...restProps } = props;
+  
+  // If custom icon is provided, use it; otherwise create from name
+  let iconNode: ReactNode | null = null;
+  if (icon) {
+    iconNode = icon;
+  } else {
+    const key = resolveIconKey(name);
+    if (key) {
+      const IconComponent = SOCIAL_ICON_COMPONENTS[key];
+      if (IconComponent) {
+        iconNode = (
+          <IconComponent
+            size={iconSize}
+            aria-hidden="true"
+            focusable="false"
+            color={iconColor ?? "currentColor"}
+          />
+        );
+      }
+    }
+  }
+  
+  if (!iconNode) return null;
   
   if (href != null) {
     const anchorProps = restProps as Omit<HTMLAttributes<HTMLAnchorElement>, 'href' | 'children'>;
@@ -39,14 +99,14 @@ const SocialIcon = (props: SocialIconProps) => {
         rel="noopener noreferrer"
         {...anchorProps}
       >
-        {icon}
+        {iconNode}
       </a>
     );
   }
   const divProps = restProps as HTMLAttributes<HTMLDivElement>;
   return (
     <div className={`footer__social-link footer__social-link--${name}`} {...divProps}>
-      {icon}
+      {iconNode}
     </div>
   );
 };
@@ -104,6 +164,8 @@ export const Footer = ({
                 name={social.name || `social-${index}`}
                 href={social.href}
                 icon={social.icon}
+                iconSize={social.iconSize}
+                iconColor={social.iconColor}
               />
             ))}
           </div>

@@ -260,4 +260,77 @@ export default {
 - `argTypes` configuration (controls and descriptions)
 - Story examples showing HTML strings vs plain text
 
+#### 8. Social Media Icons Usage
+
+**CRITICAL:** All social media icons MUST be imported from `./icons` folder. No custom icon code should exist in component files.
+
+**Available icons:**
+- `FacebookIcon` - Facebook social media icon
+- `InstagramIcon` - Instagram social media icon
+- `XTwitterIcon` - X (Twitter) social media icon
+
+**Implementation Pattern:**
+
+1. **Import icons from `./icons`:**
+   ```jsx
+   import { FacebookIcon, InstagramIcon, XTwitterIcon } from './icons';
+   ```
+
+2. **Create icon mapping for name resolution:**
+   ```tsx
+   const SOCIAL_ICON_COMPONENTS = {
+     facebook: FacebookIcon,
+     instagram: InstagramIcon,
+     'x-twitter': XTwitterIcon,
+   } as const;
+   ```
+
+3. **Resolve icons from name prop (recommended):**
+   ```tsx
+   const resolveIconKey = (value: string | null | undefined): 'facebook' | 'instagram' | 'x-twitter' | null => {
+     if (!value || typeof value !== 'string') return null;
+     const normalized = value.toLowerCase();
+     
+     if (normalized.includes('facebook')) return 'facebook';
+     if (normalized.includes('instagram')) return 'instagram';
+     if (normalized === 'x' || normalized.includes('x-twitter') || normalized.includes('x.com') || normalized.includes('twitter')) {
+       return 'x-twitter';
+     }
+     return null;
+   };
+   
+   // Usage in component
+   const key = resolveIconKey(name);
+   if (key) {
+     const IconComponent = SOCIAL_ICON_COMPONENTS[key];
+     if (IconComponent) {
+       iconNode = <IconComponent size={iconSize} aria-hidden="true" color={iconColor ?? "currentColor"} />;
+     }
+   }
+   ```
+
+4. **Support automatic icon resolution with optional customization:**
+   ```tsx
+   export type SocialLink = {
+     name?: string;
+     href?: string;
+     icon?: ReactNode;      // Optional: custom icon override
+     iconSize?: number;     // Optional: size for auto-resolved icons (Footer only)
+     iconColor?: string;    // Optional: color for auto-resolved icons (Footer only)
+   };
+   ```
+
+**Rules:**
+- ✅ Always import icons from `./icons` folder
+- ✅ Use name-based resolution to automatically select the correct icon
+- ✅ Allow optional `icon` prop for custom icon overrides (advanced use cases)
+- ✅ Support `iconSize` and `iconColor` props for customization (where applicable)
+- ❌ Never create inline SVG paths for social icons in component files
+- ❌ Never import SVG files for social icons
+- ❌ Never duplicate icon component code
+
+**Components using icons:**
+- `Footer` - Uses icons from `./icons`, supports `iconSize` and `iconColor` props
+- `SocialMediaFeed` - Uses icons from `./icons` for platform badges and social links
+
 ---

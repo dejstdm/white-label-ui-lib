@@ -377,7 +377,7 @@ The following components are available in the library. All components are standa
 
 ### Navigation & Layout
 - **NavBar** - Navigation bar component with sticky option, menu items, and mobile-responsive burger menu
-- **Footer** - Footer component with logo, links, and content sections
+- **Footer** - Footer component with logo, social media links (uses icons from `./icons`), navigation links, and content sections
 
 ### Hero Section
 - **Hero** - Full-width hero section with background image, headline, body content, and optional button
@@ -390,7 +390,7 @@ The following components are available in the library. All components are standa
 - **ProductSlider** - Product carousel/slider with navigation controls
 - **RecipeSlider** - Recipe carousel/slider with navigation and pagination
 - **FAQ** - FAQ accordion component with expandable questions/answers
-- **SocialMediaFeed** - Social media feed component
+- **SocialMediaFeed** - Social media feed component with social links (uses icons from `./icons`)
 
 ### Internal Components (Not Exported)
 
@@ -405,6 +405,40 @@ The following components are used internally and are not part of the public API:
 - **ResponsiveImage** - Picture tag component for responsive images (mobile/desktop variants)
 
 All components include Storybook stories. Source files are in `packages/components-react/`.
+
+### Icons
+
+Social media icons are provided as React components in `packages/components-react/icons/`:
+
+- **FacebookIcon** - Facebook social media icon
+- **InstagramIcon** - Instagram social media icon
+- **XTwitterIcon** - X (Twitter) social media icon
+
+These icons are used by components that support social media links:
+- **Footer** - Automatically resolves icons from `name` prop or accepts `iconSize` and `iconColor` for customization
+- **SocialMediaFeed** - Automatically resolves icons from `name` prop for platform badges and social links
+
+**Usage in components:**
+```typescript
+// Icons are automatically resolved from the name prop
+const socialLinks = [
+  { name: 'facebook', href: 'https://facebook.com' },
+  { name: 'instagram', href: 'https://instagram.com' },
+  { name: 'x-twitter', href: 'https://x.com' }
+];
+
+// Custom size and color (Footer only)
+const customSocialLinks = [
+  { name: 'facebook', href: 'https://facebook.com', iconSize: 30, iconColor: '#1877F2' }
+];
+```
+
+All social media icons are exported from the package:
+```javascript
+import { FacebookIcon, InstagramIcon, XTwitterIcon } from '@dejstdm/white-label-ui';
+```
+
+**Note:** Components (`Footer`, `SocialMediaFeed`) import icons from `./icons` internally. No custom icon code exists in component files - all icon implementations are centralized in the `./icons` folder.
 
 ## Theming System
 
