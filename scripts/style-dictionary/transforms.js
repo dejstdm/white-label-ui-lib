@@ -36,6 +36,11 @@ export const transformGradientFallback = {
   transform: (token) => {
     const value = token.original?.value || token.value;
     
+    // Handle null or undefined values
+    if (value === null || value === undefined) {
+      return value;
+    }
+    
     // If it's an object with fill/fallback, return the fill
     if (typeof value === 'object' && value.fill) {
       return value.fallback || value.fill;
