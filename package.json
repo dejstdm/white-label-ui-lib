@@ -56,5 +56,8 @@
     "typecheck": "tsc --noEmit",
     "typecheck:stories": "tsc -p tsconfig.stories.json --noEmit"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.1.0"
+  }
 }

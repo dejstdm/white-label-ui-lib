@@ -19,7 +19,7 @@ export default {
     },
     socialLinks: {
       control: 'object',
-      description: 'Array of social media link objects with name, href, and icon',
+      description: 'Array of social media link objects with name, href, and icon (Font Awesome class names, e.g., "fa-brands fa-square-facebook")',
     },
     links: {
       control: 'object',
@@ -38,22 +38,21 @@ export default {
 
 const Template = (args: React.ComponentProps<typeof Footer>) => <Footer {...args} />;
 
-// Icons are automatically resolved from name, but can also be explicitly provided
 const defaultSocialLinks = [
   {
-    name: 'facebook',
+    name: 'Facebook',
     href: '#facebook',
-    // icon will be automatically resolved from name
+    icon: 'fa-brands fa-square-facebook',
   },
   {
-    name: 'instagram',
+    name: 'Instagram',
     href: '#instagram',
-    // icon will be automatically resolved from name
+    icon: 'fa-brands fa-square-instagram',
   },
   {
-    name: 'x-twitter',
+    name: 'X (Twitter)',
     href: '#x-twitter',
-    // icon will be automatically resolved from name
+    icon: 'fa-brands fa-square-x-twitter',
   },
 ];
 
@@ -152,26 +151,26 @@ export const WithoutLogo = {
   },
 };
 
-export const WithCustomIconSize = {
+export const WithCustomIcons = {
   render: Template,
   args: {
     logoSrc: pepsicoLogo,
     logoAlt: 'PepsiCo Labs logo',
     socialLinks: [
       {
-        name: 'facebook',
+        name: 'Facebook',
         href: '#facebook',
-        iconSize: 30, // Custom size
+        icon: 'fa-brands fa-square-facebook',
       },
       {
-        name: 'instagram',
+        name: 'Instagram',
         href: '#instagram',
-        iconSize: 30, // Custom size
+        icon: 'fa-brands fa-square-instagram',
       },
       {
-        name: 'x-twitter',
+        name: 'X (Twitter)',
         href: '#x-twitter',
-        iconSize: 30, // Custom size
+        icon: 'fa-brands fa-square-x-twitter',
       },
     ],
     links: defaultLinks,

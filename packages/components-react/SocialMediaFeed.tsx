@@ -1,10 +1,9 @@
-import React, { useState, useEffect, type HTMLAttributes, type ReactNode, type MouseEvent } from 'react';
+import React, { useState, useEffect, type HTMLAttributes, type MouseEvent } from 'react';
 import './SocialMediaFeed.css';
 import './SectionLayout.css';
 import { Container } from './Container';
 import { SectionHeader } from './SectionHeader';
 import { Button } from './Button';
-import { FacebookIcon, InstagramIcon, XTwitterIcon } from './icons';
 import type { SocialMediaFeedItem, SocialMediaFeedSocialLink, PlainText, HtmlString, HeadingLevel } from './types';
 
 type ExternalLinkDialogProps = {
@@ -81,61 +80,13 @@ const ExternalLinkDialog = ({ isOpen, image, imageAlt, onStay, onLeave }: Extern
   );
 };
 
-const SOCIAL_ICON_COMPONENTS = {
-  facebook: FacebookIcon,
-  instagram: InstagramIcon,
-  'x-twitter': XTwitterIcon,
-};
-
-const resolveIconKey = (value: string | null | undefined): 'facebook' | 'instagram' | 'x-twitter' | null => {
-  if (!value || typeof value !== 'string') return null;
-  const normalized = value.toLowerCase();
-
-  if (normalized.includes('facebook')) {
-    return 'facebook';
-  }
-
-  if (normalized.includes('instagram')) {
-    return 'instagram';
-  }
-
-  if (
-    normalized === 'x' ||
-    normalized.includes('x-twitter') ||
-    normalized.includes('x.com') ||
-    normalized.includes('twitter')
-  ) {
-    return 'x-twitter';
-  }
-
-  return null;
-};
-
-const createDefaultIcon = (value: string | null | undefined, size: number): ReactNode => {
-  const key = resolveIconKey(value);
-  if (!key) return null;
-
-  const IconComponent = SOCIAL_ICON_COMPONENTS[key];
-  if (!IconComponent) return null;
-
-  return (
-    <IconComponent
-      size={size}
-      aria-hidden="true"
-      focusable="false"
-      color="currentColor"
-    />
-  );
-};
-
-const renderPlatformBadge = (platformIcon: ReactNode | undefined, platform: string | undefined): ReactNode => {
-  const badgeIcon = platformIcon || createDefaultIcon(platform, 30);
-
-  if (!badgeIcon) return null;
+const renderPlatformBadge = (platformIcon: string | undefined, platform: string | undefined): React.ReactElement | null => {
+  // Icon must be explicitly provided - no auto-detection
+  if (!platformIcon) return null;
 
   return (
     <div className={`social-media-feed__platform social-media-feed__platform--${platform || 'default'}`}>
-      {badgeIcon}
+      <i className={platformIcon} aria-hidden="true"></i>
     </div>
   );
 };
@@ -144,21 +95,17 @@ type SocialIconProps =
   | ({
       name: string;
       href: string;
-      icon?: ReactNode;
+      icon: string;
     } & Omit<HTMLAttributes<HTMLAnchorElement>, 'href' | 'children'>)
   | ({
       name: string;
       href?: undefined;
-      icon?: ReactNode;
+      icon: string;
     } & HTMLAttributes<HTMLDivElement>);
 
 const SocialIcon = ({ name, href, icon, ...props }: SocialIconProps) => {
-  const defaultIcon = createDefaultIcon(name, 40);
-  const iconNode = icon ?? defaultIcon;
-  const fallbackLetter = name ? name.charAt(0).toUpperCase() : '?';
-  const content = iconNode || (
-    <span aria-hidden="true">{fallbackLetter}</span>
-  );
+  // Icon is required - no auto-detection
+  if (!icon) return null;
 
   if (href != null) {
     const anchorProps = props as Omit<HTMLAttributes<HTMLAnchorElement>, 'href' | 'children'>;
@@ -171,14 +118,14 @@ const SocialIcon = ({ name, href, icon, ...props }: SocialIconProps) => {
         rel="noopener noreferrer"
         {...anchorProps}
       >
-        {content}
+        <i className={icon} aria-hidden="true"></i>
       </a>
     );
   }
   const divProps = props as HTMLAttributes<HTMLDivElement>;
   return (
     <div className={`social-media-feed__social-link social-media-feed__social-link--${name}`} {...divProps}>
-      {content}
+      <i className={icon} aria-hidden="true"></i>
     </div>
   );
 };

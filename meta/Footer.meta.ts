@@ -28,7 +28,7 @@ export default defineComponentMeta({
         name: { 
           type: 'string', 
           required: false, 
-          description: 'Name of the social media platform (e.g. "Facebook", "Instagram"). Auto-detected if not provided.' 
+          description: 'Name of the social media platform (e.g. "Facebook", "Instagram").' 
         },
         href: {
           type: 'string',
@@ -36,19 +36,9 @@ export default defineComponentMeta({
           description: 'URL to the social media profile. When omitted the icon renders as a static element.',
         },
         icon: {
-          type: 'node',
-          required: false,
-          description: 'Custom icon component (optional). If not provided, icon is auto-detected from name.',
-        },
-        iconSize: {
-          type: 'number',
-          required: false,
-          description: 'Icon size in pixels. Defaults to 25 if not provided.',
-        },
-        iconColor: {
           type: 'string',
-          required: false,
-          description: 'Icon color (CSS color value). Defaults to "currentColor" if not provided.',
+          required: true,
+          description: 'Font Awesome icon class names (required, e.g., "fa-brands fa-square-facebook"). Icon styling (size, color) is controlled by theme CSS.',
         },
       },
     },

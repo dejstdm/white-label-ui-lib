@@ -39,7 +39,7 @@ export default defineComponentMeta({
         alt: { type: 'string', required: false },
         url: { type: 'string', required: false },
         platform: { type: 'string', description: 'Platform name (instagram, facebook, etc.)', required: false },
-        platformIcon: { type: 'node', description: 'Platform icon component', required: false },
+        platformIcon: { type: 'string', description: 'Font Awesome icon class names for platform badge (e.g., "fa-brands fa-square-instagram") - required if platform badge should be displayed', required: false },
       },
     },
     socialLinks: {
@@ -59,9 +59,9 @@ export default defineComponentMeta({
           description: 'URL to the social media profile',
         },
         icon: { 
-          type: 'node', 
-          required: false,
-          description: 'Custom icon component (optional)',
+          type: 'string', 
+          required: true,
+          description: 'Font Awesome icon class names (e.g., "fa-brands fa-square-facebook") - required',
         },
       },
     },

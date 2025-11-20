@@ -408,37 +408,60 @@ All components include Storybook stories. Source files are in `packages/componen
 
 ### Icons
 
-Social media icons are provided as React components in `packages/components-react/icons/`:
+Social media icons use **Font Awesome** icon classes. Components accept Font Awesome class strings for API integration.
 
-- **FacebookIcon** - Facebook social media icon
-- **InstagramIcon** - Instagram social media icon
-- **XTwitterIcon** - X (Twitter) social media icon
+**Font Awesome Icons:**
+- **Facebook**: `fa-brands fa-square-facebook`
+- **Instagram**: `fa-brands fa-square-instagram`
+- **Twitter/X**: `fa-brands fa-square-x-twitter`
 
 These icons are used by components that support social media links:
-- **Footer** - Automatically resolves icons from `name` prop or accepts `iconSize` and `iconColor` for customization
-- **SocialMediaFeed** - Automatically resolves icons from `name` prop for platform badges and social links
+- **Footer** - Requires Font Awesome icon class string via `icon` prop (e.g., `"fa-brands fa-square-facebook"`)
+- **SocialMediaFeed** - Uses Font Awesome icon classes for platform badges and social links
+
+**Font Awesome CSS Requirement:**
+
+**Required:** Import Font Awesome CSS in your application root (e.g., `app/layout.tsx` for Next.js):
+
+```bash
+npm install @fortawesome/fontawesome-free
+```
+
+```typescript
+// In your main app file (e.g., app/layout.tsx for Next.js)
+import '@fortawesome/fontawesome-free/css/all.min.css';
+```
+
+Or via CDN in your HTML:
+```html
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+```
 
 **Usage in components:**
 ```typescript
-// Icons are automatically resolved from the name prop
+// Icons are provided as Font Awesome class strings (perfect for API integration)
 const socialLinks = [
-  { name: 'facebook', href: 'https://facebook.com' },
-  { name: 'instagram', href: 'https://instagram.com' },
-  { name: 'x-twitter', href: 'https://x.com' }
+  { 
+    name: 'Facebook', 
+    href: 'https://facebook.com',
+    icon: 'fa-brands fa-square-facebook'
+  },
+  { 
+    name: 'Instagram', 
+    href: 'https://instagram.com',
+    icon: 'fa-brands fa-square-instagram'
+  },
+  { 
+    name: 'X (Twitter)', 
+    href: 'https://x.com',
+    icon: 'fa-brands fa-square-x-twitter'
+  }
 ];
 
-// Custom size and color (Footer only)
-const customSocialLinks = [
-  { name: 'facebook', href: 'https://facebook.com', iconSize: 30, iconColor: '#1877F2' }
-];
+<Footer socialLinks={socialLinks} />
 ```
 
-All social media icons are exported from the package:
-```javascript
-import { FacebookIcon, InstagramIcon, XTwitterIcon } from '@dejstdm/white-label-ui';
-```
-
-**Note:** Components (`Footer`, `SocialMediaFeed`) import icons from `./icons` internally. No custom icon code exists in component files - all icon implementations are centralized in the `./icons` folder.
+**Icon styling is controlled by theme CSS** - size and color are managed through CSS variables, not component props.
 
 ## Theming System
 

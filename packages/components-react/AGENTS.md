@@ -262,75 +262,41 @@ export default {
 
 #### 8. Social Media Icons Usage
 
-**CRITICAL:** All social media icons MUST be imported from `./icons` folder. No custom icon code should exist in component files.
+**CRITICAL:** Social media icons use **Font Awesome** icon classes. Components accept Font Awesome class strings for API integration.
 
-**Available icons:**
-- `FacebookIcon` - Facebook social media icon
-- `InstagramIcon` - Instagram social media icon
-- `XTwitterIcon` - X (Twitter) social media icon
+**Font Awesome Icons:**
+- **Facebook**: `fa-brands fa-square-facebook`
+- **Instagram**: `fa-brands fa-square-instagram`
+- **Twitter/X**: `fa-brands fa-square-x-twitter`
 
 **Implementation Pattern:**
 
-1. **Import icons from `./icons`:**
-   ```jsx
-   import { FacebookIcon, InstagramIcon, XTwitterIcon } from './icons';
-   ```
-
-2. **Create icon mapping for name resolution:**
+1. **Icons are Font Awesome class strings (required):**
    ```tsx
-   const SOCIAL_ICON_COMPONENTS = {
-     facebook: FacebookIcon,
-     instagram: InstagramIcon,
-     'x-twitter': XTwitterIcon,
-   } as const;
-   ```
-
-3. **Resolve icons from name prop (recommended):**
-   ```tsx
-   const resolveIconKey = (value: string | null | undefined): 'facebook' | 'instagram' | 'x-twitter' | null => {
-     if (!value || typeof value !== 'string') return null;
-     const normalized = value.toLowerCase();
-     
-     if (normalized.includes('facebook')) return 'facebook';
-     if (normalized.includes('instagram')) return 'instagram';
-     if (normalized === 'x' || normalized.includes('x-twitter') || normalized.includes('x.com') || normalized.includes('twitter')) {
-       return 'x-twitter';
-     }
-     return null;
+   export type BaseSocialLink = {
+     name?: string;
+     href?: string;
+     icon: string;  // Required: Font Awesome class names (e.g., "fa-brands fa-square-facebook")
    };
    
    // Usage in component
-   const key = resolveIconKey(name);
-   if (key) {
-     const IconComponent = SOCIAL_ICON_COMPONENTS[key];
-     if (IconComponent) {
-       iconNode = <IconComponent size={iconSize} aria-hidden="true" color={iconColor ?? "currentColor"} />;
-     }
-   }
-   ```
-
-4. **Support automatic icon resolution with optional customization:**
-   ```tsx
-   export type SocialLink = {
-     name?: string;
-     href?: string;
-     icon?: ReactNode;      // Optional: custom icon override
-     iconSize?: number;     // Optional: size for auto-resolved icons (Footer only)
-     iconColor?: string;    // Optional: color for auto-resolved icons (Footer only)
-   };
+   if (!icon) return null;  // Icon is required, don't render if missing
+   
+   // Render Font Awesome icon
+   <i className={icon} aria-hidden="true"></i>
    ```
 
 **Rules:**
-- ✅ Always import icons from `./icons` folder
-- ✅ Use name-based resolution to automatically select the correct icon
-- ✅ Allow optional `icon` prop for custom icon overrides (advanced use cases)
-- ✅ Support `iconSize` and `iconColor` props for customization (where applicable)
+- ✅ Icons must be Font Awesome class strings (e.g., `"fa-brands fa-square-facebook"`)
+- ✅ Icons are **required** - no auto-detection, no fallbacks
+- ✅ Icon styling (size, color) controlled by theme CSS, not component props
 - ❌ Never create inline SVG paths for social icons in component files
 - ❌ Never import SVG files for social icons
-- ❌ Never duplicate icon component code
+- ❌ Never use ReactNode/JSX elements for icons - only Font Awesome class strings
+- ❌ Never implement auto-detection or automatic icon resolution based on name/platform
 
 **Components using icons:**
-- `Footer` - Uses icons from `./icons`, supports `iconSize` and `iconColor` props
-- `SocialMediaFeed` - Uses icons from `./icons` for platform badges and social links
+- `Footer` - Requires `icon: string` prop in `FooterSocialLink` (Font Awesome class names)
+- `SocialMediaFeed` - Requires `icon: string` for social links, `platformIcon?: string` for platform badges (optional - badge only shown if provided)
 
 ---

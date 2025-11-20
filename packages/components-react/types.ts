@@ -163,22 +163,26 @@ export type FooterLink = {
 };
 
 /**
- * Footer social media link.
+ * Base social media link type.
  * 
- * Represents a social media link in the Footer component.
+ * Shared base type for social media links used across components.
+ * All social icons must use Font Awesome class names (e.g., "fa-brands fa-square-facebook").
  */
-export type FooterSocialLink = {
+export type BaseSocialLink = {
   /** Name of the social media platform */
   name?: string;
   /** URL to the social media profile */
   href?: string;
-  /** Custom icon component (optional, will auto-detect if not provided) */
-  icon?: ReactNode;
-  /** Icon size in pixels */
-  iconSize?: number;
-  /** Icon color (CSS color value) */
-  iconColor?: string;
+  /** Font Awesome icon class names (e.g., "fa-brands fa-square-facebook") - required */
+  icon: string;
 };
+
+/**
+ * Footer social media link.
+ * 
+ * Represents a social media link in the Footer component.
+ */
+export type FooterSocialLink = BaseSocialLink;
 
 // ==========================================
 // MEDIA TYPES
@@ -258,8 +262,8 @@ export type SocialMediaFeedItem = {
   url?: string;
   /** Platform name (e.g., "facebook", "instagram", "twitter") */
   platform?: string;
-  /** Custom platform icon component */
-  platformIcon?: ReactNode;
+  /** Font Awesome icon class names for platform badge (e.g., "fa-brands fa-square-instagram") - required if platform badge should be displayed */
+  platformIcon?: string;
 };
 
 /**
@@ -267,14 +271,7 @@ export type SocialMediaFeedItem = {
  * 
  * Represents a social media profile link in the feed header.
  */
-export type SocialMediaFeedSocialLink = {
-  /** Name of the social media platform */
-  name?: string;
-  /** URL to the social media profile */
-  href?: string;
-  /** Custom icon component */
-  icon?: ReactNode;
-};
+export type SocialMediaFeedSocialLink = BaseSocialLink;
 
 // ==========================================
 // ACCORDION TYPES

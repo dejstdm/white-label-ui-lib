@@ -41,7 +41,7 @@ export default {
     },
     socialLinks: {
       control: 'object',
-      description: 'Array of social media link objects with name, href, and optional icon override',
+      description: 'Array of social media link objects with name, href, and icon (Font Awesome class names, e.g., "fa-brands fa-square-facebook") - required',
     },
     confirmExternalLinks: {
       control: 'boolean',
@@ -85,16 +85,19 @@ const defaultItems = [
 
 const defaultSocialLinks = [
   {
-    name: 'facebook',
+    name: 'Facebook',
     href: 'https://facebook.com/example',
+    icon: 'fa-brands fa-square-facebook',
   },
   {
-    name: 'instagram',
+    name: 'Instagram',
     href: 'https://instagram.com/example',
+    icon: 'fa-brands fa-square-instagram',
   },
   {
-    name: 'x-twitter',
+    name: 'X (Twitter)',
     href: 'https://x.com/example',
+    icon: 'fa-brands fa-square-x-twitter',
   },
 ];
 

@@ -1,12 +1,11 @@
 import React from 'react';
-import { FacebookIcon, InstagramIcon, XTwitterIcon } from './index.js';
 
 const ICON_SIZE = 48;
 
 const icons = [
-  { name: 'Facebook', Component: FacebookIcon },
-  { name: 'Instagram', Component: InstagramIcon },
-  { name: 'X (Twitter)', Component: XTwitterIcon },
+  { name: 'Facebook', iconClass: 'fa-brands fa-square-facebook' },
+  { name: 'Instagram', iconClass: 'fa-brands fa-square-instagram' },
+  { name: 'X (Twitter)', iconClass: 'fa-brands fa-square-x-twitter' },
 ];
 
 export default {
@@ -15,13 +14,13 @@ export default {
     layout: 'padded',
     docs: {
       description: {
-        component: 'Shared glyph set exposed for NavBar/Footer social clusters and other internal use.',
+        component: 'Font Awesome icons used for social media links in Footer and SocialMediaFeed components.',
       },
     },
   },
 };
 
-const IconTile = ({ name, Component }: { name: string; Component: React.ComponentType<any> }) => (
+const IconTile = ({ name, iconClass }: { name: string; iconClass: string }) => (
   <div
     style={{
       display: 'flex',
@@ -39,15 +38,17 @@ const IconTile = ({ name, Component }: { name: string; Component: React.Componen
       style={{
         width: ICON_SIZE,
         height: ICON_SIZE,
+        fontSize: `${ICON_SIZE}px`,
         color: 'var(--color-brand-primary)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
       }}
     >
-      <Component aria-hidden />
+      <i className={iconClass} aria-hidden="true"></i>
     </div>
     <span style={{ fontSize: 'var(--type-label-size)', fontWeight: 600 }}>{name}</span>
+    <code style={{ fontSize: 'var(--type-small-size)', color: 'var(--color-text-muted)' }}>{iconClass}</code>
   </div>
 );
 
