@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useMemo, useState, type HTMLAttributes, type MouseEventHandler } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';

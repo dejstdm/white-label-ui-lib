@@ -13,11 +13,6 @@ export default {
       control: 'boolean',
       description: 'Full-width container (100% at all breakpoints)',
     },
-    breakpoint: {
-      control: { type: 'select' },
-      options: [null, 'sm', 'md', 'lg', 'xl', 'xxl'],
-      description: 'Breakpoint at which container becomes responsive (100% width until breakpoint)',
-    },
     padding: {
       control: 'boolean',
       description: 'Apply horizontal padding',
@@ -27,7 +22,6 @@ export default {
 
 export const Default = {
   args: {
-    breakpoint: null,
     padding: true,
     children: (
       <div style={{ 
@@ -44,44 +38,14 @@ export const Default = {
 export const Responsive = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
-      <Container breakpoint={null} padding>
+      <Container padding>
         <div style={{ 
           background: 'var(--color-bg-section)', 
           padding: 'var(--space-6)', 
           borderRadius: 'var(--radius-md)',
           textAlign: 'center'
         }}>
-          Default container (responsive at all breakpoints)
-        </div>
-      </Container>
-      <Container breakpoint="sm" padding>
-        <div style={{ 
-          background: 'var(--color-bg-section)', 
-          padding: 'var(--space-6)', 
-          borderRadius: 'var(--radius-md)',
-          textAlign: 'center'
-        }}>
-          container-sm (100% until sm, then responsive)
-        </div>
-      </Container>
-      <Container breakpoint="md" padding>
-        <div style={{ 
-          background: 'var(--color-bg-section)', 
-          padding: 'var(--space-6)', 
-          borderRadius: 'var(--radius-md)',
-          textAlign: 'center'
-        }}>
-          container-md (100% until md, then responsive)
-        </div>
-      </Container>
-      <Container breakpoint="lg" padding>
-        <div style={{ 
-          background: 'var(--color-bg-section)', 
-          padding: 'var(--space-6)', 
-          borderRadius: 'var(--radius-md)',
-          textAlign: 'center'
-        }}>
-          container-lg (100% until lg, then responsive)
+          Default container (responsive at all breakpoints via CSS media queries)
         </div>
       </Container>
       <Container fluid padding>
@@ -100,7 +64,6 @@ export const Responsive = {
 
 export const NoPadding = {
   args: {
-    breakpoint: null,
     padding: false,
     children: (
       <div style={{ 

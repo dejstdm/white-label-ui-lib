@@ -110,7 +110,7 @@ import { Container } from './Container';
 export const MyComponent = ({ children }) => {
   return (
     <section className="my-component">
-      <Container breakpoint={null} padding>
+      <Container padding>
         {/* Component content */}
       </Container>
     </section>

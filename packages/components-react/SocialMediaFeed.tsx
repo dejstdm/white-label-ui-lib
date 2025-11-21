@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect, type HTMLAttributes, type MouseEvent } from 'react';
 import './SocialMediaFeed.css';
 import './SectionLayout.css';

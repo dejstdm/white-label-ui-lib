@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect, type HTMLAttributes } from 'react';
 import './NavBar.css';
 import { Container } from './Container';

@@ -16,10 +16,10 @@ import type { ReactNode, MouseEventHandler } from 'react';
 /**
  * Container breakpoint - controls max-width at different viewport sizes.
  * 
- * Used internally by Container component to read from CSS variable `--container-breakpoint`.
- * This is a global setting controlled via Style Dictionary tokens, not a component prop.
+ * @deprecated - No longer used. Container component now uses pure CSS media queries.
+ * All containers behave the same and are controlled entirely by CSS.
  * 
- * @internal - Not exported for consumers as it's managed globally via CSS variables
+ * @internal - Not exported for consumers
  */
 export type ContainerBreakpoint = 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | null;
 

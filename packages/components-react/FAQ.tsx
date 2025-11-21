@@ -1,3 +1,5 @@
+"use client";
+
 import { useMemo, type HTMLAttributes } from 'react';
 import './FAQ.css';
 import './SectionLayout.css';
