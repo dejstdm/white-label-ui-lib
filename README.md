@@ -114,7 +114,24 @@ Storybook will open at `http://localhost:6006`
 
 ### Publishing to npm
 
-Follow this flow when you want to release a new version to GitHub Packages:
+#### Interactive Publishing Script (Recommended)
+
+The easiest way to publish is using the interactive script:
+
+```bash
+npm run publish:interactive
+```
+
+This script will:
+- Check if your git worktree is clean
+- Prompt you to choose a version bump (patch/minor/major) or skip
+- Optionally refresh dependencies
+- Compile themes, build the library, publish, and push to git
+- Show clear progress indicators for each step
+
+#### Manual Publishing
+
+Alternatively, you can follow this flow manually:
 
 1. Ensure your git worktree is clean: `git status`
 2. Bump the version and generate a tag: `npm version patch` (or `minor`/`major`)
@@ -122,7 +139,7 @@ Follow this flow when you want to release a new version to GitHub Packages:
 4. Compile themes so `themes/*/dist/theme.css` are current: `npm run compile-themes:sd`
 5. Build the library: `npm run build`
 6. Publish: `npm publish` (your `.npmrc` already points `@dejstdm` to GitHub Packages)
-7. Push commit and tag: `git push && git push --tags` (first push: `git push --set-upstream origin main && git push --tags`)
+7. Push commit and tag: `git push --set-upstream origin main && git push --tags`
 
 ## Using the Package in Your Project
 

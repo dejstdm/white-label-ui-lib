@@ -54,7 +54,8 @@
     "storybook": "npm run compile-themes && storybook dev -p 6006",
     "build-storybook": "npm run compile-themes && storybook build",
     "typecheck": "tsc --noEmit",
-    "typecheck:stories": "tsc -p tsconfig.stories.json --noEmit"
+    "typecheck:stories": "tsc -p tsconfig.stories.json --noEmit",
+    "publish:interactive": "node scripts/publish.js"
   },
   "license": "ISC",
   "dependencies": {
