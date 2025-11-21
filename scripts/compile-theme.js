@@ -400,7 +400,9 @@ const themesDir = path.join(__dirname, '..', 'themes');
 if (fs.existsSync(themesDir)) {
   const themes = fs.readdirSync(themesDir, { withFileTypes: true });
   themes.forEach((dirent) => {
-    if (dirent.isDirectory()) {
+    // Skip directories that look like command-line flags (start with --)
+    // and skip hidden directories (start with .)
+    if (dirent.isDirectory() && !dirent.name.startsWith('--') && !dirent.name.startsWith('.')) {
       const themePath = path.join(themesDir, dirent.name);
       compileTheme(themePath);
     }

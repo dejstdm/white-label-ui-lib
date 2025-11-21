@@ -394,7 +394,7 @@ The following components are available in the library. All components are standa
 
 ### Navigation & Layout
 - **NavBar** - Navigation bar component with sticky option, menu items, and mobile-responsive burger menu
-- **Footer** - Footer component with logo, social media links (uses icons from `./icons`), navigation links, and content sections
+- **Footer** - Footer component with logo, social media links (uses Font Awesome icon classes), navigation links, and content sections
 
 ### Hero Section
 - **Hero** - Full-width hero section with background image, headline, body content, and optional button
@@ -407,7 +407,7 @@ The following components are available in the library. All components are standa
 - **ProductSlider** - Product carousel/slider with navigation controls
 - **RecipeSlider** - Recipe carousel/slider with navigation and pagination
 - **FAQ** - FAQ accordion component with expandable questions/answers
-- **SocialMediaFeed** - Social media feed component with social links (uses icons from `./icons`)
+- **SocialMediaFeed** - Social media feed component with social links (uses Font Awesome icon classes)
 
 ### Internal Components (Not Exported)
 

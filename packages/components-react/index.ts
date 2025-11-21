@@ -17,9 +17,6 @@ export { RecipeSlider } from './RecipeSlider';
 export { FAQ } from './FAQ';
 export { SocialMediaFeed } from './SocialMediaFeed';
 
-// Icons
-export * from './icons/index';
-
 // Types - export for consumers
 export type {
   // Primitive types

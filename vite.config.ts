@@ -2,6 +2,7 @@ import { defineConfig, type Plugin } from 'vite';
 import type { OutputBundle, OutputOptions } from 'rollup';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
+import preserveDirectives from 'rollup-plugin-preserve-directives';
 import { resolve, dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'fs';
@@ -74,11 +75,12 @@ function copyMetaFiles(): Plugin {
 export default defineConfig({
   plugins: [
     react(),
+    preserveDirectives(),
     dts({
       include: ['packages/components-react/**/*.ts', 'packages/components-react/**/*.tsx'],
       exclude: ['**/*.stories.tsx', '**/*.test.ts', '**/*.test.tsx'],
       outDir: 'dist',
-      rollupTypes: true,
+      rollupTypes: false,
     }),
     bundleDefaultTheme(),
     copyMetaFiles()
@@ -87,7 +89,6 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'packages/components-react/index.ts'),
       name: 'WhiteLabelUI',
-      fileName: 'white-label-ui',
       formats: ['es']
     },
     rollupOptions: {
@@ -99,11 +100,9 @@ export default defineConfig({
         'swiper/modules'
       ],
       output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'swiper': 'Swiper'
-        }
+        preserveModules: true,
+        preserveModulesRoot: 'packages/components-react',
+        entryFileNames: '[name].js'
       }
     },
     outDir: 'dist',
