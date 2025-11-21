@@ -74,7 +74,10 @@ function copyMetaFiles(): Plugin {
 
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      jsxRuntime: 'automatic',
+      jsxImportSource: 'react',
+    }),
     preserveDirectives(),
     dts({
       include: ['packages/components-react/**/*.ts', 'packages/components-react/**/*.tsx'],
@@ -95,6 +98,8 @@ export default defineConfig({
       external: [
         'react',
         'react-dom',
+        'react/jsx-runtime',
+        'react/jsx-dev-runtime',
         'swiper',
         'swiper/react',
         'swiper/modules'
