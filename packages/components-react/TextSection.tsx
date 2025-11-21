@@ -1,3 +1,5 @@
+"use client";
+
 import React, { type HTMLAttributes } from 'react';
 import './TextSection.css';
 import './SectionLayout.css';

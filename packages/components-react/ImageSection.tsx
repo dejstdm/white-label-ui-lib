@@ -1,3 +1,5 @@
+"use client";
+
 import React, { type HTMLAttributes } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';

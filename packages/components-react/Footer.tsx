@@ -1,3 +1,5 @@
+"use client";
+
 import React, { type HTMLAttributes } from 'react';
 import './Footer.css';
 import { Container } from './Container';

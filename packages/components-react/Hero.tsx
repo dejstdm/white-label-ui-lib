@@ -1,3 +1,5 @@
+"use client";
+
 import React, { type HTMLAttributes, type MouseEventHandler } from 'react';
 import './Hero.css';
 import './SectionLayout.css';
