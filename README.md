@@ -114,6 +114,98 @@ Storybook will open at `http://localhost:6006`
 
 ### Publishing to npm
 
+#### Prerequisites: GitHub Packages Authentication
+
+**Quick Setup (Copy & Paste):**
+
+1. **Get GitHub token:** Go to [GitHub Settings → Tokens](https://github.com/settings/tokens) → Generate new token (classic) → Select `write:packages` scope → Copy token
+
+2. **Setup project config:**
+   ```bash
+   cp .npmrc.example .npmrc
+   ```
+
+3. **Set token (one-time, persistent):**
+   ```bash
+   # Linux/Mac/WSL
+   echo 'export NPM_TOKEN=YOUR_TOKEN_HERE' >> ~/.zshrc  # or ~/.bashrc
+   source ~/.zshrc
+   
+   # Windows PowerShell
+   Add-Content $PROFILE "`$env:NPM_TOKEN='YOUR_TOKEN_HERE'"
+   ```
+
+4. **Verify:**
+   ```bash
+   npm whoami --registry=https://npm.pkg.github.com
+   ```
+
+Replace `YOUR_TOKEN_HERE` with your actual token. Done! The token will be available in all future terminal sessions.
+
+---
+
+**Detailed Instructions:**
+
+**Step 1: Create a GitHub Personal Access Token**
+
+1. Go to [GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)](https://github.com/settings/tokens)
+2. Click **"Generate new token"** → **"Generate new token (classic)"**
+3. Give it a name: `npm-publish-white-label-ui`
+4. Set expiration (recommend 90 days)
+5. **Select required scopes:**
+   - ✅ `write:packages` (REQUIRED for publishing)
+   - ✅ `read:packages`
+6. Click **"Generate token"** and **COPY IT IMMEDIATELY**
+
+**Step 2: Configure npm Authentication**
+
+The project uses environment variables for cross-platform compatibility:
+
+1. Copy the example file: `cp .npmrc.example .npmrc`
+2. Add token to your shell profile (makes it persistent):
+
+   **Linux/Mac/WSL (zsh):**
+   ```bash
+   echo 'export NPM_TOKEN=YOUR_TOKEN_HERE' >> ~/.zshrc
+   source ~/.zshrc
+   ```
+   
+   **Linux/Mac/WSL (bash):**
+   ```bash
+   echo 'export NPM_TOKEN=YOUR_TOKEN_HERE' >> ~/.bashrc
+   source ~/.bashrc
+   ```
+   
+   **Windows (PowerShell):**
+   ```powershell
+   Add-Content $PROFILE "`$env:NPM_TOKEN='YOUR_TOKEN_HERE'"
+   ```
+
+**Step 3: Verify Authentication**
+
+```bash
+npm whoami --registry=https://npm.pkg.github.com
+```
+
+Should display your GitHub username. If it fails, check:
+- Token has `write:packages` permission
+- Token hasn't expired
+- Token was copied correctly (no extra spaces)
+
+**Troubleshooting:**
+
+| Error | Solution |
+|-------|----------|
+| `401 Unauthorized` | Token invalid/expired or missing `write:packages`. Create new token. |
+| `403 Forbidden` | Token missing `write:packages` scope. Regenerate with correct permissions. |
+| `npm whoami` fails | Check token: `echo $NPM_TOKEN`. If empty, reload shell: `source ~/.zshrc` |
+
+**Important:**
+- Never commit your token. `.npmrc` is in `.gitignore`.
+- Token is stored in your shell profile (`~/.zshrc`/`~/.bashrc`), not in the project.
+- Works on Windows, Mac, and Linux/WSL (use PowerShell profile on Windows).
+- Tokens expire - create a new one when needed.
+
 #### Interactive Publishing Script (Recommended)
 
 The easiest way to publish is using the interactive script:
@@ -133,13 +225,14 @@ This script will:
 
 Alternatively, you can follow this flow manually:
 
-1. Ensure your git worktree is clean: `git status`
-2. Bump the version and generate a tag: `npm version patch` (or `minor`/`major`)
-3. (Optional) Refresh dependencies: `npm install --ignore-scripts`
-4. Compile themes so `themes/*/dist/theme.css` are current: `npm run compile-themes:sd`
-5. Build the library: `npm run build`
-6. Publish: `npm publish` (your `.npmrc` already points `@dejstdm` to GitHub Packages)
-7. Push commit and tag: `git push --set-upstream origin main && git push --tags`
+1. **Ensure authentication is set up** (see Prerequisites section above)
+2. Ensure your git worktree is clean: `git status`
+3. Bump the version and generate a tag: `npm version patch` (or `minor`/`major`)
+4. (Optional) Refresh dependencies: `npm install --ignore-scripts`
+5. Compile themes so `themes/*/dist/theme.css` are current: `npm run compile-themes:sd`
+6. Build the library: `npm run build`
+7. Publish: `npm publish` (package.json `publishConfig` points to GitHub Packages)
+8. Push commit and tag: `git push --set-upstream origin main && git push --tags`
 
 ## Using the Package in Your Project
 

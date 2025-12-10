@@ -1,0 +1,12 @@
+# GitHub Packages Authentication
+# Copy this file to .npmrc and set your NPM_TOKEN environment variable
+# 
+# Usage:
+#   1. Copy: cp .npmrc.example .npmrc
+#   2. Set environment variable: export NPM_TOKEN=your_token_here
+#   3. Or add to your shell profile: echo 'export NPM_TOKEN=your_token_here' >> ~/.bashrc
+#
+# This approach works on all platforms (Windows, Mac, Linux/WSL) and is CI/CD friendly
+
+//npm.pkg.github.com/:_authToken=${NPM_TOKEN}
+
