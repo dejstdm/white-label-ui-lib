@@ -12,6 +12,7 @@
     "dist",
     "themes",
     "meta",
+    "components.manifest.json",
     "README.md",
     "LICENSE"
   ],

@@ -1,0 +1,200 @@
+{
+  "version": "1.0.0",
+  "categories": {
+    "Navigation": [
+      {
+        "name": "NavBar",
+        "displayName": "Navigation Bar",
+        "importPath": "@dejstdm/white-label-ui",
+        "description": "Top-level navigation bar with logo, menu items, and mobile-responsive burger menu. Supports sticky positioning.",
+        "defaults": {
+          "logoSrc": "https://via.placeholder.com/150x50",
+          "logoAlt": "Logo",
+          "items": [
+            { "label": "Home", "href": "#", "active": false },
+            { "label": "Products", "href": "#", "active": false },
+            { "label": "About", "href": "#", "active": false },
+            { "label": "Contact", "href": "#", "active": false }
+          ],
+          "sticky": false
+        }
+      },
+      {
+        "name": "Footer",
+        "displayName": "Footer",
+        "importPath": "@dejstdm/white-label-ui",
+        "description": "Site footer with logo, navigation links, social media links, and copyright information.",
+        "defaults": {
+          "logoSrc": "https://via.placeholder.com/150x50",
+          "logoAlt": "Logo",
+          "socialLinks": [
+            {
+              "name": "Facebook",
+              "href": "#",
+              "icon": "fa-brands fa-square-facebook"
+            },
+            {
+              "name": "Instagram",
+              "href": "#",
+              "icon": "fa-brands fa-square-instagram"
+            }
+          ],
+          "links": [
+            { "label": "Privacy Policy", "href": "#" },
+            { "label": "Terms of Service", "href": "#" },
+            { "label": "Contact", "href": "#" }
+          ],
+          "copyrightYear": "2024"
+        }
+      }
+    ],
+    "Layout": [
+      {
+        "name": "Hero",
+        "displayName": "Hero Section",
+        "importPath": "@dejstdm/white-label-ui",
+        "description": "Full-width hero section with background image, headline, body content, and optional call-to-action button.",
+        "defaults": {
+          "backgroundImage": "https://via.placeholder.com/1200x600",
+          "subheadline": "<p>Welcome to our brand</p>",
+          "headline": "Experience the Difference",
+          "body": "<p>Discover our premium solutions designed to elevate your business.</p>",
+          "buttonLabel": "Get Started",
+          "buttonHref": "#"
+        }
+      }
+    ],
+    "Content Sections": [
+      {
+        "name": "TextSection",
+        "displayName": "Text Section",
+        "importPath": "@dejstdm/white-label-ui",
+        "description": "Text content section with headline, subheadline, and rich text content area. Supports full HTML content from CMS rich text editor.",
+        "defaults": {
+          "headline": "Text Section",
+          "subheadline": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p>",
+          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+          "headlineLevel": 2
+        }
+      },
+      {
+        "name": "ImageSection",
+        "displayName": "Image Section",
+        "importPath": "@dejstdm/white-label-ui",
+        "description": "Image gallery section with headline, subheadline, and image collection. Supports single or multiple images with optional slider functionality and clickable links.",
+        "defaults": {
+          "headline": "Image Section",
+          "subheadline": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p>",
+          "images": [
+            {
+              "id": 1,
+              "src": "https://via.placeholder.com/800x600",
+              "alt": "Sample image"
+            }
+          ],
+          "headlineLevel": 2
+        }
+      }
+    ],
+    "Feature Components": [
+      {
+        "name": "ProductSlider",
+        "displayName": "Product Slider",
+        "importPath": "@dejstdm/white-label-ui",
+        "description": "Product carousel/slider with navigation controls. Displays product cards with image, title, description, and call-to-action button. Requires Swiper library.",
+        "defaults": {
+          "headline": "Our Products",
+          "subheadline": "<p>Explore our range of high-quality products</p>",
+          "products": [
+            {
+              "id": 1,
+              "image": "https://via.placeholder.com/400x600",
+              "imageAlt": "Product name",
+              "title": "Product Name",
+              "description": "<p>Product description goes here.</p>",
+              "buttonLabel": "Learn More",
+              "buttonHref": "#"
+            }
+          ],
+          "headlineLevel": 2
+        }
+      },
+      {
+        "name": "RecipeSlider",
+        "displayName": "Recipe Slider",
+        "importPath": "@dejstdm/white-label-ui",
+        "description": "Recipe carousel/slider with navigation and pagination. Displays recipe images in a gallery format. Requires Swiper library.",
+        "defaults": {
+          "headline": "Recipes",
+          "subheadline": "<p>Discover delicious recipes</p>",
+          "recipes": [
+            {
+              "id": 1,
+              "image": "https://via.placeholder.com/600x600",
+              "imageAlt": "Recipe name",
+              "href": "#"
+            }
+          ],
+          "headlineLevel": 2
+        }
+      },
+      {
+        "name": "FAQ",
+        "displayName": "FAQ Accordion",
+        "importPath": "@dejstdm/white-label-ui",
+        "description": "FAQ accordion component with expandable questions and answers. Supports single or multiple open items.",
+        "defaults": {
+          "headline": "FAQ",
+          "subheadline": "<p>Frequently asked questions</p>",
+          "items": [
+            {
+              "id": 1,
+              "question": "What is your return policy?",
+              "answer": "<p>We offer a 30-day return policy on all products. Items must be in their original condition with tags attached.</p>"
+            },
+            {
+              "id": 2,
+              "question": "How long does shipping take?",
+              "answer": "<p>Standard shipping typically takes 5-7 business days. Express shipping options are available at checkout.</p>"
+            }
+          ],
+          "collapseMode": "single",
+          "headlineLevel": 2
+        }
+      },
+      {
+        "name": "SocialMediaFeed",
+        "displayName": "Social Media Feed",
+        "importPath": "@dejstdm/white-label-ui",
+        "description": "Social media feed component displaying a gallery of social media posts with follow links. Uses Font Awesome icons for social platform badges.",
+        "defaults": {
+          "headline": "Get Social",
+          "followText": "Follow us",
+          "items": [
+            {
+              "image": "https://via.placeholder.com/600x600",
+              "alt": "Social media post",
+              "url": "https://instagram.com/p/example",
+              "platform": "instagram"
+            }
+          ],
+          "socialLinks": [
+            {
+              "name": "Facebook",
+              "href": "https://facebook.com/example",
+              "icon": "fa-brands fa-square-facebook"
+            },
+            {
+              "name": "Instagram",
+              "href": "https://instagram.com/example",
+              "icon": "fa-brands fa-square-instagram"
+            }
+          ],
+          "confirmExternalLinks": false,
+          "headlineLevel": 2
+        }
+      }
+    ]
+  }
+}
+

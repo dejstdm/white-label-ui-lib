@@ -86,6 +86,41 @@ Validated JSON describing component metadata and configuration.
 
 **Note:** Design tokens (colors, typography, spacing, radii, shadows, grid) are now stored in token files, not in the manifest. The manifest focuses on component-specific metadata.
 
+### Manifest Structure Overview
+
+The library uses three distinct manifest types, each serving a different purpose:
+
+1. **Design Tokens** (`tokens/**/*.json`) – Source of truth for visual design values
+   - Location: `tokens/global/` and `tokens/brands/<brand>/`
+   - Format: CTI-structured JSON files
+   - Purpose: Define colors, typography, spacing, radii, shadows, and grid values
+   - Compilation: Style Dictionary compiles these into CSS variables (`dist/theme.css`)
+   - Theme Builder Usage: Builder reads compiled tokens from `dist/tokens.json` or parsed CSS variables from `dist/theme.css`, not from source token files
+
+2. **Theme Manifest** (`theme.manifest.json`) – Component metadata and configuration
+   - Location: `themes/<brand>/theme.manifest.json`
+   - Format: Validated JSON schema
+   - Purpose: Defines component-specific metadata:
+     - `variantsAndHooks` – Component variants with theming hooks
+     - `componentSizing` – Component sizing modes (e.g., Hero sizing)
+     - `mediaPolicy` – Allowed image ratios per component
+     - `a11y` – Accessibility configuration (contrast pairs, focus-ring, motion)
+   - Note: Does NOT contain design token values (those are in token files)
+
+3. **Components Manifest** (`components.manifest.json`) – Component discovery metadata
+   - Location: Project root (`components.manifest.json`)
+   - Format: JSON with version and categories structure
+   - Purpose: Enables zero-maintenance component discovery by Theme Builder applications:
+     - Lists all public components by category (Navigation, Layout, Content Sections, Feature Components)
+     - Provides component descriptions and import paths
+     - Defines safe default props for rendering components in preview environments
+   - Theme Builder Usage: Builder uses this to automatically discover and render components without hardcoding component lists
+
+**Important:** The Theme Builder reads:
+- Tokens from compiled CSS (`dist/theme.css`) or JSON (`dist/tokens.json`), not from source `tokens/` files
+- Component metadata from `theme.manifest.json` for theming hooks
+- Component discovery info from `components.manifest.json` for rendering previews
+
 ### Hero Sizing Modes
 
 Hero components support the following sizing modes, each configurable per breakpoint (sm | md | lg | xl):

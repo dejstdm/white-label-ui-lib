@@ -2,6 +2,38 @@
 
 This document tracks planned work, research items, and future enhancements for the WhiteLabel UI Library.
 
+## Recently Completed (Needs Testing)
+
+### Theme Builder Integration Readiness
+- **Status**: ✅ Completed - ⚠️ **Needs Testing**
+- **Date**: 2024-11-28
+- **Completed Items**:
+  1. ✅ Created `components.manifest.json` at project root with all 8 public components
+     - Includes NavBar, Footer, Hero, TextSection, ImageSection, ProductSlider, RecipeSlider, FAQ, SocialMediaFeed
+     - Organized by categories (Navigation, Layout, Content Sections, Feature Components)
+     - Contains component descriptions, import paths, and safe default props for Theme Builder rendering
+  2. ✅ Updated `package.json` to include `components.manifest.json` in files array
+     - Verified via `npm pack --dry-run` that file is included in published package
+  3. ✅ Created `docs/TOKEN_TO_CSS_MAPPING.md` documentation
+     - Documents CTI token structure to CSS variable name conversion patterns
+     - Includes mapping tables for all token types (colors, typography, spacing, radii, shadows, grid)
+     - References Style Dictionary transforms and compiled CSS output
+     - Includes Theme Builder UI control mapping guidance
+  4. ✅ Updated `ARCHITECTURE.md` Data Contracts section
+     - Clarified three-manifest structure:
+       - Design tokens (`tokens/**/*.json`) - Source of truth for visual design values
+       - Theme manifest (`theme.manifest.json`) - Component metadata and configuration
+       - Components manifest (`components.manifest.json`) - Component discovery metadata
+     - Documented how Theme Builder consumes each manifest type
+
+- **Testing Required**:
+  - Verify `components.manifest.json` structure is valid JSON and correctly formatted
+  - Test that Theme Builder can successfully read and parse `components.manifest.json` from installed package
+  - Verify component default props render correctly in Theme Builder preview environment
+  - Test that all 8 components can be discovered and rendered using manifest defaults
+  - Validate token-to-CSS mapping documentation accuracy against actual compiled CSS output
+  - Confirm package publishing includes `components.manifest.json` in final tarball
+
 ## What Still Needs to be Done
 
 ### Documentation Organization
