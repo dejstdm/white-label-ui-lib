@@ -2,8 +2,6 @@ import React from 'react';
 import { NavBar } from './NavBar';
 import pepsicoLogo from './assets/pepsicolabs_logo-white.png';
 import pepsicoColorLogo from './assets/pepsicolabs_logo.png';
-import laysLogo from './assets/lays-logo.png';
-import sevenUpLogo from './assets/logo-7up.png';
 
 export default {
   title: 'Components/NavBar',
@@ -72,26 +70,6 @@ export const Sticky = {
     logoAlt: 'PepsiCo Labs logo',
     items: defaultItems,
     sticky: true,
-  },
-};
-
-export const LaysTheme = {
-  render: Template,
-  args: {
-    logoSrc: laysLogo,
-    logoAlt: "Lay's logo",
-    items: defaultItems,
-    sticky: false,
-  },
-};
-
-export const SevenUpTheme = {
-  render: Template,
-  args: {
-    logoSrc: sevenUpLogo,
-    logoAlt: '7UP logo',
-    items: defaultItems,
-    sticky: false,
   },
 };
 

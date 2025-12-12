@@ -1,5 +1,8 @@
 // Public API - only export components meant for direct consumer use
 
+// Global CSS reset (box-sizing: border-box for all elements)
+import './reset.css';
+
 // Navigation & Layout
 export { NavBar } from './NavBar';
 export { Footer } from './Footer';
@@ -13,6 +16,8 @@ export { ImageSection } from './ImageSection';
 
 // Feature Components
 export { ProductSlider } from './ProductSlider';
+export { ProductOverview } from './ProductOverview';
+export { ProductCard } from './ProductCard';
 export { RecipeSlider } from './RecipeSlider';
 export { FAQ } from './FAQ';
 export { SocialMediaFeed } from './SocialMediaFeed';
@@ -51,6 +56,8 @@ export type {
 // Component props for advanced usage
 export type { HeroProps } from './Hero';
 export type { ProductSliderProps } from './ProductSlider';
+export type { ProductOverviewProps } from './ProductOverview';
+export type { ProductCardProps } from './ProductCard';
 export type { RecipeSliderProps } from './RecipeSlider';
 export type { FAQProps } from './FAQ';
 export type { TextSectionProps } from './TextSection';

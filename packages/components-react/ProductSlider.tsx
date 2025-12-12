@@ -8,10 +8,8 @@ import 'swiper/css/navigation';
 import './ProductSlider.css';
 import './SectionLayout.css';
 import { Container } from './Container';
-import { Heading } from './Heading';
-import { WysiwygContent } from './WysiwygContent';
-import { Button } from './Button';
 import { SectionHeader } from './SectionHeader';
+import { ProductCard } from './ProductCard';
 import type { ProductItem, PlainText, HtmlString, HeadingLevel } from './types';
 
 export interface ProductSliderProps extends HTMLAttributes<HTMLElement> {
@@ -123,41 +121,7 @@ export const ProductSlider = ({
             >
               {products.map((product, index) => (
                 <SwiperSlide key={product.id || index} className="product-slider__slide">
-                  <div className="product-slider__card">
-                    {product.image && (
-                      <div className="product-slider__image-wrapper">
-                        <img
-                          src={product.image}
-                          alt={product.imageAlt || product.title || ''}
-                          className="product-slider__image"
-                          loading="lazy"
-                        />
-                      </div>
-                    )}
-                    <div className="product-slider__content">
-                      {product.title && (
-                        <Heading level={3} variant="h4" className="product-slider__title">
-                          {product.title}
-                        </Heading>
-                      )}
-                      {product.description && (
-                        <div className="product-slider__description">
-                          <WysiwygContent content={product.description} />
-                        </div>
-                      )}
-                      {product.buttonLabel && (
-                        <div className="product-slider__button-wrapper">
-                          <Button
-                            variant="solid"
-                            href={product.buttonHref}
-                            onClick={product.buttonOnClick}
-                          >
-                            {product.buttonLabel}
-                          </Button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  <ProductCard product={product} className="product-slider__card" />
                 </SwiperSlide>
               ))}
             </Swiper>

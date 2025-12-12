@@ -3,8 +3,6 @@
   max-width: 100%;
   background-color: var(--color-text-primary);
   color: white;
-  box-sizing: border-box;
-  
 }
 
 .footer__inner {
@@ -18,7 +16,6 @@
   padding-left: var(--space-5, 20px);
   padding-right: var(--space-5, 20px);
   gap: var(--space-5, 20px);
-  box-sizing: border-box;
 }
 
 .footer__logo-wrapper {

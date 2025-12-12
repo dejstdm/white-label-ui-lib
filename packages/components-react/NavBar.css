@@ -9,7 +9,6 @@
   color: var(--color-brand-on-primary);
   position: relative;
   overflow-x: hidden;
-  box-sizing: border-box;
 }
 
 [data-theme="7up"] .navbar,
@@ -41,7 +40,6 @@
   padding-bottom: var(--space-5, 20px);
   padding-left: var(--space-4, 16px);
   padding-right: var(--space-4, 16px);
-  box-sizing: border-box;
 }
 
 .navbar__logo-wrapper {

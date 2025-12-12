@@ -1,4 +1,5 @@
 import React from 'react';
+import '../packages/components-react/reset.css';
 import '../themes/default/dist/theme.css';
 import '../themes/7up/dist/theme.css';
 import '../themes/lays/dist/theme.css';

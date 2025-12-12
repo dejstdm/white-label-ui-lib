@@ -1,8 +1,6 @@
 import React from 'react';
 import { Footer } from './Footer';
 import pepsicoLogo from './assets/pepsicolabs_logo.png';
-import laysLogo from './assets/lays-logo.png';
-import sevenUpLogo from './assets/logo-7up.png';
 
 export default {
   title: 'Components/Footer',
@@ -114,28 +112,6 @@ export const Minimal = {
     logoAlt: 'PepsiCo Labs logo',
     socialLinks: [],
     links: [],
-    copyrightYear: '2022',
-  },
-};
-
-export const LaysTheme = {
-  render: Template,
-  args: {
-    logoSrc: laysLogo,
-    logoAlt: "Lay's logo",
-    socialLinks: defaultSocialLinks,
-    links: defaultLinks,
-    copyrightYear: '2022',
-  },
-};
-
-export const SevenUpTheme = {
-  render: Template,
-  args: {
-    logoSrc: sevenUpLogo,
-    logoAlt: '7UP logo',
-    socialLinks: defaultSocialLinks,
-    links: defaultLinks,
     copyrightYear: '2022',
   },
 };
