@@ -1,0 +1,252 @@
+/* Product Detail Component - Mobile First */
+
+.product-detail {
+  width: 100%;
+}
+
+.product-detail__wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.product-detail__image-wrapper {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.product-detail__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.product-detail__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-detail__title .wysiwyg-content {
+  font-size: var(--type-h2-size, 2rem);
+  font-weight: var(--type-h2-weight, 700);
+  line-height: var(--type-h2-line-height, 1.2);
+  color: var(--color-text-primary, #000);
+}
+
+.product-detail__tagline .wysiwyg-content,
+.product-detail__description .wysiwyg-content {
+  font-size: var(--type-body-large-size, 1rem);
+  line-height: var(--type-body-large-line-height, 1.5);
+  color: var(--color-text-primary, #000);
+}
+
+.product-detail__headline .wysiwyg-content {
+  font-size: var(--type-h3-size, 1.5rem);
+  font-weight: var(--type-h3-weight, 700);
+  line-height: var(--type-h3-line-height, 1.3);
+  color: var(--color-text-primary, #000);
+}
+
+.product-detail__cta {
+  margin-top: 10px;
+}
+
+/* Nutritional Information Table */
+.product-detail__nutritional {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.product-detail__nutritional-title {
+  font-size: var(--type-h3-size, 1.5rem);
+  font-weight: var(--type-h3-weight, 700);
+  line-height: var(--type-h3-line-height, 1.3);
+  color: var(--color-text-primary, #000);
+}
+
+.product-detail__table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Style plain table elements from WYSIWYG content */
+.product-detail__table-wrapper .wysiwyg-content, 
+.product-detail__table-wrapper .wysiwyg-content p
+{
+  font-size: var(--type-body-small-size, 0.875rem);
+ 
+}
+.product-detail__table-wrapper .wysiwyg-content table {
+  width: 100%;
+  border: 1px solid var(--color-text-primary, #000);
+  border-collapse: collapse;
+  border-radius: 8px;
+
+  font-family: var(--font-body);
+  font-size: var(--type-body-small-size, 0.875rem);
+  font-weight: var(--type-body-large-weight, 400);
+  line-height: var(--type-body-large-line-height, 1.5);
+  color: var(--color-text-primary, #000);
+}
+
+.product-detail__table-wrapper .wysiwyg-content th,
+.product-detail__table-wrapper .wysiwyg-content td {
+  border: 1px solid var(--color-text-primary, #000);
+  padding: 4px 8px;
+  text-align: left;
+  font-size: var(--type-body-small-size, 0.875rem);
+}
+
+/* Tabs Variant */
+.product-detail__tabs-separator {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border-primary, #e0e0e0);
+  margin: 30px 0 20px 0;
+}
+
+.product-detail__tabs {
+  display: flex;
+  gap: 30px;
+  border-bottom: none;
+}
+
+.product-detail__tab {
+  background: none;
+  border: none;
+  padding: 0;
+  padding-bottom: 10px;
+  font-family: var(--font-heading);
+  font-size: var(--type-body-large-size, 1rem);
+  font-weight: var(--type-body-weight, 700);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-secondary, #666);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.product-detail__tab:hover {
+  color: var(--color-text-primary, #000);
+}
+
+.product-detail__tab--active {
+  color: var(--color-primary, #2196f3);
+}
+
+.product-detail__tab--active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-primary, #2196f3);
+}
+
+.product-detail__tab-content {
+  margin-top: 20px;
+  min-height: 200px;
+}
+
+.product-detail__tab-panel {
+  font-size: var(--type-body-large-size, 1rem);
+  line-height: var(--type-body-large-line-height, 1.5);
+  color: var(--color-text-primary, #000);
+}
+
+.product-detail__tab-panel[hidden] {
+  display: none;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .product-detail__wrapper {
+    gap: 40px;
+  }
+
+  /* Overview and Compact: Image on top (full width), then 2 columns side by side */
+  .product-detail--overview .product-detail__wrapper,
+  .product-detail--compact .product-detail__wrapper {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+
+  .product-detail--overview .product-detail__image-wrapper,
+  .product-detail--compact .product-detail__image-wrapper {
+    grid-column: 1 / -1;
+    max-width: 300px;
+    margin: 0;
+  }
+
+  .product-detail--overview .product-detail__content,
+  .product-detail--compact .product-detail__content {
+    grid-column: 1;
+  }
+
+  .product-detail--overview .product-detail__nutritional,
+  .product-detail--compact .product-detail__nutritional {
+    grid-column: 2;
+  }
+
+  /* Tabs variant: Image on top, content below */
+  .product-detail--tabs .product-detail__wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .product-detail--tabs .product-detail__image-wrapper {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .product-detail--tabs .product-detail__content {
+    grid-column: 1;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 992px) {
+  .product-detail__wrapper {
+    gap: 60px;
+  }
+
+  /* Overview and Compact: 3 equal columns using minmax */
+  .product-detail--overview .product-detail__wrapper,
+  .product-detail--compact .product-detail__wrapper {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .product-detail--overview .product-detail__image-wrapper,
+  .product-detail--compact .product-detail__image-wrapper {
+    grid-column: 1;
+    max-width: 100%;
+  }
+
+  .product-detail--overview .product-detail__content,
+  .product-detail--compact .product-detail__content {
+    grid-column: 2;
+  }
+
+  .product-detail--overview .product-detail__nutritional,
+  .product-detail--compact .product-detail__nutritional {
+    grid-column: 3;
+  }
+
+  /* Tabs variant: Image and content side by side */
+  .product-detail--tabs .product-detail__wrapper {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .product-detail--tabs .product-detail__image-wrapper {
+    grid-column: 1;
+  }
+
+  .product-detail--tabs .product-detail__content {
+    grid-column: 2;
+  }
+}

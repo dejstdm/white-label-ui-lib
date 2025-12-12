@@ -327,3 +327,39 @@ export type FAQItem = {
   /** Answer content (HTML from CMS, rendered via WysiwygContent) */
   answer: HtmlString;
 };
+
+// ==========================================
+// PRODUCT DETAIL TYPES
+// ==========================================
+
+/**
+ * Nutritional value entry for a specific nutrient.
+ * 
+ * Represents a single row in the nutritional information table.
+ */
+export type NutritionalValue = {
+  /** Nutrient name (e.g., "Valor energetico", "Grasas") */
+  nutrient: PlainText;
+  /** Value per 100g (e.g., "2131 kJ", "510kcal") */
+  per100g?: PlainText;
+  /** Value per serving size (e.g., "639 kJ", "153kcal") */
+  perServing?: PlainText;
+  /** Reference intake percentage (e.g., "8%", "<1%") */
+  referenceIntake?: PlainText;
+};
+
+/**
+ * Nutritional information data.
+ * 
+ * Contains all nutritional data for a product, including table headers and values.
+ */
+export type NutritionalInformation = {
+  /** Serving size label */
+  servingSizeLabel?: PlainText;
+  /** Reference intake label */
+  referenceIntakeLabel?: PlainText;
+  /** Array of nutritional values */
+  values: NutritionalValue[];
+  /** Reference intake disclaimer text (HTML from CMS) */
+  disclaimer?: HtmlString;
+};
