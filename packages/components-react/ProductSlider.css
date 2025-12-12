@@ -15,9 +15,7 @@
 .product-slider .wl-sec__subheadline {
   max-width: 866px;
 }
-.product-slider .heading {
-  color: var(--color-danger);
-}
+
 .product-slider .wl-sec__subheadline.wysiwyg-content {
   text-align: center;
 }

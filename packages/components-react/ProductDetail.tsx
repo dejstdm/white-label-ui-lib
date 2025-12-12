@@ -72,6 +72,7 @@ export const ProductDetail = ({
 
   const classes = [
     'product-detail',
+    'wl-sec',
     `product-detail--${variant}`,
     className
   ].filter(Boolean).join(' ');

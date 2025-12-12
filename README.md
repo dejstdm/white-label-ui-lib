@@ -259,7 +259,7 @@ npm install react react-dom swiper
 Import components from the package:
 
 ```javascript
-import { NavBar, Hero, Footer, TextSection, ImageSection, ProductSlider, RecipeSlider, FAQ, SocialMediaFeed } from '@dejstdm/white-label-ui';
+import { NavBar, Hero, Footer, TextSection, ImageSection, ProductSlider, ProductOverview, ProductDetail, RecipeSlider, FAQ, SocialMediaFeed } from '@dejstdm/white-label-ui';
 ```
 
 You can import individual components for better tree-shaking:
@@ -455,7 +455,7 @@ import 'swiper/css/pagination';
 // Register components with Builder.io
 import { 
   NavBar, Hero, Footer, TextSection, ImageSection,
-  ProductSlider, RecipeSlider, FAQ, SocialMediaFeed 
+  ProductSlider, ProductOverview, ProductDetail, RecipeSlider, FAQ, SocialMediaFeed 
 } from '@dejstdm/white-label-ui';
 
 // Add to Builder.io component registry
@@ -467,7 +467,7 @@ Builder.registerComponent(NavBar, { name: 'NavBar', ... });
 
 - **Navigation**: `NavBar`, `Footer`
 - **Layout**: `Hero`
-- **Display**: `TextSection`, `ImageSection`, `ProductSlider`, `RecipeSlider`, `FAQ`, `SocialMediaFeed`
+- **Display**: `TextSection`, `ImageSection`, `ProductSlider`, `ProductOverview`, `ProductDetail`, `RecipeSlider`, `FAQ`, `SocialMediaFeed`
 
 #### Metadata Maintenance
 
@@ -498,6 +498,8 @@ The following components are available in the library. All components are standa
 
 ### Feature Components
 - **ProductSlider** - Product carousel/slider with navigation controls
+- **ProductOverview** - Product grid or zig-zag layout with load more functionality
+- **ProductDetail** - Product detail page component with variants (overview, compact, tabs) including nutritional information
 - **RecipeSlider** - Recipe carousel/slider with navigation and pagination
 - **FAQ** - FAQ accordion component with expandable questions/answers
 - **SocialMediaFeed** - Social media feed component with social links (uses Font Awesome icon classes)

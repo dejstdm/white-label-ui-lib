@@ -2,6 +2,8 @@
 
 .product-detail {
   width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .product-detail__wrapper {
@@ -211,6 +213,11 @@
 
 /* Desktop and up */
 @media (min-width: 992px) {
+  .product-detail {
+   
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
   .product-detail__wrapper {
     gap: 60px;
   }

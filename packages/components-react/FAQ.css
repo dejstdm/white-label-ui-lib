@@ -94,7 +94,6 @@
 
 .accordion__header--open .faq__icon {
   transform: rotate(180deg);
-  color: var(--color-brand-on-primary);
 }
 
 .accordion__header--open.faq__button {
