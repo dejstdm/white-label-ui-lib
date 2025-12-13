@@ -193,7 +193,7 @@ export const ProductDetail = ({
             {(variant === 'compact' || variant === 'tabs') && ctaLabel && (
               <div className="product-detail__cta">
                 <Button
-                  variant="outline"
+                  variant="solid"
                   href={ctaHref}
                   onClick={ctaOnClick}
                 >

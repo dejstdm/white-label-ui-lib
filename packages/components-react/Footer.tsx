@@ -138,24 +138,7 @@ export const Footer = ({
 
           {/* Copyright */}
           <div className="footer__copyright">
-            <svg
-              className="footer__copyright-icon"
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                d="M9 0C4.037 0 0 4.037 0 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9zm0 16.2c-3.969 0-7.2-3.231-7.2-7.2S5.031 1.8 9 1.8s7.2 3.231 7.2 7.2-3.231 7.2-7.2 7.2z"
-                fill="currentColor"
-              />
-              <path
-                d="M9 4.5c-2.485 0-4.5 2.015-4.5 4.5s2.015 4.5 4.5 4.5 4.5-2.015 4.5-4.5S11.485 4.5 9 4.5zm0 7.2c-1.488 0-2.7-1.212-2.7-2.7S7.512 6.3 9 6.3s2.7 1.212 2.7 2.7-1.212 2.7-2.7 2.7z"
-                fill="currentColor"
-              />
-            </svg>
+            <i className="fa-regular fa-copyright footer__copyright-icon" aria-hidden="true" />
             <span className="footer__copyright-text">{displayCopyright}</span>
           </div>
         </div>

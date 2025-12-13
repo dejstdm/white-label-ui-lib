@@ -65,9 +65,8 @@
 }
 
 .product-detail__nutritional-title {
-  font-size: var(--type-h3-size, 1.5rem);
-  font-weight: var(--type-h3-weight, 700);
-  line-height: var(--type-h3-line-height, 1.3);
+  font-size: var(--type-h5-size);
+  font-weight: 700;
   color: var(--color-text-primary, #000);
 }
 
@@ -108,7 +107,8 @@
 .product-detail__tabs-separator {
   width: 100%;
   height: 1px;
-  background-color: var(--color-border-primary, #e0e0e0);
+  background-color: var(--color-text-primary, #000);
+  opacity: 0.3;
   margin: 30px 0 20px 0;
 }
 
@@ -128,7 +128,7 @@
   font-weight: var(--type-body-weight, 700);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--color-text-secondary, #666);
+  color: var(--color-text-primary, #000);
   cursor: pointer;
   position: relative;
   transition: color 0.2s ease;
@@ -139,7 +139,7 @@
 }
 
 .product-detail__tab--active {
-  color: var(--color-primary, #2196f3);
+  color: var(--color-text-primary, #000);
 }
 
 .product-detail__tab--active::after {
@@ -149,7 +149,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background-color: var(--color-primary, #2196f3);
+  background-color: var(--color-text-primary, #000);
 }
 
 .product-detail__tab-content {
