@@ -106,6 +106,7 @@ The project maintains the following documentation files:
 - `ARCHITECTURE.md` - Current architecture, constraints, data contracts, versioning policy
 - `ROADMAP.md` - Future plans and research items
 - `docs/STYLE_DICTIONARY.md` - Guide for working with design tokens
+- `docs/TESTING.md` - Testing strategy and coverage guidance
 - `packages/components-react/AGENTS.md` - Component development rules
 
 ### Documentation Maintenance Rules

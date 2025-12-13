@@ -675,6 +675,8 @@ For detailed information on working with tokens, see [`docs/STYLE_DICTIONARY.md`
 
 The project uses Vitest for testing. Test configuration is in `vitest.config.js` and setup in `.storybook/vitest.setup.js`.
 
+Testing strategy, coverage layers, and per-component checklists are documented in `docs/TESTING.md`.
+
 ## Documentation
 
 - **Architecture**: `ARCHITECTURE.md` - Current architecture, constraints, data contracts, versioning policy
