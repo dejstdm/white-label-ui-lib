@@ -78,7 +78,10 @@ export default defineConfig({
       jsxRuntime: 'automatic',
       jsxImportSource: 'react',
     }),
-    preserveDirectives(),
+    preserveDirectives({
+      include: ['**/*.{js,jsx,ts,tsx}'],
+      suppressPreserveModulesWarning: true,
+    }),
     dts({
       include: ['packages/components-react/**/*.ts', 'packages/components-react/**/*.tsx'],
       exclude: ['**/*.stories.tsx', '**/*.test.ts', '**/*.test.tsx'],
