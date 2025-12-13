@@ -18,6 +18,24 @@
       },
       "on-primary-disabled": {
         "value": "#8C6A00"
+      },
+      "button-on-brand": {
+        "value": "#d6001c"
+      },
+      "button-on-brand-hover": {
+        "value": "#b80018"
+      },
+      "button-on-brand-active": {
+        "value": "#9a0014"
+      },
+      "button-on-neutral": {
+        "value": "#ffd700"
+      },
+      "button-on-neutral-hover": {
+        "value": "#e6c200"
+      },
+      "button-on-neutral-active": {
+        "value": "#ccad00"
       }
     }
   }

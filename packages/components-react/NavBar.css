@@ -11,16 +11,13 @@
   overflow-x: hidden;
 }
 
-[data-theme="7up"] .navbar,
-[data-theme="lays"] .navbar {
+[data-theme="7up"] .navbar {
   background: var(--color-brand-primary);
   background-color: var(--color-brand-primary);
 }
 
 [data-theme="7up"] .navbar__mobile-menu,
-[data-theme="7up"] .navbar__mobile-menu-content,
-[data-theme="lays"] .navbar__mobile-menu,
-[data-theme="lays"] .navbar__mobile-menu-content {
+[data-theme="7up"] .navbar__mobile-menu-content {
   background: var(--color-brand-primary);
 }
 

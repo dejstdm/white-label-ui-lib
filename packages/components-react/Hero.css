@@ -102,29 +102,6 @@ padding: 100px 0;
   color: white;
 }
 
-[data-theme="lays"] .hero__headline .heading {
-  color: var(--color-danger);
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-[data-theme="lays"] .hero__subheadline  .wysiwyg-content * {
-  /* color: var(--color-danger); */
-  font-weight: 700;
-}
-
-[data-theme="lays"] .hero__button-wrapper .button {
-  background-color: var(--color-danger);
-  border-color: var(--color-danger);
-  color: white;
-  font-weight: 700;
-}
-
-[data-theme="lays"] .hero__button-wrapper .button:hover:not(.button--disabled) {
-  background-color: #d31b0d;
-  border-color: #d31b0d;
-}
-
 .hero__button-wrapper {
   display: flex;
   justify-content: center;

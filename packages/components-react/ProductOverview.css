@@ -1,4 +1,5 @@
 .product-overview {
+  background-color: var(--color-bg-component-productOverview, transparent);
   padding-top: 50px;
   padding-bottom: 50px;
 }
@@ -44,42 +45,32 @@
 
 /* Mobile: Even items (2, 4, 6, 8...) are colored */
 .product-overview__zig-zag-item:nth-child(even) {
-  background-color: var(--color-brand-primary, #2e86ff);
+  background-color: var(--color-bg-component-productOverviewZigZagEven, var(--color-brand-primary, #2e86ff));
+  --wl-button-solid-bg: var(--color-brand-on-primary, #ffffff);
+  --wl-button-solid-border: var(--color-brand-on-primary, #ffffff);
+  --wl-button-solid-color: var(--color-brand-primary, #2e86ff);
+  --wl-button-solid-hover-bg: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 90%, transparent);
+  --wl-button-solid-hover-border: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 90%, transparent);
+  --wl-button-solid-hover-color: var(--color-brand-primary-hover, #256BCC);
+  --wl-button-solid-active-bg: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 80%, transparent);
+  --wl-button-solid-active-border: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 80%, transparent);
+  --wl-button-solid-active-color: var(--color-brand-primary-active, #00396D);
 }
 
 .product-overview__zig-zag-item:nth-child(even) .product-card__title {
-  color: var(--color-text-on-primary, #ffffff);
+  color: var(--color-brand-on-primary, #ffffff);
 }
 
 .product-overview__zig-zag-item:nth-child(even) .product-card__description {
-  color: var(--color-text-on-primary, #ffffff);
+  color: var(--color-brand-on-primary, #ffffff);
 }
 
 .product-overview__zig-zag-item:nth-child(even) .product-card__description .wysiwyg-content {
-  color: var(--color-text-on-primary, #ffffff);
+  color: var(--color-brand-on-primary, #ffffff);
 }
 
 .product-overview__zig-zag-item:nth-child(even) .product-card__description .wysiwyg-content p {
-  color: var(--color-text-on-primary, #ffffff);
-}
-
-/* Button in colored zig-zag items - inverted style */
-.product-overview__zig-zag-item:nth-child(even) .button--solid {
-  background: var(--color-brand-on-primary, #ffffff);
-  color: var(--color-brand-primary, #2e86ff);
-  border-color: var(--color-brand-on-primary, #ffffff);
-}
-
-.product-overview__zig-zag-item:nth-child(even) .button--solid:hover:not(.button--disabled) {
-  background: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 90%, transparent);
-  color: var(--color-brand-primary-hover, #256BCC);
-  border-color: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 90%, transparent);
-}
-
-.product-overview__zig-zag-item:nth-child(even) .button--solid:active:not(.button--disabled) {
-  background: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 80%, transparent);
-  color: var(--color-brand-primary-active, #00396D);
-  border-color: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 80%, transparent);
+  color: var(--color-brand-on-primary, #ffffff);
 }
 
 /* Zig-Zag Product Card Layout */
@@ -195,7 +186,14 @@
   
   /* Reset even items from mobile */
   .product-overview__zig-zag-item:nth-child(even) {
-    background-color: var(--color-bg-page, #ffffff);
+    background-color: var(--color-bg-component-productOverviewZigZagEven, var(--color-bg-page, #ffffff));
+    --wl-button-solid-bg: var(--color-brand-primary);
+    --wl-button-solid-border: var(--color-brand-primary);
+    --wl-button-solid-color: var(--color-brand-on-primary);
+    --wl-button-solid-hover-bg: var(--color-brand-primary-hover, #256BCC);
+    --wl-button-solid-hover-border: var(--color-brand-primary-hover, #256BCC);
+    --wl-button-solid-active-bg: var(--color-brand-primary-active, #00396D);
+    --wl-button-solid-active-border: var(--color-brand-primary-active, #00396D);
   }
 
   .product-overview__zig-zag-item:nth-child(even) .product-card__title,
@@ -205,67 +203,38 @@
     color: inherit;
   }
 
-  .product-overview__zig-zag-item:nth-child(even) .button--solid {
-    background: var(--color-brand-primary);
-    color: var(--color-brand-on-primary);
-    border-color: var(--color-brand-primary);
-  }
-
-  .product-overview__zig-zag-item:nth-child(even) .button--solid:hover:not(.button--disabled) {
-    background: var(--color-brand-primary-hover, #256BCC);
-    border-color: var(--color-brand-primary-hover, #256BCC);
-  }
-
-  .product-overview__zig-zag-item:nth-child(even) .button--solid:active:not(.button--disabled) {
-    background: var(--color-brand-primary-active, #00396D);
-    border-color: var(--color-brand-primary-active, #00396D);
-  }
-
   /* Desktop pattern: 4n+2, 4n+3 (items 2,3, 6,7, 10,11...) */
   .product-overview__zig-zag-item:nth-child(4n+2),
   .product-overview__zig-zag-item:nth-child(4n+3) {
     background-color: var(--color-brand-primary, #2e86ff);
+    --wl-button-solid-bg: var(--color-brand-on-primary, #ffffff);
+    --wl-button-solid-border: var(--color-brand-on-primary, #ffffff);
+    --wl-button-solid-color: var(--color-brand-primary, #2e86ff);
+    --wl-button-solid-hover-bg: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 90%, transparent);
+    --wl-button-solid-hover-border: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 90%, transparent);
+    --wl-button-solid-hover-color: var(--color-brand-primary-hover, #256BCC);
+    --wl-button-solid-active-bg: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 80%, transparent);
+    --wl-button-solid-active-border: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 80%, transparent);
+    --wl-button-solid-active-color: var(--color-brand-primary-active, #00396D);
   }
 
   .product-overview__zig-zag-item:nth-child(4n+2) .product-card__title,
   .product-overview__zig-zag-item:nth-child(4n+3) .product-card__title {
-    color: var(--color-text-on-primary, #ffffff);
+    color: var(--color-brand-on-primary, #ffffff);
   }
 
   .product-overview__zig-zag-item:nth-child(4n+2) .product-card__description,
   .product-overview__zig-zag-item:nth-child(4n+3) .product-card__description {
-    color: var(--color-text-on-primary, #ffffff);
+    color: var(--color-brand-on-primary, #ffffff);
   }
 
   .product-overview__zig-zag-item:nth-child(4n+2) .product-card__description .wysiwyg-content,
   .product-overview__zig-zag-item:nth-child(4n+3) .product-card__description .wysiwyg-content {
-    color: var(--color-text-on-primary, #ffffff);
+    color: var(--color-brand-on-primary, #ffffff);
   }
 
   .product-overview__zig-zag-item:nth-child(4n+2) .product-card__description .wysiwyg-content p,
   .product-overview__zig-zag-item:nth-child(4n+3) .product-card__description .wysiwyg-content p {
-    color: var(--color-text-on-primary, #ffffff);
-  }
-
-  .product-overview__zig-zag-item:nth-child(4n+2) .button--solid,
-  .product-overview__zig-zag-item:nth-child(4n+3) .button--solid {
-    background: var(--color-brand-on-primary, #ffffff);
-    color: var(--color-brand-primary, #2e86ff);
-    border-color: var(--color-brand-on-primary, #ffffff);
-  }
-
-  .product-overview__zig-zag-item:nth-child(4n+2) .button--solid:hover:not(.button--disabled),
-  .product-overview__zig-zag-item:nth-child(4n+3) .button--solid:hover:not(.button--disabled) {
-    background: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 90%, transparent);
-    color: var(--color-brand-primary-hover, #256BCC);
-    border-color: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 90%, transparent);
-  }
-
-  .product-overview__zig-zag-item:nth-child(4n+2) .button--solid:active:not(.button--disabled),
-  .product-overview__zig-zag-item:nth-child(4n+3) .button--solid:active:not(.button--disabled) {
-    background: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 80%, transparent);
-    color: var(--color-brand-primary-active, #00396D);
-    border-color: color-mix(in srgb, var(--color-brand-on-primary, #FFFFFF) 80%, transparent);
+    color: var(--color-brand-on-primary, #ffffff);
   }
 }
-

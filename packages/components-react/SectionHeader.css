@@ -1,7 +1,7 @@
 .wl-sec__header {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5, 20px);
+  gap: var(--space-4, 20px);
   width: 100%;
   margin-bottom: var(--space-5, 24px);
   align-items: center;
@@ -20,16 +20,17 @@
 
 .wl-sec__subheadline.wysiwyg-content {
   margin: 0;
-}
 
-[data-theme="lays"] .wl-sec__header .heading {
-  color: var(--color-danger);
-  text-transform: uppercase;
-  font-weight: 900;
+}
+.wl-sec__subheadline.wysiwyg-content *{
+    font-weight: 700;
+    font-size: 18px;
+    opacity: 0.9;
 }
 
 @media (min-width: 768px) {
   .wl-sec__header {
-    gap: var(--space-6, 24px);
+    gap: var(--space-4, 20px);
+     margin-bottom: var(--space-6, 32px);
   }
 }

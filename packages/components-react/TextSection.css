@@ -1,7 +1,7 @@
 .text-section {
   padding-top: 50px;
   padding-bottom: 50px;
-  background-color: var(--color-brand-primary);
+  background-color: var(--color-bg-component-textSection, var(--color-brand-primary));
 }
 
 /* Responsive adjustments */

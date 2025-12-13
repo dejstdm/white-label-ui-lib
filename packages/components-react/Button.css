@@ -48,19 +48,21 @@
 
 /* Solid variant */
 .button--solid {
-  background: var(--color-brand-primary);
-  color: var(--color-brand-on-primary);
-  border: 2px solid var(--color-brand-primary);
+  background: var(--wl-button-solid-bg, var(--color-brand-primary));
+  color: var(--wl-button-solid-color, var(--color-brand-on-primary));
+  border: 2px solid var(--wl-button-solid-border, var(--color-brand-primary));
 }
 
 .button--solid:hover:not(.button--disabled) {
-  background: var(--color-brand-primary-hover, #256BCC);
-  border-color: var(--color-brand-primary-hover, #256BCC);
+  background: var(--wl-button-solid-hover-bg, var(--color-brand-primary-hover, #256BCC));
+  color: var(--wl-button-solid-hover-color, var(--wl-button-solid-color, var(--color-brand-on-primary)));
+  border-color: var(--wl-button-solid-hover-border, var(--color-brand-primary-hover, #256BCC));
 }
 
 .button--solid:active:not(.button--disabled) {
-  background: var(--color-brand-primary-active, #00396D);
-  border-color: var(--color-brand-primary-active, #00396D);
+  background: var(--wl-button-solid-active-bg, var(--color-brand-primary-active, #00396D));
+  color: var(--wl-button-solid-active-color, var(--wl-button-solid-color, var(--color-brand-on-primary)));
+  border-color: var(--wl-button-solid-active-border, var(--color-brand-primary-active, #00396D));
 }
 
 .button--solid.button--disabled {

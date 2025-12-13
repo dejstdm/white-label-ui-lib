@@ -6,6 +6,35 @@
       },
       "section": {
         "value": "#FFFFFF"
+      },
+      "component": {
+        "productSlider": {
+          "value": "{color.brand.primary}"
+        },
+        "recipeSlider": {
+          "value": "{color.brand.primary}"
+        },
+        "faq": {
+          "value": "{color.brand.primary}"
+        },
+        "textSection": {
+          "value": "{color.brand.primary}"
+        },
+        "imageSection": {
+          "value": "{color.brand.primary}"
+        },
+        "socialMediaFeed": {
+          "value": "{color.brand.primary}"
+        },
+        "productOverview": {
+          "value": "{color.brand.primary}"
+        },
+        "productOverviewZigZagEven": {
+          "value": "#FFFFFF"
+        },
+        "productDetail": {
+          "value": "{color.brand.primary}"
+        }
       }
     }
   }

@@ -6,6 +6,24 @@
       },
       "on-primary": {
         "value": "#FFFFFF"
+      },
+      "button-on-brand": {
+        "value": "{color.brand.primary}"
+      },
+      "button-on-brand-hover": {
+        "value": "#00A043"
+      },
+      "button-on-brand-active": {
+        "value": "#007833"
+      },
+      "button-on-neutral": {
+        "value": "{color.brand.primary}"
+      },
+      "button-on-neutral-hover": {
+        "value": "#00A043"
+      },
+      "button-on-neutral-active": {
+        "value": "#007833"
       }
     }
   }

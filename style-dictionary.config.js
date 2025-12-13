@@ -90,19 +90,39 @@ const config = {
 };
 
 // Export function to build specific brand or all brands
-export default function buildThemes(brand = null) {
+export default async function buildThemes(brand = null) {
   const brands = brand ? [brand] : getBrands();
   
-  brands.forEach(brandName => {
+  for (const brandName of brands) {
     const brandConfig = getBrandConfig(brandName);
     const sd = new StyleDictionary(brandConfig);
-    sd.buildAllPlatforms();
+    await sd.buildAllPlatforms();
+    
+    // Append theme-overrides.css if it exists
+    const themeDir = path.join(__dirname, 'themes', brandName);
+    const overridesPath = path.join(themeDir, 'theme-overrides.css');
+    const themeCssPath = path.join(themeDir, 'dist', 'theme.css');
+    
+    if (fs.existsSync(overridesPath) && fs.existsSync(themeCssPath)) {
+      const overridesContent = fs.readFileSync(overridesPath, 'utf-8');
+      const existingThemeCss = fs.readFileSync(themeCssPath, 'utf-8');
+      // Only append if not already appended (avoid duplicates on re-runs)
+      // Check for any marker from theme-overrides.css
+      const hasOverrides = existingThemeCss.includes('Theme Component Overrides') ||
+                          existingThemeCss.includes('Button Component') ||
+                          existingThemeCss.includes('Component Overrides');
+      
+      if (!hasOverrides) {
+        const combinedCss = existingThemeCss + '\n\n' + overridesContent;
+        fs.writeFileSync(themeCssPath, combinedCss, 'utf-8');
+      }
+    }
+    
     console.log(`✓ Compiled theme with Style Dictionary: themes/${brandName}/dist/theme.css`);
-  });
+  }
 }
 
 // If run directly, build all themes
 if (import.meta.url === `file://${process.argv[1]}`) {
   buildThemes();
 }
-

@@ -37,6 +37,14 @@
   flex: 1;
 }
 
+.product-card__title {
+  font-size: 32px;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
 /* WYSIWYG content in product card description - centered text */
 .product-card__description .wysiwyg-content {
   text-align: center;
@@ -62,4 +70,3 @@
     flex-shrink: 0;
   }
 }
-

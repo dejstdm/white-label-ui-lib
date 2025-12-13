@@ -1,5 +1,5 @@
 .faq {
-  background-color: var(--color-brand-primary);
+  background-color: var(--color-bg-component-faq, var(--color-brand-primary));
   padding-top: 50px;
   padding-bottom: 50px;
   /* background: var(--color-bg-page, #FFFFFF); */
@@ -75,10 +75,6 @@
   line-height: var(--type-body-large-line, 1.5);
   color: var(--faq-question-color);
   min-width: 0;
-}
-
-[data-theme="lays"] .faq__question {
-  color: var(--color-danger);
 }
 
 .faq__icon {

@@ -1,5 +1,5 @@
 .product-slider {
-  background-color: var(--color-brand-primary);
+  background-color: var(--color-bg-component-productSlider, var(--color-brand-primary));
   padding-top: 50px;
   padding-bottom: 50px;
   position: relative;

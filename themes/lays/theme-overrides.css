@@ -1,0 +1,115 @@
+/* Lay's Theme Component Overrides */
+/* This file contains manual theme-specific component styling */
+/* It is automatically appended to the generated theme.css file */
+
+/* Hero Component */
+[data-theme="lays"] .hero__headline .heading {
+  color: var(--color-danger);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+[data-theme="lays"] .hero__subheadline .wysiwyg-content * {
+  font-weight: 700;
+}
+
+[data-theme="lays"] .hero__button-wrapper .button {
+  background-color: var(--color-danger);
+  border-color: var(--color-danger);
+  color: white;
+  font-weight: 700;
+}
+
+[data-theme="lays"] .hero__button-wrapper .button:hover:not(.button--disabled) {
+  background-color: #d31b0d;
+  border-color: #d31b0d;
+}
+
+/* FAQ Component */
+[data-theme="lays"] .faq__question {
+  color: var(--color-danger);
+}
+
+/* ProductCard Component */
+[data-theme="lays"] .product-card__title {
+  color: var(--color-brand-button-on-brand, #d6001c);
+}
+
+/* ProductOverview zig-zag overrides the title color in component CSS */
+[data-theme="lays"] .product-overview--zig-zag .product-overview__zig-zag-item .product-card__title {
+  color: var(--color-brand-button-on-brand, #d6001c);
+}
+
+/* NavBar Component */
+[data-theme="lays"] .navbar {
+  background: var(--color-brand-primary);
+  background-color: var(--color-brand-primary);
+}
+
+[data-theme="lays"] .navbar__mobile-menu,
+[data-theme="lays"] .navbar__mobile-menu-content {
+  background: var(--color-brand-primary);
+}
+
+/* SectionHeader Component */
+[data-theme="lays"] .wl-sec__header .heading {
+  color: var(--color-danger);
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+/* Button Component - Context-Aware Colors */
+/* Lay's buttons use bold uppercase labels */
+[data-theme="lays"] .button {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* This theme sets button colors by providing hook variables that `Button.css` consumes. */
+/* Buttons on yellow/brand background use red */
+[data-theme="lays"] :is(
+  .product-slider,
+  .recipe-slider,
+  .faq,
+  .text-section,
+  .image-section,
+  .social-media-feed,
+  .product-detail,
+  .navbar,
+  .product-overview
+) {
+  --wl-button-solid-bg: var(--color-brand-button-on-brand);
+  --wl-button-solid-border: var(--color-brand-button-on-brand);
+  --wl-button-solid-color: #ffffff;
+  --wl-button-solid-hover-bg: var(--color-brand-button-on-brand-hover);
+  --wl-button-solid-hover-border: var(--color-brand-button-on-brand-hover);
+  --wl-button-solid-active-bg: var(--color-brand-button-on-brand-active);
+  --wl-button-solid-active-border: var(--color-brand-button-on-brand-active);
+}
+
+/* ProductOverview zig-zag: buttons are on neutral (page/white) backgrounds on mobile */
+[data-theme="lays"] .product-overview__zig-zag-item {
+  --wl-button-solid-bg: var(--color-brand-button-on-neutral);
+  --wl-button-solid-border: var(--color-brand-button-on-neutral);
+  --wl-button-solid-color: var(--color-text-primary);
+  --wl-button-solid-hover-bg: var(--color-brand-button-on-neutral-hover);
+  --wl-button-solid-hover-border: var(--color-brand-button-on-neutral-hover);
+  --wl-button-solid-active-bg: var(--color-brand-button-on-neutral-active);
+  --wl-button-solid-active-border: var(--color-brand-button-on-neutral-active);
+}
+
+@media (min-width: 992px) {
+  /* Desktop: items 4n+2/4n+3 have brand background, so use red buttons */
+  [data-theme="lays"] :is(
+    .product-overview__zig-zag-item:nth-child(4n+2),
+    .product-overview__zig-zag-item:nth-child(4n+3)
+  ) {
+    --wl-button-solid-bg: var(--color-brand-button-on-brand);
+    --wl-button-solid-border: var(--color-brand-button-on-brand);
+    --wl-button-solid-color: #ffffff;
+    --wl-button-solid-hover-bg: var(--color-brand-button-on-brand-hover);
+    --wl-button-solid-hover-border: var(--color-brand-button-on-brand-hover);
+    --wl-button-solid-active-bg: var(--color-brand-button-on-brand-active);
+    --wl-button-solid-active-border: var(--color-brand-button-on-brand-active);
+  }
+}
