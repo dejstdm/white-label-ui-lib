@@ -117,7 +117,7 @@ export const RecipeSlider = ({
             {headerButtonLabel && (
               <div className="recipe-slider__header-button-wrapper">
                 <Button
-                  variant="outline"
+                  variant="solid"
                   href={headerButtonHref}
                   onClick={headerButtonOnClick}
                 >

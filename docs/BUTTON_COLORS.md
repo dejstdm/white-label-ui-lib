@@ -106,6 +106,8 @@ The rules are defined in `themes/lays/theme-overrides.css` and work by setting b
 }
 ```
 
+These same `--wl-button-solid-*` hook variables are also used by slider navigation buttons and pagination dots (e.g. `.product-slider__nav-button`, `.recipe-slider__nav-button`, `.recipe-slider__pagination .swiper-pagination-bullet`) so they automatically match the active theme.
+
 ## Do All Themes Need Two Types?
 
 **Answer: No, but the structure supports it.**
@@ -113,7 +115,7 @@ The rules are defined in `themes/lays/theme-overrides.css` and work by setting b
 ### Current Implementation
 
 - **Default Theme**: Both button types reference `brand-primary` (same color)
-- **7up Theme**: Both button types reference `brand-primary` (same color)
+- **7up Theme**: Buttons on brand/green backgrounds use an inverted style (white button + green text) via `themes/7up/theme-overrides.css`
 - **Lays Theme**: Different colors for each context (red vs gold)
 
 ### When to Use Two Types

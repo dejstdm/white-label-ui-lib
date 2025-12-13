@@ -11,16 +11,6 @@
   overflow-x: hidden;
 }
 
-[data-theme="7up"] .navbar {
-  background: var(--color-brand-primary);
-  background-color: var(--color-brand-primary);
-}
-
-[data-theme="7up"] .navbar__mobile-menu,
-[data-theme="7up"] .navbar__mobile-menu-content {
-  background: var(--color-brand-primary);
-}
-
 .navbar--sticky {
   position: sticky;
   top: 0;

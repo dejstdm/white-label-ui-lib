@@ -65,18 +65,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  border: none;
+  background: var(--wl-button-solid-bg, var(--color-brand-primary, #2E86FF));
+  border: 2px solid var(--wl-button-solid-border, var(--color-brand-primary, #2E86FF));
   cursor: pointer;
-  color: white;
+  color: var(--wl-button-solid-color, var(--color-brand-on-primary, #ffffff));
   z-index: 10;
   padding: 0;
-  transition: opacity 0.2s ease;
-  background-color:  var(--color-danger);
+  transition: opacity 0.2s ease, background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
 .product-slider__nav-button:hover:not(:disabled) {
-  opacity: 0.7;
+  background: var(--wl-button-solid-hover-bg, var(--color-brand-primary-hover, #256BCC));
+  border-color: var(--wl-button-solid-hover-border, var(--color-brand-primary-hover, #256BCC));
+  color: var(--wl-button-solid-hover-color, var(--wl-button-solid-color, var(--color-brand-on-primary, #ffffff)));
+}
+
+.product-slider__nav-button:active:not(:disabled) {
+  background: var(--wl-button-solid-active-bg, var(--color-brand-primary-active, #00396D));
+  border-color: var(--wl-button-solid-active-border, var(--color-brand-primary-active, #00396D));
+  color: var(--wl-button-solid-active-color, var(--wl-button-solid-color, var(--color-brand-on-primary, #ffffff)));
 }
 
 .product-slider__nav-button:disabled {

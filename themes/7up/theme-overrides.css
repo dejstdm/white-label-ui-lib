@@ -1,0 +1,54 @@
+/* 7UP Theme Component Overrides */
+/* This file contains manual theme-specific component styling */
+/* It is automatically appended to the generated theme.css file */
+
+/* Button Component */
+/* Match Lay's ergonomics: bold uppercase labels */
+[data-theme="7up"] .button {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Fix default solid hover/active for 7UP (avoid Button.css blue fallbacks) */
+[data-theme="7up"] {
+  --color-brand-primary-hover: var(--color-brand-button-on-neutral-hover, var(--color-brand-primary));
+  --color-brand-primary-active: var(--color-brand-button-on-neutral-active, var(--color-brand-primary));
+  --wl-button-solid-hover-bg: var(--color-brand-button-on-neutral-hover, var(--color-brand-primary));
+  --wl-button-solid-hover-border: var(--color-brand-button-on-neutral-hover, var(--color-brand-primary));
+  --wl-button-solid-active-bg: var(--color-brand-button-on-neutral-active, var(--color-brand-primary));
+  --wl-button-solid-active-border: var(--color-brand-button-on-neutral-active, var(--color-brand-primary));
+}
+
+/* Buttons on brand/green backgrounds: white button with green text */
+[data-theme="7up"] :is(
+  .product-slider,
+  .recipe-slider,
+  .faq,
+  .text-section,
+  .image-section,
+  .social-media-feed,
+  .product-detail,
+  .navbar,
+  .product-overview--grid
+) {
+  --wl-button-solid-bg: var(--color-brand-on-primary, #ffffff);
+  --wl-button-solid-border: var(--color-brand-on-primary, #ffffff);
+  --wl-button-solid-color: var(--color-brand-primary, #00C853);
+  --wl-button-solid-hover-bg: color-mix(in srgb, var(--color-brand-on-primary, #ffffff) 92%, var(--color-brand-primary, #00C853));
+  --wl-button-solid-hover-border: var(--color-brand-on-primary, #ffffff);
+  --wl-button-solid-hover-color: var(--color-brand-button-on-neutral-hover, var(--color-brand-primary, #00C853));
+  --wl-button-solid-active-bg: color-mix(in srgb, var(--color-brand-on-primary, #ffffff) 85%, var(--color-brand-primary, #00C853));
+  --wl-button-solid-active-border: var(--color-brand-on-primary, #ffffff);
+  --wl-button-solid-active-color: var(--color-brand-button-on-neutral-active, var(--color-brand-primary, #00C853));
+}
+
+/* NavBar Component */
+[data-theme="7up"] .navbar {
+  background: var(--color-brand-primary);
+  background-color: var(--color-brand-primary);
+}
+
+[data-theme="7up"] .navbar__mobile-menu,
+[data-theme="7up"] .navbar__mobile-menu-content {
+  background: var(--color-brand-primary);
+}

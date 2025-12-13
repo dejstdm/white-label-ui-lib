@@ -110,6 +110,7 @@ Component Backgrounds
 
 ### Use theme-overrides.css For:
 - ✅ Setting component hook CSS variables (e.g. `--wl-button-solid-*`)
+- ✅ Theme-specific component overrides (avoid putting `[data-theme="..."]` selectors in component CSS)
 - ✅ Complex selectors (`.hero__button-wrapper .button:hover`)
 - ✅ Pseudo-classes and states
 - ✅ Component-specific styling that can't be tokenized

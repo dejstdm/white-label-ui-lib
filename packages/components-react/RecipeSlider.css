@@ -15,17 +15,6 @@
   margin-bottom: 50px;
 }
 
-.recipe-slider  .button {
-  background: var(--color-danger);
-  color: white;
-  border: 2px solid var(--color-danger);
-  font-weight: 700;
-}
-.recipe-slider  .button:hover{
-  background: #d31b0d;
-  border-color: #d31b0d;
-  color: white;
-}
 .recipe-slider .wl-sec__headline,
 .recipe-slider .wl-sec__subheadline {
   max-width: 866px;
@@ -106,21 +95,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  border: none;
+  background: var(--wl-button-solid-bg, var(--color-brand-primary, #2E86FF));
+  border: 2px solid var(--wl-button-solid-border, var(--color-brand-primary, #2E86FF));
   cursor: pointer;
   
   z-index: 10;
   padding: 0;
-  transition: opacity 0.2s ease;
-
-  background-color: var(--color-danger);
-  color: white;
-  font-weight: 700;
+  transition: opacity 0.2s ease, background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  color: var(--wl-button-solid-color, var(--color-brand-on-primary, #ffffff));
 }
 
 .recipe-slider__nav-button:hover:not(:disabled) {
-  opacity: 0.7;
+  background: var(--wl-button-solid-hover-bg, var(--color-brand-primary-hover, #256BCC));
+  border-color: var(--wl-button-solid-hover-border, var(--color-brand-primary-hover, #256BCC));
+  color: var(--wl-button-solid-hover-color, var(--wl-button-solid-color, var(--color-brand-on-primary, #ffffff)));
+}
+
+.recipe-slider__nav-button:active:not(:disabled) {
+  background: var(--wl-button-solid-active-bg, var(--color-brand-primary-active, #00396D));
+  border-color: var(--wl-button-solid-active-border, var(--color-brand-primary-active, #00396D));
+  color: var(--wl-button-solid-active-color, var(--wl-button-solid-color, var(--color-brand-on-primary, #ffffff)));
 }
 
 .recipe-slider__nav-button:disabled {
@@ -167,11 +161,11 @@
 .recipe-slider__pagination .swiper-pagination-bullet {
   width: 10px;
   height: 10px;
-  background: var(--color-danger);
-  opacity: 0.3;
+  background: var(--wl-button-solid-bg, var(--color-brand-primary, #2E86FF));
+  opacity: 0.35;
   border-radius: 50%;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, background-color 0.15s ease;
 }
 
 .recipe-slider__pagination .swiper-pagination-bullet-active {
@@ -179,7 +173,8 @@
 }
 
 .recipe-slider__pagination .swiper-pagination-bullet:hover {
-  opacity: 0.7;
+  background: var(--wl-button-solid-hover-bg, var(--color-brand-primary-hover, #256BCC));
+  opacity: 1;
 }
 
 /* Responsive adjustments */
