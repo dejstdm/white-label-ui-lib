@@ -37,7 +37,12 @@
   line-height: var(--type-h2-line-height, 1.2);
   color: var(--color-text-primary, #000);
 }
-
+.product-detail__title .wysiwyg-content h1,
+.product-detail__title .wysiwyg-content h2{
+  font-size: 36px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
 .product-detail__tagline .wysiwyg-content,
 .product-detail__description .wysiwyg-content {
   font-size: var(--type-body-large-size, 1rem);
@@ -51,7 +56,12 @@
   line-height: var(--type-h3-line-height, 1.3);
   color: var(--color-text-primary, #000);
 }
-
+.product-detail__headline .wysiwyg-content h2,
+.product-detail__headline .wysiwyg-content h3{
+  font-size: 26px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
 .product-detail__cta {
   margin-top: 10px;
 }
@@ -64,9 +74,9 @@
   width: 100%;
 }
 
-.product-detail__nutritional-title {
+.heading.product-detail__nutritional-title {
   font-size: var(--type-h5-size);
-  font-weight: 700;
+  font-weight: 900;
   color: var(--color-text-primary, #000);
 }
 
