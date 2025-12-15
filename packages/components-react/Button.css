@@ -98,20 +98,20 @@
 /* Text variant */
 .button--text {
   background: transparent;
-  color: var(--color-brand-primary);
+  color: var(--color-brand-button-on-brand);
   border: 2px solid transparent;
   padding-left: 0;
   padding-right: 0;
 }
 
 .button--text:hover:not(.button--disabled) {
-  color: var(--color-brand-primary-hover, #256BCC);
-  color: color-mix(in srgb, var(--color-brand-primary-hover, #2E86FF) 80%, #333);
+  color: var(--color-brand-button-on-brand-hover, #256BCC);
+  color: color-mix(in srgb, var(--color-brand-button-on-brand-hover, #2E86FF) 80%, #333);
   background: transparent;
 }
 
 .button--text:active:not(.button--disabled) {
-  color: var(--color-brand-primary-active, #00396D);
+  color: var(    --color-brand-button-on-brand-active, #00396D);
   background: transparent;
 }
 

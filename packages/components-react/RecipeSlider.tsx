@@ -11,6 +11,7 @@ import './SectionLayout.css';
 import { Container } from './Container';
 import { Button } from './Button';
 import { SectionHeader } from './SectionHeader';
+import { RecipeCard } from './RecipeCard';
 import type { RecipeItem, PlainText, HtmlString, HeadingLevel } from './types';
 
 export interface RecipeSliderProps extends HTMLAttributes<HTMLElement> {
@@ -25,6 +26,8 @@ export interface RecipeSliderProps extends HTMLAttributes<HTMLElement> {
   headerButtonLabel?: PlainText;
   headerButtonHref?: string;
   headerButtonOnClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+  /** Variation: 'image-only' shows only images, 'with-content' shows title and read more button */
+  variant?: 'image-only' | 'with-content';
   className?: string;
 }
 
@@ -36,6 +39,7 @@ export const RecipeSlider = ({
   headerButtonLabel,
   headerButtonHref,
   headerButtonOnClick,
+  variant = 'image-only',
   className = '',
   ...props
 }: RecipeSliderProps) => {
@@ -150,29 +154,7 @@ export const RecipeSlider = ({
             >
               {recipes.map((recipe, index) => (
                 <SwiperSlide key={recipe.id || index} className="recipe-slider__slide">
-                  <div className="recipe-slider__card">
-                    {recipe.image && (
-                      recipe.href ? (
-                        <a href={recipe.href} className="recipe-slider__image-wrapper">
-                          <img
-                            src={recipe.image}
-                            alt={recipe.imageAlt || ''}
-                            className="recipe-slider__image"
-                            loading="lazy"
-                          />
-                        </a>
-                      ) : (
-                        <div className="recipe-slider__image-wrapper">
-                          <img
-                            src={recipe.image}
-                            alt={recipe.imageAlt || ''}
-                            className="recipe-slider__image"
-                            loading="lazy"
-                          />
-                        </div>
-                      )
-                    )}
-                  </div>
+                  <RecipeCard recipe={recipe} />
                 </SwiperSlide>
               ))}
             </Swiper>

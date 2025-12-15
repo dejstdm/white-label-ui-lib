@@ -246,6 +246,14 @@ export type RecipeItem = {
   imageAlt?: string;
   /** Link URL for the recipe */
   href?: string;
+  /** Recipe title (plain text, not from CMS) */
+  title?: PlainText;
+  /** Label for the read more button/link (plain text) */
+  readMoreLabel?: PlainText;
+  /** URL for the read more link */
+  readMoreHref?: string;
+  /** Click handler for the read more button/link */
+  readMoreOnClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
 };
 
 /**

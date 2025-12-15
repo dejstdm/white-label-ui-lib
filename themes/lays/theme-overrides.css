@@ -65,6 +65,9 @@
   text-transform: uppercase;
 }
 
+[data-theme="lays"] .recipe-card__read-more .button--text {
+color: var(--color-danger);
+}
 /* This theme sets button colors by providing hook variables that `Button.css` consumes. */
 /* Buttons on yellow/brand background use red */
 [data-theme="lays"] :is(

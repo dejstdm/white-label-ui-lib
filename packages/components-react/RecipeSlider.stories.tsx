@@ -145,6 +145,18 @@ export default {
         },
       },
     },
+    variant: {
+      description: 'Variation: "image-only" shows only images, "with-content" shows title and read more button',
+      control: { type: 'select' },
+      options: ['image-only', 'with-content'],
+      table: {
+        type: {
+          summary: 'string',
+          detail: 'Variation type: "image-only" (default) or "with-content"',
+        },
+        defaultValue: { summary: 'image-only' },
+      },
+    },
   },
 };
 
@@ -209,6 +221,125 @@ export const WithoutHeaderButton = {
     headline: 'Our Recipes',
     subheadline: '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptateam accusantium</p>',
     recipes: allRecipes,
+  },
+};
+
+// Recipes with title and read more button for with-content variation
+const recipesWithContent = [
+  {
+    id: 1,
+    image: spicyMeatballsImage,
+    imageAlt: 'CHEETOS® Sweet \'N\' Spicy Chili Meatballs',
+    href: '#',
+    title: 'CHEETOS® Sweet \'N\' Spicy Chili Meatballs',
+    readMoreLabel: 'Read More',
+    readMoreHref: '#',
+  },
+  {
+    id: 2,
+    image: chickenRiceImage,
+    imageAlt: 'CHEETOS® XXTRA FLAMIN\' HOT® Rice Bowl',
+    href: '#',
+    title: 'CHEETOS® XXTRA FLAMIN\' HOT® Rice Bowl',
+    readMoreLabel: 'Read More',
+    readMoreHref: '#',
+  },
+  {
+    id: 3,
+    image: steakImage,
+    imageAlt: 'Five-Alarm CHEETOS® Steak',
+    href: '#',
+    title: 'Five-Alarm CHEETOS® Steak',
+    readMoreLabel: 'Read More',
+    readMoreHref: '#',
+  },
+  {
+    id: 4,
+    image: churrosImage,
+    imageAlt: 'Chester Cheetah\'s CHEETOS® Churros',
+    href: '#',
+    title: 'Chester Cheetah\'s CHEETOS® Churros',
+    readMoreLabel: 'Read More',
+    readMoreHref: '#',
+  },
+  {
+    id: 5,
+    image: pancakesImage,
+    imageAlt: 'CHEETOS® Sweetos Hot Cakes',
+    href: '#',
+    title: 'CHEETOS® Sweetos Hot Cakes',
+    readMoreLabel: 'Read More',
+    readMoreHref: '#',
+  },
+  {
+    id: 6,
+    image: friedGreenTomatoesImage,
+    imageAlt: 'Puffectly Fried Green Tomatoes',
+    href: '#',
+    title: 'Puffectly Fried Green Tomatoes',
+    readMoreLabel: 'Read More',
+    readMoreHref: '#',
+  },
+];
+
+export const WithContent = {
+  args: {
+    headline: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    subheadline: '<p>Sed ut perspiciatis unde omnis iste natus error sit voluptateam accusantium</p>',
+    headerButtonLabel: 'Lorem ipsum',
+    headerButtonHref: '#',
+    variant: 'with-content',
+    recipes: recipesWithContent,
+  },
+};
+
+export const WithContentThreeRecipes = {
+  args: {
+    headline: 'Featured Recipes',
+    subheadline: '<p>Check out our most popular recipes with full details</p>',
+    headerButtonLabel: 'View All Recipes',
+    headerButtonHref: '#',
+    variant: 'with-content',
+    recipes: recipesWithContent.slice(0, 3),
+  },
+};
+
+export const WithContentCustomLabels = {
+  args: {
+    headline: 'Discover Our Recipes',
+    subheadline: '<p>Get playfully mischievous in the kitchen with these cheesy recipes.</p>',
+    headerButtonLabel: 'View More Recipes',
+    headerButtonHref: '#',
+    variant: 'with-content',
+    recipes: [
+      {
+        id: 1,
+        image: spicyMeatballsImage,
+        imageAlt: 'CHEETOS® Sweet \'N\' Spicy Chili Meatballs',
+        href: '#',
+        title: 'CHEETOS® Sweet \'N\' Spicy Chili Meatballs',
+        readMoreLabel: 'Get Recipe',
+        readMoreHref: '#',
+      },
+      {
+        id: 2,
+        image: chickenRiceImage,
+        imageAlt: 'CHEETOS® XXTRA FLAMIN\' HOT® Rice Bowl',
+        href: '#',
+        title: 'CHEETOS® XXTRA FLAMIN\' HOT® Rice Bowl',
+        readMoreLabel: 'Learn More',
+        readMoreHref: '#',
+      },
+      {
+        id: 3,
+        image: steakImage,
+        imageAlt: 'Five-Alarm CHEETOS® Steak',
+        href: '#',
+        title: 'Five-Alarm CHEETOS® Steak',
+        readMoreLabel: 'View Recipe',
+        readMoreHref: '#',
+      },
+    ],
   },
 };
 
