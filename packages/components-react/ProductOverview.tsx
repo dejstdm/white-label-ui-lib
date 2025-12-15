@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, type HTMLAttributes, type MouseEventHandler } from 'react';
 import './ProductOverview.css';
 import './SectionLayout.css';

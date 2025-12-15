@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, type HTMLAttributes, type MouseEventHandler } from 'react';
 import './ProductDetail.css';
 import { Container } from './Container';
