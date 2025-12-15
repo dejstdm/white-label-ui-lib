@@ -117,6 +117,7 @@ export const ProductSlider = ({
               spaceBetween={20}
               breakpoints={breakpointConfig}
               allowTouchMove={shouldEnableNavigation}
+              watchOverflow={true}
               className={swiperClasses}
             >
               {products.map((product, index) => (

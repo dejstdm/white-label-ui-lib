@@ -25,11 +25,13 @@
 }
 
 .product-slider__wrapper--static .product-slider__swiper .swiper-wrapper {
-  justify-content: center;
+  max-width: 100%;
 }
 
 .product-slider__swiper {
   padding-bottom: 20px;
+  overflow: hidden;
+  width: 100%;
 }
 
 .product-slider__swiper--static {
@@ -40,6 +42,7 @@
 .product-slider__swiper .swiper-wrapper {
   display: flex;
   align-items: stretch;
+  width: 100%;
 }
 
 .product-slider__slide {

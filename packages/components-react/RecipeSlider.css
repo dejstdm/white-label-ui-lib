@@ -37,11 +37,13 @@
 }
 
 .recipe-slider__wrapper--static .recipe-slider__swiper .swiper-wrapper {
-  justify-content: center;
+  max-width: 100%;
 }
 
 .recipe-slider__swiper {
   padding-bottom: 20px;
+  overflow: hidden;
+  width: 100%;
 }
 
 .recipe-slider__swiper--static {
@@ -52,6 +54,7 @@
 .recipe-slider__swiper .swiper-wrapper {
   display: flex;
   align-items: stretch;
+  width: 100%;
 }
 
 .recipe-slider__slide {

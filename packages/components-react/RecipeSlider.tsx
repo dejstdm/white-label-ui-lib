@@ -150,6 +150,7 @@ export const RecipeSlider = ({
               spaceBetween={20}
               breakpoints={breakpointConfig}
               allowTouchMove={shouldEnableNavigation}
+              watchOverflow={true}
               className={swiperClasses}
             >
               {recipes.map((recipe, index) => (
