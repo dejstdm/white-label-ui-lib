@@ -70,6 +70,11 @@ color: var(--color-danger);
 }
 /* This theme sets button colors by providing hook variables that `Button.css` consumes. */
 /* Buttons on yellow/brand background use red */
+/* RecipeOverview background */
+[data-theme="lays"] .recipe-overview {
+  background-color: var(--color-brand-primary);
+}
+
 [data-theme="lays"] :is(
   .product-slider,
   .recipe-slider,
@@ -79,7 +84,8 @@ color: var(--color-danger);
   .social-media-feed,
   .product-detail,
   .navbar,
-  .product-overview
+  .product-overview,
+  .recipe-overview
 ) {
   --wl-button-solid-bg: var(--color-brand-button-on-brand);
   --wl-button-solid-border: var(--color-brand-button-on-brand);

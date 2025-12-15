@@ -6,11 +6,14 @@ import type { RecipeItem } from './types';
 
 export interface RecipeCardProps {
   recipe: RecipeItem;
+  /** Variation: 'image-only' shows only images, 'with-content' shows title and read more button */
+  variant?: 'image-only' | 'with-content';
   className?: string;
 }
 
-export const RecipeCard = ({ recipe, className = '' }: RecipeCardProps) => {
+export const RecipeCard = ({ recipe, variant, className = '' }: RecipeCardProps) => {
   const classes = ['recipe-card', className].filter(Boolean).join(' ');
+  const showContent = variant !== 'image-only' && (recipe.title || recipe.readMoreLabel);
 
   return (
     <div className={classes}>
@@ -35,7 +38,7 @@ export const RecipeCard = ({ recipe, className = '' }: RecipeCardProps) => {
           </div>
         )
       )}
-      {(recipe.title || recipe.readMoreLabel) && (
+      {showContent && (
         <div className="recipe-card__content">
           {recipe.title && (
             <Heading level={3} variant="h6" className="recipe-card__title">

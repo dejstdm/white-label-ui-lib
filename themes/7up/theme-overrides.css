@@ -19,6 +19,11 @@
   --wl-button-solid-active-border: var(--color-brand-button-on-neutral-active, var(--color-brand-primary));
 }
 
+/* RecipeOverview background */
+[data-theme="7up"] .recipe-overview {
+  background-color: var(--color-brand-primary);
+}
+
 /* Buttons on brand/green backgrounds: white button with green text */
 [data-theme="7up"] :is(
   .product-slider,
@@ -29,7 +34,8 @@
   .social-media-feed,
   .product-detail,
   .navbar,
-  .product-overview--grid
+  .product-overview--grid,
+  .recipe-overview
 ) {
   --wl-button-solid-bg: var(--color-brand-on-primary, #ffffff);
   --wl-button-solid-border: var(--color-brand-on-primary, #ffffff);

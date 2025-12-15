@@ -155,7 +155,7 @@ export const RecipeSlider = ({
             >
               {recipes.map((recipe, index) => (
                 <SwiperSlide key={recipe.id || index} className="recipe-slider__slide">
-                  <RecipeCard recipe={recipe} />
+                  <RecipeCard recipe={recipe} variant={variant} />
                 </SwiperSlide>
               ))}
             </Swiper>

@@ -17,6 +17,7 @@ export { ImageSection } from './ImageSection';
 // Feature Components
 export { ProductSlider } from './ProductSlider';
 export { ProductOverview } from './ProductOverview';
+export { RecipeOverview } from './RecipeOverview';
 export { ProductDetail } from './ProductDetail';
 export { RecipeSlider } from './RecipeSlider';
 export { FAQ } from './FAQ';
@@ -59,6 +60,7 @@ export type { ProductSliderProps } from './ProductSlider';
 export type { ProductOverviewProps } from './ProductOverview';
 export type { ProductDetailProps, ProductDetailVariant } from './ProductDetail';
 export type { RecipeSliderProps } from './RecipeSlider';
+export type { RecipeOverviewProps } from './RecipeOverview';
 export type { FAQProps } from './FAQ';
 export type { TextSectionProps } from './TextSection';
 export type { ImageSectionProps } from './ImageSection';
@@ -76,3 +78,4 @@ export type { FooterProps } from './Footer';
 // - Image (standard image component with required width/height)
 // - ResponsiveImage (picture tag component for mobile/desktop images)
 // - ProductCard (used internally by ProductSlider and ProductOverview)
+// - RecipeCard (used internally by RecipeSlider and RecipeOverview)

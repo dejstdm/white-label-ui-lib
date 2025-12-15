@@ -259,7 +259,7 @@ npm install react react-dom swiper
 Import components from the package:
 
 ```javascript
-import { NavBar, Hero, Footer, TextSection, ImageSection, ProductSlider, ProductOverview, ProductDetail, RecipeSlider, FAQ, SocialMediaFeed } from '@dejstdm/white-label-ui';
+import { NavBar, Hero, Footer, TextSection, ImageSection, ProductSlider, ProductOverview, ProductDetail, RecipeSlider, RecipeOverview, FAQ, SocialMediaFeed } from '@dejstdm/white-label-ui';
 ```
 
 You can import individual components for better tree-shaking:
@@ -458,6 +458,68 @@ const recipesWithContent = [
 />
 ```
 
+**RecipeOverview usage examples:**
+
+```javascript
+import { RecipeOverview } from '@dejstdm/white-label-ui';
+
+// Image-only variation (default)
+const imageOnlyRecipes = [
+  {
+    id: 1,
+    image: '/recipes/recipe1.jpg',
+    imageAlt: 'Recipe 1',
+    href: '/recipes/recipe1',
+  },
+  {
+    id: 2,
+    image: '/recipes/recipe2.jpg',
+    imageAlt: 'Recipe 2',
+    href: '/recipes/recipe2',
+  },
+  // ... more recipes
+];
+
+<RecipeOverview
+  headline="Our Recipes"
+  subheadline="<p>Discover delicious recipes</p>"
+  variant="image-only"
+  recipes={imageOnlyRecipes}
+  loadMoreLabel="Load More Recipes"
+/>
+
+// With-content variation (shows title and read more button)
+const recipesWithContent = [
+  {
+    id: 1,
+    image: '/recipes/recipe1.jpg',
+    imageAlt: 'Recipe 1',
+    href: '/recipes/recipe1',
+    title: 'Delicious Recipe 1',
+    readMoreLabel: 'Read More',
+    readMoreHref: '/recipes/recipe1',
+  },
+  {
+    id: 2,
+    image: '/recipes/recipe2.jpg',
+    imageAlt: 'Recipe 2',
+    href: '/recipes/recipe2',
+    title: 'Amazing Recipe 2',
+    readMoreLabel: 'View Recipe',
+    readMoreHref: '/recipes/recipe2',
+  },
+  // ... more recipes
+];
+
+<RecipeOverview
+  headline="Featured Recipes"
+  subheadline="<p>Check out our most popular recipes</p>"
+  variant="with-content"
+  recipes={recipesWithContent}
+  loadMoreLabel="View More Recipes"
+/>
+```
+
 ### Builder.io Integration
 
 This package is designed to work with Builder.io and other visual page builders. Components are pre-built and ready to use:
@@ -518,7 +580,7 @@ import 'swiper/css/pagination';
 // Register components with Builder.io
 import { 
   NavBar, Hero, Footer, TextSection, ImageSection,
-  ProductSlider, ProductOverview, ProductDetail, RecipeSlider, FAQ, SocialMediaFeed 
+  ProductSlider, ProductOverview, ProductDetail, RecipeSlider, RecipeOverview, FAQ, SocialMediaFeed 
 } from '@dejstdm/white-label-ui';
 
 // Add to Builder.io component registry
@@ -530,7 +592,7 @@ Builder.registerComponent(NavBar, { name: 'NavBar', ... });
 
 - **Navigation**: `NavBar`, `Footer`
 - **Layout**: `Hero`
-- **Display**: `TextSection`, `ImageSection`, `ProductSlider`, `ProductOverview`, `ProductDetail`, `RecipeSlider`, `FAQ`, `SocialMediaFeed`
+- **Display**: `TextSection`, `ImageSection`, `ProductSlider`, `ProductOverview`, `ProductDetail`, `RecipeSlider`, `RecipeOverview`, `FAQ`, `SocialMediaFeed`
 
 #### Metadata Maintenance
 
@@ -564,6 +626,9 @@ The following components are available in the library. All components are standa
 - **ProductOverview** - Product grid or zig-zag layout with load more functionality
 - **ProductDetail** - Product detail page component with variants (overview, compact, tabs) including nutritional information
 - **RecipeSlider** - Recipe carousel/slider with navigation and pagination. Supports two variations:
+  - `image-only` (default) - Displays recipe images only
+  - `with-content` - Displays recipe images with title and "read more" button
+- **RecipeOverview** - Recipe grid overview with load more functionality. Supports two variations:
   - `image-only` (default) - Displays recipe images only
   - `with-content` - Displays recipe images with title and "read more" button
 - **FAQ** - FAQ accordion component with expandable questions/answers
