@@ -395,6 +395,69 @@ export default function RootLayout({ children }) {
 }
 ```
 
+**RecipeSlider usage examples:**
+
+```javascript
+import { RecipeSlider } from '@dejstdm/white-label-ui';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+// Image-only variation (default)
+const imageOnlyRecipes = [
+  {
+    id: 1,
+    image: '/recipes/recipe1.jpg',
+    imageAlt: 'Recipe 1',
+    href: '/recipes/recipe1',
+  },
+  {
+    id: 2,
+    image: '/recipes/recipe2.jpg',
+    imageAlt: 'Recipe 2',
+    href: '/recipes/recipe2',
+  },
+];
+
+<RecipeSlider
+  headline="Our Recipes"
+  subheadline="<p>Discover delicious recipes</p>"
+  variant="image-only"
+  recipes={imageOnlyRecipes}
+/>
+
+// With-content variation (shows title and read more button)
+const recipesWithContent = [
+  {
+    id: 1,
+    image: '/recipes/recipe1.jpg',
+    imageAlt: 'Recipe 1',
+    href: '/recipes/recipe1',
+    title: 'Delicious Recipe 1',
+    readMoreLabel: 'Read More',
+    readMoreHref: '/recipes/recipe1',
+  },
+  {
+    id: 2,
+    image: '/recipes/recipe2.jpg',
+    imageAlt: 'Recipe 2',
+    href: '/recipes/recipe2',
+    title: 'Amazing Recipe 2',
+    readMoreLabel: 'View Recipe',
+    readMoreHref: '/recipes/recipe2',
+  },
+];
+
+<RecipeSlider
+  headline="Featured Recipes"
+  subheadline="<p>Check out our most popular recipes</p>"
+  variant="with-content"
+  recipes={recipesWithContent}
+  headerButtonLabel="View All Recipes"
+  headerButtonHref="/recipes"
+/>
+```
+
 ### Builder.io Integration
 
 This package is designed to work with Builder.io and other visual page builders. Components are pre-built and ready to use:
@@ -500,7 +563,9 @@ The following components are available in the library. All components are standa
 - **ProductSlider** - Product carousel/slider with navigation controls
 - **ProductOverview** - Product grid or zig-zag layout with load more functionality
 - **ProductDetail** - Product detail page component with variants (overview, compact, tabs) including nutritional information
-- **RecipeSlider** - Recipe carousel/slider with navigation and pagination
+- **RecipeSlider** - Recipe carousel/slider with navigation and pagination. Supports two variations:
+  - `image-only` (default) - Displays recipe images only
+  - `with-content` - Displays recipe images with title and "read more" button
 - **FAQ** - FAQ accordion component with expandable questions/answers
 - **SocialMediaFeed** - Social media feed component with social links (uses Font Awesome icon classes)
 
