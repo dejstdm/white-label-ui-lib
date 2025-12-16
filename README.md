@@ -92,7 +92,7 @@ npm install --ignore-scripts
 
 ### Development
 
-Start Storybook (automatically compiles themes):
+Start Storybook (compiles themes and watches for token/override changes):
 
 ```bash
 npm run storybook
@@ -104,13 +104,13 @@ Storybook will open at `http://localhost:6006`
 
 - `npm run build` - Build the component library for production (creates `dist/` folder)
 - `npm run prepublishOnly` - Automatically runs build before publishing
-- `npm run storybook` - Start Storybook dev server (compiles themes automatically)
+- `npm run storybook` - Start Storybook dev server + theme compiler watch (token + `themes/*/theme-overrides.css` changes update without restart)
 - `npm run build-storybook` - Build static Storybook site (compiles themes automatically)
 - `npm run typecheck` - Run TypeScript type checking
 - `npm run typecheck:stories` - Type-check Storybook stories with `tsconfig.stories.json`
 - `npm run compile-themes` - Compile all theme manifests to CSS (legacy compiler)
 - `npm run compile-themes:sd` - Compile all themes using Style Dictionary (recommended)
-- `npm run compile-themes:watch` - Watch mode for Style Dictionary compilation (development)
+- `npm run compile-themes:watch` - Watch mode for Style Dictionary compilation (development; writes `themes/*/dist/theme.css`)
 
 ### Publishing to npm
 
@@ -259,7 +259,7 @@ npm install react react-dom swiper
 Import components from the package:
 
 ```javascript
-import { NavBar, Hero, Footer, TextSection, ImageSection, ProductSlider, ProductOverview, ProductDetail, RecipeSlider, RecipeOverview, FAQ, SocialMediaFeed } from '@dejstdm/white-label-ui';
+import { NavBar, Hero, Footer, TextSection, ImageSection, ContentBlock, ProductSlider, ProductOverview, ProductDetail, RecipeSlider, RecipeOverview, FAQ, SocialMediaFeed } from '@dejstdm/white-label-ui';
 ```
 
 You can import individual components for better tree-shaking:
@@ -579,7 +579,7 @@ import 'swiper/css/pagination';
 ```javascript
 // Register components with Builder.io
 import { 
-  NavBar, Hero, Footer, TextSection, ImageSection,
+  NavBar, Hero, Footer, TextSection, ImageSection, ContentBlock,
   ProductSlider, ProductOverview, ProductDetail, RecipeSlider, RecipeOverview, FAQ, SocialMediaFeed 
 } from '@dejstdm/white-label-ui';
 
@@ -592,7 +592,7 @@ Builder.registerComponent(NavBar, { name: 'NavBar', ... });
 
 - **Navigation**: `NavBar`, `Footer`
 - **Layout**: `Hero`
-- **Display**: `TextSection`, `ImageSection`, `ProductSlider`, `ProductOverview`, `ProductDetail`, `RecipeSlider`, `RecipeOverview`, `FAQ`, `SocialMediaFeed`
+- **Display**: `TextSection`, `ImageSection`, `ContentBlock`, `ProductSlider`, `ProductOverview`, `ProductDetail`, `RecipeSlider`, `RecipeOverview`, `FAQ`, `SocialMediaFeed`
 
 #### Metadata Maintenance
 
@@ -620,6 +620,9 @@ The following components are available in the library. All components are standa
 ### Content Sections
 - **TextSection** - Text content section with headline and WYSIWYG content
 - **ImageSection** - Image gallery section with optional slider/carousel functionality
+- **ContentBlock** - Content block component with image and text. Supports two variants:
+  - `single` (default) - Single row with configurable image position (left/right)
+  - `multiple` - Multiple rows with automatic zig-zag pattern (alternating image/text positions)
 
 ### Feature Components
 - **ProductSlider** - Product carousel/slider with navigation controls

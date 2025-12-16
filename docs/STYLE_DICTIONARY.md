@@ -156,12 +156,20 @@ node scripts/compile-themes-sd.js <brand>
 npm run compile-themes:watch
 ```
 
+This rebuilds `themes/*/dist/theme.css` when you change:
+- `tokens/global/**/*.json`
+- `tokens/brands/<brand>/**/*.json`
+- `themes/<brand>/theme-overrides.css`
+- `themes/<brand>/theme.manifest.json`
+
 ## Output Files
 
 After compilation, each theme generates:
 
 - `themes/<brand>/dist/theme.css` - CSS variables (used by components)
 - `themes/<brand>/dist/tokens.json` - JSON token export (for documentation/tooling)
+
+If `themes/<brand>/theme-overrides.css` exists, it is appended to `themes/<brand>/dist/theme.css` between `/* BEGIN THEME OVERRIDES */` and `/* END THEME OVERRIDES */` on every rebuild.
 
 ## CSS Variable Naming
 
@@ -243,4 +251,3 @@ RGB values are generated automatically for hex colors. If missing:
 - [CTI Structure Guide](https://styledictionary.com/format/tokens/#category-type-item)
 - [Custom Transforms](https://styledictionary.com/transform/)
 - [Custom Formats](https://styledictionary.com/format/)
-

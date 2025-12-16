@@ -1,0 +1,213 @@
+.content-block {
+  background-color: var(--color-bg-component-contentBlock, transparent);
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.content-block .wl-sec__headline,
+.content-block .wl-sec__subheadline {
+  max-width: 866px;
+}
+
+.content-block .wl-sec__subheadline.wysiwyg-content {
+  text-align: center;
+}
+
+/* Row Layout - Mobile: Always stack vertically (image top, text bottom) */
+.content-block__row {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.content-block__image-wrapper {
+  order: 1;
+  width: 100%;
+}
+
+/* Remove aspect-ratio constraint from Image component */
+.content-block__image-wrapper .image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: unset !important;
+}
+
+.content-block__image-wrapper .image__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.content-block__content-wrapper {
+  order: 2;
+  width: 100%;
+}
+
+.content-block__heading {
+  margin-bottom: 20px;    
+}
+
+.content-block__heading .wysiwyg-content {  
+
+}
+.content-block__heading .wysiwyg-content * {
+
+
+}
+
+.content-block__text .wysiwyg-content {
+  color: var(--color-text-primary, #000000);
+}
+
+/* Single variant - Desktop: Use data-image-position attribute */
+@media (min-width: 992px) {
+  .content-block__row {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 60px;
+  }
+
+  .content-block__image-wrapper {
+    flex: 1 1 0;
+    width: 0;
+    min-height: 100%;
+    display: flex;
+    align-items: stretch;
+  }
+
+  /* Remove aspect-ratio and make image cover wrapper on desktop */
+  .content-block__image-wrapper .image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: unset !important;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .content-block__image-wrapper .image__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .content-block__content-wrapper {
+    flex: 1 1 0;
+    width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Single variant: image right (default) */
+  .content-block__row[data-image-position="right"] .content-block__image-wrapper {
+    order: 2;
+  }
+
+  .content-block__row[data-image-position="right"] .content-block__content-wrapper {
+    order: 1;
+  }
+
+  /* Single variant: image left */
+  .content-block__row[data-image-position="left"] .content-block__image-wrapper {
+    order: 1;
+  }
+
+  .content-block__row[data-image-position="left"] .content-block__content-wrapper {
+    order: 2;
+  }
+}
+
+/* Multiple variant - Desktop: Use data-image-start + nth-child for zig-zag */
+@media (min-width: 992px) {
+  .content-block--multiple .content-block__row {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+
+  .content-block--multiple .content-block__image-wrapper {
+    flex: 1 1 0;
+    width: 0;
+    min-height: 100%;
+    display: flex;
+    align-items: stretch;
+  }
+
+  /* Remove aspect-ratio and make image cover wrapper on desktop */
+  .content-block--multiple .content-block__image-wrapper .image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: unset !important;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .content-block--multiple .content-block__image-wrapper .image__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .content-block--multiple .content-block__content-wrapper {
+    flex: 1 1 0;
+    width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* When starting with image-left: odd rows = image-left, even rows = image-right */
+  [data-image-start="left"] .content-block__row:nth-child(odd) .content-block__image-wrapper {
+    order: 1;
+  }
+
+  [data-image-start="left"] .content-block__row:nth-child(odd) .content-block__content-wrapper {
+    order: 2;
+  }
+
+  [data-image-start="left"] .content-block__row:nth-child(even) .content-block__image-wrapper {
+    order: 2;
+  }
+
+  [data-image-start="left"] .content-block__row:nth-child(even) .content-block__content-wrapper {
+    order: 1;
+  }
+
+  /* When starting with image-right: odd rows = image-right, even rows = image-left */
+  [data-image-start="right"] .content-block__row:nth-child(odd) .content-block__image-wrapper {
+    order: 2;
+  }
+
+  [data-image-start="right"] .content-block__row:nth-child(odd) .content-block__content-wrapper {
+    order: 1;
+  }
+
+  [data-image-start="right"] .content-block__row:nth-child(even) .content-block__image-wrapper {
+    order: 1;
+  }
+
+  [data-image-start="right"] .content-block__row:nth-child(even) .content-block__content-wrapper {
+    order: 2;
+  }
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .content-block {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+}
+
+@media (min-width: 992px) {
+  .content-block {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}

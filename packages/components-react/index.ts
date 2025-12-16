@@ -13,6 +13,7 @@ export { Hero } from './Hero';
 // Content Sections
 export { TextSection } from './TextSection';
 export { ImageSection } from './ImageSection';
+export { ContentBlock } from './ContentBlock';
 
 // Feature Components
 export { ProductSlider } from './ProductSlider';
@@ -52,6 +53,8 @@ export type {
   AccordionItemData,
   // FAQ types
   FAQItem,
+  // Content Block types
+  ContentBlockItem,
 } from './types';
 
 // Component props for advanced usage
@@ -64,6 +67,7 @@ export type { RecipeOverviewProps } from './RecipeOverview';
 export type { FAQProps } from './FAQ';
 export type { TextSectionProps } from './TextSection';
 export type { ImageSectionProps } from './ImageSection';
+export type { ContentBlockProps } from './ContentBlock';
 export type { SocialMediaFeedProps } from './SocialMediaFeed';
 export type { NavBarProps } from './NavBar';
 export type { FooterProps } from './Footer';

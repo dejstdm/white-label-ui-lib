@@ -54,7 +54,7 @@
     "compile-themes": "node scripts/compile-theme.js",
     "compile-themes:sd": "node scripts/compile-themes-sd.js",
     "compile-themes:watch": "node scripts/compile-themes-sd.js --watch",
-    "storybook": "npm run compile-themes:sd && storybook dev -p 6006",
+    "storybook": "node scripts/storybook-dev.js",
     "build-storybook": "npm run compile-themes:sd && storybook build",
     "typecheck": "tsc --noEmit",
     "typecheck:stories": "tsc -p tsconfig.stories.json --noEmit",

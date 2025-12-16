@@ -98,7 +98,7 @@ export default async function buildThemes(brand = null) {
     const sd = new StyleDictionary(brandConfig);
     await sd.buildAllPlatforms();
     
-    // Append theme-overrides.css if it exists
+    // Append theme-overrides.css if it exists (always refresh content on rebuild)
     const themeDir = path.join(__dirname, 'themes', brandName);
     const overridesPath = path.join(themeDir, 'theme-overrides.css');
     const themeCssPath = path.join(themeDir, 'dist', 'theme.css');
@@ -106,16 +106,38 @@ export default async function buildThemes(brand = null) {
     if (fs.existsSync(overridesPath) && fs.existsSync(themeCssPath)) {
       const overridesContent = fs.readFileSync(overridesPath, 'utf-8');
       const existingThemeCss = fs.readFileSync(themeCssPath, 'utf-8');
-      // Only append if not already appended (avoid duplicates on re-runs)
-      // Check for any marker from theme-overrides.css
-      const hasOverrides = existingThemeCss.includes('Theme Component Overrides') ||
-                          existingThemeCss.includes('Button Component') ||
-                          existingThemeCss.includes('Component Overrides');
-      
-      if (!hasOverrides) {
-        const combinedCss = existingThemeCss + '\n\n' + overridesContent;
-        fs.writeFileSync(themeCssPath, combinedCss, 'utf-8');
+
+      const BEGIN = '/* BEGIN THEME OVERRIDES */';
+      const END = '/* END THEME OVERRIDES */';
+
+      let baseCss = existingThemeCss;
+
+      // Prefer removing our explicit block first.
+      const beginIdx = baseCss.indexOf(BEGIN);
+      const endIdx = baseCss.indexOf(END);
+      if (beginIdx !== -1 && endIdx !== -1 && endIdx > beginIdx) {
+        baseCss = baseCss.slice(0, beginIdx);
+      } else {
+        // Legacy cleanup: previous builds appended overrides without explicit markers.
+        // Our generated CSS format does not include this phrase, so it’s safe to strip.
+        const legacyMarkerIdx = baseCss.indexOf('Theme Component Overrides');
+        if (legacyMarkerIdx !== -1) {
+          const startCommentIdx = baseCss.lastIndexOf('/*', legacyMarkerIdx);
+          baseCss = baseCss.slice(0, startCommentIdx === -1 ? legacyMarkerIdx : startCommentIdx);
+        }
       }
+
+      const combinedCss =
+        baseCss.trimEnd() +
+        '\n\n' +
+        BEGIN +
+        '\n' +
+        overridesContent.trim() +
+        '\n' +
+        END +
+        '\n';
+
+      fs.writeFileSync(themeCssPath, combinedCss, 'utf-8');
     }
     
     console.log(`✓ Compiled theme with Style Dictionary: themes/${brandName}/dist/theme.css`);

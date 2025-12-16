@@ -371,3 +371,29 @@ export type NutritionalInformation = {
   /** Reference intake disclaimer text (HTML from CMS) */
   disclaimer?: HtmlString;
 };
+
+// ==========================================
+// CONTENT BLOCK TYPES
+// ==========================================
+
+/**
+ * Content block item for multiple variant.
+ * 
+ * Represents a single row in the zig-zag layout.
+ */
+export type ContentBlockItem = {
+  /** Unique identifier for the item */
+  id?: string | number;
+  /** Image source URL */
+  imageSrc: string;
+  /** Alt text for the image */
+  imageAlt: string;
+  /** Image width (required for Image component) */
+  imageWidth: number;
+  /** Image height (required for Image component) */
+  imageHeight: number;
+  /** Heading text (HTML from CMS) */
+  heading?: HtmlString;
+  /** Body content (HTML from CMS) */
+  content?: HtmlString;
+};
