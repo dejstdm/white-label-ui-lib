@@ -23,6 +23,15 @@
         "imageSection": {
           "value": "{color.brand.primary}"
         },
+        "contentBlock": {
+          "value": "{color.brand.primary}"
+        },
+        "recipeOverview": {
+          "value": "{color.brand.primary}"
+        },
+        "videoSection": {
+          "value": "{color.brand.primary}"
+        },
         "socialMediaFeed": {
           "value": "{color.brand.primary}"
         },

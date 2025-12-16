@@ -14,6 +14,7 @@ export { Hero } from './Hero';
 export { TextSection } from './TextSection';
 export { ImageSection } from './ImageSection';
 export { ContentBlock } from './ContentBlock';
+export { VideoSection } from './VideoSection';
 
 // Feature Components
 export { ProductSlider } from './ProductSlider';
@@ -55,6 +56,9 @@ export type {
   FAQItem,
   // Content Block types
   ContentBlockItem,
+  // Video types
+  VideoSource,
+  VideoItem,
 } from './types';
 
 // Component props for advanced usage
@@ -68,6 +72,7 @@ export type { FAQProps } from './FAQ';
 export type { TextSectionProps } from './TextSection';
 export type { ImageSectionProps } from './ImageSection';
 export type { ContentBlockProps } from './ContentBlock';
+export type { VideoSectionProps } from './VideoSection';
 export type { SocialMediaFeedProps } from './SocialMediaFeed';
 export type { NavBarProps } from './NavBar';
 export type { FooterProps } from './Footer';

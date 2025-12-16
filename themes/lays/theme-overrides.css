@@ -52,9 +52,6 @@
 }
 
 
-[data-theme="lays"] .content-block__heading{
-
-}
 /* SectionHeader Component */
 [data-theme="lays"] .wl-sec__header .heading ,
 [data-theme="lays"] .content-block__heading .wysiwyg-content * {
@@ -75,12 +72,6 @@ color: var(--color-danger);
 }
 /* This theme sets button colors by providing hook variables that `Button.css` consumes. */
 /* Buttons on yellow/brand background use red */
-/* RecipeOverview background */
-[data-theme="lays"] .recipe-overview,
-[data-theme="lays"] .content-block
- {
-  background-color: var(--color-brand-primary);
-}
 
 [data-theme="lays"] :is(
   .product-slider,

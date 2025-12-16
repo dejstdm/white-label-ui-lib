@@ -23,6 +23,15 @@
         "imageSection": {
           "value": "#FFFFFF"
         },
+        "contentBlock": {
+          "value": "#FFFFFF"
+        },
+        "recipeOverview": {
+          "value": "#FFFFFF"
+        },
+        "videoSection": {
+          "value": "#FFFFFF"
+        },
         "socialMediaFeed": {
           "value": "#FFFFFF"
         },

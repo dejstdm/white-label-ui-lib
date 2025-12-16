@@ -397,3 +397,43 @@ export type ContentBlockItem = {
   /** Body content (HTML from CMS) */
   content?: HtmlString;
 };
+
+// ==========================================
+// VIDEO SECTION TYPES
+// ==========================================
+
+export type VideoSource = {
+  /** Video URL */
+  src: string;
+  /** Optional MIME type (e.g. "video/mp4") */
+  type?: string;
+};
+
+export type VideoItem = {
+  /** Unique identifier for the item */
+  id?: string | number;
+  /** Single source URL (used if `sources` not provided) */
+  src?: string;
+  /** Optional MIME type for `src` (e.g. "video/mp4") */
+  type?: string;
+  /** Multiple sources for broader browser support */
+  sources?: VideoSource[];
+  /** Poster image URL */
+  poster?: string;
+  /** Plain text title shown under the video */
+  title?: PlainText;
+  /** HTML string caption shown under the video */
+  caption?: HtmlString;
+  /** Custom aspect ratio (e.g. "16/9", "4/3") */
+  aspectRatio?: string;
+  /** Whether to loop the video */
+  loop?: boolean;
+  /** Whether the video is muted */
+  muted?: boolean;
+  /** Whether to play inline on mobile (defaults true) */
+  playsInline?: boolean;
+  /** Preload hint (defaults to "metadata") */
+  preload?: 'none' | 'metadata' | 'auto';
+  /** Accessible label for the play button overlay */
+  ariaLabel?: PlainText;
+};

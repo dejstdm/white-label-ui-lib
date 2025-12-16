@@ -259,7 +259,7 @@ npm install react react-dom swiper
 Import components from the package:
 
 ```javascript
-import { NavBar, Hero, Footer, TextSection, ImageSection, ContentBlock, ProductSlider, ProductOverview, ProductDetail, RecipeSlider, RecipeOverview, FAQ, SocialMediaFeed } from '@dejstdm/white-label-ui';
+import { NavBar, Hero, Footer, TextSection, ImageSection, ContentBlock, VideoSection, ProductSlider, ProductOverview, ProductDetail, RecipeSlider, RecipeOverview, FAQ, SocialMediaFeed } from '@dejstdm/white-label-ui';
 ```
 
 You can import individual components for better tree-shaking:
@@ -580,6 +580,7 @@ import 'swiper/css/pagination';
 // Register components with Builder.io
 import { 
   NavBar, Hero, Footer, TextSection, ImageSection, ContentBlock,
+  VideoSection,
   ProductSlider, ProductOverview, ProductDetail, RecipeSlider, RecipeOverview, FAQ, SocialMediaFeed 
 } from '@dejstdm/white-label-ui';
 
@@ -592,7 +593,7 @@ Builder.registerComponent(NavBar, { name: 'NavBar', ... });
 
 - **Navigation**: `NavBar`, `Footer`
 - **Layout**: `Hero`
-- **Display**: `TextSection`, `ImageSection`, `ContentBlock`, `ProductSlider`, `ProductOverview`, `ProductDetail`, `RecipeSlider`, `RecipeOverview`, `FAQ`, `SocialMediaFeed`
+- **Display**: `TextSection`, `ImageSection`, `ContentBlock`, `VideoSection`, `ProductSlider`, `ProductOverview`, `ProductDetail`, `RecipeSlider`, `RecipeOverview`, `FAQ`, `SocialMediaFeed`
 
 #### Metadata Maintenance
 
@@ -623,6 +624,7 @@ The following components are available in the library. All components are standa
 - **ContentBlock** - Content block component with image and text. Supports two variants:
   - `single` (default) - Single row with configurable image position (left/right)
   - `multiple` - Multiple rows with automatic zig-zag pattern (alternating image/text positions)
+- **VideoSection** - Video section with a centered play overlay; shows native controls when playing and enforces single-active playback across the page
 
 ### Feature Components
 - **ProductSlider** - Product carousel/slider with navigation controls
