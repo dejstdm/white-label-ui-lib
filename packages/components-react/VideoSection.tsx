@@ -1,3 +1,5 @@
+"use client";
+
 import React, { type HTMLAttributes, useEffect, useId, useMemo, useRef, useState } from 'react';
 import './VideoSection.css';
 import './SectionLayout.css';
@@ -186,4 +188,3 @@ export const VideoSection = ({
     </section>
   );
 };
-
